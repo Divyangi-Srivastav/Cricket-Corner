@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "163451069667",
+    "project_id": "livecricketapp-44c76",
+    "storage_bucket": "livecricketapp-44c76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163451069667:android:162d2c3e690233fbfd11d6",
+        "android_client_info": {
+          "package_name": "com.example.livecricketapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "163451069667-tbss2k30bob2ivqqvv61mfj6e7e0aam4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqXXzogAnfrTUD_v9V-rnf9ZbZCnbkl8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "163451069667-tbss2k30bob2ivqqvv61mfj6e7e0aam4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

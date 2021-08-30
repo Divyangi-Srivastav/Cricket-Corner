@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LiveCricketApp</string>
+    <string name="field_required">This field is required.</string>
+    <string name="about_info">A platform where you can host a tournament or be a spectator and enjoy breathtaking cricket matches directly at your home with just a small fee to support the team. You can also donate participation fees on behalf of your favourite team and watch them win as they fight their way in the tournament. Or request an ad that will get displayed Live on our app and boost your sales.</string>
+</resources>
