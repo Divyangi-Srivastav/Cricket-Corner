@@ -17,4 +17,6 @@
         app:layout_constraintStart_toStartOf="@id/rootLayout"
         app:layout_constraintEnd_toEndOf="@id/rootLayout"
         android:src="@drawable/logo"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

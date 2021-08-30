@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
-        <activity android:name=".activities.LiveMatchActivity"></activity>
+        <activity android:name=".activities.Host_a_tournament"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".activities.LiveMatchActivity" />
         <activity android:name=".authentication.ForgotPasswordActivity" />
         <activity android:name=".authentication.SignupActivity" />
         <activity android:name=".activities.HomeActivity" />
@@ -21,6 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
