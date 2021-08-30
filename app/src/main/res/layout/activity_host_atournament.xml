@@ -106,6 +106,7 @@
                             android:textSize="14sp" />
 
                         <ImageView
+                            android:onClick="clear"
                             android:id="@+id/name_cross"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -153,6 +154,7 @@
                             android:textSize="14sp" />
 
                         <ImageView
+                            android:onClick="clear"
                             android:id="@+id/upi_id_cross"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -201,6 +203,7 @@
                             android:textSize="14sp" />
 
                         <ImageView
+                            android:onClick="clear"
                             android:id="@+id/phone_cross"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -250,6 +253,7 @@
                             android:textSize="14sp" />
 
                         <ImageView
+                            android:onClick="clear"
                             android:id="@+id/address_cross"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -261,6 +265,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <Button
+                    android:onClick="create_tournament"
                     android:id="@+id/btn_submit"
                     android:layout_width="match_parent"
                     android:layout_height="36dp"
