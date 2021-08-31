@@ -2,6 +2,7 @@ package com.example.livecricketapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -60,6 +61,7 @@ public class Host_a_tournament extends AppCompatActivity {
         tournamentHostInfo.setTournamentId(generate_tournament_Id());
 
         push_data_to_firebase(tournamentHostInfo);
+        move_to_create_tournament();
     }
 
     public String generate_tournament_Id ()
@@ -71,6 +73,12 @@ public class Host_a_tournament extends AppCompatActivity {
     public void push_data_to_firebase( TournamentHostInfo tournamentHostInfo )
     {
         databaseReference.push().setValue(tournamentHostInfo);
+    }
+
+    public void move_to_create_tournament()
+    {
+        Intent intent = new Intent(this , CreateTournamentOne.class);
+        startActivity( intent );
     }
 
 }
