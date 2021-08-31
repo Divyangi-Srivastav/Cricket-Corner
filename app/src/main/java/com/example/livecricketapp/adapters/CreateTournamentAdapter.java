@@ -47,7 +47,7 @@ public class CreateTournamentAdapter extends RecyclerView.Adapter<CreateTourname
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 for ( int i=0 ; i < strings.size() ; i++ )
                 {
-                    if ( strings.contains(s.toString()) )
+                    if ( strings.get(i).equalsIgnoreCase(s.toString()) )
                     {
                         strings.remove(i);
                     }

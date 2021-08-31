@@ -3,11 +3,13 @@ package com.example.livecricketapp.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.adapters.CreateTournamentAdapter;
@@ -87,19 +89,67 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
         {
             case R.id.btn_submit:
 
-
-
-                TournamentInfo tournamentInfo = new TournamentInfo();
-
-
+               if (check_empty()) {
+                   TournamentInfo tournamentInfo = new TournamentInfo();
+                   tournamentInfo.setTournamentId(getIntent().getStringExtra("id"));
+                   tournamentInfo.setTournamentName(binding.tournamentName.getText().toString());
+                   tournamentInfo.setNumber_of_teams(Integer.parseInt(binding.numberOfTeams.getText().toString()));
+                   tournamentInfo.setFees(Float.parseFloat(binding.fees.getText().toString()));
+                   tournamentInfo.setNo_of_matches_day(Integer.parseInt(binding.numberOfMatches.getText().toString()));
+                   tournamentInfo.setStart_date(binding.startDateAndTime.getText().toString());
+                   tournamentInfo.setEnd_date(binding.endDateAndTime.getText().toString());
+                   tournamentInfo.setTeamNames(createTournamentAdapter.get_list());
+                   if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                       tournamentInfo.setMatch_start_time(String.valueOf(binding.timePicker1.getHour()) + " : " + String.valueOf(binding.timePicker1.getMinute()));
+                       tournamentInfo.setMatch_end_time(String.valueOf(binding.timePicker2.getHour()) + " : " + String.valueOf(binding.timePicker2.getMinute()));
+                   }
+                   upload_to_firestore(tournamentInfo);
+               }
                 break;
         }
 
     }
 
-    public void check_empty ()
+    public Boolean check_empty ()
     {
-        
+        if ( binding.tournamentName.getText().toString().isEmpty() )
+        {
+            binding.tournamentName.setError("Enter the tournament Name");
+            return false;
+        }
+        else if ( binding.numberOfTeams.getText().toString().isEmpty() )
+        {
+            binding.numberOfTeams.setError("Enter the Number of teams");
+            return false;
+        }
+        else if ( binding.fees.getText().toString().isEmpty() )
+        {
+            binding.fees.setError("Enter the tournament Fees");
+            return false;
+        }
+        else if ( binding.numberOfMatches.getText().toString().isEmpty() )
+        {
+            binding.numberOfMatches.setError("Enter the Number of Matches");
+            return false;
+        }
+        else if ( binding.startDateAndTime.getText().toString().isEmpty() )
+        {
+            binding.startDateAndTime.setError("Enter the Start Date and Time");
+            return false;
+        }
+        else if ( binding.endDateAndTime.getText().toString().isEmpty() )
+        {
+            binding.endDateAndTime.setError("Enter the Start Date and Time");
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public void upload_to_firestore ( TournamentInfo tournamentInfo )
+    {
+        db.collection("Tournament").document(tournamentInfo.getTournamentId()).set(tournamentInfo);
     }
 
 }

@@ -11,11 +11,6 @@
         android:theme="@style/Theme.LiveCricketApp">
         <activity android:name=".activities.CreateTournamentOne"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activities.Host_a_tournament"
@@ -26,6 +21,11 @@
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".authentication.LoginActivity" />
         <activity android:name=".activities.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data
