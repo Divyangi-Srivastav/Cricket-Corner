@@ -65,10 +65,10 @@
                     android:layout_marginTop="25dp">
 
                     <EditText
-                        android:fontFamily="@font/montserrat"
                         android:id="@+id/tournament_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
                         android:hint="Enter Tournament Name"
                         android:textSize="15sp" />
 
@@ -101,11 +101,12 @@
                     android:layout_marginTop="25dp">
 
                     <EditText
-                        android:fontFamily="@font/montserrat"
                         android:id="@+id/number_of_teams"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
                         android:hint="Enter Number of teams participating"
+                        android:inputType="number"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -132,9 +133,9 @@
                     android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/recycler_view"/>
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -151,11 +152,12 @@
                     android:layout_marginTop="25dp">
 
                     <EditText
-                        android:fontFamily="@font/montserrat"
                         android:id="@+id/fees"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
                         android:hint="Enter Participation Fees for each team"
+                        android:inputType="numberDecimal"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -187,11 +189,12 @@
                     android:layout_marginTop="25dp">
 
                     <EditText
-                        android:fontFamily="@font/montserrat"
                         android:id="@+id/number_of_matches"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
                         android:hint="Enter Number of matches per Day"
+                        android:inputType="number"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -213,7 +216,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Number of Matches per Day"
+                    android:text="Date and Time of Tournament"
                     android:textColor="#112E52"
                     android:textSize="18sp" />
 
@@ -223,11 +226,12 @@
                     android:layout_marginTop="25dp">
 
                     <EditText
-                        android:fontFamily="@font/montserrat"
                         android:id="@+id/start_date_and_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
                         android:hint="Enter Start Date of Tournament"
+                        android:inputType="date"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -250,11 +254,12 @@
                     android:layout_marginTop="25dp">
 
                     <EditText
-                        android:fontFamily="@font/montserrat"
                         android:id="@+id/end_date_and_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
                         android:hint="Enter End Date of Tournament"
+                        android:inputType="date"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -279,6 +284,31 @@
                     android:text="Enter time of Matches per Day"
                     android:textColor="#B1AEAE"
                     android:textSize="15sp" />
+
+                <TimePicker
+                    android:id="@+id/time_picker1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:timePickerMode="spinner" />
+
+                <TimePicker
+                    android:id="@+id/time_picker2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:timePickerMode="spinner" />
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/buttons"
+                    android:text="Continue"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
 
             </LinearLayout>
 

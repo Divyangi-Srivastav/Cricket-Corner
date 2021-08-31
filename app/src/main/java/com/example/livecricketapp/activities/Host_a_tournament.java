@@ -46,12 +46,12 @@ public class Host_a_tournament extends AppCompatActivity {
             case R.id.address_cross:
                 binding.address.getText().clear();
                 break;
-
         }
     }
 
     public void create_tournament ( View view  )
     {
+        check_empty();
         TournamentHostInfo tournamentHostInfo = new TournamentHostInfo();
         tournamentHostInfo.setHostName(binding.name.getText().toString());
         tournamentHostInfo.setUpiId(binding.upiId.getText().toString());
@@ -61,7 +61,7 @@ public class Host_a_tournament extends AppCompatActivity {
         tournamentHostInfo.setTournamentId(generate_tournament_Id());
 
         push_data_to_firebase(tournamentHostInfo);
-        move_to_create_tournament();
+        move_to_create_tournament(tournamentHostInfo.getTournamentId());
     }
 
     public String generate_tournament_Id ()
@@ -75,10 +75,31 @@ public class Host_a_tournament extends AppCompatActivity {
         databaseReference.push().setValue(tournamentHostInfo);
     }
 
-    public void move_to_create_tournament()
+    public void move_to_create_tournament( String id )
     {
         Intent intent = new Intent(this , CreateTournamentOne.class);
+        intent.putExtra("id", id );
         startActivity( intent );
+    }
+
+    public void check_empty()
+    {
+        if ( binding.name.getText().toString().isEmpty() )
+        {
+            binding.name.setError("Enter the name");
+        }
+        else if ( binding.upiId.getText().toString().isEmpty() )
+        {
+            binding.upiId.setError("Enter the UPI ID");
+        }
+        else if ( binding.phone.getText().toString().isEmpty() )
+        {
+            binding.phone.setError("Enter the phone Number");
+        }
+        else if ( binding.address.getText().toString().isEmpty() )
+        {
+            binding.address.setError("Enter the address");
+        }
     }
 
 }
