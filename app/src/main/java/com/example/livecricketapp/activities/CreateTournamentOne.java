@@ -3,6 +3,7 @@ package com.example.livecricketapp.activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -104,6 +105,11 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
                        tournamentInfo.setMatch_end_time(String.valueOf(binding.timePicker2.getHour()) + " : " + String.valueOf(binding.timePicker2.getMinute()));
                    }
                    upload_to_firestore(tournamentInfo);
+
+                   Intent intent = new Intent( CreateTournamentOne.this , CreateTournamentTwo.class );
+                   intent.putExtra("number",tournamentInfo.getNumber_of_teams());
+                   startActivity(intent);
+
                }
                 break;
         }

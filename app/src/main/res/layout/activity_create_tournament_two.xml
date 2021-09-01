@@ -57,563 +57,572 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingHorizontal="30dp"
                 android:paddingBottom="60dp">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Team Details"
-                    android:textColor="#112E52"
-                    android:textSize="18sp" />
-
-                <Spinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_marginTop="25dp"
-                    android:background="@drawable/spinner_new" />
+                    android:orientation="vertical"
+                    android:paddingHorizontal="30dp">
 
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    app:cardCornerRadius="10dp">
-
-                    <LinearLayout
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Team Details"
+                        android:textColor="#112E52"
+                        android:textSize="18sp" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="17dp"
-                            android:src="@drawable/ant_design_user_outlined" />
+                    <Spinner
+                        android:paddingStart="10dp"
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="25dp"
+                        android:background="@drawable/spinner_new" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/line" />
 
-                        <EditText
-                            android:id="@+id/name_player1"
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/montserrat"
-                            android:hint="Name of Player 1"
-                            android:paddingHorizontal="10dp"
-                            android:textSize="14sp" />
-
-                        <ImageView
-                            android:id="@+id/name_player1_cross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:onClick="clear"
-                            android:src="@drawable/cross" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="10dp">
-
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="20dp"
+                        app:cardCornerRadius="10dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="17dp"
-                            android:src="@drawable/ant_design_user_outlined" />
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/line" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
 
-                        <EditText
-                            android:id="@+id/name_player2"
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/montserrat"
-                            android:hint="Name of Player 2"
-                            android:paddingHorizontal="10dp"
-                            android:textSize="14sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
 
-                        <ImageView
-                            android:id="@+id/name_player2_cross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:onClick="clear"
-                            android:src="@drawable/cross" />
+                            <EditText
+                                android:id="@+id/name_player1"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 1"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/name_player1_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
 
-                </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="10dp">
+                    </androidx.cardview.widget.CardView>
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="17dp"
-                            android:src="@drawable/ant_design_user_outlined" />
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/line" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
 
-                        <EditText
-                            android:id="@+id/name_player3"
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/montserrat"
-                            android:hint="Name of Player 3"
-                            android:paddingHorizontal="10dp"
-                            android:textSize="14sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
 
-                        <ImageView
-                            android:id="@+id/name_player3_cross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:onClick="clear"
-                            android:src="@drawable/cross" />
+                            <EditText
+                                android:id="@+id/name_player2"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 2"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/name_player2_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
 
-                </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="10dp">
+                    </androidx.cardview.widget.CardView>
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="17dp"
-                            android:src="@drawable/ant_design_user_outlined" />
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/line" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
 
-                        <EditText
-                            android:id="@+id/name_player4"
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/montserrat"
-                            android:hint="Name of Player 4"
-                            android:paddingHorizontal="10dp"
-                            android:textSize="14sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
 
-                        <ImageView
-                            android:id="@+id/name_player4_cross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:onClick="clear"
-                            android:src="@drawable/cross" />
+                            <EditText
+                                android:id="@+id/name_player3"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 3"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/name_player3_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
 
-                </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="10dp">
+                    </androidx.cardview.widget.CardView>
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="17dp"
-                            android:src="@drawable/ant_design_user_outlined" />
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/line" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
 
-                        <EditText
-                            android:id="@+id/name_player5"
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/montserrat"
-                            android:hint="Name of Player 5"
-                            android:paddingHorizontal="10dp"
-                            android:textSize="14sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
 
-                        <ImageView
-                            android:id="@+id/name_player5_cross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:onClick="clear"
-                            android:src="@drawable/cross" />
+                            <EditText
+                                android:id="@+id/name_player4"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 4"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/name_player4_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
 
-                </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="10dp">
+                    </androidx.cardview.widget.CardView>
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="17dp"
-                            android:src="@drawable/ant_design_user_outlined" />
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/line" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
 
-                        <EditText
-                            android:id="@+id/name_player6"
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/montserrat"
-                            android:hint="Name of Player 6"
-                            android:paddingHorizontal="10dp"
-                            android:textSize="14sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
 
-                        <ImageView
-                            android:id="@+id/name_player6_cross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:onClick="clear"
-                            android:src="@drawable/cross" />
+                            <EditText
+                                android:id="@+id/name_player5"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 5"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/name_player5_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
 
-                </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="10dp">
+                    </androidx.cardview.widget.CardView>
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="17dp"
-                            android:src="@drawable/ant_design_user_outlined" />
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/line" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
 
-                        <EditText
-                            android:id="@+id/name_player7"
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/montserrat"
-                            android:hint="Name of Player 7"
-                            android:paddingHorizontal="10dp"
-                            android:textSize="14sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
 
-                        <ImageView
-                            android:id="@+id/name_player7_cross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:onClick="clear"
-                            android:src="@drawable/cross" />
+                            <EditText
+                                android:id="@+id/name_player6"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 6"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/name_player6_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
 
-                </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="10dp">
+                    </androidx.cardview.widget.CardView>
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="17dp"
-                            android:src="@drawable/ant_design_user_outlined" />
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/line" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
 
-                        <EditText
-                            android:id="@+id/name_player8"
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/montserrat"
-                            android:hint="Name of Player 8"
-                            android:paddingHorizontal="10dp"
-                            android:textSize="14sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
 
-                        <ImageView
-                            android:id="@+id/name_player8_cross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:onClick="clear"
-                            android:src="@drawable/cross" />
+                            <EditText
+                                android:id="@+id/name_player7"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 7"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/name_player7_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
 
-                </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="10dp">
+                    </androidx.cardview.widget.CardView>
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="17dp"
-                            android:src="@drawable/ant_design_user_outlined" />
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/line" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
 
-                        <EditText
-                            android:id="@+id/name_player9"
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/montserrat"
-                            android:hint="Name of Player 9"
-                            android:paddingHorizontal="10dp"
-                            android:textSize="14sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
 
-                        <ImageView
-                            android:id="@+id/name_player9_cross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:onClick="clear"
-                            android:src="@drawable/cross" />
+                            <EditText
+                                android:id="@+id/name_player8"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 8"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/name_player8_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
 
-                </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="10dp">
+                    </androidx.cardview.widget.CardView>
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="17dp"
-                            android:src="@drawable/ant_design_user_outlined" />
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/line" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
 
-                        <EditText
-                            android:id="@+id/name_player10"
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/montserrat"
-                            android:hint="Name of Player 10"
-                            android:paddingHorizontal="10dp"
-                            android:textSize="14sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
 
-                        <ImageView
-                            android:id="@+id/name_player10_cross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:onClick="clear"
-                            android:src="@drawable/cross" />
+                            <EditText
+                                android:id="@+id/name_player9"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 9"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/name_player9_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
 
-                </androidx.cardview.widget.CardView>
+                        </LinearLayout>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="10dp">
+                    </androidx.cardview.widget.CardView>
 
-                    <LinearLayout
+                    <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle"
-                        android:orientation="horizontal">
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="17dp"
-                            android:src="@drawable/ant_design_user_outlined" />
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/name_player10"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 10"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player10_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/line" />
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
 
-                        <EditText
-                            android:id="@+id/name_player11"
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:fontFamily="@font/montserrat"
-                            android:hint="Name of Player 11"
-                            android:paddingHorizontal="10dp"
-                            android:textSize="14sp" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
 
-                        <ImageView
-                            android:id="@+id/name_player11_cross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:onClick="clear"
-                            android:src="@drawable/cross" />
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
 
-                    </LinearLayout>
+                            <EditText
+                                android:id="@+id/name_player11"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 11"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player11_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
 
 
-                </androidx.cardview.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Name of Captain"
-                    android:textColor="#112E52"
-                    android:textSize="18sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Name of Captain"
+                        android:textColor="#112E52"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -624,6 +633,7 @@
                         android:id="@+id/captain_name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:layout_marginHorizontal="30dp"
                         android:fontFamily="@font/montserrat"
                         android:hint="Enter Name of Captain"
                         android:textSize="15sp" />
@@ -633,20 +643,53 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginEnd="5dp"
+                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginEnd="35dp"
+                        android:layout_marginBottom="15dp"
                         android:onClick="clear"
                         android:src="@drawable/cross"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/info_card"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:visibility="invisible"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="1dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat"
+                                android:text="We need this information so that the users can donate on behalf of your team. Or pay reward to a player during the match!"
+                                android:textColor="#112E52"
+                                android:textSize="8sp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="25dp">
+                    android:layout_marginHorizontal="30dp"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -662,10 +705,11 @@
                         android:gravity="end">
 
                         <ImageView
+                            android:id="@+id/info"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/group"
-                            android:layout_gravity="center"/>
+                            android:layout_gravity="center"
+                            android:src="@drawable/group" />
 
                     </LinearLayout>
 
@@ -674,6 +718,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
                     android:layout_marginTop="15dp">
 
                     <EditText
@@ -716,7 +761,6 @@
         </ScrollView>
 
     </LinearLayout>
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navigation"
