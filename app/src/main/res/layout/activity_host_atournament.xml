@@ -98,6 +98,7 @@
                             android:src="@drawable/line" />
 
                         <EditText
+                            android:fontFamily="@font/montserrat"
                             android:id="@+id/name"
                             android:layout_width="285dp"
                             android:layout_height="match_parent"
@@ -146,6 +147,7 @@
                             android:src="@drawable/line" />
 
                         <EditText
+                            android:fontFamily="@font/montserrat"
                             android:id="@+id/upi_id"
                             android:layout_width="285dp"
                             android:layout_height="match_parent"
@@ -195,6 +197,7 @@
                             android:src="@drawable/line" />
 
                         <EditText
+                            android:fontFamily="@font/montserrat"
                             android:id="@+id/phone"
                             android:layout_width="285dp"
                             android:layout_height="match_parent"
@@ -243,6 +246,7 @@
                             android:src="@drawable/line_address" />
 
                         <EditText
+                            android:fontFamily="@font/montserrat"
                             android:id="@+id/address"
                             android:layout_width="265dp"
                             android:layout_height="wrap_content"
