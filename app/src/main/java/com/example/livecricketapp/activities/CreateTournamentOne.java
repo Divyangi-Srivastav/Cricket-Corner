@@ -107,7 +107,7 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
                    upload_to_firestore(tournamentInfo);
 
                    Intent intent = new Intent( CreateTournamentOne.this , CreateTournamentTwo.class );
-                   intent.putExtra("number",tournamentInfo.getNumber_of_teams());
+                   intent.putExtra("info",tournamentInfo);
                    startActivity(intent);
 
                }
@@ -155,7 +155,7 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
 
     public void upload_to_firestore ( TournamentInfo tournamentInfo )
     {
-        db.collection("Tournament").document(tournamentInfo.getTournamentId()).set(tournamentInfo);
+        db.collection("Tournament Info").document(tournamentInfo.getTournamentId()).set(tournamentInfo);
     }
 
 }
