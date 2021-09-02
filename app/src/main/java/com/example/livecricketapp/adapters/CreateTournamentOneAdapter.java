@@ -19,13 +19,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateTournamentAdapter extends RecyclerView.Adapter<CreateTournamentAdapter.CreateViewHolder> {
+public class CreateTournamentOneAdapter extends RecyclerView.Adapter<CreateTournamentOneAdapter.CreateViewHolder> {
 
     private LayoutInflater layoutInflater;
     private int a;
     private  List<String> strings = new ArrayList<>();
 
-    public CreateTournamentAdapter(Context context, int a) {
+    public CreateTournamentOneAdapter(Context context, int a) {
         layoutInflater = LayoutInflater.from(context);
         this.a = a;
     }
@@ -39,7 +39,7 @@ public class CreateTournamentAdapter extends RecyclerView.Adapter<CreateTourname
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull CreateTournamentAdapter.CreateViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull CreateTournamentOneAdapter.CreateViewHolder holder, int position) {
 
         holder.editText.setHint("Enter Name of Team " + String.valueOf(position + 1));
         holder.editText.addTextChangedListener(new TextWatcher() {

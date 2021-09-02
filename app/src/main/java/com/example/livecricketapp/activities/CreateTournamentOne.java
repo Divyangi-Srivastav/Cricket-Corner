@@ -4,16 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.adapters.CreateTournamentAdapter;
+import com.example.livecricketapp.adapters.CreateTournamentOneAdapter;
 import com.example.livecricketapp.adapters.CreateTournamentTimeAdapter;
 import com.example.livecricketapp.databinding.ActivityCreateTournamentOneBinding;
 import com.example.livecricketapp.model.TournamentInfo;
@@ -22,7 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class CreateTournamentOne extends AppCompatActivity implements View.OnClickListener{
 
     private ActivityCreateTournamentOneBinding binding;
-    private CreateTournamentAdapter createTournamentAdapter;
+    private CreateTournamentOneAdapter createTournamentOneAdapter;
     private CreateTournamentTimeAdapter createTournamentTimeAdapter;
     private FirebaseFirestore db;
 
@@ -44,12 +41,12 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!s.toString().equalsIgnoreCase("") ) {
-                    createTournamentAdapter = new CreateTournamentAdapter(CreateTournamentOne.this, Integer.parseInt(s.toString()));
-                    binding.recyclerView.setAdapter(createTournamentAdapter);
+                    createTournamentOneAdapter = new CreateTournamentOneAdapter(CreateTournamentOne.this, Integer.parseInt(s.toString()));
+                    binding.recyclerView.setAdapter(createTournamentOneAdapter);
                     binding.recyclerView.setLayoutManager(new LinearLayoutManager(CreateTournamentOne.this));
                 } else {
-                    createTournamentAdapter = new CreateTournamentAdapter(CreateTournamentOne.this, 0);
-                    binding.recyclerView.setAdapter(createTournamentAdapter);
+                    createTournamentOneAdapter = new CreateTournamentOneAdapter(CreateTournamentOne.this, 0);
+                    binding.recyclerView.setAdapter(createTournamentOneAdapter);
                     binding.recyclerView.setLayoutManager(new LinearLayoutManager(CreateTournamentOne.this));
                 }
             }
@@ -127,7 +124,7 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
                    tournamentInfo.setNo_of_matches_day(Integer.parseInt(binding.numberOfMatches.getText().toString()));
                    tournamentInfo.setStart_date(binding.startDateAndTime.getText().toString());
                    tournamentInfo.setEnd_date(binding.endDateAndTime.getText().toString());
-                   tournamentInfo.setTeamNames(createTournamentAdapter.get_list());
+                   tournamentInfo.setTeamNames(createTournamentOneAdapter.get_list());
                    tournamentInfo.setMatchTimings(createTournamentTimeAdapter.getTimeList());
                    upload_to_firestore(tournamentInfo);
 
