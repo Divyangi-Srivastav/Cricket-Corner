@@ -285,17 +285,11 @@
                     android:textColor="#B1AEAE"
                     android:textSize="15sp" />
 
-                <TimePicker
-                    android:id="@+id/time_picker1"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:timePickerMode="spinner" />
-
-                <TimePicker
-                    android:id="@+id/time_picker2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:timePickerMode="spinner" />
+                    android:layout_marginHorizontal="20dp" />
 
                 <Button
                     android:id="@+id/btn_submit"

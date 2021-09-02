@@ -13,8 +13,7 @@ public class TournamentInfo implements Serializable {
     private int no_of_matches_day;
     private String start_date;
     private String end_date;
-    private String match_start_time;
-    private String match_end_time;
+    private List<String> matchTimings;
 
     public TournamentInfo ()
     {
@@ -85,19 +84,11 @@ public class TournamentInfo implements Serializable {
         this.end_date = end_date;
     }
 
-    public String getMatch_start_time() {
-        return match_start_time;
+    public List<String> getMatchTimings() {
+        return matchTimings;
     }
 
-    public void setMatch_start_time(String match_start_time) {
-        this.match_start_time = match_start_time;
-    }
-
-    public String getMatch_end_time() {
-        return match_end_time;
-    }
-
-    public void setMatch_end_time(String match_end_time) {
-        this.match_end_time = match_end_time;
+    public void setMatchTimings(List<String> matchTimings) {
+        this.matchTimings = matchTimings;
     }
 }

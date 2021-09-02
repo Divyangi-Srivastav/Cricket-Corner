@@ -34,7 +34,7 @@ public class CreateTournamentAdapter extends RecyclerView.Adapter<CreateTourname
     @NotNull
     @Override
     public CreateViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_view_layout, parent, false);
+        View view = layoutInflater.inflate(R.layout.recycler_view_names, parent, false);
         return new CreateViewHolder(view);
     }
 
