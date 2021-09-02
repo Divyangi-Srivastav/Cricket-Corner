@@ -10,7 +10,7 @@ public class OperationOnDate {
         int days = Integer.parseInt(end[0]) - Integer.parseInt(start[0]);
         int months = Integer.parseInt(end[1]) - Integer.parseInt(start[1]);
         int year = Integer.parseInt(end[2]) - Integer.parseInt(start[2]);
-        return (days + (months*30) + (year * 365));
+        return (days + (months*30) + (year * 365) + 1);
     }
 
     public static String date_increase( String date )

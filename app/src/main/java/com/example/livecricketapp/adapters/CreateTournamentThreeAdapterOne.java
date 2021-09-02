@@ -51,7 +51,6 @@ public class CreateTournamentThreeAdapterOne extends RecyclerView.Adapter<Create
         if ( position > 0 )
         {
             date = OperationOnDate.date_increase(date);
-            Log.d("hhhhhhhhhh",date);
         }
         createTournamentThreeAdapterTwo = new CreateTournamentThreeAdapterTwo(context,
                 tournamentInfo.getNo_of_matches_day(),tournamentInfo.getMatchTimings(),tournamentInfo.getTeamNames(),date
@@ -67,7 +66,6 @@ public class CreateTournamentThreeAdapterOne extends RecyclerView.Adapter<Create
 
     @Override
     public int getItemCount() {
-        Log.d("hhhhhhhhhhhhh",String.valueOf(no_of_days));
         return no_of_days;
     }
 

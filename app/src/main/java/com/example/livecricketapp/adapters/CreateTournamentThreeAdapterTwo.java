@@ -1,6 +1,8 @@
 package com.example.livecricketapp.adapters;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.model.SingleMatchInfo;
+import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -28,6 +31,8 @@ public class CreateTournamentThreeAdapterTwo extends RecyclerView.Adapter<Create
     private Context context;
     private String date;
     private int a;
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
 
     public CreateTournamentThreeAdapterTwo(Context context , int no_of_matches , List<String> matchTimings , List<String> teamNames , String date , int a )
     {
@@ -38,6 +43,8 @@ public class CreateTournamentThreeAdapterTwo extends RecyclerView.Adapter<Create
         this.teamNames = teamNames;
         this.date = date;
         this.a = a;
+        sharedPreferences = context.getSharedPreferences("save",Context.MODE_PRIVATE);
+        editor = sharedPreferences.edit();
     }
 
     @NonNull
@@ -66,6 +73,10 @@ public class CreateTournamentThreeAdapterTwo extends RecyclerView.Adapter<Create
                 singleMatchInfo.setTeam1(holder.spinner1.getSelectedItem().toString());
                 singleMatchInfo.setTeam2(holder.spinner2.getSelectedItem().toString());
                 singleMatchInfo.setTime(matchTimings.get(position));
+                Gson gson = new Gson();
+                String jsonString = gson.toJson(singleMatchInfo);
+                editor.putString(singleMatchInfo.getMatchNo(),jsonString);
+                editor.commit();
             }
         });
     }

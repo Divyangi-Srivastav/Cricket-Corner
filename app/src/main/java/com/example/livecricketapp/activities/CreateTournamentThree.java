@@ -4,14 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.livecricketapp.DataOperations.OperationOnDate;
 import com.example.livecricketapp.adapters.CreateTournamentThreeAdapterOne;
 import com.example.livecricketapp.adapters.CreateTournamentThreeAdapterTwo;
 import com.example.livecricketapp.databinding.ActivityCreateTournamentThreeBinding;
+import com.example.livecricketapp.model.AllMatchInfo;
+import com.example.livecricketapp.model.SingleMatchInfo;
 import com.example.livecricketapp.model.TournamentInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -19,8 +23,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreateTournamentThree extends AppCompatActivity  implements CreateTournamentThreeAdapterOne.Save_data {
 
@@ -29,6 +37,9 @@ public class CreateTournamentThree extends AppCompatActivity  implements CreateT
    private FirebaseFirestore db;
    private String TournamentId = "1630576702102";
    private TournamentInfo tournamentInfo;
+   private List<SingleMatchInfo> singleMatchInfos = new ArrayList<>();
+   private AllMatchInfo matchInfo;
+   private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +47,8 @@ public class CreateTournamentThree extends AppCompatActivity  implements CreateT
         binding = ActivityCreateTournamentThreeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        matchInfo = new AllMatchInfo();
+        sharedPreferences = getSharedPreferences("save",MODE_PRIVATE);
         db = FirebaseFirestore.getInstance();
         get_data();
         tournamentInfo = new TournamentInfo();
@@ -56,7 +69,6 @@ public class CreateTournamentThree extends AppCompatActivity  implements CreateT
                         binding.recyclerView.setLayoutManager(new LinearLayoutManager(CreateTournamentThree.this));
                         adapter = new CreateTournamentThreeAdapterOne(CreateTournamentThree.this,tournamentInfo ,CreateTournamentThree.this::save_all_data);
                         binding.recyclerView.setAdapter(adapter);
-                        Toast.makeText(CreateTournamentThree.this, "hhhhhh", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -64,5 +76,18 @@ public class CreateTournamentThree extends AppCompatActivity  implements CreateT
     @Override
     public void save_all_data() {
 
+        int no_of_days = OperationOnDate.number_of_days(tournamentInfo.getStart_date(),tournamentInfo.getEnd_date());
+        int a = tournamentInfo.getNo_of_matches_day() * no_of_days;
+
+        for ( int i =0 ; i < a ; i++ )
+        {
+            String s = "Match " + String.valueOf(i+1);
+            Gson gson = new Gson();
+            SingleMatchInfo singleMatchInfo = gson.fromJson( sharedPreferences.getString(s,"") , SingleMatchInfo.class);
+            singleMatchInfos.add(singleMatchInfo);
+        }
+        matchInfo.setTournamentId(tournamentInfo.getTournamentId());
+        matchInfo.setMatchInfos(singleMatchInfos);
+        db.collection("Match Info").document(tournamentInfo.getTournamentId()).set(matchInfo);
     }
 }
