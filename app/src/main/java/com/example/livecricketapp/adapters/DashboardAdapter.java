@@ -23,10 +23,11 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
     private Move_Next move_next;
     private List<DashboardTournamentInfo> infoList = new ArrayList<>();
 
-    public DashboardAdapter ( Context context , Move_Next move_next )
+    public DashboardAdapter ( Context context , Move_Next move_next , List<DashboardTournamentInfo> infoList )
     {
         this.layoutInflater = LayoutInflater.from(context);
         this.move_next = move_next;
+        this.infoList = infoList;
     }
 
 
@@ -41,11 +42,13 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
     @Override
     public void onBindViewHolder(@NonNull @NotNull DashboardAdapter.DashboardViewHolder holder, int position) {
 
+        holder.name.setText(infoList.get(position).getTournamentName());
+        holder.host_name.setText("Hosted By :- " + infoList.get(position).getHostName());
     }
 
     @Override
     public int getItemCount() {
-        return 2;
+        return infoList.size();
     }
 
     public class DashboardViewHolder extends RecyclerView.ViewHolder {
