@@ -67,10 +67,24 @@ public class CreateTournamentThree extends AppCompatActivity  {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         tournamentInfo = documentSnapshot.toObject(TournamentInfo.class);
                         binding.recyclerView.setLayoutManager(new LinearLayoutManager(CreateTournamentThree.this));
-                        adapter = new CreateTournamentThreeAdapterOne(CreateTournamentThree.this,tournamentInfo );
+                        adapter = new CreateTournamentThreeAdapterOne(CreateTournamentThree.this,tournamentInfo ,create_list() );
                         binding.recyclerView.setAdapter(adapter);
                     }
                 });
+    }
+
+    public List<String> create_list ()
+    {
+        List<String> dates = new ArrayList<>();
+        String date = tournamentInfo.getStart_date();
+        dates.add(date);
+        int a = OperationOnDate.number_of_days(tournamentInfo.getStart_date(),tournamentInfo.getEnd_date());
+        for ( int i=1 ; i < a ; i++ )
+        {
+            date = OperationOnDate.date_increase(date);
+            dates.add(date);
+        }
+        return dates;
     }
 
     public void save_all_data( View view ) {
@@ -82,11 +96,14 @@ public class CreateTournamentThree extends AppCompatActivity  {
         {
             String s = "Match " + String.valueOf(i+1);
             Gson gson = new Gson();
+            Log.d("hhhhhhhhhhhhhhhhhhh",sharedPreferences.getString(s,""));
             SingleMatchInfo singleMatchInfo = gson.fromJson( sharedPreferences.getString(s,"") , SingleMatchInfo.class);
+            sharedPreferences.edit().remove(s).commit();
             singleMatchInfos.add(singleMatchInfo);
         }
         matchInfo.setTournamentId(tournamentInfo.getTournamentId());
         matchInfo.setMatchInfos(singleMatchInfos);
         db.collection("Match Info").document(tournamentInfo.getTournamentId()).set(matchInfo);
+        singleMatchInfos.clear();
     }
 }

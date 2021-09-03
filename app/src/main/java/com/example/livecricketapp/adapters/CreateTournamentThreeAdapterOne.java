@@ -17,21 +17,24 @@ import com.example.livecricketapp.model.TournamentInfo;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CreateTournamentThreeAdapterOne extends RecyclerView.Adapter<CreateTournamentThreeAdapterOne.CreateViewHolder> {
 
     private Context context;
     private LayoutInflater layoutInflater;
     private CreateTournamentThreeAdapterTwo createTournamentThreeAdapterTwo;
     private TournamentInfo tournamentInfo;
-    private String date;
     private int no_of_days;
+    private List<String> dates = new ArrayList<>();
 
-    public CreateTournamentThreeAdapterOne (Context context , TournamentInfo tournamentInfo )
+    public CreateTournamentThreeAdapterOne (Context context , TournamentInfo tournamentInfo , List<String> dates)
     {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         this.tournamentInfo = tournamentInfo;
-        date = tournamentInfo.getStart_date();
+        this.dates = dates;
         no_of_days = OperationOnDate.number_of_days(tournamentInfo.getStart_date(),tournamentInfo.getEnd_date());
     }
 
@@ -45,13 +48,9 @@ public class CreateTournamentThreeAdapterOne extends RecyclerView.Adapter<Create
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull CreateTournamentThreeAdapterOne.CreateViewHolder holder, int position) {
-
-        if ( position > 0 )
-        {
-            date = OperationOnDate.date_increase(date);
-        }
+        
         createTournamentThreeAdapterTwo = new CreateTournamentThreeAdapterTwo(context,
-                tournamentInfo.getNo_of_matches_day(),tournamentInfo.getMatchTimings(),tournamentInfo.getTeamNames(),date
+                tournamentInfo.getNo_of_matches_day(),tournamentInfo.getMatchTimings(),tournamentInfo.getTeamNames(),dates.get(position)
                 ,position );
         holder.recyclerView.setAdapter(createTournamentThreeAdapterTwo);
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
