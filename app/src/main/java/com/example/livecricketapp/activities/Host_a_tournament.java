@@ -1,6 +1,7 @@
 package com.example.livecricketapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ public class Host_a_tournament extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHostAtournamentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         databaseReference = FirebaseDatabase.getInstance().getReference("Tournament Host Info");
     }
 

@@ -47,6 +47,7 @@ public class CreateTournamentThree extends AppCompatActivity  {
         binding = ActivityCreateTournamentThreeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        TournamentId = getIntent().getStringExtra("id");
         matchInfo = new AllMatchInfo();
         sharedPreferences = getSharedPreferences("save",MODE_PRIVATE);
         db = FirebaseFirestore.getInstance();

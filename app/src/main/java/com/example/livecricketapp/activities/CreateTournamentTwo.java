@@ -2,6 +2,7 @@ package com.example.livecricketapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -117,6 +118,7 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
                     allTeamInfo.setTournamentId(tournamentInfo.getTournamentId());
                     allTeamInfo.setTeamInfos(singleTeamInfos);
                     upload_to_firebase(allTeamInfo);
+                    move_to_page_three();
                 }
                 else{
                     Toast.makeText(this, "Save info of all Teams", Toast.LENGTH_SHORT).show();
@@ -240,6 +242,13 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
     private void upload_to_firebase( AllTeamInfo allTeamInfo )
     {
         db.collection("Tournament Team Info").document(tournamentInfo.getTournamentId()).set(allTeamInfo);
+    }
+
+    public void move_to_page_three ()
+    {
+        Intent intent = new Intent(this, CreateTournamentThree.class);
+        intent.putExtra("id",tournamentInfo.getTournamentId());
+        startActivity(intent);
     }
 
 }

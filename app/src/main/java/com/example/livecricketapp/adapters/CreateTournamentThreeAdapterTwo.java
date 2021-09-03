@@ -82,47 +82,47 @@ public class CreateTournamentThreeAdapterTwo extends RecyclerView.Adapter<Create
             }
         });
 
-        holder.spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SingleMatchInfo singleMatchInfo = new SingleMatchInfo();
-                singleMatchInfo.setDate(date);
-                singleMatchInfo.setMatchNo("Match " + String.valueOf((a * no_of_matches) + position +1 ));
-                singleMatchInfo.setTeam1(holder.spinner1.getSelectedItem().toString());
-                singleMatchInfo.setTeam2(holder.spinner2.getSelectedItem().toString());
-                singleMatchInfo.setTime(matchTimings.get(position));
-                Gson gson = new Gson();
-                String jsonString = gson.toJson(singleMatchInfo);
-                editor.putString(singleMatchInfo.getMatchNo(),jsonString);
-                editor.commit();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        holder.spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                SingleMatchInfo singleMatchInfo = new SingleMatchInfo();
-                singleMatchInfo.setDate(date);
-                singleMatchInfo.setMatchNo("Match " + String.valueOf((a * no_of_matches) + position +1 ));
-                singleMatchInfo.setTeam1(holder.spinner1.getSelectedItem().toString());
-                singleMatchInfo.setTeam2(holder.spinner2.getSelectedItem().toString());
-                singleMatchInfo.setTime(matchTimings.get(position));
-                Gson gson = new Gson();
-                String jsonString = gson.toJson(singleMatchInfo);
-                editor.putString(singleMatchInfo.getMatchNo(),jsonString);
-                editor.commit();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+//        holder.spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                SingleMatchInfo singleMatchInfo = new SingleMatchInfo();
+//                singleMatchInfo.setDate(date);
+//                singleMatchInfo.setMatchNo("Match " + String.valueOf((a * no_of_matches) + position +1 ));
+//                singleMatchInfo.setTeam1(holder.spinner1.getSelectedItem().toString());
+//                singleMatchInfo.setTeam2(holder.spinner2.getSelectedItem().toString());
+//                singleMatchInfo.setTime(matchTimings.get(position));
+//                Gson gson = new Gson();
+//                String jsonString = gson.toJson(singleMatchInfo);
+//                editor.putString(singleMatchInfo.getMatchNo(),jsonString);
+//                editor.commit();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+//
+//        holder.spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                SingleMatchInfo singleMatchInfo = new SingleMatchInfo();
+//                singleMatchInfo.setDate(date);
+//                singleMatchInfo.setMatchNo("Match " + String.valueOf((a * no_of_matches) + position +1 ));
+//                singleMatchInfo.setTeam1(holder.spinner1.getSelectedItem().toString());
+//                singleMatchInfo.setTeam2(holder.spinner2.getSelectedItem().toString());
+//                singleMatchInfo.setTime(matchTimings.get(position));
+//                Gson gson = new Gson();
+//                String jsonString = gson.toJson(singleMatchInfo);
+//                editor.putString(singleMatchInfo.getMatchNo(),jsonString);
+//                editor.commit();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
     }
 
     @Override
