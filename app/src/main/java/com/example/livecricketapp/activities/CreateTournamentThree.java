@@ -99,6 +99,8 @@ public class CreateTournamentThree extends AppCompatActivity  {
             Log.d("hhhhhhhhhhhhhhhhhhh",sharedPreferences.getString(s,""));
             SingleMatchInfo singleMatchInfo = gson.fromJson( sharedPreferences.getString(s,"") , SingleMatchInfo.class);
             sharedPreferences.edit().remove(s).commit();
+            if ( singleMatchInfo == null )
+                binding.btnSubmit.setError("Set All Matches");
             singleMatchInfos.add(singleMatchInfo);
         }
         matchInfo.setTournamentId(tournamentInfo.getTournamentId());

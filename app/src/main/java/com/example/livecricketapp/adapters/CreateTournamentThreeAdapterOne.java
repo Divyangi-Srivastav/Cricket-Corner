@@ -48,7 +48,7 @@ public class CreateTournamentThreeAdapterOne extends RecyclerView.Adapter<Create
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull CreateTournamentThreeAdapterOne.CreateViewHolder holder, int position) {
-        
+
         createTournamentThreeAdapterTwo = new CreateTournamentThreeAdapterTwo(context,
                 tournamentInfo.getNo_of_matches_day(),tournamentInfo.getMatchTimings(),tournamentInfo.getTeamNames(),dates.get(position)
                 ,position );
