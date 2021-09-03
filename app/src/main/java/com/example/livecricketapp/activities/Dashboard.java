@@ -1,5 +1,7 @@
 package com.example.livecricketapp.activities;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -10,11 +12,29 @@ import android.view.View;
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.adapters.DashboardAdapter;
 import com.example.livecricketapp.databinding.ActivityDashboardBinding;
+import com.example.livecricketapp.model.DashboardTournamentInfo;
+import com.example.livecricketapp.model.TournamentHostInfo;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.connection.HostInfo;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Dashboard extends AppCompatActivity implements DashboardAdapter.Move_Next {
 
     private ActivityDashboardBinding binding;
     private DashboardAdapter dashboardAdapter;
+    private ChildEventListener childEventListener;
+    private DatabaseReference databaseReference;
+    private List<DashboardTournamentInfo> info = new ArrayList<>();
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +44,41 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.Mov
         dashboardAdapter = new DashboardAdapter(this,this::move_to_other_activity);
         binding.recyclerView.setAdapter(dashboardAdapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Tournament Host Info");
+        db = FirebaseFirestore.getInstance();
+
+        childEventListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+                TournamentHostInfo hostInfo = snapshot.getValue(TournamentHostInfo.class);
+                DashboardTournamentInfo info1 = new DashboardTournamentInfo();
+                info1.setTournamentId(hostInfo.getTournamentId());
+                info1.setHostName(hostInfo.getHostName());
+            }
+
+            @Override
+            public void onChildChanged(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull @NotNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull @NotNull DataSnapshot snapshot, @Nullable @org.jetbrains.annotations.Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+            }
+        };
+
+        databaseReference.addChildEventListener(childEventListener);
     }
 
     public void back(View view) {

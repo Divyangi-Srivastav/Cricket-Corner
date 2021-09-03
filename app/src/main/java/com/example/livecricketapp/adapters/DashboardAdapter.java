@@ -10,13 +10,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.livecricketapp.R;
+import com.example.livecricketapp.model.DashboardTournamentInfo;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.DashboardViewHolder> {
 
     private LayoutInflater layoutInflater;
     private Move_Next move_next;
+    private List<DashboardTournamentInfo> infoList = new ArrayList<>();
 
     public DashboardAdapter ( Context context , Move_Next move_next )
     {
