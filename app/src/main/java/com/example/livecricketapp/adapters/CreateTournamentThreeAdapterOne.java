@@ -24,16 +24,14 @@ public class CreateTournamentThreeAdapterOne extends RecyclerView.Adapter<Create
     private CreateTournamentThreeAdapterTwo createTournamentThreeAdapterTwo;
     private TournamentInfo tournamentInfo;
     private String date;
-    private Save_data save_data;
     private int no_of_days;
 
-    public CreateTournamentThreeAdapterOne (Context context , TournamentInfo tournamentInfo , Save_data save_data)
+    public CreateTournamentThreeAdapterOne (Context context , TournamentInfo tournamentInfo )
     {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         this.tournamentInfo = tournamentInfo;
         date = tournamentInfo.getStart_date();
-        this.save_data = save_data;
         no_of_days = OperationOnDate.number_of_days(tournamentInfo.getStart_date(),tournamentInfo.getEnd_date());
     }
 
@@ -57,11 +55,6 @@ public class CreateTournamentThreeAdapterOne extends RecyclerView.Adapter<Create
                 ,position );
         holder.recyclerView.setAdapter(createTournamentThreeAdapterTwo);
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
-
-        if ( ( position + 1 ) == no_of_days)
-        {
-            holder.button2.setVisibility(View.VISIBLE);
-        }
     }
 
     @Override
@@ -72,21 +65,10 @@ public class CreateTournamentThreeAdapterOne extends RecyclerView.Adapter<Create
     public class CreateViewHolder extends RecyclerView.ViewHolder {
 
         private RecyclerView recyclerView;
-        private Button button2;
 
         public CreateViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             recyclerView = itemView.findViewById(R.id.recycler_view);
-            button2 = itemView.findViewById(R.id.btn_submit);
-            button2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    save_data.save_all_data();
-                }
-            });
         }
-    }
-    public interface Save_data{
-        void save_all_data();
     }
 }

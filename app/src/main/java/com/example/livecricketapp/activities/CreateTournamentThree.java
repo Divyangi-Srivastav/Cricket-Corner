@@ -30,7 +30,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateTournamentThree extends AppCompatActivity  implements CreateTournamentThreeAdapterOne.Save_data {
+public class CreateTournamentThree extends AppCompatActivity  {
 
    private ActivityCreateTournamentThreeBinding binding;
    private CreateTournamentThreeAdapterOne adapter;
@@ -67,14 +67,13 @@ public class CreateTournamentThree extends AppCompatActivity  implements CreateT
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         tournamentInfo = documentSnapshot.toObject(TournamentInfo.class);
                         binding.recyclerView.setLayoutManager(new LinearLayoutManager(CreateTournamentThree.this));
-                        adapter = new CreateTournamentThreeAdapterOne(CreateTournamentThree.this,tournamentInfo ,CreateTournamentThree.this::save_all_data);
+                        adapter = new CreateTournamentThreeAdapterOne(CreateTournamentThree.this,tournamentInfo );
                         binding.recyclerView.setAdapter(adapter);
                     }
                 });
     }
 
-    @Override
-    public void save_all_data() {
+    public void save_all_data( View view ) {
 
         int no_of_days = OperationOnDate.number_of_days(tournamentInfo.getStart_date(),tournamentInfo.getEnd_date());
         int a = tournamentInfo.getNo_of_matches_day() * no_of_days;
