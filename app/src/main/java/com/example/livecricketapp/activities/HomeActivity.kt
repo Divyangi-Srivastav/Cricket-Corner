@@ -18,6 +18,9 @@ class HomeActivity : AppCompatActivity() {
         btn_submit.setOnClickListener {
             startActivity(Intent(this@HomeActivity, LiveMatchActivity::class.java))
         }
+        btn_host_a_tour.setOnClickListener{
+            startActivity(Intent (this@HomeActivity , Host_a_tournament::class.java))
+        }
     }
 
 }

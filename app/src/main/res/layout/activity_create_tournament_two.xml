@@ -1,0 +1,794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.CreateTournamentTwo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:background="@color/bottom_nav_bg"
+            app:contentInsetStartWithNavigation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="28dp"
+                    android:layout_marginBottom="19dp"
+                    android:background="@drawable/ic_baseline_arrow_back_24"
+                    android:onClick="back" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="22dp"
+                    android:text="Create Tournament"
+                    android:textColor="@color/white"
+                    android:textSize="24sp" />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="60dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="30dp">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Team Details"
+                        android:textColor="#112E52"
+                        android:textSize="18sp" />
+
+                    <Spinner
+                        android:id="@+id/spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="25dp"
+                        android:background="@drawable/spinner_new"
+                        android:paddingStart="10dp" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/name_player1"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 1"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player1_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/name_player2"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 2"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player2_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/name_player3"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 3"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player3_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/name_player4"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 4"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player4_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/name_player5"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 5"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player5_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/name_player6"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 6"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player6_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/name_player7"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 7"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player7_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/name_player8"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 8"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player8_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/name_player9"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 9"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player9_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/name_player10"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 10"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player10_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/name_player11"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Player 11"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/name_player11_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Name of Captain"
+                        android:textColor="#112E52"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
+
+                    <EditText
+                        android:id="@+id/captain_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="30dp"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="Enter Name of Captain"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/captain_name_cross"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="30dp"
+                        android:layout_marginEnd="35dp"
+                        android:layout_marginBottom="15dp"
+                        android:onClick="clear"
+                        android:src="@drawable/cross"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/info_card"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="5dp"
+                        android:visibility="invisible"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="1dp"
+                        app:cardPreventCornerOverlap="true"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat"
+                                android:text="We need this information so that the users can donate on behalf of your team. Or pay reward to a player during the match!"
+                                android:textColor="#112E52"
+                                android:textSize="8sp" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="UPI ID of the Team"
+                        android:textColor="#112E52"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="end">
+
+                        <ImageView
+                            android:id="@+id/info"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/group" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="15dp">
+
+                    <EditText
+                        android:id="@+id/upi_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="Enter UPI ID of the team"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/upi_id_cross"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="5dp"
+                        android:onClick="clear"
+                        android:src="@drawable/cross"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <Button
+                    android:id="@+id/btn_save_team"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@drawable/buttons"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Save Team"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/buttons"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Create Fixture"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/bottom_nav_bg"
+        android:focusable="false"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_items" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
