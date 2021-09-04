@@ -113,6 +113,7 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.Mov
     @Override
     public void move_to_other_activity(int a) {
         Intent intent = new Intent(this,TournamentSettings.class);
+        intent.putExtra("id",info.get(a));
         startActivity(intent);
     }
 }

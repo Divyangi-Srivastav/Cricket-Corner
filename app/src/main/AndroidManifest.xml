@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
-        <activity android:name=".activities.TournamentSettings">
-        </activity>
+        <activity android:name=".activities.ParticipationFees"></activity>
+        <activity android:name=".activities.AdsRequest" />
+        <activity android:name=".activities.Fixtures" />
+        <activity android:name=".activities.TeamSettings" />
+        <activity android:name=".activities.TournamentSettings" />
         <activity
             android:name=".activities.Dashboard"
             android:windowSoftInputMode="adjustPan">
@@ -22,7 +25,7 @@
         </activity>
         <activity
             android:name=".activities.CreateTournamentThree"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.CreateTournamentTwo"
             android:windowSoftInputMode="adjustPan" />
@@ -37,8 +40,8 @@
         <activity android:name=".authentication.SignupActivity" />
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".authentication.LoginActivity" />
-        <activity android:name=".activities.SplashActivity" >
-        </activity>
+        <activity android:name=".activities.SplashActivity" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
