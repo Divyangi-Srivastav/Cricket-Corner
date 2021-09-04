@@ -3,6 +3,7 @@ package com.example.livecricketapp.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.livecricketapp.databinding.ActivityTeamSettingsBinding;
 
@@ -16,4 +17,9 @@ public class TeamSettings extends AppCompatActivity {
         binding = ActivityTeamSettingsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
+
+    public void back(View view) {
+        finish();
+    }
+
 }
