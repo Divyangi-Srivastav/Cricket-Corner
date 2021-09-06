@@ -101,6 +101,7 @@
                     <EditText
                         android:paddingRight="30dp"
                         android:id="@+id/upi_id"
+                        android:focusable="false"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="aryan.k.icicibank"
@@ -141,6 +142,7 @@
                         android:layout_height="match_parent"
                         android:text="+91 9876543210"
                         android:paddingRight="30dp"
+                        android:focusable="false"
                         android:fontFamily="@font/montserrat"
                         android:inputType="number"
                         android:textSize="14sp" />
@@ -178,6 +180,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingRight="30dp"
+                        android:focusable="false"
                         android:fontFamily="@font/montserrat"
                         android:text="Shop No.3/36A, Maharaja Agrasen Marg, UV Block, Shalimar Bagh, Delhi, 110088"
                         android:textSize="14sp"
