@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
@@ -16,6 +17,7 @@ import com.example.livecricketapp.model.DashboardTournamentInfo;
 import com.example.livecricketapp.model.TournamentHostInfo;
 import com.example.livecricketapp.model.TournamentInfo;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,6 +49,30 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.Mov
         dashboardAdapter = new DashboardAdapter(this,this::move_to_other_activity,info);
         binding.recyclerView.setAdapter(dashboardAdapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch ( item.getItemId() ) {
+                    case R.id.home:
+                        Intent intent = new Intent(Dashboard.this , HomeActivity.class);
+                        startActivity(intent);
+                        break;
+
+                    case R.id.settings:
+
+                        break;
+
+                    case R.id.account:
+                        Intent intent1 = new Intent(Dashboard.this , Dashboard.class);
+                        startActivity(intent1);
+                        break;
+
+                }
+                return true;
+            }
+        });
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Tournament Host Info");
         db = FirebaseFirestore.getInstance();

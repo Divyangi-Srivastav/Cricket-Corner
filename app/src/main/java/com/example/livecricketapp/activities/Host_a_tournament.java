@@ -1,15 +1,18 @@
 package com.example.livecricketapp.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.databinding.ActivityHostAtournamentBinding;
 import com.example.livecricketapp.model.TournamentHostInfo;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,6 +26,31 @@ public class Host_a_tournament extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHostAtournamentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch ( item.getItemId() ) {
+                    case R.id.home:
+                        Intent intent = new Intent(Host_a_tournament.this , HomeActivity.class);
+                        startActivity(intent);
+                        break;
+
+                    case R.id.settings:
+
+                        break;
+
+                    case R.id.account:
+                        Intent intent1 = new Intent(Host_a_tournament.this , Dashboard.class);
+                        startActivity(intent1);
+                        break;
+
+                }
+                return true;
+            }
+        });
+
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         databaseReference = FirebaseDatabase.getInstance().getReference("Tournament Host Info");
     }

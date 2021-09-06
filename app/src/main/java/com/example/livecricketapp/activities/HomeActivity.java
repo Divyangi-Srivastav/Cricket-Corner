@@ -9,18 +9,26 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.databinding.ActivityFixturesBinding;
+import com.example.livecricketapp.databinding.ActivityHomeBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class Fixtures extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
-    private ActivityFixturesBinding binding;
+    private ActivityHomeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityFixturesBinding.inflate(getLayoutInflater());
+        binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.btnHostATour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( HomeActivity.this , Host_a_tournament.class );
+                startActivity(intent);
+            }
+        });
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -28,8 +36,8 @@ public class Fixtures extends AppCompatActivity {
 
                 switch ( item.getItemId() ) {
                     case R.id.home:
-                        Intent intent = new Intent(Fixtures.this , HomeActivity.class);
-                        startActivity(intent);
+                            Intent intent = new Intent(HomeActivity.this , HomeActivity.class);
+                            startActivity(intent);
                         break;
 
                     case R.id.settings:
@@ -37,8 +45,8 @@ public class Fixtures extends AppCompatActivity {
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(Fixtures.this , Dashboard.class);
-                        startActivity(intent1);
+                            Intent intent1 = new Intent(HomeActivity.this , Dashboard.class);
+                            startActivity(intent1);
                         break;
 
                 }
@@ -46,9 +54,4 @@ public class Fixtures extends AppCompatActivity {
             }
         });
     }
-
-    public void back(View view) {
-        finish();
-    }
-
 }

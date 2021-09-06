@@ -35,13 +35,10 @@ public class TeamSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityTeamSettingsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        //tournamentId = getIntent().getStringExtra("id");
+        tournamentId = getIntent().getStringExtra("id");
 
         db  =  FirebaseFirestore.getInstance();
         get_data();
-
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, teamNames);
-//        binding.spinner.setAdapter(adapter);
 
         binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
