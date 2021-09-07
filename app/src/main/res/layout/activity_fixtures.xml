@@ -60,6 +60,11 @@
                 android:paddingHorizontal="30dp"
                 android:paddingBottom="60dp">
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/recycler_view"/>
+
             </LinearLayout>
 
         </ScrollView>
