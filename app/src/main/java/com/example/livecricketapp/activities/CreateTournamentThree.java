@@ -39,7 +39,7 @@ public class CreateTournamentThree extends AppCompatActivity  {
    private ActivityCreateTournamentThreeBinding binding;
    private CreateTournamentThreeAdapterOne adapter;
    private FirebaseFirestore db;
-   private String TournamentId = "1630576702102";
+   private String TournamentId = "1630527652705";
    private TournamentInfo tournamentInfo;
    private List<SingleMatchInfo> singleMatchInfos = new ArrayList<>();
    private AllMatchInfo matchInfo;
@@ -75,7 +75,7 @@ public class CreateTournamentThree extends AppCompatActivity  {
             }
         });
 
-        TournamentId = getIntent().getStringExtra("id");
+        //TournamentId = getIntent().getStringExtra("id");
         matchInfo = new AllMatchInfo();
         sharedPreferences = getSharedPreferences("save",MODE_PRIVATE);
         db = FirebaseFirestore.getInstance();

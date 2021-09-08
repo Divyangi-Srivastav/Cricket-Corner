@@ -1,9 +1,12 @@
 package com.example.livecricketapp.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,6 +18,7 @@ import com.example.livecricketapp.databinding.ActivityTeamSettingsBinding;
 import com.example.livecricketapp.model.AllTeamInfo;
 import com.example.livecricketapp.model.SingleTeamInfo;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -39,6 +43,30 @@ public class TeamSettings extends AppCompatActivity {
 
         db  =  FirebaseFirestore.getInstance();
         get_data();
+
+        binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch ( item.getItemId() ) {
+                    case R.id.home:
+                        Intent intent = new Intent(TeamSettings.this , HomeActivity.class);
+                        startActivity(intent);
+                        break;
+
+                    case R.id.settings:
+
+                        break;
+
+                    case R.id.account:
+                        Intent intent1 = new Intent(TeamSettings.this , Dashboard.class);
+                        startActivity(intent1);
+                        break;
+
+                }
+                return true;
+            }
+        });
 
         binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
