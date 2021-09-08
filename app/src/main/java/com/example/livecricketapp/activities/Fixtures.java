@@ -10,17 +10,25 @@ import android.view.View;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.databinding.ActivityFixturesBinding;
+import com.example.livecricketapp.model.SingleMatchInfo;
 import com.google.android.material.navigation.NavigationBarView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Fixtures extends AppCompatActivity {
 
     private ActivityFixturesBinding binding;
+    private List<SingleMatchInfo> singleMatchInfos = new ArrayList<>();
+    private String tournamentId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityFixturesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        tournamentId = getIntent().getStringExtra("id");
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -49,6 +57,11 @@ public class Fixtures extends AppCompatActivity {
 
     public void back(View view) {
         finish();
+    }
+
+    public void get_data()
+    {
+
     }
 
 }

@@ -9,10 +9,41 @@ public class SingleMatchInfo implements Serializable {
     private String Time;
     private String team1;
     private String team2;
+    private String winningTeam = "";
+    private String matchResult = "";
+    private int matchStatus = 0 ;
+
+    // 0 = not occured yet
+    // 1 = ongoing
+    // 2 = completed
 
     public SingleMatchInfo ()
     {
 
+    }
+
+    public int getMatchStatus() {
+        return matchStatus;
+    }
+
+    public void setMatchStatus(int matchStatus) {
+        this.matchStatus = matchStatus;
+    }
+
+    public String getWinningTeam() {
+        return winningTeam;
+    }
+
+    public void setWinningTeam(String winningTeam) {
+        this.winningTeam = winningTeam;
+    }
+
+    public String getMatchResult() {
+        return matchResult;
+    }
+
+    public void setMatchResult(String matchResult) {
+        this.matchResult = matchResult;
     }
 
     public String getMatchNo() {
