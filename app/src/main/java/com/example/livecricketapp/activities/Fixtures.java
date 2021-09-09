@@ -38,14 +38,9 @@ public class Fixtures extends AppCompatActivity implements FixturesAdapters.On_c
         setContentView(binding.getRoot());
 
         db = FirebaseFirestore.getInstance();
-        get_data();
-
-        adapters = new FixturesAdapters(this , singleMatchInfos , this::move_to_match_settings);
-
-        binding.recyclerView.setAdapter(adapters);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         tournamentId = getIntent().getStringExtra("id");
+
+        get_data();
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -78,14 +73,16 @@ public class Fixtures extends AppCompatActivity implements FixturesAdapters.On_c
 
     public void get_data()
     {
-        db.collection("Tournament Info").document(tournamentId)
+        db.collection("Match Info").document(tournamentId)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         allMatchInfo = documentSnapshot.toObject(AllMatchInfo.class);
                         singleMatchInfos = allMatchInfo.getMatchInfos();
-                        adapters.notifyDataSetChanged();
+                        adapters = new FixturesAdapters(Fixtures.this, singleMatchInfos, Fixtures.this::move_to_match_settings);
+                        binding.recyclerView.setAdapter(adapters);
+                        binding.recyclerView.setLayoutManager(new LinearLayoutManager(Fixtures.this));
                     }
                 });
 

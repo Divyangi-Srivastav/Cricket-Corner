@@ -75,7 +75,7 @@ public class CreateTournamentThree extends AppCompatActivity  {
             }
         });
 
-        //TournamentId = getIntent().getStringExtra("id");
+        TournamentId = getIntent().getStringExtra("id");
         matchInfo = new AllMatchInfo();
         sharedPreferences = getSharedPreferences("save",MODE_PRIVATE);
         db = FirebaseFirestore.getInstance();
