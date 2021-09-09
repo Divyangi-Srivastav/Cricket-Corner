@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -21,6 +22,9 @@ public class ParticipationFees extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityParticipationFeesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        String text = "<b>NOTE:</b> Team removed from here for not paying participation fees will be removed from the fixture and their matches will not be scheduled, i.e. <b>their participation from the tournament will be cancelled!</b>";
+        binding.text.setText(Html.fromHtml(text));
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
