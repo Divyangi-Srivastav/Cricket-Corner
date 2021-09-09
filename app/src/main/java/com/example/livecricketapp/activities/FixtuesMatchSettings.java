@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.databinding.ActivityFixtuesMatchSettingsBinding;
@@ -44,5 +45,9 @@ public class FixtuesMatchSettings extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public void back(View view) {
+        finish();
     }
 }

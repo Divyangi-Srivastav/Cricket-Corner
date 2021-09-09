@@ -94,6 +94,7 @@ public class Fixtures extends AppCompatActivity implements FixturesAdapters.On_c
     @Override
     public void move_to_match_settings(int a) {
         Intent intent = new Intent(this, FixtuesMatchSettings.class);
+        intent.putExtra("match",singleMatchInfos.get(a));
         startActivity(intent);
     }
 }
