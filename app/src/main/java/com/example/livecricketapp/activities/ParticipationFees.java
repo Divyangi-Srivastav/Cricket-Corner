@@ -2,6 +2,7 @@ package com.example.livecricketapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +11,14 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
+import com.example.livecricketapp.adapters.ParticipationFeesAdapter;
 import com.example.livecricketapp.databinding.ActivityParticipationFeesBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class ParticipationFees extends AppCompatActivity {
 
     private ActivityParticipationFeesBinding binding;
+    private ParticipationFeesAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,10 @@ public class ParticipationFees extends AppCompatActivity {
 
         String text = "<b>NOTE:</b> Team removed from here for not paying participation fees will be removed from the fixture and their matches will not be scheduled, i.e. <b>their participation from the tournament will be cancelled!</b>";
         binding.text.setText(Html.fromHtml(text));
+
+        adapter = new ParticipationFeesAdapter(this);
+        binding.recyclerView.setAdapter(adapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
