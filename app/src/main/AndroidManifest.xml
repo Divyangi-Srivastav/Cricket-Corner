@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.livecricketapp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,6 +17,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
+        <activity
+            android:name=".trial.TrialThree"
+            android:exported="true" />
+        <activity
+            android:name=".trial.TrialTwo"
+            android:exported="true"></activity>
+        <activity
+            android:name=".trial.TrailOne"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.FixtuesMatchSettings"
             android:exported="true" />
@@ -27,8 +50,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.CreateTournamentThree"
-            android:windowSoftInputMode="adjustPan" >
-        </activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.CreateTournamentTwo"
             android:windowSoftInputMode="adjustPan" />
@@ -42,13 +64,7 @@
         <activity android:name=".authentication.ForgotPasswordActivity" />
         <activity android:name=".authentication.SignupActivity" />
         <activity android:name=".authentication.LoginActivity" />
-        <activity android:name=".activities.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activities.SplashActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
