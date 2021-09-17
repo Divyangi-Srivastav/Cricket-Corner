@@ -67,10 +67,10 @@ public class CreateTournamentThreeAdapterTwo extends RecyclerView.Adapter<Create
                 holder.button1.setVisibility(View.GONE);
                 SingleMatchInfo singleMatchInfo = new SingleMatchInfo();
                 singleMatchInfo.setDate(date);
-                singleMatchInfo.setMatchNo("Match " + String.valueOf((a * no_of_matches) + position + 1));
+                singleMatchInfo.setMatchNo("Match " + String.valueOf((a * no_of_matches) + holder.getAdapterPosition() + 1));
                 singleMatchInfo.setTeam1(holder.spinner1.getSelectedItem().toString());
                 singleMatchInfo.setTeam2(holder.spinner2.getSelectedItem().toString());
-                singleMatchInfo.setTime(matchTimings.get(position));
+                singleMatchInfo.setTime(matchTimings.get(holder.getAdapterPosition()));
                 Gson gson = new Gson();
                 String jsonString = gson.toJson(singleMatchInfo);
                 editor.putString(singleMatchInfo.getMatchNo(), jsonString);

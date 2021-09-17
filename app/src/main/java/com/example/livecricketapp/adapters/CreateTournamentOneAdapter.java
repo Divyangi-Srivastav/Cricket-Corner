@@ -73,6 +73,7 @@ public class CreateTournamentOneAdapter extends RecyclerView.Adapter<CreateTourn
 
     public List<String> get_list ()
     {
+        strings.add(0,"To be declared");
         return strings;
     }
 

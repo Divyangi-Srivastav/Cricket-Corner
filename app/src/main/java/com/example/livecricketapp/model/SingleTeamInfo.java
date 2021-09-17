@@ -9,7 +9,7 @@ public class SingleTeamInfo implements Serializable {
     private String upiId;
     private List<String> playerNames;
     private String teamName;
-    private Boolean paid = true;
+    private Boolean paid = false;
     private int amountPaid = 0;
 
     public SingleTeamInfo()

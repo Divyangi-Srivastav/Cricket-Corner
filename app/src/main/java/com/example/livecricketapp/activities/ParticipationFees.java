@@ -47,10 +47,6 @@ public class ParticipationFees extends AppCompatActivity implements Participatio
         String text = "<b>NOTE:</b> Team removed from here for not paying participation fees will be removed from the fixture and their matches will not be scheduled, i.e. <b>their participation from the tournament will be cancelled!</b>";
         binding.text.setText(Html.fromHtml(text));
 
-        adapter = new ParticipationFeesAdapter(this , infoList , this::remove_team);
-        binding.recyclerView.setAdapter(adapter);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -91,7 +87,9 @@ public class ParticipationFees extends AppCompatActivity implements Participatio
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         allTeamInfo = documentSnapshot.toObject(AllTeamInfo.class);
                         infoList = allTeamInfo.getTeamInfos();
-                        adapter.notifyDataSetChanged();
+                        adapter = new ParticipationFeesAdapter(ParticipationFees.this , infoList , ParticipationFees.this::remove_team);
+                        binding.recyclerView.setAdapter(adapter);
+                        binding.recyclerView.setLayoutManager(new LinearLayoutManager(ParticipationFees.this));
                     }
                 });
     }
