@@ -120,11 +120,11 @@ public class Tournaments extends AppCompatActivity {
         {
             upcomimgTournament.add(info);
         }
-        else if ( (1 <= days1) && days1 <= days2 )
+        else if ( days1 <= days2 )
         {
             ongoingTournament.add(info);
         }
-        else if ( days1 > days2 )
+        else
         {
             previousTournament.add(info);
         }
