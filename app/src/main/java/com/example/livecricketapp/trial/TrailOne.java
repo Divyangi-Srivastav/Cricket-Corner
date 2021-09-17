@@ -12,11 +12,11 @@ import android.widget.FrameLayout;
 
 import com.example.livecricketapp.R;
 
-import io.agora.rtc.Constants;
-import io.agora.rtc.IRtcEngineEventHandler;
-import io.agora.rtc.RtcEngine;
-import io.agora.rtc.models.ClientRoleOptions;
-import io.agora.rtc.video.VideoCanvas;
+import io.agora.rtc2.Constants;
+import io.agora.rtc2.IRtcEngineEventHandler;
+import io.agora.rtc2.RtcEngine;
+//import io.agora.rtc2.models.ClientRoleOptions;
+import io.agora.rtc2.video.VideoCanvas;
 
 public class TrailOne extends AppCompatActivity {
 
@@ -70,9 +70,9 @@ public class TrailOne extends AppCompatActivity {
         // For a live streaming scenario, set the channel profile as BROADCASTING.
         mRtcEngine.setChannelProfile(Constants.CHANNEL_PROFILE_LIVE_BROADCASTING);
         // Set the client role as AUDIENCE and the latency level as low latency.
-        ClientRoleOptions clientRoleOptions = new ClientRoleOptions();
-        clientRoleOptions.audienceLatencyLevel = Constants.AUDIENCE_LATENCY_LEVEL_LOW_LATENCY;
-        mRtcEngine.setClientRole(Constants.CLIENT_ROLE_AUDIENCE, clientRoleOptions);
+//        ClientRoleOptions clientRoleOptions = new ClientRoleOptions();
+//        clientRoleOptions.audienceLatencyLevel = Constants.AUDIENCE_LATENCY_LEVEL_LOW_LATENCY;
+//        mRtcEngine.setClientRole(Constants.CLIENT_ROLE_AUDIENCE, clientRoleOptions);
 
         // By default, video is disabled, and you need to call enableVideo to start a video stream.
         mRtcEngine.enableVideo();

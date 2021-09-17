@@ -1,23 +1,23 @@
 package com.example.livecricketapp.trial;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.SurfaceView;
 import android.widget.FrameLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import com.example.livecricketapp.R;
 
-import io.agora.rtc.Constants;
-import io.agora.rtc.IRtcEngineEventHandler;
-import io.agora.rtc.RtcEngine;
-import io.agora.rtc.RtcEngineConfig;
-import io.agora.rtc.models.ChannelMediaOptions;
-import io.agora.rtc.video.VideoCanvas;
+import io.agora.rtc2.ChannelMediaOptions;
+import io.agora.rtc2.Constants;
+import io.agora.rtc2.IRtcEngineEventHandler;
+import io.agora.rtc2.RtcEngine;
+import io.agora.rtc2.RtcEngineConfig;
+import io.agora.rtc2.video.VideoCanvas;
 
 public class TrialThree extends AppCompatActivity {
 
@@ -39,9 +39,9 @@ public class TrialThree extends AppCompatActivity {
     // Fill the App ID of your project generated on Agora Console.
     private String appId = "b7a4b110fced4c69921eb66e205a85d9";
     // Fill the channel name.
-    private String channelName = "aaaa";
+    private String channelName = "Match";
     // Fill the temp token generated on Agora Console.
-    private String token = "006b7a4b110fced4c69921eb66e205a85d9IADOkIzwUiZk1tCnZxF5A6gK+C69/qfeOPfu9D+PsQ0bdEXlmK0AAAAAEADkBngOAKBBYQEAAQD/n0Fh";
+    private String token = "006b7a4b110fced4c69921eb66e205a85d9IACV3HNJoJwSGZEQ9RKN/IpP0TBVDIY6WzEOPMmIxrn24AHqmrsAAAAAEAAh3GK81rNEYQEAAQDYs0Rh";
 
     private RtcEngine mRtcEngine;
 
@@ -67,7 +67,7 @@ public class TrialThree extends AppCompatActivity {
             config.mEventHandler = mRtcEventHandler;
             mRtcEngine = RtcEngine.create(config);
         } catch (Exception e) {
-            throw new RuntimeException("Check the error.");
+            throw new RuntimeException("Check the error." + e.toString() );
         }
         // By default, video is disabled, and you need to call enableVideo to start a video stream.
         mRtcEngine.enableVideo();
@@ -82,15 +82,15 @@ public class TrialThree extends AppCompatActivity {
         // Pass the SurfaceView object to Agora so that it renders the local video.
         mRtcEngine.setupLocalVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_FIT, 0));
 
-//        ChannelMediaOptions options = new ChannelMediaOptions();
-//        // Set the client role as BROADCASTER or AUDIENCE according to the scenario.
-//        options.clientRoleType = Constants.CLIENT_ROLE_BROADCASTER;
-//        // For a live streaming scenario, set the channel profile as BROADCASTING.
-//        options.channelProfile = Constants.CHANNEL_PROFILE_LIVE_BROADCASTING;
-//
-//        // Join the channel with a temp token.
-//        // You need to specify the user ID yourself, and ensure that it is unique in the channel.
-//        mRtcEngine.joinChannel(token, channelName, 0, options);
+        ChannelMediaOptions options = new ChannelMediaOptions();
+        // Set the client role as BROADCASTER or AUDIENCE according to the scenario.
+        options.clientRoleType = Constants.CLIENT_ROLE_AUDIENCE;
+        // For a live streaming scenario, set the channel profile as BROADCASTING.
+        options.channelProfile = Constants.CHANNEL_PROFILE_LIVE_BROADCASTING;
+
+        // Join the channel with a temp token.
+        // You need to specify the user ID yourself, and ensure that it is unique in the channel.
+        mRtcEngine.joinChannel(token, channelName, 8, options);
     }
 
     private void setupRemoteVideo(int uid) {
@@ -113,10 +113,10 @@ public class TrialThree extends AppCompatActivity {
         }
     }
 
-    protected void onDestroy() {
-        super.onDestroy();
-        mRtcEngine.stopPreview();
-        mRtcEngine.leaveChannel();
-        RtcEngine.destroy();
-    }
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mRtcEngine.stopPreview();
+//        mRtcEngine.leaveChannel();
+//        RtcEngine.destroy();
+//    }
 }
