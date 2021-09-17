@@ -10,10 +10,19 @@ public class SingleTeamInfo implements Serializable {
     private List<String> playerNames;
     private String teamName;
     private Boolean paid = true;
+    private int amountPaid = 0;
 
     public SingleTeamInfo()
     {
 
+    }
+
+    public int getAmountPaid() {
+        return amountPaid;
+    }
+
+    public void setAmountPaid(int amountPaid) {
+        this.amountPaid = amountPaid;
     }
 
     public Boolean getPaid() {

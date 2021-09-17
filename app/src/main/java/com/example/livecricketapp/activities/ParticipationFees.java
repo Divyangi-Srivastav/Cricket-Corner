@@ -1,9 +1,11 @@
 package com.example.livecricketapp.activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -23,7 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ParticipationFees extends AppCompatActivity {
+public class ParticipationFees extends AppCompatActivity implements ParticipationFeesAdapter.On_Click {
 
     private ActivityParticipationFeesBinding binding;
     private ParticipationFeesAdapter adapter;
@@ -45,7 +47,7 @@ public class ParticipationFees extends AppCompatActivity {
         String text = "<b>NOTE:</b> Team removed from here for not paying participation fees will be removed from the fixture and their matches will not be scheduled, i.e. <b>their participation from the tournament will be cancelled!</b>";
         binding.text.setText(Html.fromHtml(text));
 
-        adapter = new ParticipationFeesAdapter(this);
+        adapter = new ParticipationFeesAdapter(this , infoList , this::remove_team);
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -89,8 +91,32 @@ public class ParticipationFees extends AppCompatActivity {
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         allTeamInfo = documentSnapshot.toObject(AllTeamInfo.class);
                         infoList = allTeamInfo.getTeamInfos();
+                        adapter.notifyDataSetChanged();
                     }
                 });
     }
 
+    @Override
+    public void remove_team(int a) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle("Confirmation")
+                .setMessage("Are you sure to remove this team ?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        infoList.remove(a);
+                        allTeamInfo.setTeamInfos(infoList);
+                        db.collection("Tournament Team Info").document(tournamentId).set(allTeamInfo);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
+        builder.show();
+    }
 }

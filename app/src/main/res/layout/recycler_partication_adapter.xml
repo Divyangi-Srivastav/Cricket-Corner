@@ -30,8 +30,8 @@
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
                 android:layout_gravity="center"
                 android:layout_marginRight="10dp"
                 android:src="@drawable/cross_vector" />
@@ -64,6 +64,7 @@
             android:gravity="end">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/paid_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:cardBackgroundColor="#F1FFDE"
