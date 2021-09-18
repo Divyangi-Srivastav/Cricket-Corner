@@ -108,9 +108,6 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
             case R.id.name_player10_cross:
                 binding.namePlayer10.getText().clear();
                 break;
-            case R.id.name_player11_cross:
-                binding.namePlayer11.getText().clear();
-                break;
             case R.id.captain_name_cross:
                 binding.captainName.getText().clear();
                 break;
@@ -184,7 +181,6 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
         binding.namePlayer8.getText().clear();
         binding.namePlayer9.getText().clear();
         binding.namePlayer10.getText().clear();
-        binding.namePlayer11.getText().clear();
         binding.captainName.getText().clear();
         binding.upiId.getText().clear();
     }
@@ -192,6 +188,7 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
     private List<String> get_Player_List()
     {
         List<String> players = new ArrayList<>();
+        players.add(binding.captainName.getText().toString() + "( C )");
         players.add(binding.namePlayer1.getText().toString());
         players.add(binding.namePlayer2.getText().toString());
         players.add(binding.namePlayer3.getText().toString());
@@ -202,7 +199,6 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
         players.add(binding.namePlayer8.getText().toString());
         players.add(binding.namePlayer9.getText().toString());
         players.add(binding.namePlayer10.getText().toString());
-        players.add(binding.namePlayer11.getText().toString());
         return players;
     }
 
@@ -247,10 +243,6 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
         }else  if ( binding.namePlayer10.getText().toString().isEmpty() )
         {
             binding.namePlayer10.setError("Enter Name of Player 10");
-            return false;
-        }else  if ( binding.namePlayer11.getText().toString().isEmpty() )
-        {
-            binding.namePlayer11.setError("Enter Name of Player 11");
             return false;
         }else  if ( binding.captainName.getText().toString().isEmpty() )
         {

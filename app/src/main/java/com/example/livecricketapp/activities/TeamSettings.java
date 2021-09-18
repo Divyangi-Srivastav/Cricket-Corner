@@ -75,6 +75,16 @@ public class TeamSettings extends AppCompatActivity {
                 for (int i = 0; i < infoList.size(); i++) {
                     if (parent.getSelectedItem().toString().equalsIgnoreCase(infoList.get(i).getTeamName())) {
                         set_player_names(infoList.get(i));
+                        if (infoList.get(i).getPaid())
+                        {
+                            binding.paid.setBackgroundColor(Color.parseColor("#B9CCE2"));
+                            binding.unpaid.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                        }
+                        else
+                        {
+                            binding.unpaid.setBackgroundColor(Color.parseColor("#B9CCE2"));
+                            binding.paid.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                        }
                     }
                 }
             }
@@ -90,7 +100,6 @@ public class TeamSettings extends AppCompatActivity {
 
         switch (view.getId()) {
             case R.id.name_player1_edit:
-                Toast.makeText(TeamSettings.this, "hhhhhhh", Toast.LENGTH_SHORT).show();
                 binding.namePlayer1.setEnabled(true);
                 binding.namePlayer1.setFocusable(true);
                 binding.namePlayer1.setClickable(true);
@@ -215,67 +224,70 @@ public class TeamSettings extends AppCompatActivity {
 
     public void set_player_names(SingleTeamInfo singleTeamInfo) {
 
-        if (singleTeamInfo.getPlayerNames().get(0).equalsIgnoreCase(singleTeamInfo.getCaptainName()))
-            binding.namePlayer1.setText(singleTeamInfo.getPlayerNames().get(0) + "( C )");
-        else
-            binding.namePlayer1.setText(singleTeamInfo.getPlayerNames().get(0));
+        binding.namePlayer1.setText(singleTeamInfo.getPlayerNames().get(0));
+        binding.namePlayer2.setText(singleTeamInfo.getPlayerNames().get(1));
+        binding.namePlayer3.setText(singleTeamInfo.getPlayerNames().get(2));
+        binding.namePlayer4.setText(singleTeamInfo.getPlayerNames().get(3));
+        binding.namePlayer5.setText(singleTeamInfo.getPlayerNames().get(4));
+        binding.namePlayer6.setText(singleTeamInfo.getPlayerNames().get(5));
+        binding.namePlayer7.setText(singleTeamInfo.getPlayerNames().get(6));
+        binding.namePlayer8.setText(singleTeamInfo.getPlayerNames().get(7));
+        binding.namePlayer9.setText(singleTeamInfo.getPlayerNames().get(8));
+        binding.namePlayer10.setText(singleTeamInfo.getPlayerNames().get(9));
+        binding.namePlayer11.setText(singleTeamInfo.getPlayerNames().get(10));
+    }
 
-        if (singleTeamInfo.getPlayerNames().get(1).equalsIgnoreCase(singleTeamInfo.getCaptainName()))
-            binding.namePlayer2.setText(singleTeamInfo.getPlayerNames().get(1) + "( C )");
-        else
-            binding.namePlayer2.setText(singleTeamInfo.getPlayerNames().get(1));
+    private List<String> get_Player_List()
+    {
+        List<String> players = new ArrayList<>();
+        players.add(binding.namePlayer1.getText().toString());
+        players.add(binding.namePlayer2.getText().toString());
+        players.add(binding.namePlayer3.getText().toString());
+        players.add(binding.namePlayer4.getText().toString());
+        players.add(binding.namePlayer5.getText().toString());
+        players.add(binding.namePlayer6.getText().toString());
+        players.add(binding.namePlayer7.getText().toString());
+        players.add(binding.namePlayer8.getText().toString());
+        players.add(binding.namePlayer9.getText().toString());
+        players.add(binding.namePlayer10.getText().toString());
+        players.add(binding.namePlayer11.getText().toString());
+        return players;
+    }
 
-        if (singleTeamInfo.getPlayerNames().get(2).equalsIgnoreCase(singleTeamInfo.getCaptainName()))
-            binding.namePlayer3.setText(singleTeamInfo.getPlayerNames().get(2) + "( C )");
-        else
-            binding.namePlayer3.setText(singleTeamInfo.getPlayerNames().get(2));
-
-        if (singleTeamInfo.getPlayerNames().get(3).equalsIgnoreCase(singleTeamInfo.getCaptainName()))
-            binding.namePlayer4.setText(singleTeamInfo.getPlayerNames().get(3) + "( C )");
-        else
-            binding.namePlayer4.setText(singleTeamInfo.getPlayerNames().get(3));
-
-        if (singleTeamInfo.getPlayerNames().get(4).equalsIgnoreCase(singleTeamInfo.getCaptainName()))
-            binding.namePlayer5.setText(singleTeamInfo.getPlayerNames().get(4) + "( C )");
-        else
-            binding.namePlayer5.setText(singleTeamInfo.getPlayerNames().get(4));
-
-        if (singleTeamInfo.getPlayerNames().get(5).equalsIgnoreCase(singleTeamInfo.getCaptainName()))
-            binding.namePlayer6.setText(singleTeamInfo.getPlayerNames().get(5) + "( C )");
-        else
-            binding.namePlayer6.setText(singleTeamInfo.getPlayerNames().get(5));
-
-        if (singleTeamInfo.getPlayerNames().get(6).equalsIgnoreCase(singleTeamInfo.getCaptainName()))
-            binding.namePlayer7.setText(singleTeamInfo.getPlayerNames().get(6) + "( C )");
-        else
-            binding.namePlayer7.setText(singleTeamInfo.getPlayerNames().get(6));
-
-        if (singleTeamInfo.getPlayerNames().get(7).equalsIgnoreCase(singleTeamInfo.getCaptainName()))
-            binding.namePlayer8.setText(singleTeamInfo.getPlayerNames().get(7) + "( C )");
-        else
-            binding.namePlayer8.setText(singleTeamInfo.getPlayerNames().get(7));
-
-        if (singleTeamInfo.getPlayerNames().get(8).equalsIgnoreCase(singleTeamInfo.getCaptainName()))
-            binding.namePlayer9.setText(singleTeamInfo.getPlayerNames().get(8) + "( C )");
-        else
-            binding.namePlayer9.setText(singleTeamInfo.getPlayerNames().get(8));
-
-        if (singleTeamInfo.getPlayerNames().get(9).equalsIgnoreCase(singleTeamInfo.getCaptainName()))
-            binding.namePlayer10.setText(singleTeamInfo.getPlayerNames().get(9) + "( C )");
-        else
-            binding.namePlayer10.setText(singleTeamInfo.getPlayerNames().get(0));
-
-        if (singleTeamInfo.getPlayerNames().get(10).equalsIgnoreCase(singleTeamInfo.getCaptainName()))
-            binding.namePlayer11.setText(singleTeamInfo.getPlayerNames().get(10) + "( C )");
-        else
-            binding.namePlayer11.setText(singleTeamInfo.getPlayerNames().get(10));
+    private void save_player_names()
+    {
+        String teamName = binding.spinner.getSelectedItem().toString();
+        for ( int i=0 ; i <infoList.size() ; i++ ){
+            if ( infoList.get(i).getTeamName().equalsIgnoreCase(teamName) )
+            {
+                infoList.get(i).setPlayerNames(get_Player_List());
+            }
+        }
     }
 
     public void save_changes ( View view )
     {
+        save_player_names();
         allTeamInfo.setTeamInfos(infoList);
         db.collection("Tournament Team Info")
                 .document(tournamentId)
                 .set(allTeamInfo);
+        Toast.makeText(TeamSettings.this, "Team Data Updated Successfully", Toast.LENGTH_SHORT).show();
+        set_focusable_false();
+    }
+
+    private void set_focusable_false()
+    {
+        binding.namePlayer1.setFocusable(false);
+        binding.namePlayer2.setFocusable(false);
+        binding.namePlayer3.setFocusable(false);
+        binding.namePlayer4.setFocusable(false);
+        binding.namePlayer5.setFocusable(false);
+        binding.namePlayer6.setFocusable(false);
+        binding.namePlayer7.setFocusable(false);
+        binding.namePlayer8.setFocusable(false);
+        binding.namePlayer9.setFocusable(false);
+        binding.namePlayer10.setFocusable(false);
+        binding.namePlayer11.setFocusable(false);
     }
 }
