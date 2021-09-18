@@ -17,6 +17,7 @@ import com.example.livecricketapp.adapters.ParticipationFeesAdapter;
 import com.example.livecricketapp.databinding.ActivityParticipationFeesBinding;
 import com.example.livecricketapp.model.AllTeamInfo;
 import com.example.livecricketapp.model.SingleTeamInfo;
+import com.example.livecricketapp.model.TournamentInfo;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -33,6 +34,7 @@ public class ParticipationFees extends AppCompatActivity implements Participatio
     private String tournamentId;
     private AllTeamInfo allTeamInfo;
     private List<SingleTeamInfo> infoList = new ArrayList<>();
+    private TournamentInfo tournamentInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +42,11 @@ public class ParticipationFees extends AppCompatActivity implements Participatio
         binding = ActivityParticipationFeesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        tournamentInfo = new TournamentInfo();
         tournamentId = getIntent().getStringExtra("id");
         db = FirebaseFirestore.getInstance();
-        get_data();
+        get_team_data();
+        get_tournament_data();
 
         String text = "<b>NOTE:</b> Team removed from here for not paying participation fees will be removed from the fixture and their matches will not be scheduled, i.e. <b>their participation from the tournament will be cancelled!</b>";
         binding.text.setText(Html.fromHtml(text));
@@ -77,7 +81,7 @@ public class ParticipationFees extends AppCompatActivity implements Participatio
         finish();
     }
 
-    private void get_data()
+    private void get_team_data()
     {
         db.collection("Tournament Team Info")
                 .document(tournamentId)
@@ -94,6 +98,19 @@ public class ParticipationFees extends AppCompatActivity implements Participatio
                 });
     }
 
+    private void get_tournament_data ()
+    {
+        db.collection("Tournament Info")
+                .document(tournamentId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        tournamentInfo = documentSnapshot.toObject(TournamentInfo.class);
+                    }
+                });
+    }
+
     @Override
     public void remove_team(int a) {
 
@@ -103,6 +120,14 @@ public class ParticipationFees extends AppCompatActivity implements Participatio
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
+                        tournamentInfo.setNumber_of_teams(tournamentInfo.getNumber_of_teams() - 1);
+                        List<String> teams = new ArrayList<>();
+                        teams = tournamentInfo.getTeamNames();
+                        teams.remove(infoList.get(a).getTeamName());
+                        tournamentInfo.setTeamNames(teams);
+                        db.collection("Tournament Info").document(tournamentId).set(tournamentInfo);
+
                         infoList.remove(a);
                         allTeamInfo.setTeamInfos(infoList);
                         db.collection("Tournament Team Info").document(tournamentId).set(allTeamInfo);
