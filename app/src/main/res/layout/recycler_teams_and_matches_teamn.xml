@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/team_names_bg"
+    android:layout_marginTop="10dp"
+    android:paddingHorizontal="15dp">
+
+    <TextView
+        android:id="@+id/team_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Team Name"
+        android:layout_gravity="center"
+        android:textColor="#112E52"
+        android:textSize="14sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="end">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/paid_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#F1FFDE"
+            android:layout_gravity="center"
+            app:cardCornerRadius="10dp">
+
+            <TextView
+                android:id="@+id/paid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:layout_marginHorizontal="8dp"
+                android:fontFamily="@font/montserrat"
+                android:text="PAID"
+                android:textColor="#112E52"
+                android:textSize="10sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="24dp"
+            android:layout_marginLeft="8dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+    </LinearLayout>
+
+</LinearLayout>

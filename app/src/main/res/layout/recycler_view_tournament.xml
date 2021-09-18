@@ -48,14 +48,39 @@
                 android:textColor="#112E52"
                 android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/end_date"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat"
-                android:text="End date : 1/8/21"
-                android:textColor="#112E52"
-                android:textSize="14sp" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/end_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="End date : 1/8/21"
+                    android:textColor="#112E52"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end">
+
+                    <TextView
+                        android:id="@+id/view_more"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="VIEW MORE"
+                        android:textStyle="bold"
+                        android:textColor="#112E52"
+                        android:textSize="12sp"
+                        android:layout_marginRight="10dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/winning_team"
@@ -63,9 +88,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
                 android:text="MI won the tournament"
-                android:visibility="gone"
                 android:textColor="#112E52"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone" />
 
 
         </LinearLayout>

@@ -22,12 +22,15 @@ public class TournamentAdapter extends RecyclerView.Adapter<TournamentAdapter.To
     private String status;
     private LayoutInflater layoutInflater;
     private List<TournamentInfo> infoList = new ArrayList<>();
+    private On_Click onClick;
 
-    public TournamentAdapter (Context context , List<TournamentInfo> infoList , String status)
+
+    public TournamentAdapter (Context context , List<TournamentInfo> infoList , String status , On_Click onClick )
     {
         layoutInflater = LayoutInflater.from(context);
         this.infoList = infoList;
         this.status = status;
+        this.onClick = onClick;
     }
 
     @NonNull
@@ -57,6 +60,13 @@ public class TournamentAdapter extends RecyclerView.Adapter<TournamentAdapter.To
         {
             holder.cardView.setCardBackgroundColor(Color.parseColor("#E9F4FF"));
         }
+
+        holder.view_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClick.move_to_teams_and_matches(infoList.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -66,7 +76,7 @@ public class TournamentAdapter extends RecyclerView.Adapter<TournamentAdapter.To
 
     public class TournamentViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name,no_of_teams,start_date,end_date,winning_team;
+        private TextView name,no_of_teams,start_date,end_date,winning_team , view_more;
         private CardView cardView;
 
         public TournamentViewHolder(@NonNull View itemView) {
@@ -77,6 +87,13 @@ public class TournamentAdapter extends RecyclerView.Adapter<TournamentAdapter.To
             end_date = itemView.findViewById(R.id.end_date);
             winning_team = itemView.findViewById(R.id.winning_team);
             cardView = itemView.findViewById(R.id.card_view);
+            view_more = itemView.findViewById(R.id.view_more);
         }
+    }
+
+    public interface On_Click{
+
+        void move_to_teams_and_matches( TournamentInfo tournamentInfo );
+
     }
 }

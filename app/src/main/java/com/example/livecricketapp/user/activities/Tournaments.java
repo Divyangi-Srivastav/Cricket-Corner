@@ -31,7 +31,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class Tournaments extends AppCompatActivity {
+public class Tournaments extends AppCompatActivity implements TournamentAdapter.On_Click {
 
     private ActivityTournamentsBinding binding;
     private String date;
@@ -49,9 +49,9 @@ public class Tournaments extends AppCompatActivity {
 
         date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
-        previousAdapter = new TournamentAdapter(this,previousTournament , "previous" );
-        ongoingAdapter = new TournamentAdapter(this,ongoingTournament , "ongoing" );
-        upcomimgAdapter = new TournamentAdapter(this,upcomimgTournament , "upcoming");
+        previousAdapter = new TournamentAdapter(this,previousTournament , "previous",this::move_to_teams_and_matches );
+        ongoingAdapter = new TournamentAdapter(this,ongoingTournament , "ongoing" , this::move_to_teams_and_matches );
+        upcomimgAdapter = new TournamentAdapter(this,upcomimgTournament , "upcoming" , this::move_to_teams_and_matches);
 
         binding.ongoingTournament.setAdapter(ongoingAdapter);
         binding.ongoingTournament.setLayoutManager(new LinearLayoutManager(this));
@@ -135,5 +135,13 @@ public class Tournaments extends AppCompatActivity {
 
     public void back(View view) {
         finish();
+    }
+
+    @Override
+    public void move_to_teams_and_matches(TournamentInfo tournamentInfo) {
+
+        Intent intent = new Intent(this , TeamsAndMatches.class);
+        intent.putExtra("info",tournamentInfo);
+        startActivity(intent);
     }
 }
