@@ -131,6 +131,7 @@ public class ParticipationFees extends AppCompatActivity implements Participatio
                         infoList.remove(a);
                         allTeamInfo.setTeamInfos(infoList);
                         db.collection("Tournament Team Info").document(tournamentId).set(allTeamInfo);
+                        adapter.notifyDataSetChanged();
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
