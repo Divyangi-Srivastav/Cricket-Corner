@@ -37,8 +37,8 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
     private FirebaseFirestore db;
     private TeamsNamesAdapter adapter;
     private MatchesAdapter matchesAdapter;
-    private AllTeamInfo allTeamInfo;
-    private AllMatchInfo allMatchInfo;
+    private List<SingleTeamInfo> teamInfoList = new ArrayList<>();
+    private List<SingleMatchInfo> matchInfoList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +100,9 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        allTeamInfo = documentSnapshot.toObject(AllTeamInfo.class);
-                        adapter = new TeamsNamesAdapter(TeamsAndMatches.this,allTeamInfo.getTeamInfos(),TeamsAndMatches.this::open_team);
+                        AllTeamInfo allTeamInfo = documentSnapshot.toObject(AllTeamInfo.class);
+                        teamInfoList = allTeamInfo.getTeamInfos();
+                        adapter = new TeamsNamesAdapter(TeamsAndMatches.this,teamInfoList,TeamsAndMatches.this::open_team);
                         binding.recyclerTeams.setAdapter(adapter);
                         binding.recyclerTeams.setLayoutManager(new LinearLayoutManager(TeamsAndMatches.this));
                     }
@@ -116,8 +117,9 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        allMatchInfo = documentSnapshot.toObject(AllMatchInfo.class);
-                        matchesAdapter = new MatchesAdapter(TeamsAndMatches.this,allMatchInfo.getMatchInfos(),TeamsAndMatches.this::move_to_match_info);
+                        AllMatchInfo allMatchInfo = documentSnapshot.toObject(AllMatchInfo.class);
+                        matchInfoList = allMatchInfo.getMatchInfos();
+                        matchesAdapter = new MatchesAdapter(TeamsAndMatches.this,matchInfoList,TeamsAndMatches.this::move_to_match_info);
                         binding.recyclerMatches.setAdapter(matchesAdapter);
                         binding.recyclerMatches.setLayoutManager(new LinearLayoutManager(TeamsAndMatches.this));
                     }
@@ -127,14 +129,14 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
     @Override
     public void open_team(int a) {
         Intent intent = new Intent(this, TeamActivity.class);
-        intent.putExtra("team",allTeamInfo);
+        intent.putExtra("team",teamInfoList.get(a));
         startActivity(intent);
     }
 
     @Override
     public void move_to_match_info(int a) {
         Intent intent = new Intent(this, MatchActivity.class);
-        intent.putExtra("match",allTeamInfo);
+        intent.putExtra("match",matchInfoList.get(a));
         startActivity(intent);
     }
 }

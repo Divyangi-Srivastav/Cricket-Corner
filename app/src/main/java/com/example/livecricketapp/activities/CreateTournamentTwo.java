@@ -67,7 +67,7 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
         for (int i = 0; i < tournamentInfo.getNumber_of_teams(); i++) {
             stringList.add("Team " + (i + 1));
         }
-
+        tournamentInfo.getTeamNames().remove(0);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, tournamentInfo.getTeamNames());
         binding.spinner.setAdapter(adapter);
         binding.info.setOnClickListener(this::onClick);

@@ -66,9 +66,6 @@ public class Host_a_tournament extends AppCompatActivity {
             case R.id.name_cross:
                 binding.name.getText().clear();
                 break;
-            case R.id.upi_id_cross:
-                binding.upiId.getText().clear();
-                break;
             case R.id.phone_cross:
                 binding.phone.getText().clear();
                 break;
@@ -84,10 +81,8 @@ public class Host_a_tournament extends AppCompatActivity {
         {
             TournamentHostInfo tournamentHostInfo = new TournamentHostInfo();
             tournamentHostInfo.setHostName(binding.name.getText().toString());
-            tournamentHostInfo.setUpiId(binding.upiId.getText().toString());
             tournamentHostInfo.setPhoneNumber(binding.phone.getText().toString());
             tournamentHostInfo.setAddress(binding.address.getText().toString());
-
             tournamentHostInfo.setTournamentId(generate_tournament_Id());
 
             push_data_to_firebase(tournamentHostInfo);
@@ -118,11 +113,6 @@ public class Host_a_tournament extends AppCompatActivity {
         if ( binding.name.getText().toString().isEmpty() )
         {
             binding.name.setError("Enter the name");
-            return false;
-        }
-        else if ( binding.upiId.getText().toString().isEmpty() )
-        {
-            binding.upiId.setError("Enter the UPI ID");
             return false;
         }
         else if ( binding.phone.getText().toString().isEmpty() )

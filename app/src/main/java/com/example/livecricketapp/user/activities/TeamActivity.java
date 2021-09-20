@@ -29,6 +29,7 @@ public class TeamActivity extends AppCompatActivity {
 
         teamInfo = new SingleTeamInfo();
         teamInfo = (SingleTeamInfo) getIntent().getSerializableExtra("team");
+        set_data();
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -57,6 +58,22 @@ public class TeamActivity extends AppCompatActivity {
 
     public void back(View view) {
         finish();
+    }
+
+    private void set_data()
+    {
+        binding.teamName.setText(teamInfo.getTeamName());
+        binding.namePlayer1.setText(teamInfo.getPlayerNames().get(0));
+        binding.namePlayer2.setText(teamInfo.getPlayerNames().get(1));
+        binding.namePlayer3.setText(teamInfo.getPlayerNames().get(2));
+        binding.namePlayer4.setText(teamInfo.getPlayerNames().get(3));
+        binding.namePlayer5.setText(teamInfo.getPlayerNames().get(4));
+        binding.namePlayer6.setText(teamInfo.getPlayerNames().get(5));
+        binding.namePlayer7.setText(teamInfo.getPlayerNames().get(6));
+        binding.namePlayer8.setText(teamInfo.getPlayerNames().get(7));
+        binding.namePlayer9.setText(teamInfo.getPlayerNames().get(8));
+        binding.namePlayer10.setText(teamInfo.getPlayerNames().get(9));
+        binding.namePlayer11.setText(teamInfo.getPlayerNames().get(10));
     }
 
 }
