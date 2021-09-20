@@ -17,6 +17,8 @@ import com.example.livecricketapp.activities.HomeActivity;
 import com.example.livecricketapp.databinding.ActivityTeamsAndMatchesBinding;
 import com.example.livecricketapp.model.AllMatchInfo;
 import com.example.livecricketapp.model.AllTeamInfo;
+import com.example.livecricketapp.model.SingleMatchInfo;
+import com.example.livecricketapp.model.SingleTeamInfo;
 import com.example.livecricketapp.model.TournamentInfo;
 import com.example.livecricketapp.user.adapters.MatchesAdapter;
 import com.example.livecricketapp.user.adapters.TeamsNamesAdapter;
@@ -25,6 +27,9 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdapter.On_Click , MatchesAdapter.On_click {
 
     private ActivityTeamsAndMatchesBinding binding;
@@ -32,6 +37,8 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
     private FirebaseFirestore db;
     private TeamsNamesAdapter adapter;
     private MatchesAdapter matchesAdapter;
+    private AllTeamInfo allTeamInfo;
+    private AllMatchInfo allMatchInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,7 +100,7 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        AllTeamInfo allTeamInfo = documentSnapshot.toObject(AllTeamInfo.class);
+                        allTeamInfo = documentSnapshot.toObject(AllTeamInfo.class);
                         adapter = new TeamsNamesAdapter(TeamsAndMatches.this,allTeamInfo.getTeamInfos(),TeamsAndMatches.this::open_team);
                         binding.recyclerTeams.setAdapter(adapter);
                         binding.recyclerTeams.setLayoutManager(new LinearLayoutManager(TeamsAndMatches.this));
@@ -109,7 +116,7 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        AllMatchInfo allMatchInfo = documentSnapshot.toObject(AllMatchInfo.class);
+                        allMatchInfo = documentSnapshot.toObject(AllMatchInfo.class);
                         matchesAdapter = new MatchesAdapter(TeamsAndMatches.this,allMatchInfo.getMatchInfos(),TeamsAndMatches.this::move_to_match_info);
                         binding.recyclerMatches.setAdapter(matchesAdapter);
                         binding.recyclerMatches.setLayoutManager(new LinearLayoutManager(TeamsAndMatches.this));
@@ -119,11 +126,15 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
 
     @Override
     public void open_team(int a) {
-
+        Intent intent = new Intent(this, TeamActivity.class);
+        intent.putExtra("team",allTeamInfo);
+        startActivity(intent);
     }
 
     @Override
     public void move_to_match_info(int a) {
-
+        Intent intent = new Intent(this, MatchActivity.class);
+        intent.putExtra("match",allTeamInfo);
+        startActivity(intent);
     }
 }

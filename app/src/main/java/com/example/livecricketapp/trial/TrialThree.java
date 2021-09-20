@@ -41,7 +41,7 @@ public class TrialThree extends AppCompatActivity {
     // Fill the channel name.
     private String channelName = "Match";
     // Fill the temp token generated on Agora Console.
-    private String token = "006b7a4b110fced4c69921eb66e205a85d9IACV3HNJoJwSGZEQ9RKN/IpP0TBVDIY6WzEOPMmIxrn24AHqmrsAAAAAEAAh3GK81rNEYQEAAQDYs0Rh";
+    private String token = "006b7a4b110fced4c69921eb66e205a85d9IABAIs4w9Mc8jNaNO/by0vDAw16WCGbxsjo80NuglT6ECwHqmrsAAAAAEADkBngOzplJYQEAAQDPmUlh";
 
     private RtcEngine mRtcEngine;
 
@@ -84,7 +84,7 @@ public class TrialThree extends AppCompatActivity {
 
         ChannelMediaOptions options = new ChannelMediaOptions();
         // Set the client role as BROADCASTER or AUDIENCE according to the scenario.
-        options.clientRoleType = Constants.CLIENT_ROLE_AUDIENCE;
+        options.clientRoleType = Constants.CLIENT_ROLE_BROADCASTER;
         // For a live streaming scenario, set the channel profile as BROADCASTING.
         options.channelProfile = Constants.CHANNEL_PROFILE_LIVE_BROADCASTING;
 
