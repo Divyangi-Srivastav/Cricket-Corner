@@ -83,6 +83,72 @@
                         android:background="@drawable/spinner_new"
                         android:paddingStart="10dp" />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Name of Captain"
+                        android:textColor="#112E52"
+                        android:textSize="18sp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        app:cardCornerRadius="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rectangle"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="17dp"
+                                android:src="@drawable/ant_design_user_outlined" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="12dp"
+                                android:src="@drawable/line" />
+
+                            <EditText
+                                android:id="@+id/captain_name"
+                                android:layout_width="285dp"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/montserrat"
+                                android:hint="Name of Captain"
+                                android:paddingHorizontal="10dp"
+                                android:textSize="14sp" />
+
+                            <ImageView
+                                android:id="@+id/captain_name_cross"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:onClick="clear"
+                                android:src="@drawable/cross" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Team Players"
+                        android:textColor="#112E52"
+                        android:textSize="18sp" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
@@ -564,164 +630,37 @@
 
                     </androidx.cardview.widget.CardView>
 
-                    <TextView
+
+                    <Button
+                        android:id="@+id/btn_save_team"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="32dp"
+                        android:background="@drawable/buttons"
                         android:fontFamily="@font/montserrat"
-                        android:text="Name of Captain"
-                        android:textColor="#112E52"
-                        android:textSize="18sp" />
+                        android:text="Save Team"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btn_submit"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginEnd="32dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/buttons"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Create Fixture"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp">
-
-                    <EditText
-                        android:id="@+id/captain_name"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="30dp"
-                        android:fontFamily="@font/montserrat"
-                        android:hint="Enter Name of Captain"
-                        android:textSize="15sp" />
-
-                    <ImageView
-                        android:id="@+id/captain_name_cross"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginHorizontal="30dp"
-                        android:layout_marginEnd="35dp"
-                        android:layout_marginBottom="15dp"
-                        android:onClick="clear"
-                        android:src="@drawable/cross"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/info_card"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="5dp"
-                        android:visibility="invisible"
-                        app:cardCornerRadius="15dp"
-                        app:cardElevation="1dp"
-                        app:cardPreventCornerOverlap="true"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="10dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/montserrat"
-                                android:text="We need this information so that the users can donate on behalf of your team. Or pay reward to a player during the match!"
-                                android:textColor="#112E52"
-                                android:textSize="8sp" />
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat"
-                        android:text="UPI ID of the Team"
-                        android:textColor="#112E52"
-                        android:textSize="18sp" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="end">
-
-                        <ImageView
-                            android:id="@+id/info"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/group" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="30dp"
-                    android:layout_marginTop="15dp">
-
-                    <EditText
-                        android:id="@+id/upi_id"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/montserrat"
-                        android:hint="Enter UPI ID of the team"
-                        android:textSize="15sp" />
-
-                    <ImageView
-                        android:id="@+id/upi_id_cross"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginEnd="5dp"
-                        android:onClick="clear"
-                        android:src="@drawable/cross"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <Button
-                    android:id="@+id/btn_save_team"
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="32dp"
-                    android:background="@drawable/buttons"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Save Team"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btn_submit"
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginEnd="32dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@drawable/buttons"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Create Fixture"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
 
             </LinearLayout>
 

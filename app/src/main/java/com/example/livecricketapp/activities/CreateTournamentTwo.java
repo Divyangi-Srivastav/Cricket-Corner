@@ -70,7 +70,6 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
         tournamentInfo.getTeamNames().remove(0);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, tournamentInfo.getTeamNames());
         binding.spinner.setAdapter(adapter);
-        binding.info.setOnClickListener(this::onClick);
         binding.btnSaveTeam.setOnClickListener(this::onClick);
         binding.btnSubmit.setOnClickListener(this::onClick);
 
@@ -111,9 +110,6 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
             case R.id.captain_name_cross:
                 binding.captainName.getText().clear();
                 break;
-            case R.id.upi_id_cross:
-                binding.upiId.getText().clear();
-                break;
         }
 
     }
@@ -126,14 +122,6 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.info:
-
-                if (binding.infoCard.getVisibility() == View.INVISIBLE) {
-                    binding.infoCard.setVisibility(View.VISIBLE);
-                } else if (binding.infoCard.getVisibility() == View.VISIBLE) {
-                    binding.infoCard.setVisibility(View.INVISIBLE);
-                }
-                break;
 
             case R.id.btn_submit:
 
@@ -155,7 +143,6 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
                 {
                     SingleTeamInfo singleTeamInfo = new SingleTeamInfo();
                     singleTeamInfo.setCaptainName(binding.captainName.getText().toString());
-                    singleTeamInfo.setUpiId(binding.upiId.getText().toString());
                     singleTeamInfo.setTeamName(binding.spinner.getSelectedItem().toString());
                     singleTeamInfo.setPlayerNames(get_Player_List());
                     singleTeamInfos.add(singleTeamInfo);
@@ -182,7 +169,6 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
         binding.namePlayer9.getText().clear();
         binding.namePlayer10.getText().clear();
         binding.captainName.getText().clear();
-        binding.upiId.getText().clear();
     }
 
     private List<String> get_Player_List()
@@ -248,12 +234,7 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
         {
             binding.captainName.setError("Enter Name of Captain");
             return false;
-        }else  if ( binding.upiId.getText().toString().isEmpty() )
-        {
-            binding.upiId.setError("Enter UPI ID of team");
-            return false;
-        }
-        else {
+        } else {
             return true;
         }
     }

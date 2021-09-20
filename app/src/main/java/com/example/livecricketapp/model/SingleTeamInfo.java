@@ -6,7 +6,6 @@ import java.util.List;
 public class SingleTeamInfo implements Serializable {
 
     private String captainName;
-    private String upiId;
     private List<String> playerNames;
     private String teamName;
     private Boolean paid = false;
@@ -47,14 +46,6 @@ public class SingleTeamInfo implements Serializable {
 
     public void setCaptainName(String captainName) {
         this.captainName = captainName;
-    }
-
-    public String getUpiId() {
-        return upiId;
-    }
-
-    public void setUpiId(String upiId) {
-        this.upiId = upiId;
     }
 
     public List<String> getPlayerNames() {
