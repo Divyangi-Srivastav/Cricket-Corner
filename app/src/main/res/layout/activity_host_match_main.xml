@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".user.activities.Tournaments">
+    tools:context=".activities.HostMatchMainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="22dp"
-                    android:text="Tournaments"
+                    android:text="Host A Match"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
@@ -61,51 +61,38 @@
                 android:paddingBottom="60dp">
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Previous Tournaments"
+                    android:text="SELECT TOURNAMENT"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
                     android:textColor="#112E52"
                     android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/previous_tournament"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false" />
+                    android:id="@+id/recycler_view_tour"
+                    android:nestedScrollingEnabled="false"/>
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Ongoing Tournaments"
+                    android:text="SELECT MATCHES"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"
                     android:textColor="#112E52"
                     android:textSize="18sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/ongoing_tournament"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Upcoming Tournaments"
-                    android:textColor="#112E52"
-                    android:textSize="18sp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/upcoming_tournament"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false"
-                    android:layout_marginBottom="25dp"/>
-
+                    android:id="@+id/recycler_view_matches"
+                    android:nestedScrollingEnabled="false"/>
 
             </LinearLayout>
 

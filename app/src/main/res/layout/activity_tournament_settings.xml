@@ -100,12 +100,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
                     android:layout_marginTop="50dp"
-                    android:fontFamily="@font/montserrat"
-                    android:textStyle="bold"
                     android:background="@drawable/buttons"
+                    android:fontFamily="@font/montserrat"
                     android:text="View Teams"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:layout_width="match_parent"
@@ -137,49 +137,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
                     android:layout_marginTop="50dp"
-                    android:fontFamily="@font/montserrat"
-                    android:textStyle="bold"
                     android:background="@drawable/buttons"
+                    android:fontFamily="@font/montserrat"
                     android:text="View Fixtures"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="30dp"
-                    android:background="#33000000" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Ads Requests"
-                    android:textColor="#112E52"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Decide which Ad is displayed for what duration during the Live Stream"
-                    android:textColor="#112E52"
-                    android:textSize="14sp" />
-
-                <Button
-                    android:id="@+id/btn_view_ad_request"
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:layout_marginTop="50dp"
-                    android:fontFamily="@font/montserrat"
-                    android:textStyle="bold"
-                    android:background="@drawable/buttons"
-                    android:text="View Ads requests"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -211,12 +174,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
                     android:layout_marginTop="50dp"
-                    android:fontFamily="@font/montserrat"
-                    android:textStyle="bold"
                     android:background="@drawable/buttons"
+                    android:fontFamily="@font/montserrat"
                     android:text="View Participation Fees"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
                 <View
                     android:layout_width="match_parent"

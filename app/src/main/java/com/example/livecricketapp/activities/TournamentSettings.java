@@ -57,7 +57,6 @@ public class TournamentSettings extends AppCompatActivity implements View.OnClic
 
         binding.btnViewTeams.setOnClickListener(this::onClick);
         binding.btnViewFixtures.setOnClickListener(this::onClick);
-        binding.btnViewAdRequest.setOnClickListener(this::onClick);
         binding.btnViewFees.setOnClickListener(this::onClick);
     }
 
@@ -78,11 +77,6 @@ public class TournamentSettings extends AppCompatActivity implements View.OnClic
                 Intent intent2 = new Intent(this, Fixtures.class);
                 intent2.putExtra("id",info.getTournamentId());
                 startActivity(intent2);
-                break;
-            case R.id.btn_view_ad_request:
-                Intent intent3 = new Intent(this, AdsRequest.class);
-                intent3.putExtra("id",info.getTournamentId());
-                startActivity(intent3);
                 break;
             case R.id.btn_view_fees:
                 Intent intent4 = new Intent(this, ParticipationFees.class);

@@ -73,10 +73,9 @@ public class CreateTournamentThreeAdapterTwo extends RecyclerView.Adapter<Create
                 TeamScoreCard teamScoreCard = new TeamScoreCard();
                 teamScoreCard.setTeamName(holder.spinner1.getSelectedItem().toString());
                 singleMatchInfo.setTeam1Score(teamScoreCard);
-
-                teamScoreCard.setTeamName(holder.spinner1.getSelectedItem().toString());
+                teamScoreCard = new TeamScoreCard();
+                teamScoreCard.setTeamName(holder.spinner2.getSelectedItem().toString());
                 singleMatchInfo.setTeam2Score(teamScoreCard);
-
                 singleMatchInfo.setTime(matchTimings.get(holder.getAdapterPosition()));
                 Gson gson = new Gson();
                 String jsonString = gson.toJson(singleMatchInfo);

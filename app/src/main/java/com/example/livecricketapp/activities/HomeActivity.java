@@ -12,7 +12,7 @@ import com.example.livecricketapp.R;
 import com.example.livecricketapp.databinding.ActivityHomeBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ActivityHomeBinding binding;
 
@@ -22,13 +22,9 @@ public class HomeActivity extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.btnHostATour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent( HomeActivity.this , Host_a_tournament.class );
-                startActivity(intent);
-            }
-        });
+        binding.btnHostATour.setOnClickListener(this::onClick);
+        binding.btnHostAMatch.setOnClickListener(this::onClick);
+        binding.btnViewAdRequest.setOnClickListener(this::onClick);
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -53,5 +49,25 @@ public class HomeActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId())
+        {
+            case R.id.btn_host_a_match:
+                Intent intent3 = new Intent(this , HostMatchMainActivity.class);
+                startActivity(intent3);
+                break;
+            case R.id.btn_host_a_tour:
+                Intent intent = new Intent( HomeActivity.this , Host_a_tournament.class );
+                startActivity(intent);
+                break;
+            case R.id.btn_view_ad_request:
+                Intent intent2 = new Intent(this, AdsRequest.class);
+                startActivity(intent2);
+                break;
+        }
     }
 }
