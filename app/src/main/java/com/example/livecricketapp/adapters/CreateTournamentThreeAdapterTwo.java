@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.model.SingleMatchInfo;
+import com.example.livecricketapp.model.TeamScoreCard;
 import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
@@ -68,8 +69,14 @@ public class CreateTournamentThreeAdapterTwo extends RecyclerView.Adapter<Create
                 SingleMatchInfo singleMatchInfo = new SingleMatchInfo();
                 singleMatchInfo.setDate(date);
                 singleMatchInfo.setMatchNo("Match " + String.valueOf((a * no_of_matches) + holder.getAdapterPosition() + 1));
-                singleMatchInfo.setTeam1(holder.spinner1.getSelectedItem().toString());
-                singleMatchInfo.setTeam2(holder.spinner2.getSelectedItem().toString());
+
+                TeamScoreCard teamScoreCard = new TeamScoreCard();
+                teamScoreCard.setTeamName(holder.spinner1.getSelectedItem().toString());
+                singleMatchInfo.setTeam1Score(teamScoreCard);
+
+                teamScoreCard.setTeamName(holder.spinner1.getSelectedItem().toString());
+                singleMatchInfo.setTeam2Score(teamScoreCard);
+
                 singleMatchInfo.setTime(matchTimings.get(holder.getAdapterPosition()));
                 Gson gson = new Gson();
                 String jsonString = gson.toJson(singleMatchInfo);

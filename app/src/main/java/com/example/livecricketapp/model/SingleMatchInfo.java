@@ -7,8 +7,8 @@ public class SingleMatchInfo implements Serializable {
     private String matchNo;
     private String Date;
     private String Time;
-    private String team1;
-    private String team2;
+    private TeamScoreCard team1Score;
+    private TeamScoreCard team2Score;
     private String winningTeam = "";
     private String matchResult = "";
     private int matchStatus = 0 ;
@@ -70,19 +70,19 @@ public class SingleMatchInfo implements Serializable {
         Time = time;
     }
 
-    public String getTeam1() {
-        return team1;
+    public TeamScoreCard getTeam1Score() {
+        return team1Score;
     }
 
-    public void setTeam1(String team1) {
-        this.team1 = team1;
+    public void setTeam1Score(TeamScoreCard team1Score) {
+        this.team1Score = team1Score;
     }
 
-    public String getTeam2() {
-        return team2;
+    public TeamScoreCard getTeam2Score() {
+        return team2Score;
     }
 
-    public void setTeam2(String team2) {
-        this.team2 = team2;
+    public void setTeam2Score(TeamScoreCard team2Score) {
+        this.team2Score = team2Score;
     }
 }
