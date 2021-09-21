@@ -119,9 +119,11 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.Mov
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         TournamentInfo tournamentInfo = documentSnapshot.toObject(TournamentInfo.class);
-                        info1.setTournamentName(tournamentInfo.getTournamentName());
-                        info.add(info1);
-                        dashboardAdapter.notifyDataSetChanged();
+                        if ( tournamentInfo != null ) {
+                            info1.setTournamentName(tournamentInfo.getTournamentName());
+                            info.add(info1);
+                            dashboardAdapter.notifyDataSetChanged();
+                        }
                     }
                 });
 

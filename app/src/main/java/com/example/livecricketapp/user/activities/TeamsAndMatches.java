@@ -101,10 +101,13 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         AllTeamInfo allTeamInfo = documentSnapshot.toObject(AllTeamInfo.class);
-                        teamInfoList = allTeamInfo.getTeamInfos();
-                        adapter = new TeamsNamesAdapter(TeamsAndMatches.this,teamInfoList,TeamsAndMatches.this::open_team);
-                        binding.recyclerTeams.setAdapter(adapter);
-                        binding.recyclerTeams.setLayoutManager(new LinearLayoutManager(TeamsAndMatches.this));
+                        if ( allTeamInfo.getTeamInfos() != null )
+                        {
+                            teamInfoList = allTeamInfo.getTeamInfos();
+                            adapter = new TeamsNamesAdapter(TeamsAndMatches.this,teamInfoList,TeamsAndMatches.this::open_team);
+                            binding.recyclerTeams.setAdapter(adapter);
+                            binding.recyclerTeams.setLayoutManager(new LinearLayoutManager(TeamsAndMatches.this));
+                        }
                     }
                 });
     }
@@ -118,10 +121,12 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         AllMatchInfo allMatchInfo = documentSnapshot.toObject(AllMatchInfo.class);
-                        matchInfoList = allMatchInfo.getMatchInfos();
-                        matchesAdapter = new MatchesAdapter(TeamsAndMatches.this,matchInfoList,TeamsAndMatches.this::move_to_match_info);
-                        binding.recyclerMatches.setAdapter(matchesAdapter);
-                        binding.recyclerMatches.setLayoutManager(new LinearLayoutManager(TeamsAndMatches.this));
+                        if ( allMatchInfo.getMatchInfos() != null ) {
+                            matchInfoList = allMatchInfo.getMatchInfos();
+                            matchesAdapter = new MatchesAdapter(TeamsAndMatches.this, matchInfoList, TeamsAndMatches.this::move_to_match_info);
+                            binding.recyclerMatches.setAdapter(matchesAdapter);
+                            binding.recyclerMatches.setLayoutManager(new LinearLayoutManager(TeamsAndMatches.this));
+                        }
                     }
                 });
     }

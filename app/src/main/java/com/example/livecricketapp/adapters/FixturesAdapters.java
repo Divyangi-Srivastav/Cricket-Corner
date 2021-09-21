@@ -42,10 +42,10 @@ public class FixturesAdapters extends RecyclerView.Adapter<FixturesAdapters.Fixt
     public void onBindViewHolder(@NonNull FixturesViewHolder holder, int position) {
 
         holder.match.setText(matchInfos.get(position).getMatchNo() + " | " + matchInfos.get(position).getDate() + " | " + matchInfos.get(position).getTime());
-        holder.team1.setText(matchInfos.get(position).getTeam1());
-        holder.team2.setText(matchInfos.get(position).getTeam2());
+        holder.team1.setText(matchInfos.get(position).getTeam1Score().getTeamName());
+        holder.team2.setText(matchInfos.get(position).getTeam2Score().getTeamName());
         if ( !matchInfos.get(position).getWinningTeam().equalsIgnoreCase("") ) {
-            if (matchInfos.get(position).getTeam2().equalsIgnoreCase(matchInfos.get(position).getWinningTeam()))
+            if (matchInfos.get(position).getTeam2Score().getTeamName().equalsIgnoreCase(matchInfos.get(position).getWinningTeam()))
                 holder.team2.setTypeface(holder.team2.getTypeface(), Typeface.BOLD);
             else
                 holder.team1.setTypeface(holder.team1.getTypeface(), Typeface.BOLD);
