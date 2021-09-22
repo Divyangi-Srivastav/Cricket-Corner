@@ -44,6 +44,7 @@ public class HostMatchActivityOne extends AppCompatActivity implements HostAMatc
     private HostAMatch_MatchAdapter matchAdapter;
     private String tournamentId = "";
     private String matchNo = "";
+    private String tournamentName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,6 +141,7 @@ public class HostMatchActivityOne extends AppCompatActivity implements HostAMatc
     @Override
     public void select_tour(int a) {
         tournamentId = infoList.get(a).getTournamentId();
+        tournamentName = infoList.get(a).getTournamentName();
         get_match_info();
     }
 
@@ -150,7 +152,7 @@ public class HostMatchActivityOne extends AppCompatActivity implements HostAMatc
 
     public void next_page (View view)
     {
-        if ( tournamentId.equalsIgnoreCase("") || matchNo.equalsIgnoreCase("") )
+        if ( tournamentId.equalsIgnoreCase("") || matchNo.equalsIgnoreCase("") || tournamentName.equalsIgnoreCase("") )
         {
             Toast.makeText(this, "Please Select Both tournament and Match", Toast.LENGTH_LONG).show();
         }
@@ -159,6 +161,7 @@ public class HostMatchActivityOne extends AppCompatActivity implements HostAMatc
             Intent intent = new Intent(this,HostMatchActivityTwo.class);
             intent.putExtra("tour",tournamentId);
             intent.putExtra("match",matchNo);
+            intent.putExtra("name",tournamentName);
             startActivity(intent);
         }
     }

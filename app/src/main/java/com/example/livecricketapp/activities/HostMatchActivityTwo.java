@@ -17,6 +17,7 @@ public class HostMatchActivityTwo extends AppCompatActivity implements View.OnCl
     private ActivityHostMatchTwoBinding binding;
     private String tournamentId;
     private String matchNo;
+    private String tournamentName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,13 @@ public class HostMatchActivityTwo extends AppCompatActivity implements View.OnCl
 
         tournamentId = getIntent().getStringExtra("tour");
         matchNo = getIntent().getStringExtra("match");
+        tournamentName = getIntent().getStringExtra("name");
+
+        binding.tournamnetName.setText(tournamentName);
+        binding.matchNo.setText(matchNo);
+        binding.liveStream.setOnClickListener(this::onClick);
+        binding.playerScore.setOnClickListener(this::onClick);
+        binding.teamScore.setOnClickListener(this::onClick);
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
