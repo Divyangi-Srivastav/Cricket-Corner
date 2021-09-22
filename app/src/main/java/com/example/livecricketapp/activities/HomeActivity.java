@@ -57,7 +57,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId())
         {
             case R.id.btn_host_a_match:
-                Intent intent3 = new Intent(this , HostMatchMainActivity.class);
+                Intent intent3 = new Intent(this , HostMatchActivityOne.class);
                 startActivity(intent3);
                 break;
             case R.id.btn_host_a_tour:

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.livecricketapp">
+    package="com.example.livecricketapp" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -16,9 +16,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.LiveCricketApp">
+        android:theme="@style/Theme.LiveCricketApp" >
         <activity
-            android:name=".activities.HostMatchMainActivity"
+            android:name=".activities.HostMatchActivityTwo"
+            android:exported="true" />
+        <activity
+            android:name=".activities.HostMatchActivityOne"
             android:exported="true" />
         <activity
             android:name=".user.activities.MatchActivity"
@@ -31,12 +34,11 @@
             android:exported="true" />
         <activity
             android:name=".user.activities.Tournaments"
-            android:exported="true">
+            android:exported="true" >
         </activity>
         <activity
             android:name=".trial.TrialThree"
-            android:exported="true">
-
+            android:exported="true" >
         </activity>
         <activity
             android:name=".trial.TrialTwo"
@@ -76,7 +78,7 @@
         <activity android:name=".authentication.ForgotPasswordActivity" />
         <activity android:name=".authentication.SignupActivity" />
         <activity android:name=".authentication.LoginActivity" />
-        <activity android:name=".activities.SplashActivity">
+        <activity android:name=".activities.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
