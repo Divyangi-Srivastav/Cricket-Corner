@@ -11,16 +11,25 @@ import android.view.View;
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.databinding.ActivityUpdateTeamScoreBinding;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UpdateTeamScore extends AppCompatActivity {
 
     private ActivityUpdateTeamScoreBinding binding;
+    private FirebaseFirestore db;
+    private String tournamentId;
+    private String matchNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityUpdateTeamScoreBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        db = FirebaseFirestore.getInstance();
+
+        tournamentId = getIntent().getStringExtra("tour");
+        matchNo = getIntent().getStringExtra("match");
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override

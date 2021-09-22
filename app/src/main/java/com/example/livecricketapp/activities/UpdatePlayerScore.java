@@ -10,17 +10,28 @@ import android.view.View;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.databinding.ActivityUpdatePlayerScoreBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UpdatePlayerScore extends AppCompatActivity {
 
     private ActivityUpdatePlayerScoreBinding binding;
+    private FirebaseFirestore db;
+    private String tournamentId;
+    private String matchNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityUpdatePlayerScoreBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        db = FirebaseFirestore.getInstance();
+
+        tournamentId = getIntent().getStringExtra("tour");
+        matchNo = getIntent().getStringExtra("match");
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -49,6 +60,24 @@ public class UpdatePlayerScore extends AppCompatActivity {
 
     public void back(View view) {
         finish();
+    }
+
+    private void get_player_names()
+    {
+        db.collection("Tournament Info")
+                .document(tournamentId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+
+                    }
+                });
+    }
+
+    private void set_player_names()
+    {
+
     }
 
 }

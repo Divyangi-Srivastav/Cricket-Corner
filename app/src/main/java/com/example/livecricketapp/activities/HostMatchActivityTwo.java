@@ -71,14 +71,20 @@ public class HostMatchActivityTwo extends AppCompatActivity implements View.OnCl
         {
             case R.id.live_stream:
                 Intent intent = new Intent(this,StartLiveStreaming.class);
+                intent.putExtra("tour",tournamentId);
+                intent.putExtra("match",matchNo);
                 startActivity(intent);
                 break;
             case R.id.team_score:
                 Intent intent1 = new Intent(this, UpdateTeamScore.class);
+                intent1.putExtra("tour",tournamentId);
+                intent1.putExtra("match",matchNo);
                 startActivity(intent1);
                 break;
             case R.id.player_score:
                 Intent intent2 = new Intent(this, UpdatePlayerScore.class);
+                intent2.putExtra("tour",tournamentId);
+                intent2.putExtra("match",matchNo);
                 startActivity(intent2);
                 break;
         }
