@@ -6,6 +6,8 @@ import java.util.List;
 public class TeamScoreCard implements Serializable {
 
     private String teamName;
+    private int TeamRuns;
+    private int TeamWickets;
     private List<PlayerScoreCard> cards;
 
     public  TeamScoreCard ()

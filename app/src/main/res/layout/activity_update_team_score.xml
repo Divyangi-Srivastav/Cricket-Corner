@@ -41,7 +41,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="22dp"
-                    android:text="Ads Requests"
+                    android:text="Update Team Score"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
