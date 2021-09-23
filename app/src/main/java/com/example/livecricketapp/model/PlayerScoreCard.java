@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class PlayerScoreCard implements Serializable {
 
     private String playerName;
-    private int runs;
-    private int wickets;
+    private int runs = 0;
+    private int wickets = 0;
 
     public PlayerScoreCard ()
     {

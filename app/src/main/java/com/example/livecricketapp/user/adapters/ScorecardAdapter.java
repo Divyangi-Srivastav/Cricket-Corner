@@ -10,25 +10,55 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.livecricketapp.R;
+import com.example.livecricketapp.model.TeamScoreCard;
 
 public class ScorecardAdapter extends RecyclerView.Adapter<ScorecardAdapter.ScoreViewHolder> {
 
     private LayoutInflater layoutInflater;
+    private TeamScoreCard scoreCard;
+    private Update_scorecard update_scorecard;
 
-    public ScorecardAdapter (Context context)
-    {
+    public ScorecardAdapter(Context context, TeamScoreCard card , Update_scorecard update_scorecard) {
         layoutInflater = LayoutInflater.from(context);
+        this.scoreCard = card;
+        this.update_scorecard = update_scorecard;
     }
 
     @NonNull
     @Override
     public ScoreViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.recycler_scorecard,parent,false);
+        View view = layoutInflater.inflate(R.layout.recycler_scorecard, parent, false);
         return new ScoreViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ScoreViewHolder holder, int position) {
+
+        holder.name.setText(scoreCard.getCards().get(position).getPlayerName());
+        if (scoreCard.getCards().get(position).getRuns() == 0) {
+            holder.runs.setText("");
+            holder.runs_nill.setVisibility(View.VISIBLE);
+        } else
+            holder.runs.setText(String.valueOf(scoreCard.getCards().get(position).getRuns()));
+        if (scoreCard.getCards().get(position).getWickets() == 0) {
+            holder.wickets.setText("");
+            holder.wickets_nill.setVisibility(View.VISIBLE);
+        } else
+            holder.wickets.setText(String.valueOf(scoreCard.getCards().get(position).getWickets()));
+
+        holder.runs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update_scorecard.update_runs(holder.getAdapterPosition());
+            }
+        });
+
+        holder.wickets.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update_scorecard.update_wickets(holder.getAdapterPosition());
+            }
+        });
 
     }
 
@@ -39,8 +69,8 @@ public class ScorecardAdapter extends RecyclerView.Adapter<ScorecardAdapter.Scor
 
     public class ScoreViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name , runs , wickets ;
-        private View runs_nill , wickets_nill  ;
+        private TextView name, runs, wickets;
+        private View runs_nill, wickets_nill;
 
         public ScoreViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -51,4 +81,10 @@ public class ScorecardAdapter extends RecyclerView.Adapter<ScorecardAdapter.Scor
             wickets_nill = itemView.findViewById(R.id.wickets_nill);
         }
     }
+
+    public interface Update_scorecard{
+        void update_runs(int a);
+        void update_wickets ( int a );
+    }
+
 }

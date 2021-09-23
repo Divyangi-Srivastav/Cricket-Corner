@@ -52,9 +52,9 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        scorecardAdapter = new ScorecardAdapter(this);
-        binding.recyclerView.setAdapter(scorecardAdapter);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        scorecardAdapter = new ScorecardAdapter(this);
+//        binding.recyclerView.setAdapter(scorecardAdapter);
+//        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.team1.setOnClickListener(this::onClick);
         binding.team2.setOnClickListener(this::onClick);
     }
