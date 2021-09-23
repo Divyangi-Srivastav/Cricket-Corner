@@ -18,7 +18,7 @@ public class ScorecardAdapter extends RecyclerView.Adapter<ScorecardAdapter.Scor
     private TeamScoreCard scoreCard;
     private Update_scorecard update_scorecard;
 
-    public ScorecardAdapter(Context context, TeamScoreCard card , Update_scorecard update_scorecard) {
+    public ScorecardAdapter(Context context, TeamScoreCard card, Update_scorecard update_scorecard) {
         layoutInflater = LayoutInflater.from(context);
         this.scoreCard = card;
         this.update_scorecard = update_scorecard;
@@ -38,25 +38,29 @@ public class ScorecardAdapter extends RecyclerView.Adapter<ScorecardAdapter.Scor
         if (scoreCard.getCards().get(position).getRuns() == 0) {
             holder.runs.setText("");
             holder.runs_nill.setVisibility(View.VISIBLE);
-        } else
+        } else {
             holder.runs.setText(String.valueOf(scoreCard.getCards().get(position).getRuns()));
+            holder.runs_nill.setVisibility(View.GONE);
+        }
         if (scoreCard.getCards().get(position).getWickets() == 0) {
             holder.wickets.setText("");
             holder.wickets_nill.setVisibility(View.VISIBLE);
-        } else
+        } else {
             holder.wickets.setText(String.valueOf(scoreCard.getCards().get(position).getWickets()));
+            holder.wickets_nill.setVisibility(View.GONE);
+        }
 
         holder.runs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                update_scorecard.update_runs(holder.getAdapterPosition());
+                update_scorecard.update_runs(holder.getAdapterPosition(), scoreCard.getTeamName());
             }
         });
 
         holder.wickets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                update_scorecard.update_wickets(holder.getAdapterPosition());
+                update_scorecard.update_wickets(holder.getAdapterPosition(), scoreCard.getTeamName());
             }
         });
 
@@ -82,9 +86,10 @@ public class ScorecardAdapter extends RecyclerView.Adapter<ScorecardAdapter.Scor
         }
     }
 
-    public interface Update_scorecard{
-        void update_runs(int a);
-        void update_wickets ( int a );
+    public interface Update_scorecard {
+        void update_runs(int a, String teamName);
+
+        void update_wickets(int a, String teamName);
     }
 
 }

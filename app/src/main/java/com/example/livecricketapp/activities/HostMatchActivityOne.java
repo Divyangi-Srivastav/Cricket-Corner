@@ -33,7 +33,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class HostMatchActivityOne extends AppCompatActivity implements HostAMatchTourAdapter.On_Click , HostAMatch_MatchAdapter.On_Click {
+public class HostMatchActivityOne extends AppCompatActivity implements HostAMatchTourAdapter.On_Click, HostAMatch_MatchAdapter.On_Click {
 
     private ActivityHostMatchOneBinding binding;
     private FirebaseFirestore db;
@@ -56,11 +56,11 @@ public class HostMatchActivityOne extends AppCompatActivity implements HostAMatc
         date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
         get_tournament_info();
-        tourAdapter = new HostAMatchTourAdapter(this, infoList,this::select_tour);
+        tourAdapter = new HostAMatchTourAdapter(this, infoList, this::select_tour);
         binding.recyclerViewTour.setAdapter(tourAdapter);
         binding.recyclerViewTour.setLayoutManager(new LinearLayoutManager(this));
 
-        matchAdapter = new HostAMatch_MatchAdapter(this,matchInfoList ,this::select_match);
+        matchAdapter = new HostAMatch_MatchAdapter(this, matchInfoList, this::select_match);
         binding.recyclerViewMatches.setAdapter(matchAdapter);
         binding.recyclerViewMatches.setLayoutManager(new LinearLayoutManager(this));
 
@@ -94,7 +94,6 @@ public class HostMatchActivityOne extends AppCompatActivity implements HostAMatc
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
                         if (task.isSuccessful())
                             for (QueryDocumentSnapshot snapshot : task.getResult()) {
                                 TournamentInfo info = snapshot.toObject(TournamentInfo.class);
@@ -119,8 +118,7 @@ public class HostMatchActivityOne extends AppCompatActivity implements HostAMatc
         return false;
     }
 
-    private void get_match_info ()
-    {
+    private void get_match_info() {
         db.collection("Match Info")
                 .document(tournamentId)
                 .get()
@@ -150,18 +148,14 @@ public class HostMatchActivityOne extends AppCompatActivity implements HostAMatc
         matchNo = matchInfoList.get(a).getMatchNo();
     }
 
-    public void next_page (View view)
-    {
-        if ( tournamentId.equalsIgnoreCase("") || matchNo.equalsIgnoreCase("") || tournamentName.equalsIgnoreCase("") )
-        {
+    public void next_page(View view) {
+        if (tournamentId.equalsIgnoreCase("") || matchNo.equalsIgnoreCase("") || tournamentName.equalsIgnoreCase("")) {
             Toast.makeText(this, "Please Select Both tournament and Match", Toast.LENGTH_LONG).show();
-        }
-        else
-        {
-            Intent intent = new Intent(this,HostMatchActivityTwo.class);
-            intent.putExtra("tour",tournamentId);
-            intent.putExtra("match",matchNo);
-            intent.putExtra("name",tournamentName);
+        } else {
+            Intent intent = new Intent(this, HostMatchActivityTwo.class);
+            intent.putExtra("tour", tournamentId);
+            intent.putExtra("match", matchNo);
+            intent.putExtra("name", tournamentName);
             startActivity(intent);
         }
     }

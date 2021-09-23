@@ -41,7 +41,7 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="22dp"
-                    android:text="Ads Requests"
+                    android:text="Update Player Score"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
 
@@ -49,7 +49,7 @@
 
         </androidx.appcompat.widget.Toolbar>
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -60,9 +60,100 @@
                 android:paddingHorizontal="30dp"
                 android:paddingBottom="60dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/team_activity_bg"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/team1"
+                        android:layout_width="175dp"
+                        android:layout_height="match_parent"
+                        android:background="#B9CCE2"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center"
+                        android:text="Team 1"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/team2"
+                        android:layout_width="175dp"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center"
+                        android:text="Team 2"
+                        android:textColor="#000000"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="155dp"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
+                        android:text="NAME"
+                        android:textStyle="bold"
+                        android:textColor="#112E52"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
+                        android:text="RUNS"
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="#112E52"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
+                        android:text="WICKETS"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:textColor="#112E52"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_marginBottom="30dp"
+                    android:id="@+id/recycler_view"/>
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:fontFamily="@font/montserrat"
+                    android:textStyle="bold"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/buttons"
+                    android:text="Update Score"
+                    android:textColor="@color/white"
+                    android:textSize="14sp" />
+
             </LinearLayout>
 
-        </ScrollView>
+        </androidx.core.widget.NestedScrollView>
 
     </LinearLayout>
 
