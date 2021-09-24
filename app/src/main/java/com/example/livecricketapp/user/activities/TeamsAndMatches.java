@@ -141,7 +141,8 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
     @Override
     public void move_to_match_info(int a) {
         Intent intent = new Intent(this, MatchActivity.class);
-        intent.putExtra("match",matchInfoList.get(a));
+        intent.putExtra("tour",info.getTournamentId());
+        intent.putExtra("match",matchInfoList.get(a).getMatchNo());
         startActivity(intent);
     }
 }

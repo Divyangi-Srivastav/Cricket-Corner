@@ -43,7 +43,13 @@
             android:exported="true" />
         <activity
             android:name=".user.activities.Tournaments"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".trial.TrialThree"
             android:exported="true" />
@@ -86,11 +92,6 @@
         <activity android:name=".authentication.SignupActivity" />
         <activity android:name=".authentication.LoginActivity" />
         <activity android:name=".activities.SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data
