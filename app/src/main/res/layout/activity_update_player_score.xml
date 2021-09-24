@@ -133,8 +133,43 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"
-                    android:layout_marginBottom="30dp"
                     android:id="@+id/recycler_view"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="155dp"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
+                        android:text="TOTAL"
+                        android:textColor="#112E52"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/totalRuns"
+                        android:layout_width="100dp"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
+                        android:text="0 SCORED"
+                        android:gravity="center"
+                        android:textColor="#112E52"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/totalWickets"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/montserrat"
+                        android:text="0 WICKETS"
+                        android:gravity="center"
+                        android:textColor="#112E52"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
 
                 <Button
                     android:id="@+id/btn_submit"
