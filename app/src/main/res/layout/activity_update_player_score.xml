@@ -61,7 +61,8 @@
                 android:paddingBottom="60dp">
 
                 <LinearLayout
-                    android:layout_width="300dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
@@ -71,7 +72,8 @@
 
                     <TextView
                         android:id="@+id/team1"
-                        android:layout_width="150dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
                         android:layout_height="match_parent"
                         android:background="#B9CCE2"
                         android:fontFamily="@font/montserrat"
@@ -82,7 +84,8 @@
 
                     <TextView
                         android:id="@+id/team2"
-                        android:layout_width="150dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.5"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat"
                         android:gravity="center"
@@ -97,10 +100,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:gravity="center"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="130dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.4"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat"
                         android:text="NAME"
@@ -109,7 +114,8 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:layout_width="90dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.3"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat"
                         android:text="RUNS"
@@ -119,7 +125,8 @@
                         android:textSize="12sp" />
 
                     <TextView
-                        android:layout_width="80dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.3"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat"
                         android:text="WICKETS"
@@ -142,10 +149,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="40dp"
                     android:gravity="center"
+                    android:layout_weight="1"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:layout_width="130dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.4"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat"
                         android:text="TOTAL"
@@ -154,7 +163,8 @@
 
                     <TextView
                         android:id="@+id/totalRuns"
-                        android:layout_width="90dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.3"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat"
                         android:text="0 SCORED"
@@ -164,7 +174,8 @@
 
                     <TextView
                         android:id="@+id/totalWickets"
-                        android:layout_width="80dp"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.3"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat"
                         android:text="0 WICKETS"
