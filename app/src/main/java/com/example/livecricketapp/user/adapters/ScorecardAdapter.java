@@ -1,6 +1,7 @@
 package com.example.livecricketapp.user.adapters;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,15 +37,17 @@ public class ScorecardAdapter extends RecyclerView.Adapter<ScorecardAdapter.Scor
 
         holder.name.setText(scoreCard.getCards().get(position).getPlayerName());
         if (scoreCard.getCards().get(position).getRuns() == 0) {
-            holder.runs.setText("");
-            holder.runs_nill.setVisibility(View.VISIBLE);
+            holder.runs.setText("—");
+            holder.runs.setTypeface(null, Typeface.BOLD);
+            //holder.runs_nill.setVisibility(View.VISIBLE);
         } else {
             holder.runs.setText(String.valueOf(scoreCard.getCards().get(position).getRuns()));
             holder.runs_nill.setVisibility(View.GONE);
         }
         if (scoreCard.getCards().get(position).getWickets() == 0) {
-            holder.wickets.setText("");
-            holder.wickets_nill.setVisibility(View.VISIBLE);
+            holder.wickets.setText("—");
+            holder.wickets.setTypeface(null,Typeface.BOLD);
+            //holder.wickets_nill.setVisibility(View.VISIBLE);
         } else {
             holder.wickets.setText(String.valueOf(scoreCard.getCards().get(position).getWickets()));
             holder.wickets_nill.setVisibility(View.GONE);

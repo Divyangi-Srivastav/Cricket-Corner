@@ -216,7 +216,7 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
     public void update_runs(int a, String teamName) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add Runs");
+        builder.setTitle("Add Runs" );
         builder.setItems(new CharSequence[]{"0 Run", "1 Run", "2 Run", "3 Run", "4 Run", "5 Run", "6 Run"},
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
