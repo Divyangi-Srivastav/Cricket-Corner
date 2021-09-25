@@ -53,4 +53,9 @@ public class AdvertiseYourself extends AppCompatActivity {
     public void back(View view) {
         finish();
     }
+
+    public void clear ( View view )
+    {
+
+    }
 }
