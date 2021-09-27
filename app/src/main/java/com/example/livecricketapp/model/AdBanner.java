@@ -5,18 +5,44 @@ import java.io.Serializable;
 public class AdBanner implements Serializable {
 
     private String adId;
+    private String transactionId;
     private String userId;
     private String adImageUrl;
     private int adTime;
     private int amountPaid;
     private String adMessage;
     private int adStatus;
+    private String requestDate;
+    private String requestTime;
 
-    //
 
     public AdBanner ()
     {
 
+    }
+
+    public String getRequestDate() {
+        return requestDate;
+    }
+
+    public void setRequestDate(String requestDate) {
+        this.requestDate = requestDate;
+    }
+
+    public String getRequestTime() {
+        return requestTime;
+    }
+
+    public void setRequestTime(String requestTime) {
+        this.requestTime = requestTime;
+    }
+
+    public String getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(String transactionId) {
+        this.transactionId = transactionId;
     }
 
     public String getAdId() {

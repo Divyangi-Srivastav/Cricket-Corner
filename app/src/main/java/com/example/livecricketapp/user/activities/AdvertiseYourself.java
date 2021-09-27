@@ -1,12 +1,5 @@
 package com.example.livecricketapp.user.activities;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -15,11 +8,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.AdsRequest;
 import com.example.livecricketapp.activities.Dashboard;
 import com.example.livecricketapp.activities.HomeActivity;
-import com.example.livecricketapp.activities.PaymentActivity;
 import com.example.livecricketapp.databinding.ActivityAdvertiseYourselfBinding;
 import com.example.livecricketapp.model.AdBanner;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -58,9 +56,9 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch ( item.getItemId() ) {
+                switch (item.getItemId()) {
                     case R.id.home:
-                        Intent intent = new Intent(AdvertiseYourself.this , HomeActivity.class);
+                        Intent intent = new Intent(AdvertiseYourself.this, HomeActivity.class);
                         startActivity(intent);
                         break;
 
@@ -69,7 +67,7 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(AdvertiseYourself.this , Dashboard.class);
+                        Intent intent1 = new Intent(AdvertiseYourself.this, Dashboard.class);
                         startActivity(intent1);
                         break;
 
@@ -83,10 +81,8 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
         finish();
     }
 
-    public void clear ( View view )
-    {
-        switch (view.getId())
-        {
+    public void clear(View view) {
+        switch (view.getId()) {
             case R.id.message_ad_banner_cross:
                 binding.messageAdBanner.getText().clear();
                 break;
@@ -96,35 +92,28 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
         }
     }
 
-    private void create_ad_banner ()
-    {
-       banner.setAdId(generate_ad_id());
-       banner.setUserId(user.getUid());
-       banner.setAdMessage(binding.messageAdBanner.getText().toString());
-       banner.setAdImageUrl(photoUrl);
-       banner.setAmountPaid(Integer.parseInt(binding.amount.getText().toString()));
-       banner.setAdTime(get_duration(banner.getAmountPaid()));
+    private void create_ad_banner() {
+        banner.setUserId(user.getUid());
+        banner.setAdMessage(binding.messageAdBanner.getText().toString());
+        banner.setAdImageUrl(photoUrl);
+        banner.setAmountPaid(Integer.parseInt(binding.amount.getText().toString()));
+        banner.setAdTime(get_duration(banner.getAmountPaid()));
     }
 
-    private String generate_ad_id ()
-    {
-        long time =System.currentTimeMillis();
-        return String.valueOf(time);
-    }
-
-    private int get_duration ( int amount )
-    {
-        switch (amount)
-        {
-            case 25 : return 5;
-            case 45 : return 10;
-            case 65 : return 15;
-            default : return 0;
+    private int get_duration(int amount) {
+        switch (amount) {
+            case 25:
+                return 5;
+            case 45:
+                return 10;
+            case 65:
+                return 15;
+            default:
+                return 0;
         }
     }
 
-    private void upload_photo_to_firebase()
-    {
+    private void upload_photo_to_firebase() {
         ProgressDialog dialog = new ProgressDialog(this);
         dialog.setMessage("Please Wait...");
         dialog.show();
@@ -146,8 +135,7 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
 
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.image:
 
                 Intent intent = new Intent();
@@ -158,12 +146,9 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
 
             case R.id.upload_image:
 
-                if ( photoUri == null )
-                {
+                if (photoUri == null) {
                     Toast.makeText(this, "First Select An Image", Toast.LENGTH_LONG).show();
-                }
-                else
-                {
+                } else {
                     upload_photo_to_firebase();
                 }
 
@@ -172,7 +157,7 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
             case R.id.btn_submit:
                 create_ad_banner();
                 Intent intent1 = new Intent(this, PaymentActivity.class);
-                intent1.putExtra("banner",banner);
+                intent1.putExtra("banner", banner);
                 startActivity(intent1);
                 break;
         }
@@ -182,9 +167,13 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
     ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
-            Intent data = result.getData();
-            photoUri = data.getData();
-            binding.image.setImageURI(photoUri);
+            if (result.getData() != null) {
+                Intent data = result.getData();
+                photoUri = data.getData();
+                binding.image.setImageURI(photoUri);
+            }
+            else
+                Toast.makeText(AdvertiseYourself.this, "No Image Selected", Toast.LENGTH_SHORT).show();
         }
     });
 }

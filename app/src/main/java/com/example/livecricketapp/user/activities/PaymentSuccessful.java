@@ -1,4 +1,4 @@
-package com.example.livecricketapp.activities;
+package com.example.livecricketapp.user.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,22 +9,20 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.databinding.ActivityAdsRequestBinding;
+import com.example.livecricketapp.activities.Dashboard;
+import com.example.livecricketapp.activities.HomeActivity;
+import com.example.livecricketapp.databinding.ActivityPaymentSuccessfulBinding;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-public class AdsRequest extends AppCompatActivity {
+public class PaymentSuccessful extends AppCompatActivity {
 
-    private ActivityAdsRequestBinding binding;
-    private FirebaseFirestore db;
+    private ActivityPaymentSuccessfulBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityAdsRequestBinding.inflate(getLayoutInflater());
+        binding = ActivityPaymentSuccessfulBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        db = FirebaseFirestore.getInstance();
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -32,7 +30,7 @@ public class AdsRequest extends AppCompatActivity {
 
                 switch ( item.getItemId() ) {
                     case R.id.home:
-                        Intent intent = new Intent(AdsRequest.this , HomeActivity.class);
+                        Intent intent = new Intent(PaymentSuccessful.this , HomeActivity.class);
                         startActivity(intent);
                         break;
 
@@ -41,7 +39,7 @@ public class AdsRequest extends AppCompatActivity {
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(AdsRequest.this , Dashboard.class);
+                        Intent intent1 = new Intent(PaymentSuccessful.this , Dashboard.class);
                         startActivity(intent1);
                         break;
 
@@ -49,10 +47,10 @@ public class AdsRequest extends AppCompatActivity {
                 return true;
             }
         });
-    }
 
-    public void back(View view) {
+    }
+    public void continue_to_dashboard ( View view )
+    {
         finish();
     }
-
 }
