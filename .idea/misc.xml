@@ -5,7 +5,7 @@
       <map>
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_24.xml" value="0.2324074074074074" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/drawable/ic_baseline_refresh_24.xml" value="0.16203703703703703" />
-        <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/activity_ads_request.xml" value="0.13072916666666667" />
+        <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/activity_ads_request.xml" value="0.264" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/activity_advertise_yourself.xml" value="0.4" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/activity_create_tournament_one.xml" value="0.264" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/activity_create_tournament_three.xml" value="0.25416666666666665" />
@@ -41,6 +41,7 @@
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/recycler_partication_adapter.xml" value="0.4" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/recycler_scorecard.xml" value="0.2231833910034602" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/recycler_teams_and_matches_teamn.xml" value="0.4" />
+        <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/recycler_view_ads.xml" value="0.264" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/recycler_view_matches_two.xml" value="0.20185185185185187" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/recycler_view_names.xml" value="0.23055555555555557" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/recycler_view_tournament.xml" value="0.4" />
