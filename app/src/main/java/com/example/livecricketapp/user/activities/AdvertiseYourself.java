@@ -159,10 +159,19 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
                 Intent intent1 = new Intent(this, PaymentActivity.class);
                 intent1.putExtra("banner", banner);
                 startActivity(intent1);
+                clear_data();
                 break;
         }
 
     }
+
+    private void clear_data ()
+    {
+        binding.image.setImageResource(R.drawable.sample_pic);
+        binding.messageAdBanner.getText().clear();
+        binding.amount.getText().clear();
+    }
+
 
     ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
