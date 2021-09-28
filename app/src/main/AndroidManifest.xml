@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.livecricketapp">
 
+    <uses-sdk
+        android:minSdkVersion="19"
+        android:targetSdkVersion="31"
+        tools:overrideLibrary="com.razorpay" />
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -10,8 +15,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-sdk android:targetSdkVersion="31" android:minSdkVersion="19"
-        tools:overrideLibrary="com.razorpay"/>
 
     <application
         android:allowBackup="true"
@@ -21,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
         <activity
+            android:name=".activities.MatchEndResult"
+            android:exported="true" />
+        <activity
             android:name=".user.activities.PaymentSuccessful"
             android:exported="true" />
         <activity
@@ -29,8 +35,7 @@
         <activity
             android:name=".user.activities.AdvertiseYourself"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan">
-        </activity>
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".activities.UpdatePlayerScore"
             android:exported="true" />
@@ -100,7 +105,8 @@
         <activity android:name=".authentication.ForgotPasswordActivity" />
         <activity android:name=".authentication.SignupActivity" />
         <activity android:name=".authentication.LoginActivity" />
-        <activity android:name=".activities.SplashActivity"
+        <activity
+            android:name=".activities.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
