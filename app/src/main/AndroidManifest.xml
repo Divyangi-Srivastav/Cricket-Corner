@@ -24,6 +24,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
         <activity
+            android:name=".user.activities.Settings"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".user.activities.BuySubscription"
+            android:exported="true" />
+        <activity
             android:name=".activities.MatchEndResult"
             android:exported="true" />
         <activity
@@ -35,7 +47,7 @@
         <activity
             android:name=".user.activities.AdvertiseYourself"
             android:exported="true"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.UpdatePlayerScore"
             android:exported="true" />
@@ -108,11 +120,7 @@
         <activity
             android:name=".activities.SplashActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data
