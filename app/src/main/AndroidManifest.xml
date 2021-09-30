@@ -24,13 +24,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
         <activity
+            android:name=".user.activities.ViewSubscription"
+            android:exported="true" />
+        <activity
+            android:name=".user.activities.ChangePassword"
+            android:exported="true" />
+        <activity
             android:name=".user.activities.Settings"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="true">
         </activity>
         <activity
             android:name=".user.activities.BuySubscription"
@@ -119,8 +120,12 @@
         <activity android:name=".authentication.LoginActivity" />
         <activity
             android:name=".activities.SplashActivity"
-            android:exported="true">
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data

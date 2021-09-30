@@ -11,17 +11,17 @@ import android.view.View;
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.activities.Dashboard;
 import com.example.livecricketapp.activities.HomeActivity;
-import com.example.livecricketapp.databinding.ActivityPaymentSuccessfulBinding;
+import com.example.livecricketapp.databinding.ActivityChangePasswordBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class PaymentSuccessful extends AppCompatActivity {
+public class ChangePassword extends AppCompatActivity {
 
-    private ActivityPaymentSuccessfulBinding binding;
+    private ActivityChangePasswordBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityPaymentSuccessfulBinding.inflate(getLayoutInflater());
+        binding = ActivityChangePasswordBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -30,17 +30,17 @@ public class PaymentSuccessful extends AppCompatActivity {
 
                 switch ( item.getItemId() ) {
                     case R.id.home:
-                        Intent intent = new Intent(PaymentSuccessful.this , HomeActivity.class);
+                        Intent intent = new Intent(ChangePassword.this , HomeActivity.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(PaymentSuccessful.this , Settings.class);
+                        Intent intent2 = new Intent(ChangePassword.this , Settings.class);
                         startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(PaymentSuccessful.this , Dashboard.class);
+                        Intent intent1 = new Intent(ChangePassword.this , Dashboard.class);
                         startActivity(intent1);
                         break;
 
@@ -48,10 +48,10 @@ public class PaymentSuccessful extends AppCompatActivity {
                 return true;
             }
         });
-
     }
-    public void continue_to_dashboard ( View view )
-    {
+
+    public void back(View view) {
         finish();
     }
+
 }

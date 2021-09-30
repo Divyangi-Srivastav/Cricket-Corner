@@ -74,7 +74,8 @@ public class Tournaments extends AppCompatActivity implements TournamentAdapter.
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(Tournaments.this , Settings.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:

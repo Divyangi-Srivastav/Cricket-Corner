@@ -36,7 +36,8 @@ public class BuySubscription extends AppCompatActivity {
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(BuySubscription.this , Settings.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:

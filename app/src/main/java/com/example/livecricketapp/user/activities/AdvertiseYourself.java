@@ -63,7 +63,8 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(AdvertiseYourself.this, Settings.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:

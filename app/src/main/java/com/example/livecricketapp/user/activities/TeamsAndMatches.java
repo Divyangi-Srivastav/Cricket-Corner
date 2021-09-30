@@ -62,7 +62,8 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(TeamsAndMatches.this , Settings.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
