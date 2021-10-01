@@ -158,6 +158,7 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
             case R.id.btn_submit:
                 create_ad_banner();
                 Intent intent1 = new Intent(this, PaymentActivity.class);
+                intent1.putExtra("activity","advertise");
                 intent1.putExtra("banner", banner);
                 startActivity(intent1);
                 clear_data();

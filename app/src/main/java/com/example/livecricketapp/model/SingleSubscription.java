@@ -2,7 +2,7 @@ package com.example.livecricketapp.model;
 
 import java.io.Serializable;
 
-public class Subscription implements Serializable {
+public class SingleSubscription implements Serializable {
 
     private String userId;
     private String tournamentId = "";
@@ -14,7 +14,7 @@ public class Subscription implements Serializable {
     private String validTill;
     private int money;
 
-    public Subscription ()
+    public SingleSubscription()
     {
 
     }
