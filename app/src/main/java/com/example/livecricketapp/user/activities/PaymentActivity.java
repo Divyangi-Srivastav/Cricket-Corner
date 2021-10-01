@@ -21,6 +21,7 @@ import com.example.livecricketapp.R;
 import com.example.livecricketapp.databinding.ActivityPaymentBinding;
 import com.example.livecricketapp.model.AdBanner;
 import com.example.livecricketapp.model.AllSubscriptions;
+import com.example.livecricketapp.model.SingleMatchInfo;
 import com.example.livecricketapp.model.SingleSubscription;
 import com.example.livecricketapp.model.TournamentInfo;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -50,6 +51,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     private AdBanner banner = new AdBanner();
     private TournamentInfo info = new TournamentInfo();
     private AllSubscriptions subscriptions = new AllSubscriptions();
+    private SingleMatchInfo singleMatchInfo = new SingleMatchInfo();
     private FirebaseUser user;
     private FirebaseFirestore db;
     private String date, time;
@@ -71,7 +73,9 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
+
         activity = getIntent().getStringExtra("activity");
+
         if (activity.equalsIgnoreCase("tour_subscription")) {
             info = (TournamentInfo) getIntent().getSerializableExtra("tour");
             amount = getIntent().getIntExtra("amount", 0);
@@ -79,7 +83,14 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         } else if (activity.equalsIgnoreCase("advertise")) {
             banner = (AdBanner) getIntent().getSerializableExtra("banner");
             amount = banner.getAmountPaid() * 100;
+        } else if (activity.equalsIgnoreCase("match_subscription")) {
+            info = (TournamentInfo) getIntent().getSerializableExtra("tour");
+            amount = getIntent().getIntExtra("amount", 0);
+            amount = amount * 100;
+            singleMatchInfo = (SingleMatchInfo) getIntent().getSerializableExtra("match");
         }
+
+
         Checkout.preload(getApplicationContext());
 
         body = "{  \"amount\": " + String.valueOf(amount) + ",  \"currency\": \"INR\",  \"receipt\": \"receipt#2\"}";
@@ -174,6 +185,8 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
             create_ad_request(s);
         } else if (activity.equalsIgnoreCase("tour_subscription")) {
             get_subscriptions(s);
+        } else if ( activity.equalsIgnoreCase("match_subscription") ) {
+            get_subscriptions(s);
         }
     }
 
@@ -202,8 +215,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
     // for subscription
 
-    private void get_subscriptions ( String transactionId )
-    {
+    private void get_subscriptions(String transactionId) {
         db.collection("Subscription")
                 .document(user.getUid())
                 .get()
@@ -211,25 +223,29 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
                     @Override
                     public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
                         if (documentSnapshot.exists())
-                        subscriptions = documentSnapshot.toObject(AllSubscriptions.class);
-                        create_subscription(transactionId);
+                            subscriptions = documentSnapshot.toObject(AllSubscriptions.class);
+                        if (activity.equalsIgnoreCase("tour_subscription")) {
+                            create_tour_subscription(transactionId);
+                        } else if ( activity.equalsIgnoreCase("match_subscription") ) {
+                            create_match_subscription(transactionId);
+                        }
+
                     }
                 });
     }
 
-    private void create_subscription ( String TransactionId )
-    {
+    private void create_tour_subscription(String TransactionId) {
         SingleSubscription singleSubscription = new SingleSubscription();
         singleSubscription.setUserId(user.getUid());
         singleSubscription.setTournamentId(info.getTournamentId());
         singleSubscription.setTourSubscription(true);
         singleSubscription.setMatchSubscription(false);
-        singleSubscription.setMoney(amount/100);
+        singleSubscription.setMoney(amount / 100);
         singleSubscription.setTransactionId(TransactionId);
         singleSubscription.setValidFrom(info.getStart_date());
         singleSubscription.setValidTill(info.getEnd_date());
         List<SingleSubscription> subscriptionList = new ArrayList<>();
-        if ( subscriptions.getList().size() > 0 )
+        if (subscriptions.getList().size() > 0)
             subscriptionList.addAll(subscriptions.getList());
         subscriptionList.add(singleSubscription);
         subscriptions.setList(subscriptionList);
@@ -238,8 +254,29 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         upload_sub_on_firebase();
     }
 
-    private void upload_sub_on_firebase()
+    private void create_match_subscription ( String transactionId )
     {
+        SingleSubscription singleSubscription = new SingleSubscription();
+        singleSubscription.setUserId(user.getUid());
+        singleSubscription.setTournamentId(info.getTournamentId());
+        singleSubscription.setTourSubscription(false);
+        singleSubscription.setMatchSubscription(true);
+        singleSubscription.setMoney(amount / 100);
+        singleSubscription.setTransactionId(transactionId);
+        singleSubscription.setValidFrom(singleMatchInfo.getDate());
+        singleSubscription.setValidTill(singleMatchInfo.getDate());
+        singleSubscription.setMatchId(singleMatchInfo.getMatchNo());
+        List<SingleSubscription> subscriptionList = new ArrayList<>();
+        if (subscriptions.getList().size() > 0)
+            subscriptionList.addAll(subscriptions.getList());
+        subscriptionList.add(singleSubscription);
+        subscriptions.setList(subscriptionList);
+        subscriptions.setUserId(user.getUid());
+
+        upload_sub_on_firebase();
+    }
+
+    private void upload_sub_on_firebase() {
         db.collection("Subscription").document(subscriptions.getUserId()).set(subscriptions);
         Intent intent = new Intent(this, PaymentSuccessful.class);
         startActivity(intent);

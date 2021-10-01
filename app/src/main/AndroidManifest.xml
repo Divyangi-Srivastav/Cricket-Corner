@@ -24,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
         <activity
+            android:name=".user.activities.WatchLiveMatch"
+            android:exported="true" />
+        <activity
             android:name=".user.activities.ViewSubscription"
             android:exported="true" />
         <activity
@@ -31,16 +34,10 @@
             android:exported="true" />
         <activity
             android:name=".user.activities.Settings"
-            android:exported="true">
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".user.activities.BuySubscription"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="true">
         </activity>
         <activity
             android:name=".activities.MatchEndResult"
@@ -81,7 +78,13 @@
             android:exported="true" />
         <activity
             android:name=".user.activities.Tournaments"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".trial.TrialThree"
             android:exported="true" />
@@ -126,8 +129,7 @@
         <activity android:name=".authentication.LoginActivity" />
         <activity
             android:name=".activities.SplashActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

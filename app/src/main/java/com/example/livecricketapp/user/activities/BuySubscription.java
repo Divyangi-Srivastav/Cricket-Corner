@@ -3,6 +3,7 @@ package com.example.livecricketapp.user.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -16,6 +17,7 @@ import com.example.livecricketapp.activities.AdsRequest;
 import com.example.livecricketapp.activities.Dashboard;
 import com.example.livecricketapp.activities.HomeActivity;
 import com.example.livecricketapp.databinding.ActivityBuySubscriptionBinding;
+import com.example.livecricketapp.model.SingleMatchInfo;
 import com.example.livecricketapp.model.TournamentInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -37,12 +39,16 @@ public class BuySubscription extends AppCompatActivity implements View.OnClickLi
     private String date;
     private List<String> tournamentList = new ArrayList<>();
     private List<TournamentInfo> tournamentInfoList = new ArrayList<>();
+    private SingleMatchInfo singleMatchInfo = new SingleMatchInfo();
+    private ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityBuySubscriptionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        singleMatchInfo = (SingleMatchInfo) getIntent().getSerializableExtra("match");
 
         date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
 
@@ -82,6 +88,9 @@ public class BuySubscription extends AppCompatActivity implements View.OnClickLi
 
     private void get_tour_data ()
     {
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Please Wait...");
+        dialog.show();
         db.collection("Tournament Info")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -100,6 +109,7 @@ public class BuySubscription extends AppCompatActivity implements View.OnClickLi
                             }
                             ArrayAdapter<String> adapter = new ArrayAdapter<String>(BuySubscription.this, R.layout.support_simple_spinner_dropdown_item, tournamentList);
                             binding.spinner.setAdapter(adapter);
+                            dialog.dismiss();
                         }
                     }
                 });
@@ -112,7 +122,7 @@ public class BuySubscription extends AppCompatActivity implements View.OnClickLi
 
         if ( days1 < 1 )
         {
-            return true ;
+            return false ;
         }
         else if ( days1 <= days2 )
         {
@@ -136,8 +146,13 @@ public class BuySubscription extends AppCompatActivity implements View.OnClickLi
         switch (v.getId())
         {
             case R.id.match_only_pay:
-
-
+                TournamentInfo info1 = get_tournament(binding.spinner.getSelectedItem().toString());
+                Intent intent1 = new Intent(this,PaymentActivity.class);
+                intent1.putExtra("activity","match_subscription");
+                intent1.putExtra("tour",info1);
+                intent1.putExtra("amount",10);
+                intent1.putExtra("match",singleMatchInfo);
+                startActivity(intent1);
                 break;
             case R.id.tournament_only_pay:
                 TournamentInfo info = get_tournament(binding.spinner.getSelectedItem().toString());
