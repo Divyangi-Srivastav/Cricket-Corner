@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="40dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/purchase_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="Purchase 1"
+        android:textColor="#112E52"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/subcription_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Subscription Brought : Match"
+        android:textColor="#112E52"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/tour_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Tournament Name : IPL"
+        android:textColor="#112E52"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/date_of_purchase"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Date of purchase : 12/09/21"
+        android:textColor="#112E52"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/valid_from"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Valid From : 12/09/21"
+        android:textColor="#112E52"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/valid_till"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Valid Till : 16/09/21"
+        android:textColor="#112E52"
+        android:textSize="14sp" />
+
+    <View
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#33000000" />
+
+
+</LinearLayout>

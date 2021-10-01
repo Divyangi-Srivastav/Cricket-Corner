@@ -238,12 +238,14 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         SingleSubscription singleSubscription = new SingleSubscription();
         singleSubscription.setUserId(user.getUid());
         singleSubscription.setTournamentId(info.getTournamentId());
+        singleSubscription.setTournament_name(info.getTournamentName());
         singleSubscription.setTourSubscription(true);
         singleSubscription.setMatchSubscription(false);
         singleSubscription.setMoney(amount / 100);
         singleSubscription.setTransactionId(TransactionId);
         singleSubscription.setValidFrom(info.getStart_date());
         singleSubscription.setValidTill(info.getEnd_date());
+        singleSubscription.setDate_of_purchase(date);
         List<SingleSubscription> subscriptionList = new ArrayList<>();
         if (subscriptions.getList().size() > 0)
             subscriptionList.addAll(subscriptions.getList());
@@ -259,6 +261,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         SingleSubscription singleSubscription = new SingleSubscription();
         singleSubscription.setUserId(user.getUid());
         singleSubscription.setTournamentId(info.getTournamentId());
+        singleSubscription.setTournament_name(info.getTournamentName());
         singleSubscription.setTourSubscription(false);
         singleSubscription.setMatchSubscription(true);
         singleSubscription.setMoney(amount / 100);
@@ -266,6 +269,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         singleSubscription.setValidFrom(singleMatchInfo.getDate());
         singleSubscription.setValidTill(singleMatchInfo.getDate());
         singleSubscription.setMatchId(singleMatchInfo.getMatchNo());
+        singleSubscription.setDate_of_purchase(date);
         List<SingleSubscription> subscriptionList = new ArrayList<>();
         if (subscriptions.getList().size() > 0)
             subscriptionList.addAll(subscriptions.getList());

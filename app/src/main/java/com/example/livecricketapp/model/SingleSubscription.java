@@ -13,10 +13,28 @@ public class SingleSubscription implements Serializable {
     private String validFrom;
     private String validTill;
     private int money;
+    private String tournament_name;
+    private String date_of_purchase;
 
     public SingleSubscription()
     {
 
+    }
+
+    public String getTournament_name() {
+        return tournament_name;
+    }
+
+    public void setTournament_name(String tournament_name) {
+        this.tournament_name = tournament_name;
+    }
+
+    public String getDate_of_purchase() {
+        return date_of_purchase;
+    }
+
+    public void setDate_of_purchase(String date_of_purchase) {
+        this.date_of_purchase = date_of_purchase;
     }
 
     public String getUserId() {
