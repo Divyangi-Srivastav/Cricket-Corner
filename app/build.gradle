@@ -51,6 +51,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx:21.0.1'
     implementation 'com.google.firebase:firebase-database-ktx:20.0.1'
     implementation 'com.google.firebase:firebase-firestore:23.0.3'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
 
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

@@ -6,17 +6,26 @@ public class Reward implements Serializable {
 
     private String userId;
     private String userName;
+    private String tournamentName;
     private String tournamentId;
     private String matchId;
     private String teamName;
     private Boolean player;
     private String playerName;
-    private int amount ;
+    private int amount;
     private String transactionId;
 
     public Reward ()
     {
 
+    }
+
+    public String getTournamentName() {
+        return tournamentName;
+    }
+
+    public void setTournamentName(String tournamentName) {
+        this.tournamentName = tournamentName;
     }
 
     public String getUserName() {

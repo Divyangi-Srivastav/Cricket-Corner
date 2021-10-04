@@ -17,7 +17,11 @@ import com.example.livecricketapp.databinding.ActivityRewardTeamPlayerBinding;
 import com.example.livecricketapp.model.PlayerScoreCard;
 import com.example.livecricketapp.model.Reward;
 import com.example.livecricketapp.model.SingleMatchInfo;
+import com.example.livecricketapp.model.TournamentInfo;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +31,8 @@ public class RewardTeamPlayer extends AppCompatActivity implements View.OnClickL
     private ActivityRewardTeamPlayerBinding binding;
     private SingleMatchInfo singleMatchInfo = new SingleMatchInfo();
     private String tournamentId;
+    private String tournamentName;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,7 @@ public class RewardTeamPlayer extends AppCompatActivity implements View.OnClickL
         singleMatchInfo = (SingleMatchInfo) getIntent().getSerializableExtra("match");
         tournamentId = getIntent().getStringExtra("tour");
         set_team();
+        get_tournament_names();
 
         binding.spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -76,6 +83,21 @@ public class RewardTeamPlayer extends AppCompatActivity implements View.OnClickL
         });
 
         binding.btnSubmit.setOnClickListener(this::onClick);
+    }
+
+    private void get_tournament_names ()
+    {
+        db = FirebaseFirestore.getInstance();
+        db.collection("Tournament Info")
+                .document(tournamentId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+                        TournamentInfo tournamentInfo = documentSnapshot.toObject(TournamentInfo.class);
+                        tournamentName = tournamentInfo.getTournamentName();
+                    }
+                });
     }
 
     private void set_team ()
@@ -178,6 +200,7 @@ public class RewardTeamPlayer extends AppCompatActivity implements View.OnClickL
         reward.setAmount(Integer.parseInt(binding.amount.getText().toString()));
         reward.setUserName(binding.name.getText().toString());
         reward.setTournamentId(tournamentId);
+        reward.setTournamentName(tournamentName);
         move_to_payment_Activity(reward);
     }
 
