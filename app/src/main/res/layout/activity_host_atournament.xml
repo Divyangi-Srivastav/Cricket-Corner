@@ -119,55 +119,6 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    app:cardCornerRadius="10dp"
-                    android:layout_marginHorizontal="20dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/rectangle"
-                        android:orientation="horizontal">
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="17dp"
-                            android:src="@drawable/upi_id" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="12dp"
-                            android:src="@drawable/line" />
-
-                        <EditText
-                            android:fontFamily="@font/montserrat"
-                            android:id="@+id/upi_id"
-                            android:layout_width="285dp"
-                            android:layout_height="match_parent"
-                            android:background="@android:color/transparent"
-                            android:hint="Enter UPI ID"
-                            android:paddingHorizontal="10dp"
-                            android:textSize="14sp" />
-
-                        <ImageView
-                            android:onClick="clear"
-                            android:id="@+id/upi_id_cross"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:src="@drawable/cross" />
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"

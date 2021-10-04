@@ -1,15 +1,18 @@
 package com.example.livecricketapp.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.databinding.ActivityHostAtournamentBinding;
 import com.example.livecricketapp.model.TournamentHostInfo;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -23,6 +26,31 @@ public class Host_a_tournament extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHostAtournamentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch ( item.getItemId() ) {
+                    case R.id.home:
+                        Intent intent = new Intent(Host_a_tournament.this , HomeActivity.class);
+                        startActivity(intent);
+                        break;
+
+                    case R.id.settings:
+
+                        break;
+
+                    case R.id.account:
+                        Intent intent1 = new Intent(Host_a_tournament.this , Dashboard.class);
+                        startActivity(intent1);
+                        break;
+
+                }
+                return true;
+            }
+        });
+
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         databaseReference = FirebaseDatabase.getInstance().getReference("Tournament Host Info");
     }
@@ -37,9 +65,6 @@ public class Host_a_tournament extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.name_cross:
                 binding.name.getText().clear();
-                break;
-            case R.id.upi_id_cross:
-                binding.upiId.getText().clear();
                 break;
             case R.id.phone_cross:
                 binding.phone.getText().clear();
@@ -56,10 +81,8 @@ public class Host_a_tournament extends AppCompatActivity {
         {
             TournamentHostInfo tournamentHostInfo = new TournamentHostInfo();
             tournamentHostInfo.setHostName(binding.name.getText().toString());
-            tournamentHostInfo.setUpiId(binding.upiId.getText().toString());
             tournamentHostInfo.setPhoneNumber(binding.phone.getText().toString());
             tournamentHostInfo.setAddress(binding.address.getText().toString());
-
             tournamentHostInfo.setTournamentId(generate_tournament_Id());
 
             push_data_to_firebase(tournamentHostInfo);
@@ -90,11 +113,6 @@ public class Host_a_tournament extends AppCompatActivity {
         if ( binding.name.getText().toString().isEmpty() )
         {
             binding.name.setError("Enter the name");
-            return false;
-        }
-        else if ( binding.upiId.getText().toString().isEmpty() )
-        {
-            binding.upiId.setError("Enter the UPI ID");
             return false;
         }
         else if ( binding.phone.getText().toString().isEmpty() )

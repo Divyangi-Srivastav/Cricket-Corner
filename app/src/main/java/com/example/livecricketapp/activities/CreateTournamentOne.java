@@ -1,5 +1,6 @@
 package com.example.livecricketapp.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -7,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
@@ -14,6 +16,7 @@ import com.example.livecricketapp.adapters.CreateTournamentOneAdapter;
 import com.example.livecricketapp.adapters.CreateTournamentTimeAdapter;
 import com.example.livecricketapp.databinding.ActivityCreateTournamentOneBinding;
 import com.example.livecricketapp.model.TournamentInfo;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class CreateTournamentOne extends AppCompatActivity implements View.OnClickListener{
@@ -32,6 +35,30 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
         db = FirebaseFirestore.getInstance();
 
         binding.btnSubmit.setOnClickListener(this::onClick);
+
+        binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch ( item.getItemId() ) {
+                    case R.id.home:
+                        Intent intent = new Intent(CreateTournamentOne.this , HomeActivity.class);
+                        startActivity(intent);
+                        break;
+
+                    case R.id.settings:
+
+                        break;
+
+                    case R.id.account:
+                        Intent intent1 = new Intent(CreateTournamentOne.this , Dashboard.class);
+                        startActivity(intent1);
+                        break;
+
+                }
+                return true;
+            }
+        });
 
         binding.numberOfTeams.addTextChangedListener(new TextWatcher() {
             @Override

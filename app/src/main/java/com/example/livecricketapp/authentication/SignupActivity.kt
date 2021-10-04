@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.livecricketapp.activities.HomeActivity
 import com.example.livecricketapp.R
+import com.example.livecricketapp.activities.HomeActivity
 import com.example.livecricketapp.model.Shared
 import com.example.livecricketapp.model.UserHelper
 import com.google.android.gms.tasks.OnCompleteListener

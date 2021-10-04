@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class TournamentHostInfo implements Serializable {
 
     private String hostName;
-    private String upiId;
     private String phoneNumber;
     private String address;
     private String TournamentId;
@@ -13,14 +12,6 @@ public class TournamentHostInfo implements Serializable {
     public TournamentHostInfo ()
     {
 
-    }
-
-    public TournamentHostInfo(String hostName, String upiId, String phoneNumber, String address, String tournamentId) {
-        this.hostName = hostName;
-        this.upiId = upiId;
-        this.phoneNumber = phoneNumber;
-        this.address = address;
-        TournamentId = tournamentId;
     }
 
     public String getTournamentId() {
@@ -37,14 +28,6 @@ public class TournamentHostInfo implements Serializable {
 
     public void setHostName(String hostName) {
         this.hostName = hostName;
-    }
-
-    public String getUpiId() {
-        return upiId;
-    }
-
-    public void setUpiId(String upiId) {
-        this.upiId = upiId;
     }
 
     public String getPhoneNumber() {

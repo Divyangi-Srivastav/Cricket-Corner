@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="textcolor">#1B4F8E</color>
     <color name="bottom_nav_bg">#1B4F8E</color>
+    <color name="not_occured">#E9F4FF</color>
+    <color name="ongoing">#F1FFDE</color>
+    <color name="done">#FFF1F1</color>
 </resources>

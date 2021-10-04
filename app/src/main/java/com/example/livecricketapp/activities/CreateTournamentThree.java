@@ -4,13 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.example.livecricketapp.DataOperations.OperationOnDate;
+import com.example.livecricketapp.R;
 import com.example.livecricketapp.adapters.CreateTournamentThreeAdapterOne;
 import com.example.livecricketapp.adapters.CreateTournamentThreeAdapterTwo;
 import com.example.livecricketapp.databinding.ActivityCreateTournamentThreeBinding;
@@ -20,6 +23,7 @@ import com.example.livecricketapp.model.TournamentInfo;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -35,7 +39,7 @@ public class CreateTournamentThree extends AppCompatActivity  {
    private ActivityCreateTournamentThreeBinding binding;
    private CreateTournamentThreeAdapterOne adapter;
    private FirebaseFirestore db;
-   private String TournamentId = "1630576702102";
+   private String TournamentId = "1630527652705";
    private TournamentInfo tournamentInfo;
    private List<SingleMatchInfo> singleMatchInfos = new ArrayList<>();
    private AllMatchInfo matchInfo;
@@ -46,6 +50,30 @@ public class CreateTournamentThree extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         binding = ActivityCreateTournamentThreeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch ( item.getItemId() ) {
+                    case R.id.home:
+                        Intent intent = new Intent(CreateTournamentThree.this , HomeActivity.class);
+                        startActivity(intent);
+                        break;
+
+                    case R.id.settings:
+
+                        break;
+
+                    case R.id.account:
+                        Intent intent1 = new Intent(CreateTournamentThree.this , Dashboard.class);
+                        startActivity(intent1);
+                        break;
+
+                }
+                return true;
+            }
+        });
 
         TournamentId = getIntent().getStringExtra("id");
         matchInfo = new AllMatchInfo();
@@ -108,5 +136,7 @@ public class CreateTournamentThree extends AppCompatActivity  {
         matchInfo.setMatchInfos(singleMatchInfos);
         db.collection("Match Info").document(tournamentInfo.getTournamentId()).set(matchInfo);
         singleMatchInfos.clear();
+        Intent intent = new Intent( this , Dashboard.class);
+        startActivity(intent);
     }
 }
