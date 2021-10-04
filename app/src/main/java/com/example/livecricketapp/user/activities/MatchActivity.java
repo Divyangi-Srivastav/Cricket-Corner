@@ -208,6 +208,8 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
     private void move_to_other_activity() {
         if (subscription_bool) {
             Intent intent = new Intent(this , WatchLiveMatch.class);
+            intent.putExtra("match",singleMatchInfo);
+            intent.putExtra("tour",tournamentId);
             startActivity(intent);
         } else {
             Intent intent = new Intent(this , BuySubscription.class);
