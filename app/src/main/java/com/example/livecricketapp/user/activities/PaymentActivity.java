@@ -21,6 +21,7 @@ import com.example.livecricketapp.R;
 import com.example.livecricketapp.databinding.ActivityPaymentBinding;
 import com.example.livecricketapp.model.AdBanner;
 import com.example.livecricketapp.model.AllSubscriptions;
+import com.example.livecricketapp.model.Reward;
 import com.example.livecricketapp.model.SingleMatchInfo;
 import com.example.livecricketapp.model.SingleSubscription;
 import com.example.livecricketapp.model.TournamentInfo;
@@ -52,6 +53,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
     private TournamentInfo info = new TournamentInfo();
     private AllSubscriptions subscriptions = new AllSubscriptions();
     private SingleMatchInfo singleMatchInfo = new SingleMatchInfo();
+    private Reward reward = new Reward();
     private FirebaseUser user;
     private FirebaseFirestore db;
     private String date, time;
@@ -88,6 +90,11 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
             amount = getIntent().getIntExtra("amount", 0);
             amount = amount * 100;
             singleMatchInfo = (SingleMatchInfo) getIntent().getSerializableExtra("match");
+        }else if ( activity.equalsIgnoreCase("reward") )
+        {
+            reward = (Reward) getIntent().getSerializableExtra("reward");
+            amount = reward.getAmount();
+            amount = amount * 100;
         }
 
 
@@ -187,6 +194,9 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
             get_subscriptions(s);
         } else if ( activity.equalsIgnoreCase("match_subscription") ) {
             get_subscriptions(s);
+        } else if ( activity.equalsIgnoreCase("reward") )
+        {
+            create_reward(s);
         }
     }
 
@@ -196,6 +206,24 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         finish();
     }
 
+    // for reward
+
+    private void create_reward ( String transactionId )
+    {
+        reward.setTransactionId(transactionId);
+        reward.setUserId(user.getUid());
+        upload_reward_on_firebase();
+    }
+
+    private void upload_reward_on_firebase()
+    {
+        db.collection("reward").document(reward.getTransactionId()).set(reward);
+        Intent intent = new Intent(this, PaymentSuccessful.class);
+        startActivity(intent);
+        finish();
+    }
+
+
     // for advertisement
 
     private void create_ad_request(String transactionId) {
@@ -203,10 +231,10 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         banner.setTransactionId(transactionId);
         banner.setRequestDate(date);
         banner.setRequestTime(time);
-        upload_on_firebase();
+        upload_add_on_firebase();
     }
 
-    private void upload_on_firebase() {
+    private void upload_add_on_firebase() {
         db.collection("Ads").document(banner.getAdId()).set(banner);
         Intent intent = new Intent(this, PaymentSuccessful.class);
         startActivity(intent);

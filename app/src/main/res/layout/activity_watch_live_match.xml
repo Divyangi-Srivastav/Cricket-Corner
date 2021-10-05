@@ -6,4 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".user.activities.WatchLiveMatch">
 
+    <Button
+        android:id="@+id/reward_a_player"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@drawable/buttons"
+        android:fontFamily="@font/montserrat"
+        android:text="Reward A player"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

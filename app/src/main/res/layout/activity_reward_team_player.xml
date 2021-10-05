@@ -78,7 +78,7 @@
                     android:layout_marginTop="25dp">
 
                     <EditText
-                        android:id="@+id/tournament_name"
+                        android:id="@+id/name"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat"
@@ -86,7 +86,7 @@
                         android:textSize="15sp" />
 
                     <ImageView
-                        android:id="@+id/tournament_name_cross"
+                        android:id="@+id/name_cross"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -122,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="25dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Select the Team"
+                    android:text="Select the Player"
                     android:textStyle="bold"
                     android:textColor="#112E52"
                     android:textSize="18sp" />
