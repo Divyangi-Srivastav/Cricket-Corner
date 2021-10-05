@@ -39,9 +39,9 @@ public class TrialThree extends AppCompatActivity {
     // Fill the App ID of your project generated on Agora Console.
     private String appId = "b7a4b110fced4c69921eb66e205a85d9";
     // Fill the channel name.
-    private String channelName = "Match";
+    private String channelName = "Match1";
     // Fill the temp token generated on Agora Console.
-    private String token = "006b7a4b110fced4c69921eb66e205a85d9IABAIs4w9Mc8jNaNO/by0vDAw16WCGbxsjo80NuglT6ECwHqmrsAAAAAEADkBngOzplJYQEAAQDPmUlh";
+    private String token = "006b7a4b110fced4c69921eb66e205a85d9IAC4io7SVl58xKMfq1CMhiAw8RpW2uXed5fQhMh486o92MtFYPQAAAAAEAApikcim5BdYQEAAQCckF1h";
 
     private RtcEngine mRtcEngine;
 
@@ -83,14 +83,15 @@ public class TrialThree extends AppCompatActivity {
         mRtcEngine.setupLocalVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_FIT, 0));
 
         ChannelMediaOptions options = new ChannelMediaOptions();
-        // Set the client role as BROADCASTER or AUDIENCE according to the scenario.
-        options.clientRoleType = Constants.CLIENT_ROLE_BROADCASTER;
         // For a live streaming scenario, set the channel profile as BROADCASTING.
         options.channelProfile = Constants.CHANNEL_PROFILE_LIVE_BROADCASTING;
+        // Set the client role as BROADCASTER or AUDIENCE according to the scenario.
+        options.clientRoleType = Constants.CLIENT_ROLE_AUDIENCE;
+
 
         // Join the channel with a temp token.
         // You need to specify the user ID yourself, and ensure that it is unique in the channel.
-        mRtcEngine.joinChannel(token, channelName, 8, options);
+        mRtcEngine.joinChannel(token, channelName, 9, options);
     }
 
     private void setupRemoteVideo(int uid) {
@@ -107,16 +108,15 @@ public class TrialThree extends AppCompatActivity {
         setContentView(R.layout.activity_trial_three);
 
         // If all the permissions are granted, initialize the RtcEngine object and join a channel.
-        if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) &&
-                checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
+        if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
             initializeAndJoinChannel();
         }
     }
 
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mRtcEngine.stopPreview();
-//        mRtcEngine.leaveChannel();
-//        RtcEngine.destroy();
-//    }
+    protected void onDestroy() {
+        super.onDestroy();
+        mRtcEngine.stopPreview();
+        mRtcEngine.leaveChannel();
+        RtcEngine.destroy();
+    }
 }
