@@ -4,7 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
@@ -22,6 +26,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        setSupportActionBar(binding.toolbar);
         binding.btnHostATour.setOnClickListener(this::onClick);
         binding.btnHostAMatch.setOnClickListener(this::onClick);
         binding.btnViewAdRequest.setOnClickListener(this::onClick);
@@ -69,5 +74,25 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent2);
                 break;
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.admin_side_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId())
+        {
+            case R.id.view_rewards:
+                Intent intent = new Intent(this,DisplayReward.class);
+                startActivity(intent);
+                break;
+        }
+
+        return true;
     }
 }

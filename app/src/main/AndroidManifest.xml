@@ -26,10 +26,6 @@
         <activity
             android:name=".activities.DisplayReward"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".user.activities.RewardTeamPlayer"
@@ -134,7 +130,12 @@
         <activity android:name=".authentication.LoginActivity" />
         <activity
             android:name=".activities.SplashActivity"
-            android:exported="true" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

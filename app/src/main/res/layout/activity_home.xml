@@ -15,23 +15,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/top_layout"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@color/textcolor"
-            app:layout_constraintTop_toTopOf="@id/rootLayout">
+            android:layout_height="80dp"
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.MaterialComponents.Light"
+            android:background="@color/bottom_nav_bg"
+            app:contentInsetStartWithNavigation="0dp">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/logowhite"
-                app:layout_constraintBottom_toBottomOf="@id/top_layout"
-                app:layout_constraintEnd_toEndOf="@id/top_layout"
-                app:layout_constraintStart_toStartOf="@id/top_layout"
-                app:layout_constraintTop_toTopOf="@id/top_layout" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/top_layout"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@color/textcolor"
+                app:layout_constraintTop_toTopOf="@id/rootLayout">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/logowhite"
+                    app:layout_constraintBottom_toBottomOf="@id/top_layout"
+                    app:layout_constraintEnd_toEndOf="@id/top_layout"
+                    app:layout_constraintStart_toStartOf="@id/top_layout"
+                    app:layout_constraintTop_toTopOf="@id/top_layout"
+                    app:layout_constraintVertical_bias="0.275" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.appcompat.widget.Toolbar>
 
         <ScrollView
             android:layout_width="match_parent"
