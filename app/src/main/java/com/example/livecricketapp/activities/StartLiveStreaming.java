@@ -7,12 +7,24 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.livecricketapp.R;
+import com.example.livecricketapp.adapters.AdRequestsAdapter;
 import com.example.livecricketapp.databinding.ActivityStartLiveStreamingBinding;
+import com.example.livecricketapp.model.AdBanner;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import io.agora.rtc2.ChannelMediaOptions;
 import io.agora.rtc2.Constants;
@@ -20,13 +32,15 @@ import io.agora.rtc2.IRtcEngineEventHandler;
 import io.agora.rtc2.RtcEngine;
 import io.agora.rtc2.RtcEngineConfig;
 import io.agora.rtc2.video.VideoCanvas;
-import io.agora.rtc2.video.VideoEncoderConfiguration;
 
-public class StartLiveStreaming extends AppCompatActivity {
+public class StartLiveStreaming extends AppCompatActivity implements AdRequestsAdapter.On_Click {
 
     private ActivityStartLiveStreamingBinding binding;
     private static final int PERMISSION_REQ_ID = 22;
-    private Boolean ismuted = true;
+    private Boolean isMuted = true;
+    private FirebaseFirestore db;
+    private List<AdBanner> adBanners = new ArrayList<>();
+    private AdRequestsAdapter adapter;
 
 
     private static final String[] REQUESTED_PERMISSIONS = {
@@ -96,7 +110,7 @@ public class StartLiveStreaming extends AppCompatActivity {
         // Set the client role as BROADCASTER or AUDIENCE according to the scenario.
         options.clientRoleType = Constants.CLIENT_ROLE_BROADCASTER;
 
-        mRtcEngine.muteLocalAudioStream(ismuted);
+        mRtcEngine.muteLocalAudioStream(isMuted);
         // Join the channel with a temp token.
         // You need to specify the user ID yourself, and ensure that it is unique in the channel.
         mRtcEngine.joinChannel(token, channelName, 567, options);
@@ -116,12 +130,26 @@ public class StartLiveStreaming extends AppCompatActivity {
         binding = ActivityStartLiveStreamingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        db = FirebaseFirestore.getInstance();
 
         // If all the permissions are granted, initialize the RtcEngine object and join a channel.
         if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
             initializeAndJoinChannel();
         }
 
+        get_ad_data();
+        adapter = new AdRequestsAdapter(this , adBanners , "admin" , this::change_status);
+        binding.recyclerViewAds.setAdapter(adapter);
+        binding.recyclerViewAds.setLayoutManager(new LinearLayoutManager(this ,LinearLayoutManager.HORIZONTAL,true));
+
+
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
     }
 
     protected void onDestroy() {
@@ -136,14 +164,59 @@ public class StartLiveStreaming extends AppCompatActivity {
     }
 
     public void microphone_change(View view) {
-        if (ismuted) {
-            ismuted = false;
+        if (isMuted) {
+            isMuted = false;
             binding.mic.setImageResource(R.drawable.ic_baseline_mic_24);
         } else {
-            ismuted = true;
+            isMuted = true;
             binding.mic.setImageResource(R.drawable.ic_baseline_mic_off_24);
         }
-        mRtcEngine.muteLocalAudioStream(ismuted);
+        mRtcEngine.muteLocalAudioStream(isMuted);
     }
 
+    private void get_ad_data() {
+        db.collection("Ads")
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        adBanners.clear();
+                        if (!value.isEmpty()) {
+                            for (QueryDocumentSnapshot snapshot : value) {
+                                AdBanner banner = snapshot.toObject(AdBanner.class);
+                                adBanners.add(banner);
+                                adapter.notifyDataSetChanged();
+                            }
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+
+    }
+
+    @Override
+    public void change_status(int a) {
+
+        switch ( adBanners.get(a).getAdStatus() )
+        {
+            case 0 :
+                adBanners.get(a).setAdStatus(1);
+                db.collection("Ads")
+                        .document(adBanners.get(a).getAdId()).set(adBanners.get(a));
+                break;
+            case 1 :
+                db.collection("Ads")
+                        .document(adBanners.get(a).getAdId()).delete();
+                adBanners.remove(a);
+                break;
+        }
+        adapter.notifyDataSetChanged();
+
+    }
 }
