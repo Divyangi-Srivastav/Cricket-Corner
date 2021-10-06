@@ -1,5 +1,6 @@
 package com.example.livecricketapp.user.activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -15,7 +16,12 @@ import android.widget.FrameLayout;
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.databinding.ActivityStartLiveStreamingBinding;
 import com.example.livecricketapp.databinding.ActivityWatchLiveMatchBinding;
+import com.example.livecricketapp.model.AllMatchInfo;
 import com.example.livecricketapp.model.SingleMatchInfo;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 import io.agora.rtc2.ChannelMediaOptions;
 import io.agora.rtc2.Constants;
@@ -29,7 +35,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
     private ActivityWatchLiveMatchBinding binding;
     private SingleMatchInfo singleMatchInfo;
     private String tournamentId;
-
+    private FirebaseFirestore db;
 
 
     private static final int PERMISSION_REQ_ID = 22;
@@ -120,13 +126,15 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         binding = ActivityWatchLiveMatchBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        db = FirebaseFirestore.getInstance();
+
         singleMatchInfo = new SingleMatchInfo();
         singleMatchInfo = (SingleMatchInfo) getIntent().getSerializableExtra("match");
         tournamentId = getIntent().getStringExtra("tour");
 
         binding.rewardAPlayer.setOnClickListener(this::onClick);
 
-
+        get_score();
 
         // If all the permissions are granted, initialize the RtcEngine object and join a channel.
         if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
@@ -157,5 +165,35 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         RtcEngine.destroy();
     }
 
+    private void get_score()
+    {
+        db.collection("Match Info")
+                .document(tournamentId)
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                        AllMatchInfo info = value.toObject(AllMatchInfo.class);
+
+                        for ( int i=0 ; i < info.getMatchInfos().size() ; i++ )
+                        {
+                            if ( info.getMatchInfos().get(i).getMatchNo().equalsIgnoreCase(singleMatchInfo.getMatchNo()) )
+                            {
+                                SingleMatchInfo singleMatchInfo = info.getMatchInfos().get(i);
+                                update_score(singleMatchInfo);
+                            }
+                        }
+                    }
+                });
+    }
+
+    private void update_score ( SingleMatchInfo info )
+    {
+        binding.team1Score.setText(info.getTeam1Score().getTeamName() + "  " +
+                String.valueOf(info.getTeam1Score().getTeamRuns()) + "/" +
+                String.valueOf(info.getTeam1Score().getTeamWickets()));
+        binding.team2Score.setText(info.getTeam2Score().getTeamName() + "  " +
+                String.valueOf(info.getTeam2Score().getTeamRuns()) + "/" +
+                String.valueOf(info.getTeam2Score().getTeamWickets()));
+    }
 
 }

@@ -20,15 +20,20 @@ import io.agora.rtc2.IRtcEngineEventHandler;
 import io.agora.rtc2.RtcEngine;
 import io.agora.rtc2.RtcEngineConfig;
 import io.agora.rtc2.video.VideoCanvas;
+import io.agora.rtc2.video.VideoEncoderConfiguration;
 
 public class StartLiveStreaming extends AppCompatActivity {
 
     private ActivityStartLiveStreamingBinding binding;
     private static final int PERMISSION_REQ_ID = 22;
+    private Boolean ismuted = true;
+
+
     private static final String[] REQUESTED_PERMISSIONS = {
             Manifest.permission.RECORD_AUDIO,
             Manifest.permission.CAMERA
     };
+
     private boolean checkSelfPermission(String permission, int requestCode) {
         if (ContextCompat.checkSelfPermission(this, permission) !=
                 PackageManager.PERMISSION_GRANTED) {
@@ -69,7 +74,7 @@ public class StartLiveStreaming extends AppCompatActivity {
             config.mEventHandler = mRtcEventHandler;
             mRtcEngine = RtcEngine.create(config);
         } catch (Exception e) {
-            throw new RuntimeException("Check the error." + e.toString() );
+            throw new RuntimeException("Check the error." + e.toString());
         }
         // By default, video is disabled, and you need to call enableVideo to start a video stream.
         mRtcEngine.enableVideo();
@@ -80,7 +85,7 @@ public class StartLiveStreaming extends AppCompatActivity {
         FrameLayout container = findViewById(R.id.local_video_view_container);
         // Call CreateRendererView to create a SurfaceView object and add it as a child to the FrameLayout.
         // SurfaceView surfaceView = RtcEngine.CreateRendererView(getBaseContext());
-        SurfaceView surfaceView = new SurfaceView (getBaseContext());
+        SurfaceView surfaceView = new SurfaceView(getBaseContext());
         container.addView(surfaceView);
         // Pass the SurfaceView object to Agora so that it renders the local video.
         mRtcEngine.setupLocalVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_FIT, 0));
@@ -91,7 +96,7 @@ public class StartLiveStreaming extends AppCompatActivity {
         // Set the client role as BROADCASTER or AUDIENCE according to the scenario.
         options.clientRoleType = Constants.CLIENT_ROLE_BROADCASTER;
 
-
+        mRtcEngine.muteLocalAudioStream(ismuted);
         // Join the channel with a temp token.
         // You need to specify the user ID yourself, and ensure that it is unique in the channel.
         mRtcEngine.joinChannel(token, channelName, 567, options);
@@ -126,9 +131,19 @@ public class StartLiveStreaming extends AppCompatActivity {
         RtcEngine.destroy();
     }
 
-    public void switch_camera(View view )
-    {
+    public void switch_camera(View view) {
         mRtcEngine.switchCamera();
+    }
+
+    public void microphone_change(View view) {
+        if (ismuted) {
+            ismuted = false;
+            binding.mic.setImageResource(R.drawable.ic_baseline_mic_24);
+        } else {
+            ismuted = true;
+            binding.mic.setImageResource(R.drawable.ic_baseline_mic_off_24);
+        }
+        mRtcEngine.muteLocalAudioStream(ismuted);
     }
 
 }
