@@ -4,7 +4,6 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:layout_marginLeft="20dp"
-    android:layout_marginTop="10dp"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -35,7 +34,7 @@
                 <TextView
                     android:id="@+id/ad_text"
                     android:layout_width="match_parent"
-                    android:layout_height="22dp"
+                    android:layout_height="45dp"
                     android:fontFamily="@font/montserrat"
                     android:text="Message For Ad Banner"
                     android:textColor="#112E52"
@@ -54,17 +53,18 @@
                     android:id="@+id/linear_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:layout_gravity="center_vertical">
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center">
 
                     <TextView
                         android:id="@+id/show_add"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="5dp"
                         android:background="@drawable/buttons"
                         android:fontFamily="@font/montserrat"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
                         android:text="Show"
                         android:textColor="@color/white"
                         android:textSize="14sp" />

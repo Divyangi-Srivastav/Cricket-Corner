@@ -140,7 +140,7 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
         get_ad_data();
         adapter = new AdRequestsAdapter(this , adBanners , "admin" , this::change_status);
         binding.recyclerViewAds.setAdapter(adapter);
-        binding.recyclerViewAds.setLayoutManager(new LinearLayoutManager(this ,LinearLayoutManager.HORIZONTAL,true));
+        binding.recyclerViewAds.setLayoutManager(new LinearLayoutManager(this ,LinearLayoutManager.HORIZONTAL,false));
 
 
         View decorView = getWindow().getDecorView();
@@ -196,8 +196,6 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
-
     }
 
     @Override

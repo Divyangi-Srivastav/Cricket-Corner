@@ -54,6 +54,7 @@ public class AdRequestsAdapter extends RecyclerView.Adapter<AdRequestsAdapter.Ad
         if ( string.equalsIgnoreCase("user") )
         {
             holder.linearLayout.setVisibility(View.GONE);
+            holder.adTime.setVisibility(View.GONE);
         }
 
         switch (bannerList.get(position).getAdStatus())
