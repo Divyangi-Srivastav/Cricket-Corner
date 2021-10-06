@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +16,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.adapters.AdRequestsAdapter;
+import com.example.livecricketapp.adapters.CommentsAdapter;
 import com.example.livecricketapp.databinding.ActivityStartLiveStreamingBinding;
 import com.example.livecricketapp.model.AdBanner;
+import com.example.livecricketapp.model.Comments;
+import com.example.livecricketapp.user.activities.WatchLiveMatch;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -33,14 +38,19 @@ import io.agora.rtc2.RtcEngine;
 import io.agora.rtc2.RtcEngineConfig;
 import io.agora.rtc2.video.VideoCanvas;
 
-public class StartLiveStreaming extends AppCompatActivity implements AdRequestsAdapter.On_Click {
+public class StartLiveStreaming extends AppCompatActivity implements AdRequestsAdapter.On_Click , CommentsAdapter.On_Click {
 
     private ActivityStartLiveStreamingBinding binding;
     private static final int PERMISSION_REQ_ID = 22;
     private Boolean isMuted = true;
     private FirebaseFirestore db;
     private List<AdBanner> adBanners = new ArrayList<>();
-    private AdRequestsAdapter adapter;
+    private List<String> commentList = new ArrayList<>();
+    private AdRequestsAdapter adRequestsAdapter;
+    private CommentsAdapter commentsAdapter;
+    private String tournamentId;
+    private Comments comments;
+
 
 
     private static final String[] REQUESTED_PERMISSIONS = {
@@ -62,7 +72,7 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
     // Fill the channel name.
     private String channelName = "Match1";
     // Fill the temp token generated on Agora Console.
-    private String token = "006b7a4b110fced4c69921eb66e205a85d9IAC4io7SVl58xKMfq1CMhiAw8RpW2uXed5fQhMh486o92MtFYPQAAAAAEAApikcim5BdYQEAAQCckF1h";
+    private String token = "006b7a4b110fced4c69921eb66e205a85d9IAApmrAhDDjVge3wxDOdX7U5c8MdGB9PjMIJK+/DyBXVqstFYPQAAAAAEABkg7/N0/5eYQEAAQDS/l5h";
 
     private RtcEngine mRtcEngine;
 
@@ -132,16 +142,24 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
 
         db = FirebaseFirestore.getInstance();
 
+        tournamentId = getIntent().getStringExtra("tour");
+        comments = new Comments();
+
         // If all the permissions are granted, initialize the RtcEngine object and join a channel.
         if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
             initializeAndJoinChannel();
         }
 
         get_ad_data();
-        adapter = new AdRequestsAdapter(this , adBanners , "admin" , this::change_status);
-        binding.recyclerViewAds.setAdapter(adapter);
+        adRequestsAdapter = new AdRequestsAdapter(this , adBanners , "admin" , this::change_status);
+        binding.recyclerViewAds.setAdapter(adRequestsAdapter);
         binding.recyclerViewAds.setLayoutManager(new LinearLayoutManager(this ,LinearLayoutManager.HORIZONTAL,false));
 
+
+        get_comments();
+        commentsAdapter = new CommentsAdapter(this , commentList , this::delete_comment , "admin");
+        binding.recyclerViewComments.setAdapter(commentsAdapter);
+        binding.recyclerViewComments.setLayoutManager(new LinearLayoutManager(this));
 
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -150,13 +168,6 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-    }
-
-    protected void onDestroy() {
-        super.onDestroy();
-        mRtcEngine.stopPreview();
-        mRtcEngine.leaveChannel();
-        RtcEngine.destroy();
     }
 
     public void switch_camera(View view) {
@@ -174,6 +185,36 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
         mRtcEngine.muteLocalAudioStream(isMuted);
     }
 
+
+    // get and update comments
+    private void get_comments() {
+        db.collection("Comments")
+                .document(tournamentId)
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                        assert value != null;
+                        if (value.exists()) {
+                            commentList.clear();
+                            comments = value.toObject(Comments.class);
+                            commentList.addAll(comments.getCommentsList());
+                            commentsAdapter.notifyDataSetChanged();
+                        }
+                    }
+                });
+    }
+
+    @Override
+    public void delete_comment(int a) {
+        commentList.remove(a);
+        comments.setCommentsList(commentList);
+
+        db.collection("Comments").document(tournamentId).set(comments);
+        Toast.makeText(this, "Comment Removed Successfully", Toast.LENGTH_SHORT).show();
+    }
+
+
+    // advertisement add and remove
     private void get_ad_data() {
         db.collection("Ads")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -184,18 +225,12 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
                             for (QueryDocumentSnapshot snapshot : value) {
                                 AdBanner banner = snapshot.toObject(AdBanner.class);
                                 adBanners.add(banner);
-                                adapter.notifyDataSetChanged();
+                                adRequestsAdapter.notifyDataSetChanged();
                             }
                         }
-                        adapter.notifyDataSetChanged();
+                        adRequestsAdapter.notifyDataSetChanged();
                     }
                 });
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 
     @Override
@@ -214,7 +249,21 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
                 adBanners.remove(a);
                 break;
         }
-        adapter.notifyDataSetChanged();
+        adRequestsAdapter.notifyDataSetChanged();
 
     }
+
+    protected void onDestroy() {
+        super.onDestroy();
+        mRtcEngine.stopPreview();
+        mRtcEngine.leaveChannel();
+        RtcEngine.destroy();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+
 }

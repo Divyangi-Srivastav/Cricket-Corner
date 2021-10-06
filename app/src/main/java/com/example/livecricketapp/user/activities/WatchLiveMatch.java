@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.adapters.AdRequestsAdapter;
+import com.example.livecricketapp.adapters.CommentsAdapter;
 import com.example.livecricketapp.databinding.ActivityWatchLiveMatchBinding;
 import com.example.livecricketapp.model.AdBanner;
 import com.example.livecricketapp.model.AllMatchInfo;
@@ -38,14 +39,16 @@ import io.agora.rtc2.RtcEngine;
 import io.agora.rtc2.RtcEngineConfig;
 import io.agora.rtc2.video.VideoCanvas;
 
-public class WatchLiveMatch extends AppCompatActivity implements View.OnClickListener, AdRequestsAdapter.On_Click {
+public class WatchLiveMatch extends AppCompatActivity implements View.OnClickListener, AdRequestsAdapter.On_Click , CommentsAdapter.On_Click {
 
     private ActivityWatchLiveMatchBinding binding;
     private SingleMatchInfo singleMatchInfo;
     private String tournamentId;
     private FirebaseFirestore db;
     private List<AdBanner> adBanners = new ArrayList<>();
-    private AdRequestsAdapter adapter;
+    private List<String> commentList = new ArrayList<>();
+    private AdRequestsAdapter adRequestsAdapter;
+    private CommentsAdapter commentsAdapter;
     private Comments comments;
 
 
@@ -69,7 +72,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
     // Fill the channel name.
     private String channelName = "Match1";
     // Fill the temp token generated on Agora Console.
-    private String token = "006b7a4b110fced4c69921eb66e205a85d9IAC4io7SVl58xKMfq1CMhiAw8RpW2uXed5fQhMh486o92MtFYPQAAAAAEAApikcim5BdYQEAAQCckF1h";
+    private String token = "006b7a4b110fced4c69921eb66e205a85d9IAApmrAhDDjVge3wxDOdX7U5c8MdGB9PjMIJK+/DyBXVqstFYPQAAAAAEABkg7/N0/5eYQEAAQDS/l5h";
 
     private RtcEngine mRtcEngine;
 
@@ -146,20 +149,33 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         comments = new Comments();
 
         get_ad_data();
-        adapter = new AdRequestsAdapter(this, adBanners, "user", this::change_status);
-        binding.recyclerViewAds.setAdapter(adapter);
+        adRequestsAdapter = new AdRequestsAdapter(this, adBanners, "user", this::change_status);
+        binding.recyclerViewAds.setAdapter(adRequestsAdapter);
         binding.recyclerViewAds.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        get_comments();
+        commentsAdapter = new CommentsAdapter(WatchLiveMatch.this , commentList , WatchLiveMatch.this::delete_comment , "user");
+        binding.recyclerViewComments.setAdapter(commentsAdapter);
+        binding.recyclerViewComments.setLayoutManager(new LinearLayoutManager(WatchLiveMatch.this));
 
         binding.rewardAPlayer.setOnClickListener(this::onClick);
         binding.send.setOnClickListener(this::onClick);
 
         get_score();
-        get_comments();
+
 
         // If all the permissions are granted, initialize the RtcEngine object and join a channel.
         if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
             initializeAndJoinChannel();
         }
+
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
     }
 
@@ -175,6 +191,14 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
                 break;
 
             case R.id.send:
+
+                View decorView = getWindow().getDecorView();
+                decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
                 List<String> commentList = new ArrayList<>();
                 commentList = comments.getCommentsList();
@@ -203,8 +227,12 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
                 .addSnapshotListener(new EventListener<DocumentSnapshot>() {
                     @Override
                     public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                        assert value != null;
                         if (value.exists()) {
+                            commentList.clear();
                             comments = value.toObject(Comments.class);
+                            commentList.addAll(comments.getCommentsList());
+                            commentsAdapter.notifyDataSetChanged();
                         }
                     }
                 });
@@ -261,19 +289,14 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
                                 AdBanner banner = snapshot.toObject(AdBanner.class);
                                 if (banner.getAdStatus() == 1)
                                     adBanners.add(banner);
-                                adapter.notifyDataSetChanged();
+                                adRequestsAdapter.notifyDataSetChanged();
                             }
                         }
-                        adapter.notifyDataSetChanged();
+                        adRequestsAdapter.notifyDataSetChanged();
                     }
                 });
     }
 
-
-    @Override
-    public void change_status(int a) {
-
-    }
 
 
     protected void onDestroy() {
@@ -281,5 +304,15 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         mRtcEngine.stopPreview();
         mRtcEngine.leaveChannel();
         RtcEngine.destroy();
+    }
+
+
+    @Override
+    public void change_status(int a) {
+
+    }
+    @Override
+    public void delete_comment(int a) {
+
     }
 }
