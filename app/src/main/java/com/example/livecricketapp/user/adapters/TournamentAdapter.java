@@ -86,7 +86,7 @@ public class TournamentAdapter extends RecyclerView.Adapter<TournamentAdapter.To
             start_date = itemView.findViewById(R.id.start_date);
             end_date = itemView.findViewById(R.id.end_date);
             winning_team = itemView.findViewById(R.id.winning_team);
-            cardView = itemView.findViewById(R.id.card_view);
+            cardView = itemView.findViewById(R.id.linear_layout);
             view_more = itemView.findViewById(R.id.view_more);
         }
     }

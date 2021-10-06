@@ -39,9 +39,9 @@ public class AdsRequest extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         get_data();
 
-        adapter = new AdRequestsAdapter(this , bannerList);
-        binding.recyclerView.setAdapter(adapter);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        adapter = new AdRequestsAdapter(this , bannerList , "admin");
+//        binding.recyclerView.setAdapter(adapter);
+//        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -79,9 +79,9 @@ public class AdsRequest extends AppCompatActivity {
                         {
                             for (QueryDocumentSnapshot snapshot : task.getResult())
                             {
-                                AdBanner banner = snapshot.toObject(AdBanner.class);
-                                bannerList.add(banner);
-                                adapter.notifyDataSetChanged();
+//                                AdBanner banner = snapshot.toObject(AdBanner.class);
+//                                bannerList.add(banner);
+//                                adapter.notifyDataSetChanged();
                             }
                         }
                     }

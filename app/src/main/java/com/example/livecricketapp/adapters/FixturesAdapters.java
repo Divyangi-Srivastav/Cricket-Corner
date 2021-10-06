@@ -85,7 +85,7 @@ public class FixturesAdapters extends RecyclerView.Adapter<FixturesAdapters.Fixt
 
         public FixturesViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardView = itemView.findViewById(R.id.card_view);
+            cardView = itemView.findViewById(R.id.linear_layout);
             match = itemView.findViewById(R.id.match);
             team1 = itemView.findViewById(R.id.team1);
             team2 = itemView.findViewById(R.id.team2);

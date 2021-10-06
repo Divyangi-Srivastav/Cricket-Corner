@@ -21,7 +21,7 @@
         android:layout_height="match_parent"
         android:background="@android:color/white"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" >
+        tools:layout_editor_absoluteY="0dp">
 
         <FrameLayout
             android:id="@+id/remote_video_view_container"

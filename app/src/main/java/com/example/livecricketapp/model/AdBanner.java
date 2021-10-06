@@ -15,6 +15,8 @@ public class AdBanner implements Serializable {
     private String requestDate;
     private String requestTime;
 
+    // 0 - payment done
+    // 1 - showing
 
     public AdBanner ()
     {
