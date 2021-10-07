@@ -41,7 +41,7 @@ class SignupActivity : AppCompatActivity() {
                             val shared = Shared(applicationContext)
                             Toast.makeText(this, "Successfully Registered", Toast.LENGTH_LONG).show()
                             val userHelper =
-                                UserHelper(et_first_name.text.toString(), et_mobile.text.toString(), et_signupid.text.toString(), et_password.text.toString(), et_address_line1.getText().toString() + " " + et_city_state.getText().toString() + " - " + et_pincode.getText().toString(), user_key)
+                                UserHelper(et_first_name.text.toString(), et_mobile.text.toString(), et_signupid.text.toString(), et_address_line1.getText().toString() + " " + et_city_state.getText().toString() + " - " + et_pincode.getText().toString(), user_key)
                             refrence.child(user_key).setValue(userHelper)
                             val intent = Intent(this, HomeActivity::class.java)
                             intent.putExtra("userName", et_signupid.text.toString())

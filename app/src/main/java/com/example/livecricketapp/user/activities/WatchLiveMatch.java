@@ -122,7 +122,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
 
         // Join the channel with a temp token.
         // You need to specify the user ID yourself, and ensure that it is unique in the channel.
-        mRtcEngine.joinChannel(token, channelName, 897, options);
+        mRtcEngine.joinChannel(token, channelName, (int) System.currentTimeMillis(), options);
     }
 
     private void setupRemoteVideo(int uid) {
@@ -219,8 +219,14 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
 
             case R.id.full_screen:
 
-
-
+                mRtcEngine.stopPreview();
+                mRtcEngine.leaveChannel();
+                RtcEngine.destroy();
+                Intent intent2 = new Intent(this, FullScreenMatchPreview.class);
+                intent2.putExtra("match", singleMatchInfo);
+                intent2.putExtra("tour", tournamentId);
+                startActivity(intent2);
+                finish();
                 break;
 
         }

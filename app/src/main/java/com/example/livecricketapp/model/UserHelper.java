@@ -2,17 +2,25 @@ package com.example.livecricketapp.model;
 
 public class UserHelper {
 
-    String userName, userPhoneno,userEmail, userPassword, userAddress, userKey;
+    String userName, userPhoneno,userEmail, userAddress, userKey ;
+    private String status = "user";
 
     public UserHelper() {}
 
-    public UserHelper(String userName, String userPhoneno, String userEmail, String userPassword, String userAddress, String userKey) {
+    public UserHelper(String userName, String userPhoneno, String userEmail, String userAddress, String userKey) {
         this.userName = userName;
         this.userPhoneno = userPhoneno;
         this.userEmail = userEmail;
-        this.userPassword = userPassword;
         this.userAddress = userAddress;
         this.userKey = userKey;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getUserName() {
@@ -37,14 +45,6 @@ public class UserHelper {
 
     public void setUserEmail(String userEmail) {
         this.userEmail = userEmail;
-    }
-
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
     }
 
     public String getUserAddress() {

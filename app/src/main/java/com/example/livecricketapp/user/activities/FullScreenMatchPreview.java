@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,7 +38,7 @@ public class FullScreenMatchPreview extends AppCompatActivity implements View.On
     private FirebaseFirestore db;
 
 
-    private static final int PERMISSION_REQ_ID = 22;
+    private static final int PERMISSION_REQ_ID = 12;
     private static final String[] REQUESTED_PERMISSIONS = {
             Manifest.permission.RECORD_AUDIO,
             Manifest.permission.CAMERA
@@ -107,7 +108,8 @@ public class FullScreenMatchPreview extends AppCompatActivity implements View.On
 
         // Join the channel with a temp token.
         // You need to specify the user ID yourself, and ensure that it is unique in the channel.
-        mRtcEngine.joinChannel(token, channelName, 897, options);
+        mRtcEngine.joinChannel(token, channelName, (int) System.currentTimeMillis(), options);
+        Toast.makeText(this, "hhhhhh", Toast.LENGTH_SHORT).show();
     }
 
     private void setupRemoteVideo(int uid) {
@@ -194,8 +196,14 @@ public class FullScreenMatchPreview extends AppCompatActivity implements View.On
                 break;
 
             case R.id.full_screen:
-
-
+                mRtcEngine.stopPreview();
+                mRtcEngine.leaveChannel();
+                RtcEngine.destroy();
+                Intent intent2 = new Intent(this, WatchLiveMatch.class);
+                intent2.putExtra("match", singleMatchInfo);
+                intent2.putExtra("tour", tournamentId);
+                startActivity(intent2);
+                finish();
                 break;
         }
     }

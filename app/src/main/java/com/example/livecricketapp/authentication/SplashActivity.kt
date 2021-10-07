@@ -1,11 +1,10 @@
-package com.example.livecricketapp.activities
+package com.example.livecricketapp.authentication
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.livecricketapp.R
-import com.example.livecricketapp.authentication.LoginActivity
 
 class SplashActivity : AppCompatActivity() {
 
