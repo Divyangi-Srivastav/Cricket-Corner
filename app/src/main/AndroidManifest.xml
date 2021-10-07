@@ -25,7 +25,8 @@
         android:theme="@style/Theme.LiveCricketApp">
         <activity
             android:name=".user.activities.DashboardUser"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.SettingsAdmin"
             android:exported="true" />

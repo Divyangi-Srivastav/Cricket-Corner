@@ -77,7 +77,7 @@ public class Tournaments extends AppCompatActivity implements TournamentAdapter.
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(Tournaments.this , DashboardAdmin.class);
+                        Intent intent1 = new Intent(Tournaments.this , DashboardUser.class);
                         startActivity(intent1);
                         break;
 

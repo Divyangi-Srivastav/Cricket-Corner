@@ -65,7 +65,7 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(TeamsAndMatches.this , DashboardAdmin.class);
+                        Intent intent1 = new Intent(TeamsAndMatches.this , DashboardUser.class);
                         startActivity(intent1);
                         break;
 

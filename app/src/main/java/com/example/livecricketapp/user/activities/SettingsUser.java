@@ -36,7 +36,7 @@ public class SettingsUser extends AppCompatActivity {
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(SettingsUser.this , DashboardAdmin.class);
+                        Intent intent1 = new Intent(SettingsUser.this , DashboardUser.class);
                         startActivity(intent1);
                         break;
 

@@ -82,7 +82,7 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(MatchActivity.this, DashboardAdmin.class);
+                        Intent intent1 = new Intent(MatchActivity.this, DashboardUser.class);
                         startActivity(intent1);
                         break;
 

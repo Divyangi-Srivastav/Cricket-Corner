@@ -39,7 +39,7 @@ public class ChangePassword extends AppCompatActivity {
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(ChangePassword.this , DashboardAdmin.class);
+                        Intent intent1 = new Intent(ChangePassword.this , DashboardUser.class);
                         startActivity(intent1);
                         break;
 

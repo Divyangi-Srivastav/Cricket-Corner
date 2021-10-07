@@ -1,15 +1,20 @@
 package com.example.livecricketapp.user.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.livecricketapp.R;
+import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityDashboardUserBinding;
 import com.example.livecricketapp.model.UserHelper;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -37,6 +42,29 @@ public class DashboardUser extends AppCompatActivity {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         get_user();
+
+        binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.home:
+                        Intent intent = new Intent(DashboardUser.this, HomeActivityUser.class);
+                        startActivity(intent);
+                        break;
+
+                    case R.id.settings:
+                        Intent intent2 = new Intent(DashboardUser.this, SettingsUser.class);
+                        startActivity(intent2);
+                        break;
+
+                    case R.id.account:
+                        break;
+
+                }
+                return true;
+            }
+        });
     }
 
     public void edit_content(View view) {
@@ -105,15 +133,19 @@ public class DashboardUser extends AppCompatActivity {
         binding.address.setText(userHelper.getUserAddress());
     }
 
-    private void update_on_firebase ( View view )
+    public void update_on_firebase ( View view )
     {
         if ( check_empty() )
         {
             user.setUserEmail(binding.email.getText().toString());
             user.setUserPhoneno(binding.phone.getText().toString());
-            user.setUserAddress(binding.phone.getText().toString());
+            user.setUserAddress(binding.address.getText().toString());
 
             reference.child(firebaseUser.getUid()).setValue(user);
+            Toast.makeText(this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+            binding.email.setFocusable(false);
+            binding.name.setFocusable(false);
+            binding.address.setFocusable(false);
         }
     }
 

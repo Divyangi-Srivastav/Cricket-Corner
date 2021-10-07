@@ -45,7 +45,7 @@ public class TeamActivity extends AppCompatActivity {
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(TeamActivity.this , DashboardAdmin.class);
+                        Intent intent1 = new Intent(TeamActivity.this , DashboardUser.class);
                         startActivity(intent1);
                         break;
 

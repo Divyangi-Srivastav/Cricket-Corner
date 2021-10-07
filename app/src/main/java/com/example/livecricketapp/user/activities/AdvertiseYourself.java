@@ -67,7 +67,7 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(AdvertiseYourself.this, DashboardAdmin.class);
+                        Intent intent1 = new Intent(AdvertiseYourself.this, DashboardUser.class);
                         startActivity(intent1);
                         break;
 

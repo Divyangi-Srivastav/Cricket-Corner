@@ -39,7 +39,7 @@ public class PaymentSuccessful extends AppCompatActivity {
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(PaymentSuccessful.this , DashboardAdmin.class);
+                        Intent intent1 = new Intent(PaymentSuccessful.this , DashboardUser.class);
                         startActivity(intent1);
                         break;
 

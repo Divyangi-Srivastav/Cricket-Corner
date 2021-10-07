@@ -69,7 +69,7 @@ public class BuySubscription extends AppCompatActivity implements View.OnClickLi
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(BuySubscription.this , DashboardAdmin.class);
+                        Intent intent1 = new Intent(BuySubscription.this , DashboardUser.class);
                         startActivity(intent1);
                         break;
 

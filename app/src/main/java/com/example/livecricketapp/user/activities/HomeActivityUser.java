@@ -42,7 +42,7 @@ public class HomeActivityUser extends AppCompatActivity implements View.OnClickL
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(HomeActivityUser.this , DashboardAdmin.class);
+                        Intent intent1 = new Intent(HomeActivityUser.this , DashboardUser.class);
                         startActivity(intent1);
                         break;
 
