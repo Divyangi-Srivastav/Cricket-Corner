@@ -35,8 +35,6 @@ public class HomeActivityUser extends AppCompatActivity implements View.OnClickL
 
                 switch ( item.getItemId() ) {
                     case R.id.home:
-                        Intent intent = new Intent(HomeActivityUser.this , HomeActivityUser.class);
-                        startActivity(intent);
                         break;
 
                     case R.id.settings:
@@ -61,8 +59,7 @@ public class HomeActivityUser extends AppCompatActivity implements View.OnClickL
         switch (v.getId())
         {
             case R.id.btn_view_a_match:
-                Intent intent3 = new Intent(this , HostMatchActivityOne.class);
-                startActivity(intent3);
+
                 break;
             case R.id.btn_view_a_tour:
                 Intent intent = new Intent( this ,Tournaments.class );
