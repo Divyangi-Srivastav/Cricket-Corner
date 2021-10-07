@@ -9,8 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.Dashboard;
-import com.example.livecricketapp.activities.HomeActivity;
+import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityTeamBinding;
 import com.example.livecricketapp.model.SingleTeamInfo;
 import com.google.android.material.navigation.NavigationBarView;
@@ -46,7 +45,7 @@ public class TeamActivity extends AppCompatActivity {
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(TeamActivity.this , Dashboard.class);
+                        Intent intent1 = new Intent(TeamActivity.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

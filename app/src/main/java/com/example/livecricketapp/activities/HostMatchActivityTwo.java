@@ -46,11 +46,12 @@ public class HostMatchActivityTwo extends AppCompatActivity implements View.OnCl
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(HostMatchActivityTwo.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(HostMatchActivityTwo.this , Dashboard.class);
+                        Intent intent1 = new Intent(HostMatchActivityTwo.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

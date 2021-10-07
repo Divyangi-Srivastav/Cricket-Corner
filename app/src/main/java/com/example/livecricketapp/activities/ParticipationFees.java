@@ -62,11 +62,12 @@ public class ParticipationFees extends AppCompatActivity implements Participatio
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(ParticipationFees.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(ParticipationFees.this , Dashboard.class);
+                        Intent intent1 = new Intent(ParticipationFees.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

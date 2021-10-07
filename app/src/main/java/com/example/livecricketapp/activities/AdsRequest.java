@@ -23,7 +23,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdsRequest extends AppCompatActivity {
+public class AdsRequest extends AppCompatActivity implements AdRequestsAdapter.On_Click {
 
     private ActivityAdsRequestBinding binding;
     private FirebaseFirestore db;
@@ -39,9 +39,9 @@ public class AdsRequest extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         get_data();
 
-//        adapter = new AdRequestsAdapter(this , bannerList , "admin");
-//        binding.recyclerView.setAdapter(adapter);
-//        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new AdRequestsAdapter(this , bannerList , "admin" , this::change_status);
+        binding.recyclerView.setAdapter(adapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -54,11 +54,12 @@ public class AdsRequest extends AppCompatActivity {
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(AdsRequest.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(AdsRequest.this , Dashboard.class);
+                        Intent intent1 = new Intent(AdsRequest.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 
@@ -79,9 +80,9 @@ public class AdsRequest extends AppCompatActivity {
                         {
                             for (QueryDocumentSnapshot snapshot : task.getResult())
                             {
-//                                AdBanner banner = snapshot.toObject(AdBanner.class);
-//                                bannerList.add(banner);
-//                                adapter.notifyDataSetChanged();
+                                AdBanner banner = snapshot.toObject(AdBanner.class);
+                                bannerList.add(banner);
+                                adapter.notifyDataSetChanged();
                             }
                         }
                     }
@@ -93,4 +94,8 @@ public class AdsRequest extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    public void change_status(int a) {
+
+    }
 }

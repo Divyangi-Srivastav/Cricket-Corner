@@ -12,8 +12,7 @@ import android.view.View;
 
 import com.example.livecricketapp.DataOperations.OperationOnDate;
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.Dashboard;
-import com.example.livecricketapp.activities.HomeActivity;
+import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityTournamentsBinding;
 import com.example.livecricketapp.model.TournamentInfo;
 import com.example.livecricketapp.user.adapters.TournamentAdapter;
@@ -78,7 +77,7 @@ public class Tournaments extends AppCompatActivity implements TournamentAdapter.
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(Tournaments.this , Dashboard.class);
+                        Intent intent1 = new Intent(Tournaments.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

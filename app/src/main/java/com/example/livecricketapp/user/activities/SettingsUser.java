@@ -9,8 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.Dashboard;
-import com.example.livecricketapp.activities.HomeActivity;
+import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivitySettingsUserBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -34,12 +33,10 @@ public class SettingsUser extends AppCompatActivity {
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(SettingsUser.this , SettingsUser.class);
-                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(SettingsUser.this , Dashboard.class);
+                        Intent intent1 = new Intent(SettingsUser.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

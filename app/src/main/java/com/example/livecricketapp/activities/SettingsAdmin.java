@@ -1,4 +1,4 @@
-package com.example.livecricketapp.user.activities;
+package com.example.livecricketapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,18 +9,19 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.DashboardAdmin;
-import com.example.livecricketapp.databinding.ActivityChangePasswordBinding;
+import com.example.livecricketapp.databinding.ActivitySettingsAdminBinding;
+import com.example.livecricketapp.user.activities.HomeActivityUser;
+import com.example.livecricketapp.user.activities.SettingsUser;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class ChangePassword extends AppCompatActivity {
+public class SettingsAdmin extends AppCompatActivity {
 
-    private ActivityChangePasswordBinding binding;
+    private ActivitySettingsAdminBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityChangePasswordBinding.inflate(getLayoutInflater());
+        binding = ActivitySettingsAdminBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -29,17 +30,15 @@ public class ChangePassword extends AppCompatActivity {
 
                 switch ( item.getItemId() ) {
                     case R.id.home:
-                        Intent intent = new Intent(ChangePassword.this , HomeActivityUser.class);
+                        Intent intent = new Intent(SettingsAdmin.this , HomeActivity.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(ChangePassword.this , SettingsUser.class);
-                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(ChangePassword.this , DashboardAdmin.class);
+                        Intent intent1 = new Intent(SettingsAdmin.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 
@@ -49,8 +48,14 @@ public class ChangePassword extends AppCompatActivity {
         });
     }
 
-    public void back(View view) {
-        finish();
+    public void log_out (View view)
+    {
+
+    }
+
+    public void change_Password ( View view )
+    {
+
     }
 
 }

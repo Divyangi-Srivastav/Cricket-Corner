@@ -10,8 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.Dashboard;
-import com.example.livecricketapp.activities.HomeActivity;
+import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityViewSubscriptionBinding;
 import com.example.livecricketapp.model.AllSubscriptions;
 import com.example.livecricketapp.user.adapters.ViewSubscriptionAdapter;
@@ -56,7 +55,7 @@ public class ViewSubscription extends AppCompatActivity {
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(ViewSubscription.this , Dashboard.class);
+                        Intent intent1 = new Intent(ViewSubscription.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

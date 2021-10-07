@@ -23,7 +23,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.connection.HostInfo;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -32,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dashboard extends AppCompatActivity implements DashboardAdapter.Move_Next {
+public class DashboardAdmin extends AppCompatActivity implements DashboardAdapter.Move_Next {
 
     private ActivityDashboardBinding binding;
     private DashboardAdapter dashboardAdapter;
@@ -56,17 +55,17 @@ public class Dashboard extends AppCompatActivity implements DashboardAdapter.Mov
 
                 switch ( item.getItemId() ) {
                     case R.id.home:
-                        Intent intent = new Intent(Dashboard.this , HomeActivity.class);
+                        Intent intent = new Intent(DashboardAdmin.this , HomeActivity.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(DashboardAdmin.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(Dashboard.this , Dashboard.class);
-                        startActivity(intent1);
+
                         break;
 
                 }

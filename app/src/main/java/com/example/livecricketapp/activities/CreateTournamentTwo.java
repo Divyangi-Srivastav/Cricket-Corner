@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
@@ -49,11 +48,12 @@ public class CreateTournamentTwo extends AppCompatActivity implements View.OnCli
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(CreateTournamentTwo.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(CreateTournamentTwo.this , Dashboard.class);
+                        Intent intent1 = new Intent(CreateTournamentTwo.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

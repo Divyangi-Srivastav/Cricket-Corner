@@ -10,26 +10,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.livecricketapp.DataOperations.OperationOnDate;
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.adapters.CreateTournamentThreeAdapterOne;
-import com.example.livecricketapp.adapters.CreateTournamentThreeAdapterTwo;
 import com.example.livecricketapp.databinding.ActivityCreateTournamentThreeBinding;
 import com.example.livecricketapp.model.AllMatchInfo;
 import com.example.livecricketapp.model.SingleMatchInfo;
 import com.example.livecricketapp.model.TournamentInfo;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.gson.Gson;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,11 +55,12 @@ public class CreateTournamentThree extends AppCompatActivity  {
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(CreateTournamentThree.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(CreateTournamentThree.this , Dashboard.class);
+                        Intent intent1 = new Intent(CreateTournamentThree.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 
@@ -136,7 +130,7 @@ public class CreateTournamentThree extends AppCompatActivity  {
         matchInfo.setMatchInfos(singleMatchInfos);
         db.collection("Match Info").document(tournamentInfo.getTournamentId()).set(matchInfo);
         singleMatchInfos.clear();
-        Intent intent = new Intent( this , Dashboard.class);
+        Intent intent = new Intent( this , DashboardAdmin.class);
         startActivity(intent);
     }
 }

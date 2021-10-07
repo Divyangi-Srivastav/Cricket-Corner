@@ -12,8 +12,7 @@ import android.widget.ArrayAdapter;
 
 import com.example.livecricketapp.DataOperations.OperationOnDate;
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.Dashboard;
-import com.example.livecricketapp.activities.HomeActivity;
+import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityBuySubscriptionBinding;
 import com.example.livecricketapp.model.SingleMatchInfo;
 import com.example.livecricketapp.model.TournamentInfo;
@@ -70,7 +69,7 @@ public class BuySubscription extends AppCompatActivity implements View.OnClickLi
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(BuySubscription.this , Dashboard.class);
+                        Intent intent1 = new Intent(BuySubscription.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

@@ -11,8 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.Dashboard;
-import com.example.livecricketapp.activities.HomeActivity;
+import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityTeamsAndMatchesBinding;
 import com.example.livecricketapp.model.AllMatchInfo;
 import com.example.livecricketapp.model.AllTeamInfo;
@@ -66,7 +65,7 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(TeamsAndMatches.this , Dashboard.class);
+                        Intent intent1 = new Intent(TeamsAndMatches.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

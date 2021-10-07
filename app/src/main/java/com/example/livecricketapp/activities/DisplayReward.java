@@ -63,11 +63,12 @@ public class DisplayReward extends AppCompatActivity {
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(DisplayReward.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(DisplayReward.this, Dashboard.class);
+                        Intent intent1 = new Intent(DisplayReward.this, DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

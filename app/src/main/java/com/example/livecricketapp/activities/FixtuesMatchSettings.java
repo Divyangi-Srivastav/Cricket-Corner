@@ -2,7 +2,6 @@ package com.example.livecricketapp.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.adapters.FixturesAdapters;
 import com.example.livecricketapp.databinding.ActivityFixtuesMatchSettingsBinding;
 import com.example.livecricketapp.model.AllMatchInfo;
 import com.example.livecricketapp.model.SingleMatchInfo;
@@ -62,11 +60,12 @@ public class FixtuesMatchSettings extends AppCompatActivity {
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(FixtuesMatchSettings.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(FixtuesMatchSettings.this , Dashboard.class);
+                        Intent intent1 = new Intent(FixtuesMatchSettings.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

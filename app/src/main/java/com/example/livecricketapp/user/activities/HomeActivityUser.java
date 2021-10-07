@@ -9,8 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.Dashboard;
-import com.example.livecricketapp.activities.HostMatchActivityOne;
+import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityHomeUserBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -43,7 +42,7 @@ public class HomeActivityUser extends AppCompatActivity implements View.OnClickL
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(HomeActivityUser.this , Dashboard.class);
+                        Intent intent1 = new Intent(HomeActivityUser.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

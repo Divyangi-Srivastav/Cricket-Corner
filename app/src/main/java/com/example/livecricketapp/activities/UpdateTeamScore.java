@@ -46,7 +46,7 @@ public class UpdateTeamScore extends AppCompatActivity {
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(UpdateTeamScore.this , Dashboard.class);
+                        Intent intent1 = new Intent(UpdateTeamScore.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

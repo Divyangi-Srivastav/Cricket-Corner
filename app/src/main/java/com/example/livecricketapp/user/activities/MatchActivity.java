@@ -14,8 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.Dashboard;
-import com.example.livecricketapp.activities.HomeActivity;
+import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityMatchBinding;
 import com.example.livecricketapp.model.AllMatchInfo;
 import com.example.livecricketapp.model.AllSubscriptions;
@@ -83,7 +82,7 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(MatchActivity.this, Dashboard.class);
+                        Intent intent1 = new Intent(MatchActivity.this, DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

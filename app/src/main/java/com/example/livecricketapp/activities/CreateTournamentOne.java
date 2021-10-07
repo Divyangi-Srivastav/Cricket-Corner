@@ -47,11 +47,12 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(CreateTournamentOne.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(CreateTournamentOne.this , Dashboard.class);
+                        Intent intent1 = new Intent(CreateTournamentOne.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 
