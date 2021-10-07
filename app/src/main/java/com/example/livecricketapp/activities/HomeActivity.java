@@ -1,16 +1,13 @@
 package com.example.livecricketapp.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.databinding.ActivityHomeBinding;
@@ -35,19 +32,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                switch ( item.getItemId() ) {
+                switch (item.getItemId()) {
                     case R.id.home:
-                            Intent intent = new Intent(HomeActivity.this , HomeActivity.class);
-                            startActivity(intent);
+
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(HomeActivity.this, SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                            Intent intent1 = new Intent(HomeActivity.this , Dashboard.class);
-                            startActivity(intent1);
+                        Intent intent1 = new Intent(HomeActivity.this, DashboardAdmin.class);
+                        startActivity(intent1);
                         break;
 
                 }
@@ -59,14 +56,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.btn_host_a_match:
-                Intent intent3 = new Intent(this , HostMatchActivityOne.class);
+                Intent intent3 = new Intent(this, HostMatchActivityOne.class);
                 startActivity(intent3);
                 break;
             case R.id.btn_host_a_tour:
-                Intent intent = new Intent( HomeActivity.this , Host_a_tournament.class );
+                Intent intent = new Intent(HomeActivity.this, Host_a_tournament.class);
                 startActivity(intent);
                 break;
             case R.id.btn_view_ad_request:
@@ -78,17 +74,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.admin_side_menu,menu);
+        getMenuInflater().inflate(R.menu.admin_side_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        switch (item.getItemId())
-        {
+        switch (item.getItemId()) {
             case R.id.view_rewards:
-                Intent intent = new Intent(this,DisplayReward.class);
+                Intent intent = new Intent(this, DisplayReward.class);
                 startActivity(intent);
                 break;
         }

@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -74,11 +73,12 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(UpdatePlayerScore.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(UpdatePlayerScore.this, Dashboard.class);
+                        Intent intent1 = new Intent(UpdatePlayerScore.this, DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

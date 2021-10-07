@@ -11,8 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.Dashboard;
-import com.example.livecricketapp.activities.HomeActivity;
+import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityRewardTeamPlayerBinding;
 import com.example.livecricketapp.model.PlayerScoreCard;
 import com.example.livecricketapp.model.Reward;
@@ -63,17 +62,17 @@ public class RewardTeamPlayer extends AppCompatActivity implements View.OnClickL
 
                 switch (item.getItemId()) {
                     case R.id.home:
-                        Intent intent = new Intent(RewardTeamPlayer.this, HomeActivity.class);
+                        Intent intent = new Intent(RewardTeamPlayer.this, HomeActivityUser.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(RewardTeamPlayer.this, Settings.class);
+                        Intent intent2 = new Intent(RewardTeamPlayer.this, SettingsUser.class);
                         startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(RewardTeamPlayer.this, Dashboard.class);
+                        Intent intent1 = new Intent(RewardTeamPlayer.this, DashboardUser.class);
                         startActivity(intent1);
                         break;
 

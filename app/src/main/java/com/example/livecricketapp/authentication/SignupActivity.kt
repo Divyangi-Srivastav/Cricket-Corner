@@ -8,6 +8,7 @@ import com.example.livecricketapp.R
 import com.example.livecricketapp.activities.HomeActivity
 import com.example.livecricketapp.model.Shared
 import com.example.livecricketapp.model.UserHelper
+import com.example.livecricketapp.user.activities.HomeActivityUser
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -41,9 +42,9 @@ class SignupActivity : AppCompatActivity() {
                             val shared = Shared(applicationContext)
                             Toast.makeText(this, "Successfully Registered", Toast.LENGTH_LONG).show()
                             val userHelper =
-                                UserHelper(et_first_name.text.toString(), et_mobile.text.toString(), et_signupid.text.toString(), et_password.text.toString(), et_address_line1.getText().toString() + " " + et_city_state.getText().toString() + " - " + et_pincode.getText().toString(), user_key)
+                                UserHelper(et_first_name.text.toString(), et_mobile.text.toString(), et_signupid.text.toString(), et_address_line1.getText().toString() + " " + et_city_state.getText().toString() + " - " + et_pincode.getText().toString(), user_key)
                             refrence.child(user_key).setValue(userHelper)
-                            val intent = Intent(this, HomeActivity::class.java)
+                            val intent = Intent(this, HomeActivityUser::class.java)
                             intent.putExtra("userName", et_signupid.text.toString())
                             intent.putExtra("userNumber", et_mobile.text.toString())
                             intent.putExtra("userAddress", et_address_line1.getText().toString() + " " + et_city_state.getText().toString() + " - " + et_pincode.getText().toString())

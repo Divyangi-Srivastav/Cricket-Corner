@@ -39,11 +39,12 @@ public class TournamentSettings extends AppCompatActivity implements View.OnClic
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(TournamentSettings.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(TournamentSettings.this , Dashboard.class);
+                        Intent intent1 = new Intent(TournamentSettings.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

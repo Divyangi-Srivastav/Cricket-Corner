@@ -24,25 +24,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
         <activity
+            android:name=".user.activities.DashboardUser"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".activities.SettingsAdmin"
+            android:exported="true" />
+        <activity
+            android:name=".user.activities.HomeActivityUser"
+            android:exported="true" />
+        <activity
+            android:name=".user.activities.FullScreenMatchPreview"
+            android:exported="true"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".activities.DisplayReward"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".user.activities.RewardTeamPlayer"
             android:exported="true" />
         <activity
             android:name=".user.activities.WatchLiveMatch"
             android:exported="true"
-            android:screenOrientation="landscape">
-        </activity>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".user.activities.ViewSubscription"
             android:exported="true" />
         <activity
-            android:name=".user.activities.ChangePassword"
-            android:exported="true" />
-        <activity
-            android:name=".user.activities.Settings"
+            android:name=".user.activities.SettingsUser"
             android:exported="true" />
         <activity
             android:name=".user.activities.BuySubscription"
@@ -69,7 +78,7 @@
         <activity
             android:name=".activities.StartLiveStreaming"
             android:exported="true"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".activities.HostMatchActivityTwo"
             android:exported="true" />
@@ -87,9 +96,7 @@
             android:exported="true" />
         <activity
             android:name=".user.activities.Tournaments"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".trial.TrialThree"
             android:exported="true" />
@@ -114,7 +121,7 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activities.TournamentSettings" />
         <activity
-            android:name=".activities.Dashboard"
+            android:name=".activities.DashboardAdmin"
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.CreateTournamentThree"
@@ -128,15 +135,15 @@
         <activity
             android:name=".activities.Host_a_tournament"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activities.LiveMatchActivity" />
         <activity android:name=".authentication.ForgotPasswordActivity" />
         <activity android:name=".authentication.SignupActivity" />
         <activity android:name=".authentication.LoginActivity" />
         <activity
-            android:name=".activities.SplashActivity"
-            android:exported="true" >
+            android:name=".authentication.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

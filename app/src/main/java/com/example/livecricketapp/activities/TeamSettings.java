@@ -10,7 +10,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.example.livecricketapp.R;
@@ -55,11 +54,12 @@ public class TeamSettings extends AppCompatActivity {
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(TeamSettings.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(TeamSettings.this , Dashboard.class);
+                        Intent intent1 = new Intent(TeamSettings.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

@@ -1,6 +1,8 @@
 package com.example.livecricketapp.activities;
 
 import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.SurfaceView;
@@ -9,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -19,8 +22,10 @@ import com.example.livecricketapp.adapters.AdRequestsAdapter;
 import com.example.livecricketapp.adapters.CommentsAdapter;
 import com.example.livecricketapp.databinding.ActivityStartLiveStreamingBinding;
 import com.example.livecricketapp.model.AdBanner;
+import com.example.livecricketapp.model.AllMatchInfo;
 import com.example.livecricketapp.model.Comments;
-import com.example.livecricketapp.user.activities.WatchLiveMatch;
+import com.example.livecricketapp.model.SingleMatchInfo;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -38,7 +43,7 @@ import io.agora.rtc2.RtcEngine;
 import io.agora.rtc2.RtcEngineConfig;
 import io.agora.rtc2.video.VideoCanvas;
 
-public class StartLiveStreaming extends AppCompatActivity implements AdRequestsAdapter.On_Click , CommentsAdapter.On_Click {
+public class StartLiveStreaming extends AppCompatActivity implements AdRequestsAdapter.On_Click, CommentsAdapter.On_Click {
 
     private ActivityStartLiveStreamingBinding binding;
     private static final int PERMISSION_REQ_ID = 22;
@@ -49,8 +54,11 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
     private AdRequestsAdapter adRequestsAdapter;
     private CommentsAdapter commentsAdapter;
     private String tournamentId;
+    private String matchNo;
     private Comments comments;
-
+    private AllMatchInfo allMatchInfo;
+    private SingleMatchInfo singleMatchInfo;
+    private int a =0;
 
 
     private static final String[] REQUESTED_PERMISSIONS = {
@@ -143,7 +151,10 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
         db = FirebaseFirestore.getInstance();
 
         tournamentId = getIntent().getStringExtra("tour");
+        matchNo = getIntent().getStringExtra("match");
         comments = new Comments();
+        singleMatchInfo = new SingleMatchInfo();
+        allMatchInfo = new AllMatchInfo();
 
         // If all the permissions are granted, initialize the RtcEngine object and join a channel.
         if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
@@ -151,13 +162,13 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
         }
 
         get_ad_data();
-        adRequestsAdapter = new AdRequestsAdapter(this , adBanners , "admin" , this::change_status);
+        adRequestsAdapter = new AdRequestsAdapter(this, adBanners, "admin", this::change_status);
         binding.recyclerViewAds.setAdapter(adRequestsAdapter);
-        binding.recyclerViewAds.setLayoutManager(new LinearLayoutManager(this ,LinearLayoutManager.HORIZONTAL,false));
+        binding.recyclerViewAds.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
 
         get_comments();
-        commentsAdapter = new CommentsAdapter(this , commentList , this::delete_comment , "admin");
+        commentsAdapter = new CommentsAdapter(this, commentList, this::delete_comment, "admin");
         binding.recyclerViewComments.setAdapter(commentsAdapter);
         binding.recyclerViewComments.setLayoutManager(new LinearLayoutManager(this));
 
@@ -168,6 +179,8 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+
+        get_single_match_info();
     }
 
     public void switch_camera(View view) {
@@ -183,6 +196,36 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
             binding.mic.setImageResource(R.drawable.ic_baseline_mic_off_24);
         }
         mRtcEngine.muteLocalAudioStream(isMuted);
+    }
+
+    // update match status to live streaming
+    private void get_single_match_info() {
+        db.collection("Match Info")
+                .document(tournamentId)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        allMatchInfo = documentSnapshot.toObject(AllMatchInfo.class);
+                        for (int i = 0; i < allMatchInfo.getMatchInfos().size(); i++) {
+                            if (allMatchInfo.getMatchInfos().get(i).getMatchNo().equalsIgnoreCase(matchNo)) {
+                                singleMatchInfo = allMatchInfo.getMatchInfos().get(i);
+                                allMatchInfo.getMatchInfos().remove(i);
+                                a = i;
+                                update_match_status();
+                            }
+                        }
+                    }
+                });
+    }
+
+    public void update_match_status() {
+        singleMatchInfo.setMatchStatus(1);
+        List<SingleMatchInfo> matchInfos = new ArrayList<>();
+        matchInfos = allMatchInfo.getMatchInfos();
+        matchInfos.add(a, singleMatchInfo);
+        allMatchInfo.setMatchInfos(matchInfos);
+        db.collection("Match Info").document(tournamentId).set(allMatchInfo);
     }
 
 
@@ -236,14 +279,13 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
     @Override
     public void change_status(int a) {
 
-        switch ( adBanners.get(a).getAdStatus() )
-        {
-            case 0 :
+        switch (adBanners.get(a).getAdStatus()) {
+            case 0:
                 adBanners.get(a).setAdStatus(1);
                 db.collection("Ads")
                         .document(adBanners.get(a).getAdId()).set(adBanners.get(a));
                 break;
-            case 1 :
+            case 1:
                 db.collection("Ads")
                         .document(adBanners.get(a).getAdId()).delete();
                 adBanners.remove(a);
@@ -263,6 +305,27 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Confirmation")
+                .setMessage("Are you sure to end the live stream")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(StartLiveStreaming.this, MatchEndResult.class);
+                        intent.putExtra("tour", tournamentId);
+                        intent.putExtra("match", matchNo);
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                });
+
     }
 
 

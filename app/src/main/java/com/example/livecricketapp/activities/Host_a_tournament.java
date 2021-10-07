@@ -38,11 +38,12 @@ public class Host_a_tournament extends AppCompatActivity {
                         break;
 
                     case R.id.settings:
-
+                        Intent intent2 = new Intent(Host_a_tournament.this , SettingsAdmin.class);
+                        startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(Host_a_tournament.this , Dashboard.class);
+                        Intent intent1 = new Intent(Host_a_tournament.this , DashboardAdmin.class);
                         startActivity(intent1);
                         break;
 

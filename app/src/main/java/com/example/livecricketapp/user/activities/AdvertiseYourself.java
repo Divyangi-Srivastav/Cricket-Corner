@@ -16,8 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.Dashboard;
-import com.example.livecricketapp.activities.HomeActivity;
+import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityAdvertiseYourselfBinding;
 import com.example.livecricketapp.model.AdBanner;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -58,17 +57,17 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
 
                 switch (item.getItemId()) {
                     case R.id.home:
-                        Intent intent = new Intent(AdvertiseYourself.this, HomeActivity.class);
+                        Intent intent = new Intent(AdvertiseYourself.this, HomeActivityUser.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(AdvertiseYourself.this, Settings.class);
+                        Intent intent2 = new Intent(AdvertiseYourself.this, SettingsUser.class);
                         startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(AdvertiseYourself.this, Dashboard.class);
+                        Intent intent1 = new Intent(AdvertiseYourself.this, DashboardUser.class);
                         startActivity(intent1);
                         break;
 

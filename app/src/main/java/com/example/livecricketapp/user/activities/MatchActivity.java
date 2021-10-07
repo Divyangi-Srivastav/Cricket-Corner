@@ -14,8 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.Dashboard;
-import com.example.livecricketapp.activities.HomeActivity;
+import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityMatchBinding;
 import com.example.livecricketapp.model.AllMatchInfo;
 import com.example.livecricketapp.model.AllSubscriptions;
@@ -73,17 +72,17 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
 
                 switch (item.getItemId()) {
                     case R.id.home:
-                        Intent intent = new Intent(MatchActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(MatchActivity.this, HomeActivityUser.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(MatchActivity.this, Settings.class);
+                        Intent intent2 = new Intent(MatchActivity.this, SettingsUser.class);
                         startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(MatchActivity.this, Dashboard.class);
+                        Intent intent1 = new Intent(MatchActivity.this, DashboardUser.class);
                         startActivity(intent1);
                         break;
 
