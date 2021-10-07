@@ -24,6 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
         <activity
+            android:name=".user.activities.DashboardUser"
+            android:exported="true" />
+        <activity
             android:name=".activities.SettingsAdmin"
             android:exported="true" />
         <activity
@@ -95,7 +98,7 @@
             android:exported="true" />
         <activity
             android:name=".user.activities.Tournaments"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".trial.TrialThree"
             android:exported="true" />
