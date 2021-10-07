@@ -209,6 +209,7 @@
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/buttons"
                     android:fontFamily="@font/montserrat"
+                    android:onClick="update_on_firebase"
                     android:text="Save Changes"
                     android:textColor="@color/white"
                     android:textSize="14sp"
