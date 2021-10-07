@@ -12,25 +12,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.adapters.AdRequestsAdapter;
-import com.example.livecricketapp.adapters.CommentsAdapter;
-import com.example.livecricketapp.databinding.ActivityWatchLiveMatchBinding;
-import com.example.livecricketapp.model.AdBanner;
+import com.example.livecricketapp.databinding.ActivityFullScreenMatchPreviewBinding;
 import com.example.livecricketapp.model.AllMatchInfo;
-import com.example.livecricketapp.model.Comments;
 import com.example.livecricketapp.model.SingleMatchInfo;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import io.agora.rtc2.ChannelMediaOptions;
 import io.agora.rtc2.Constants;
@@ -39,17 +29,12 @@ import io.agora.rtc2.RtcEngine;
 import io.agora.rtc2.RtcEngineConfig;
 import io.agora.rtc2.video.VideoCanvas;
 
-public class WatchLiveMatch extends AppCompatActivity implements View.OnClickListener, AdRequestsAdapter.On_Click , CommentsAdapter.On_Click {
+public class FullScreenMatchPreview extends AppCompatActivity implements View.OnClickListener {
 
-    private ActivityWatchLiveMatchBinding binding;
+    private ActivityFullScreenMatchPreviewBinding binding;
     private SingleMatchInfo singleMatchInfo;
     private String tournamentId;
     private FirebaseFirestore db;
-    private List<AdBanner> adBanners = new ArrayList<>();
-    private List<String> commentList = new ArrayList<>();
-    private AdRequestsAdapter adRequestsAdapter;
-    private CommentsAdapter commentsAdapter;
-    private Comments comments;
 
 
     private static final int PERMISSION_REQ_ID = 22;
@@ -137,7 +122,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityWatchLiveMatchBinding.inflate(getLayoutInflater());
+        binding = ActivityFullScreenMatchPreviewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         db = FirebaseFirestore.getInstance();
@@ -146,29 +131,15 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         singleMatchInfo = (SingleMatchInfo) getIntent().getSerializableExtra("match");
         tournamentId = getIntent().getStringExtra("tour");
 
-        comments = new Comments();
-
-        get_ad_data();
-        adRequestsAdapter = new AdRequestsAdapter(this, adBanners, "user", this::change_status);
-        binding.recyclerViewAds.setAdapter(adRequestsAdapter);
-        binding.recyclerViewAds.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-
-        get_comments();
-        commentsAdapter = new CommentsAdapter(WatchLiveMatch.this , commentList , WatchLiveMatch.this::delete_comment , "user");
-        binding.recyclerViewComments.setAdapter(commentsAdapter);
-        binding.recyclerViewComments.setLayoutManager(new LinearLayoutManager(WatchLiveMatch.this));
-
-        binding.rewardAPlayer.setOnClickListener(this::onClick);
-        binding.send.setOnClickListener(this::onClick);
-        binding.fullScreen.setOnClickListener(this::onClick);
-
         get_score();
-
 
         // If all the permissions are granted, initialize the RtcEngine object and join a channel.
         if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
             initializeAndJoinChannel();
         }
+
+        binding.rewardAPlayer.setOnClickListener(this::onClick);
+        binding.fullScreen.setOnClickListener(this::onClick);
 
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -177,82 +148,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
                 | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-
     }
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()) {
-            case R.id.reward_a_player:
-                Intent intent = new Intent(this, RewardTeamPlayer.class);
-                intent.putExtra("match", singleMatchInfo);
-                intent.putExtra("tour", tournamentId);
-                startActivity(intent);
-                break;
-
-            case R.id.send:
-
-                View decorView = getWindow().getDecorView();
-                decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-
-                List<String> commentList = new ArrayList<>();
-                commentList = comments.getCommentsList();
-                commentList.add(binding.comment.getText().toString());
-                binding.comment.getText().clear();
-                comments.setCommentsList(commentList);
-
-                if ( !comments.getMatchNo().equalsIgnoreCase(singleMatchInfo.getMatchNo()) )
-                {
-                    comments.setTournamentId(tournamentId);
-                    comments.setMatchNo(singleMatchInfo.getMatchNo());
-                }
-
-                update_comments();
-
-                break;
-
-            case R.id.full_screen:
-
-
-
-                break;
-
-        }
-
-    }
-
-    // get and update comments
-    private void get_comments() {
-        db.collection("Comments")
-                .document(tournamentId)
-                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                        assert value != null;
-                        if (value.exists()) {
-                            commentList.clear();
-                            comments = value.toObject(Comments.class);
-                            commentList.addAll(comments.getCommentsList());
-                            commentsAdapter.notifyDataSetChanged();
-                        }
-                    }
-                });
-    }
-
-    private void update_comments()
-    {
-        db.collection("Comments")
-                .document(tournamentId)
-                .set(comments);
-    }
-
-
 
 
     // Score update and fetching
@@ -284,27 +180,25 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
     }
 
 
-    // advertisement update and fetching
-    private void get_ad_data() {
-        db.collection("Ads")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        adBanners.clear();
-                        if (!value.isEmpty()) {
-                            for (QueryDocumentSnapshot snapshot : value) {
-                                AdBanner banner = snapshot.toObject(AdBanner.class);
-                                if (banner.getAdStatus() == 1)
-                                    adBanners.add(banner);
-                                adRequestsAdapter.notifyDataSetChanged();
-                            }
-                        }
-                        adRequestsAdapter.notifyDataSetChanged();
-                    }
-                });
+
+    @Override
+    public void onClick(View v) {
+
+
+        switch (v.getId()) {
+            case R.id.reward_a_player:
+                Intent intent = new Intent(this, RewardTeamPlayer.class);
+                intent.putExtra("match", singleMatchInfo);
+                intent.putExtra("tour", tournamentId);
+                startActivity(intent);
+                break;
+
+            case R.id.full_screen:
+
+
+                break;
+        }
     }
-
-
 
     protected void onDestroy() {
         super.onDestroy();
@@ -313,13 +207,4 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         RtcEngine.destroy();
     }
 
-
-    @Override
-    public void change_status(int a) {
-
-    }
-    @Override
-    public void delete_comment(int a) {
-
-    }
 }

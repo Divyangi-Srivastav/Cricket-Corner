@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/drawable/ic_baseline_cameraswitch_24.xml" value="0.1259259259259259" />
+        <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/drawable/ic_baseline_fullscreen_24.xml" value="0.13518518518518519" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_24.xml" value="0.2324074074074074" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/drawable/ic_baseline_mic_24.xml" value="0.1259259259259259" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/drawable/ic_baseline_mic_off_24.xml" value="0.1259259259259259" />
@@ -19,6 +20,7 @@
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/activity_display_reward.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/activity_fixtues_match_settings.xml" value="0.264" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/activity_fixtures.xml" value="0.2" />
+        <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/activity_full_screen_match_preview.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/activity_home2.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/activity_host_atournament.xml" value="0.536" />
