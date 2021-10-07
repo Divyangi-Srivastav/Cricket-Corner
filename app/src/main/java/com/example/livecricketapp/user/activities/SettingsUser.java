@@ -7,11 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.activities.DashboardAdmin;
+import com.example.livecricketapp.authentication.LoginActivity;
 import com.example.livecricketapp.databinding.ActivitySettingsUserBinding;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingsUser extends AppCompatActivity {
 
@@ -57,6 +60,13 @@ public class SettingsUser extends AppCompatActivity {
     {
         Intent intent = new Intent(this , ViewSubscription.class);
         startActivity(intent);
+    }
+
+    public void log_out (View view)
+    {
+        FirebaseAuth.getInstance().signOut();
+        this.finishAffinity();
+        Toast.makeText(this, "Log Out Successful", Toast.LENGTH_SHORT).show();
     }
 
 }

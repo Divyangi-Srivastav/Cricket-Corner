@@ -9,14 +9,12 @@ import com.example.livecricketapp.activities.HomeActivity
 import com.example.livecricketapp.model.UserHelper
 import com.example.livecricketapp.user.activities.HomeActivityUser
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 
 class SplashActivity : AppCompatActivity() {
 
     private val mWaitHandler = Handler()
     private lateinit var auth: FirebaseAuth
-    private val user: FirebaseUser = FirebaseAuth.getInstance().currentUser!!
     private val reference = FirebaseDatabase.getInstance().getReference("users")
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +40,7 @@ class SplashActivity : AppCompatActivity() {
         reference.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 val users = snapshot.getValue(UserHelper::class.java)!!
-                if (users.userKey.equals(user.uid))
+                if (users.userKey.equals(auth.currentUser!!.uid))
                     next_activity(users.status)
             }
 
