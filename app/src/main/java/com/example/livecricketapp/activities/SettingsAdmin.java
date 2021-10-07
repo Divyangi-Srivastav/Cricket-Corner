@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.livecricketapp.R;
+import com.example.livecricketapp.authentication.ForgotPasswordActivity;
 import com.example.livecricketapp.authentication.LoginActivity;
 import com.example.livecricketapp.databinding.ActivitySettingsAdminBinding;
 import com.example.livecricketapp.user.activities.HomeActivityUser;
@@ -60,7 +61,8 @@ public class SettingsAdmin extends AppCompatActivity {
 
     public void change_Password ( View view )
     {
-
+        Intent intent = new Intent(this , ForgotPasswordActivity.class);
+        startActivity(intent);
     }
 
 }
