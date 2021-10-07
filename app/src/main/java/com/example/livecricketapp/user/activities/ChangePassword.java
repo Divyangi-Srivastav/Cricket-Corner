@@ -30,12 +30,12 @@ public class ChangePassword extends AppCompatActivity {
 
                 switch ( item.getItemId() ) {
                     case R.id.home:
-                        Intent intent = new Intent(ChangePassword.this , HomeActivity.class);
+                        Intent intent = new Intent(ChangePassword.this , HomeActivityUser.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(ChangePassword.this , Settings.class);
+                        Intent intent2 = new Intent(ChangePassword.this , SettingsUser.class);
                         startActivity(intent2);
                         break;
 

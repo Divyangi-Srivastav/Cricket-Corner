@@ -63,12 +63,12 @@ public class RewardTeamPlayer extends AppCompatActivity implements View.OnClickL
 
                 switch (item.getItemId()) {
                     case R.id.home:
-                        Intent intent = new Intent(RewardTeamPlayer.this, HomeActivity.class);
+                        Intent intent = new Intent(RewardTeamPlayer.this, HomeActivityUser.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(RewardTeamPlayer.this, Settings.class);
+                        Intent intent2 = new Intent(RewardTeamPlayer.this, SettingsUser.class);
                         startActivity(intent2);
                         break;
 

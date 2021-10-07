@@ -9,11 +9,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Toast;
 
 import com.example.livecricketapp.DataOperations.OperationOnDate;
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.AdsRequest;
 import com.example.livecricketapp.activities.Dashboard;
 import com.example.livecricketapp.activities.HomeActivity;
 import com.example.livecricketapp.databinding.ActivityBuySubscriptionBinding;
@@ -62,12 +60,12 @@ public class BuySubscription extends AppCompatActivity implements View.OnClickLi
 
                 switch ( item.getItemId() ) {
                     case R.id.home:
-                        Intent intent = new Intent(BuySubscription.this , HomeActivity.class);
+                        Intent intent = new Intent(BuySubscription.this , HomeActivityUser.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(BuySubscription.this , Settings.class);
+                        Intent intent2 = new Intent(BuySubscription.this , SettingsUser.class);
                         startActivity(intent2);
                         break;
 

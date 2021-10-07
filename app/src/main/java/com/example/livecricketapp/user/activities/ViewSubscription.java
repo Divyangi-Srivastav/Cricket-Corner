@@ -46,12 +46,12 @@ public class ViewSubscription extends AppCompatActivity {
 
                 switch ( item.getItemId() ) {
                     case R.id.home:
-                        Intent intent = new Intent(ViewSubscription.this , HomeActivity.class);
+                        Intent intent = new Intent(ViewSubscription.this , HomeActivityUser.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(ViewSubscription.this , Settings.class);
+                        Intent intent2 = new Intent(ViewSubscription.this , SettingsUser.class);
                         startActivity(intent2);
                         break;
 

@@ -11,17 +11,17 @@ import android.view.View;
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.activities.Dashboard;
 import com.example.livecricketapp.activities.HomeActivity;
-import com.example.livecricketapp.databinding.ActivitySettingsBinding;
+import com.example.livecricketapp.databinding.ActivitySettingsUserBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
-public class Settings extends AppCompatActivity {
+public class SettingsUser extends AppCompatActivity {
 
-    private ActivitySettingsBinding binding;
+    private ActivitySettingsUserBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivitySettingsBinding.inflate(getLayoutInflater());
+        binding = ActivitySettingsUserBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -29,17 +29,17 @@ public class Settings extends AppCompatActivity {
 
                 switch ( item.getItemId() ) {
                     case R.id.home:
-                        Intent intent = new Intent(Settings.this , HomeActivity.class);
+                        Intent intent = new Intent(SettingsUser.this , HomeActivityUser.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(Settings.this , Settings.class);
+                        Intent intent2 = new Intent(SettingsUser.this , SettingsUser.class);
                         startActivity(intent2);
                         break;
 
                     case R.id.account:
-                        Intent intent1 = new Intent(Settings.this , Dashboard.class);
+                        Intent intent1 = new Intent(SettingsUser.this , Dashboard.class);
                         startActivity(intent1);
                         break;
 

@@ -47,7 +47,7 @@
             android:name=".user.activities.ChangePassword"
             android:exported="true" />
         <activity
-            android:name=".user.activities.Settings"
+            android:name=".user.activities.SettingsUser"
             android:exported="true" />
         <activity
             android:name=".user.activities.BuySubscription"

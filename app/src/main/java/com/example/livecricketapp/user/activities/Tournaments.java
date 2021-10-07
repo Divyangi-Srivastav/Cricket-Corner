@@ -12,7 +12,6 @@ import android.view.View;
 
 import com.example.livecricketapp.DataOperations.OperationOnDate;
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.AdsRequest;
 import com.example.livecricketapp.activities.Dashboard;
 import com.example.livecricketapp.activities.HomeActivity;
 import com.example.livecricketapp.databinding.ActivityTournamentsBinding;
@@ -69,12 +68,12 @@ public class Tournaments extends AppCompatActivity implements TournamentAdapter.
 
                 switch ( item.getItemId() ) {
                     case R.id.home:
-                        Intent intent = new Intent(Tournaments.this , HomeActivity.class);
+                        Intent intent = new Intent(Tournaments.this , HomeActivityUser.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(Tournaments.this , Settings.class);
+                        Intent intent2 = new Intent(Tournaments.this , SettingsUser.class);
                         startActivity(intent2);
                         break;
 

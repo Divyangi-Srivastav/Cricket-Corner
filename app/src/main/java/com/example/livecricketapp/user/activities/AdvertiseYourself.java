@@ -58,12 +58,12 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
 
                 switch (item.getItemId()) {
                     case R.id.home:
-                        Intent intent = new Intent(AdvertiseYourself.this, HomeActivity.class);
+                        Intent intent = new Intent(AdvertiseYourself.this, HomeActivityUser.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(AdvertiseYourself.this, Settings.class);
+                        Intent intent2 = new Intent(AdvertiseYourself.this, SettingsUser.class);
                         startActivity(intent2);
                         break;
 

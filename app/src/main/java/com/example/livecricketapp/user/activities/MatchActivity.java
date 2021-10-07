@@ -73,12 +73,12 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
 
                 switch (item.getItemId()) {
                     case R.id.home:
-                        Intent intent = new Intent(MatchActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(MatchActivity.this, HomeActivityUser.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(MatchActivity.this, Settings.class);
+                        Intent intent2 = new Intent(MatchActivity.this, SettingsUser.class);
                         startActivity(intent2);
                         break;
 

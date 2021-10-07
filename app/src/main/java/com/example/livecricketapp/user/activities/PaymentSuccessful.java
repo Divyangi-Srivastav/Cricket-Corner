@@ -30,12 +30,12 @@ public class PaymentSuccessful extends AppCompatActivity {
 
                 switch ( item.getItemId() ) {
                     case R.id.home:
-                        Intent intent = new Intent(PaymentSuccessful.this , HomeActivity.class);
+                        Intent intent = new Intent(PaymentSuccessful.this , HomeActivityUser.class);
                         startActivity(intent);
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(PaymentSuccessful.this , Settings.class);
+                        Intent intent2 = new Intent(PaymentSuccessful.this , SettingsUser.class);
                         startActivity(intent2);
                         break;
 
