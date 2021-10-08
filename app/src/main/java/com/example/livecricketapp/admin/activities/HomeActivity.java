@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.Unused.AdsRequest;
 import com.example.livecricketapp.databinding.ActivityHomeBinding;
+import com.example.livecricketapp.user.activities.HomeActivityUser;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
@@ -26,6 +27,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         setSupportActionBar(binding.toolbar);
         binding.btnHostATour.setOnClickListener(this::onClick);
+        binding.btnUserSide.setOnClickListener(this::onClick);
         binding.btnHostAMatch.setOnClickListener(this::onClick);
         binding.btnViewAdRequest.setOnClickListener(this::onClick);
 
@@ -69,6 +71,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_view_ad_request:
                 Intent intent2 = new Intent(this, AdsRequest.class);
                 startActivity(intent2);
+                break;
+
+            case R.id.btn_user_side:
+                Intent intent4 = new Intent(this, HomeActivityUser.class);
+                startActivity(intent4);
                 break;
         }
     }
