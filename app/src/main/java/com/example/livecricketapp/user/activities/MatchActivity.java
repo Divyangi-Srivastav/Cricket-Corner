@@ -118,6 +118,9 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
                                 binding.team2.setText(singleMatchInfo.getTeam2Score().getTeamName());
                                 if (singleMatchInfo.getTeam2Score().getCards() == null && singleMatchInfo.getTeam1Score().getCards() == null) {
                                     Toast.makeText(MatchActivity.this, "Match Data Still Not Specified", Toast.LENGTH_LONG).show();
+                                    binding.btnSubmit.setVisibility(View.GONE);
+                                    set_UI();
+                                    dialog.dismiss();
                                 } else {
                                     adapter1 = new ScorecardAdapter(MatchActivity.this, singleMatchInfo.getTeam1Score(), MatchActivity.this);
                                     adapter2 = new ScorecardAdapter(MatchActivity.this, singleMatchInfo.getTeam2Score(), MatchActivity.this);
@@ -126,6 +129,8 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
 
                                     binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " Scored");
                                     binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()) + " Wickets");
+
+                                    set_UI();
 
                                     dialog.dismiss();
                                 }
@@ -136,25 +141,50 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    private void set_UI() {
+        if (singleMatchInfo.getMatchStatus() == 0) {
+            binding.btnSubmit.setVisibility(View.GONE);
+            binding.result.setText("Match is yet to occur");
+        } else if (singleMatchInfo.getMatchStatus() == 2) {
+            binding.btnSubmit.setVisibility(View.GONE);
+            binding.result.setText(singleMatchInfo.getMatchResult());
+        }
+    }
+
+
     @Override
     public void onClick(View v) {
 
         switch (v.getId()) {
             case R.id.team1:
-                binding.team1.setBackgroundColor(Color.parseColor("#B9CCE2"));
-                binding.team2.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " Scored");
-                binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()) + " Wickets");
-                binding.recyclerView.setAdapter(adapter1);
-                adapter1.notifyDataSetChanged();
+                if (singleMatchInfo.getTeam2Score().getCards() == null && singleMatchInfo.getTeam1Score().getCards() == null) {
+                    binding.team1.setBackgroundColor(Color.parseColor("#B9CCE2"));
+                    binding.team2.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    binding.totalRuns.setText("0 Scored");
+                    binding.totalWickets.setText("0 Wickets");
+                } else {
+                    binding.team1.setBackgroundColor(Color.parseColor("#B9CCE2"));
+                    binding.team2.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " Scored");
+                    binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()) + " Wickets");
+                    binding.recyclerView.setAdapter(adapter1);
+                    adapter1.notifyDataSetChanged();
+                }
                 break;
             case R.id.team2:
-                binding.team2.setBackgroundColor(Color.parseColor("#B9CCE2"));
-                binding.team1.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamRuns()) + " Scored");
-                binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamWickets()) + " Wickets");
-                binding.recyclerView.setAdapter(adapter2);
-                adapter2.notifyDataSetChanged();
+                if (singleMatchInfo.getTeam2Score().getCards() == null && singleMatchInfo.getTeam1Score().getCards() == null) {
+                    binding.team2.setBackgroundColor(Color.parseColor("#B9CCE2"));
+                    binding.team1.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    binding.totalRuns.setText("0 Scored");
+                    binding.totalWickets.setText("0 Wickets");
+                } else {
+                    binding.team2.setBackgroundColor(Color.parseColor("#B9CCE2"));
+                    binding.team1.setBackgroundColor(Color.parseColor("#FFFFFF"));
+                    binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamRuns()) + " Scored");
+                    binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamWickets()) + " Wickets");
+                    binding.recyclerView.setAdapter(adapter2);
+                    adapter2.notifyDataSetChanged();
+                }
                 break;
 
             case R.id.btn_submit:
@@ -205,13 +235,13 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
 
     private void move_to_other_activity() {
         if (subscription_bool) {
-            Intent intent = new Intent(this , WatchLiveMatch.class);
-            intent.putExtra("match",singleMatchInfo);
-            intent.putExtra("tour",tournamentId);
+            Intent intent = new Intent(this, WatchLiveMatch.class);
+            intent.putExtra("match", singleMatchInfo);
+            intent.putExtra("tour", tournamentId);
             startActivity(intent);
         } else {
-            Intent intent = new Intent(this , BuySubscription.class);
-            intent.putExtra("match",singleMatchInfo);
+            Intent intent = new Intent(this, BuySubscription.class);
+            intent.putExtra("match", singleMatchInfo);
             startActivity(intent);
         }
     }
