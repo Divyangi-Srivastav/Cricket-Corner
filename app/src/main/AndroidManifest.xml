@@ -73,7 +73,7 @@
             android:name=".admin.activities.UpdatePlayerScore"
             android:exported="true" />
         <activity
-            android:name=".admin.activities.UpdateTeamScore"
+            android:name=".Unused.UpdateTeamScore"
             android:exported="true" />
         <activity
             android:name=".admin.activities.StartLiveStreaming"

@@ -71,7 +71,7 @@ public class ScorecardAdapter extends RecyclerView.Adapter<ScorecardAdapter.Scor
 
     @Override
     public int getItemCount() {
-        return 11;
+        return 12;
     }
 
     public class ScoreViewHolder extends RecyclerView.ViewHolder {

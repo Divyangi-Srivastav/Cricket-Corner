@@ -73,7 +73,7 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                         break;
 
                     case R.id.settings:
-                        Intent intent2 = new Intent(UpdatePlayerScore.this , SettingsAdmin.class);
+                        Intent intent2 = new Intent(UpdatePlayerScore.this, SettingsAdmin.class);
                         startActivity(intent2);
                         break;
 
@@ -153,6 +153,9 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                     card.setPlayerName(playerNames.get(j));
                     scoreCards.add(card);
                 }
+                PlayerScoreCard card = new PlayerScoreCard();
+                card.setPlayerName("Extras");
+                scoreCards.add(card);
                 teamScoreCard.setCards(scoreCards);
                 singleMatchInfo.setTeam1Score(teamScoreCard);
             }
@@ -166,6 +169,9 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                     card.setPlayerName(playerNames.get(j));
                     scoreCards.add(card);
                 }
+                PlayerScoreCard card = new PlayerScoreCard();
+                card.setPlayerName("Extras");
+                scoreCards.add(card);
                 teamScoreCard.setCards(scoreCards);
                 singleMatchInfo.setTeam2Score(teamScoreCard);
             }
@@ -216,7 +222,7 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
     public void update_runs(int a, String teamName) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Add Runs" );
+        builder.setTitle("Add Runs");
         builder.setItems(new CharSequence[]{"0 Run", "1 Run", "2 Run", "3 Run", "4 Run", "5 Run", "6 Run"},
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -341,6 +347,7 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                 List<SingleMatchInfo> infoList = allMatchInfo.getMatchInfos();
                 infoList.remove(i);
                 infoList.add(i, singleMatchInfo);
+                allMatchInfo.setMatchInfos(infoList);
             }
         }
 
@@ -352,7 +359,7 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
     public void update_total_runs(String teamName) {
         if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
             int score = 0;
-            for (int i = 0; i < 11; i++) {
+            for (int i = 0; i < 12; i++) {
                 score = score + singleMatchInfo.getTeam1Score().getCards().get(i).getRuns();
             }
             singleMatchInfo.getTeam1Score().setTeamRuns(score);
@@ -361,7 +368,7 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
 
         if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
             int score = 0;
-            for (int i = 0; i < 11; i++) {
+            for (int i = 0; i < 12; i++) {
                 score = score + singleMatchInfo.getTeam2Score().getCards().get(i).getRuns();
             }
             singleMatchInfo.getTeam2Score().setTeamRuns(score);
@@ -373,7 +380,7 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
     public void update_total_wickets(String teamName) {
         if (!singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
             int wickets = 0;
-            for (int i = 0; i < 11; i++) {
+            for (int i = 0; i < 12; i++) {
                 wickets = wickets + singleMatchInfo.getTeam2Score().getCards().get(i).getWickets();
             }
             singleMatchInfo.getTeam1Score().setTeamWickets(wickets);
@@ -382,7 +389,7 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
 
         if (!singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
             int wickets = 0;
-            for (int i = 0; i < 11; i++) {
+            for (int i = 0; i < 12; i++) {
                 wickets = wickets + singleMatchInfo.getTeam1Score().getCards().get(i).getWickets();
             }
             singleMatchInfo.getTeam2Score().setTeamWickets(wickets);
