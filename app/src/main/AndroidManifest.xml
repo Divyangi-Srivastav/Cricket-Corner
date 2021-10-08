@@ -24,7 +24,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
         <activity
-            android:name=".common.AboutActivity"
+            android:name=".user.activities.AboutActivity"
             android:exported="true" />
         <activity
             android:name=".user.activities.DashboardUser"

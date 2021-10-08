@@ -1,4 +1,4 @@
-package com.example.livecricketapp.common;
+package com.example.livecricketapp.user.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 

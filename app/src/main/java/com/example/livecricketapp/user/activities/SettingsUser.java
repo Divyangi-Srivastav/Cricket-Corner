@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.authentication.ForgotPasswordActivity;
-import com.example.livecricketapp.common.AboutActivity;
 import com.example.livecricketapp.databinding.ActivitySettingsUserBinding;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
