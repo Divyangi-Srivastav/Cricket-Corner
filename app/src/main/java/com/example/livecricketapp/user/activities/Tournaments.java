@@ -12,7 +12,6 @@ import android.view.View;
 
 import com.example.livecricketapp.DataOperations.OperationOnDate;
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityTournamentsBinding;
 import com.example.livecricketapp.model.TournamentInfo;
 import com.example.livecricketapp.user.adapters.TournamentAdapter;

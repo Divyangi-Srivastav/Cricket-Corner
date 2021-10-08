@@ -11,7 +11,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.databinding.ActivityRewardTeamPlayerBinding;
 import com.example.livecricketapp.model.PlayerScoreCard;
 import com.example.livecricketapp.model.Reward;

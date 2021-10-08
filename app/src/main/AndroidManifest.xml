@@ -28,7 +28,7 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activities.SettingsAdmin"
+            android:name=".admin.activities.SettingsAdmin"
             android:exported="true" />
         <activity
             android:name=".user.activities.HomeActivityUser"
@@ -38,7 +38,7 @@
             android:exported="true"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".activities.DisplayReward"
+            android:name=".admin.activities.DisplayReward"
             android:exported="true" />
         <activity
             android:name=".user.activities.RewardTeamPlayer"
@@ -57,7 +57,7 @@
             android:name=".user.activities.BuySubscription"
             android:exported="true" />
         <activity
-            android:name=".activities.MatchEndResult"
+            android:name=".admin.activities.MatchEndResult"
             android:exported="true" />
         <activity
             android:name=".user.activities.PaymentSuccessful"
@@ -70,20 +70,20 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activities.UpdatePlayerScore"
+            android:name=".admin.activities.UpdatePlayerScore"
             android:exported="true" />
         <activity
-            android:name=".activities.UpdateTeamScore"
+            android:name=".admin.activities.UpdateTeamScore"
             android:exported="true" />
         <activity
-            android:name=".activities.StartLiveStreaming"
+            android:name=".admin.activities.StartLiveStreaming"
             android:exported="true"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".activities.HostMatchActivityTwo"
+            android:name=".admin.activities.HostMatchActivityTwo"
             android:exported="true" />
         <activity
-            android:name=".activities.HostMatchActivityOne"
+            android:name=".admin.activities.HostMatchActivityOne"
             android:exported="true" />
         <activity
             android:name=".user.activities.MatchActivity"
@@ -107,33 +107,33 @@
             android:name=".trial.TrailOne"
             android:exported="true" />
         <activity
-            android:name=".activities.FixtuesMatchSettings"
+            android:name=".admin.activities.FixtuesMatchSettings"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activities.HomeActivity"
+            android:name=".admin.activities.HomeActivity"
             android:exported="true" />
-        <activity android:name=".activities.ParticipationFees" />
-        <activity android:name=".activities.AdsRequest" />
-        <activity android:name=".activities.Fixtures" />
+        <activity android:name=".admin.activities.ParticipationFees" />
+        <activity android:name=".Unused.AdsRequest" />
+        <activity android:name=".admin.activities.Fixtures" />
         <activity
-            android:name=".activities.TeamSettings"
+            android:name=".admin.activities.TeamSettings"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".activities.TournamentSettings" />
+        <activity android:name=".admin.activities.TournamentSettings" />
         <activity
-            android:name=".activities.DashboardAdmin"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".activities.CreateTournamentThree"
+            android:name=".admin.activities.DashboardAdmin"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activities.CreateTournamentTwo"
+            android:name=".admin.activities.CreateTournamentThree"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activities.CreateTournamentOne"
+            android:name=".admin.activities.CreateTournamentTwo"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activities.Host_a_tournament"
+            android:name=".admin.activities.CreateTournamentOne"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".admin.activities.Host_a_tournament"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".authentication.ForgotPasswordActivity" />
         <activity android:name=".authentication.SignupActivity" />

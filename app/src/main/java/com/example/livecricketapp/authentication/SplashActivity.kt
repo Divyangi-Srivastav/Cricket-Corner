@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.livecricketapp.R
-import com.example.livecricketapp.activities.HomeActivity
+import com.example.livecricketapp.admin.activities.HomeActivity
 import com.example.livecricketapp.model.UserHelper
 import com.example.livecricketapp.user.activities.HomeActivityUser
 import com.google.firebase.auth.FirebaseAuth

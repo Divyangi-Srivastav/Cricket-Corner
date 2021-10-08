@@ -15,8 +15,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.adapters.AdRequestsAdapter;
-import com.example.livecricketapp.adapters.CommentsAdapter;
+import com.example.livecricketapp.admin.adapters.AdRequestsAdapter;
+import com.example.livecricketapp.admin.adapters.CommentsAdapter;
 import com.example.livecricketapp.databinding.ActivityWatchLiveMatchBinding;
 import com.example.livecricketapp.model.AdBanner;
 import com.example.livecricketapp.model.AllMatchInfo;

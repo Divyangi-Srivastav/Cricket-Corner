@@ -10,9 +10,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.activities.DashboardAdmin;
 import com.example.livecricketapp.authentication.ForgotPasswordActivity;
-import com.example.livecricketapp.authentication.LoginActivity;
 import com.example.livecricketapp.databinding.ActivitySettingsUserBinding;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;

@@ -6,11 +6,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.livecricketapp.R
-import com.example.livecricketapp.activities.HomeActivity
+import com.example.livecricketapp.admin.activities.HomeActivity
 import com.example.livecricketapp.user.activities.HomeActivityUser
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 import java.util.regex.Pattern
