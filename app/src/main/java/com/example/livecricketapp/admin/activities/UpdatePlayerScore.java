@@ -240,6 +240,7 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
+
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
@@ -252,11 +253,20 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                     list.get(a).setRuns(list.get(a).getRuns() + 1);
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
+                                    if ( a == 11 )
+                                    {
+                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    }
+
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 1);
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam1Score().setCards(list);
+                                    if ( a == 11 )
+                                    {
+                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    }
                                 }
                                 break;
                             case 2:
@@ -265,11 +275,19 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                     list.get(a).setRuns(list.get(a).getRuns() + 2);
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
+                                    if ( a == 11 )
+                                    {
+                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    }
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 2);
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam1Score().setCards(list);
+                                    if ( a == 11 )
+                                    {
+                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    }
                                 }
                                 break;
                             case 3:
@@ -278,11 +296,19 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                     list.get(a).setRuns(list.get(a).getRuns() + 3);
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
+                                    if ( a == 11 )
+                                    {
+                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    }
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 3);
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam1Score().setCards(list);
+                                    if ( a == 11 )
+                                    {
+                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    }
                                 }
                                 break;
                             case 4:
@@ -291,11 +317,19 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                     list.get(a).setRuns(list.get(a).getRuns() + 4);
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
+                                    if ( a == 11 )
+                                    {
+                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    }
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 4);
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam1Score().setCards(list);
+                                    if ( a == 11 )
+                                    {
+                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    }
                                 }
                                 break;
                             case 5:
@@ -304,11 +338,19 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                     list.get(a).setRuns(list.get(a).getRuns() + 5);
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
+                                    if ( a == 12 )
+                                    {
+                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    }
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 5);
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam1Score().setCards(list);
+                                    if ( a == 12 )
+                                    {
+                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    }
                                 }
                                 break;
                             case 6:
@@ -317,11 +359,19 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                     list.get(a).setRuns(list.get(a).getRuns() + 6);
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
+                                    if ( a == 12 )
+                                    {
+                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    }
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 6);
                                     list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam1Score().setCards(list);
+                                    if ( a == 12 )
+                                    {
+                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    }
                                 }
                                 break;
                         }
