@@ -31,7 +31,7 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
     private ActivityAdvertiseYourselfBinding binding;
     private AdBanner banner;
     private Uri photoUri = null;
-    private StorageReference photoRef;
+    private StorageReference photoRef , reference;
     private String photoUrl = "";
     private FirebaseUser user;
 
@@ -42,7 +42,7 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
         setContentView(binding.getRoot());
 
         banner = new AdBanner();
-        photoRef = FirebaseStorage.getInstance().getReference("Ad Banner");
+        reference = FirebaseStorage.getInstance().getReference("Ad Banner");
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -180,6 +180,7 @@ public class AdvertiseYourself extends AppCompatActivity implements View.OnClick
                 Intent data = result.getData();
                 photoUri = data.getData();
                 binding.image.setImageURI(photoUri);
+                photoRef = reference.child(photoUri.getLastPathSegment());
             }
             else
                 Toast.makeText(AdvertiseYourself.this, "No Image Selected", Toast.LENGTH_SHORT).show();

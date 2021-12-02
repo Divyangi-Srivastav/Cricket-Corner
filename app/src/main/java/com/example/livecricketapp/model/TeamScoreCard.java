@@ -8,11 +8,20 @@ public class TeamScoreCard implements Serializable {
     private String teamName;
     private int TeamRuns;
     private int TeamWickets;
+    private int TeamBalls ;
     private List<PlayerScoreCard> cards;
 
     public  TeamScoreCard ()
     {
 
+    }
+
+    public int getTeamBalls() {
+        return TeamBalls;
+    }
+
+    public void setTeamBalls(int teamBalls) {
+        TeamBalls = teamBalls;
     }
 
     public String getTeamName() {

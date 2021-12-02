@@ -39,18 +39,22 @@ public class ScorecardAdapter extends RecyclerView.Adapter<ScorecardAdapter.Scor
         if (scoreCard.getCards().get(position).getRuns() == 0) {
             holder.runs.setText("—");
             holder.runs.setTypeface(null, Typeface.BOLD);
-            //holder.runs_nill.setVisibility(View.VISIBLE);
         } else {
             holder.runs.setText(String.valueOf(scoreCard.getCards().get(position).getRuns()));
-            holder.runs_nill.setVisibility(View.GONE);
         }
+
+        if (scoreCard.getCards().get(position).getBalls() == 0) {
+            holder.balls.setText("—");
+            holder.balls.setTypeface(null, Typeface.BOLD);
+        } else {
+            holder.balls.setText(String.valueOf(scoreCard.getCards().get(position).getBalls()));
+        }
+
         if (scoreCard.getCards().get(position).getWickets() == 0) {
             holder.wickets.setText("—");
             holder.wickets.setTypeface(null,Typeface.BOLD);
-            //holder.wickets_nill.setVisibility(View.VISIBLE);
         } else {
             holder.wickets.setText(String.valueOf(scoreCard.getCards().get(position).getWickets()));
-            holder.wickets_nill.setVisibility(View.GONE);
         }
 
         holder.runs.setOnClickListener(new View.OnClickListener() {
@@ -76,16 +80,14 @@ public class ScorecardAdapter extends RecyclerView.Adapter<ScorecardAdapter.Scor
 
     public class ScoreViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView name, runs, wickets;
-        private View runs_nill, wickets_nill;
+        private TextView name, runs, wickets , balls;
 
         public ScoreViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.name);
             runs = itemView.findViewById(R.id.runs);
             wickets = itemView.findViewById(R.id.wickets);
-            runs_nill = itemView.findViewById(R.id.runs_nill);
-            wickets_nill = itemView.findViewById(R.id.wickets_nill);
+            balls = itemView.findViewById(R.id.balls);
         }
     }
 

@@ -127,8 +127,10 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
                                     binding.recyclerView.setLayoutManager(new LinearLayoutManager(MatchActivity.this));
                                     binding.recyclerView.setAdapter(adapter1);
 
-                                    binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " Scored");
-                                    binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()) + " Wickets");
+                                    binding.runsWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " / "
+                                            + String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()));
+                                    binding.overs.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamBalls()/6) + "." +
+                                            String.valueOf(singleMatchInfo.getTeam1Score().getTeamBalls() % 6) + " overs");
 
                                     set_UI();
 
@@ -160,13 +162,15 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
                 if (singleMatchInfo.getTeam2Score().getCards() == null && singleMatchInfo.getTeam1Score().getCards() == null) {
                     binding.team1.setBackgroundColor(Color.parseColor("#B9CCE2"));
                     binding.team2.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                    binding.totalRuns.setText("0 Scored");
-                    binding.totalWickets.setText("0 Wickets");
+                    binding.runsWickets.setText("0 / 0");
+                    binding.overs.setText("0 overs");
                 } else {
                     binding.team1.setBackgroundColor(Color.parseColor("#B9CCE2"));
                     binding.team2.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                    binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " Scored");
-                    binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()) + " Wickets");
+                    binding.runsWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " / "
+                            + String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()));
+                    binding.overs.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamBalls()/6) + "." +
+                            String.valueOf(singleMatchInfo.getTeam1Score().getTeamBalls() % 6) + " overs");
                     binding.recyclerView.setAdapter(adapter1);
                     adapter1.notifyDataSetChanged();
                 }
@@ -175,13 +179,15 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
                 if (singleMatchInfo.getTeam2Score().getCards() == null && singleMatchInfo.getTeam1Score().getCards() == null) {
                     binding.team2.setBackgroundColor(Color.parseColor("#B9CCE2"));
                     binding.team1.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                    binding.totalRuns.setText("0 Scored");
-                    binding.totalWickets.setText("0 Wickets");
+                    binding.runsWickets.setText("0 / 0");
+                    binding.overs.setText("0 overs");
                 } else {
                     binding.team2.setBackgroundColor(Color.parseColor("#B9CCE2"));
                     binding.team1.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                    binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamRuns()) + " Scored");
-                    binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamWickets()) + " Wickets");
+                    binding.runsWickets.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamRuns()) + " / "
+                            + String.valueOf(singleMatchInfo.getTeam2Score().getTeamWickets()));
+                    binding.overs.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamBalls()/6) + "." +
+                            String.valueOf(singleMatchInfo.getTeam2Score().getTeamBalls() % 6) + " overs");
                     binding.recyclerView.setAdapter(adapter2);
                     adapter2.notifyDataSetChanged();
                 }

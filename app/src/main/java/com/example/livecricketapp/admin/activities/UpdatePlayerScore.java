@@ -130,8 +130,10 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                     binding.recyclerView.setLayoutManager(new LinearLayoutManager(UpdatePlayerScore.this));
                                     binding.recyclerView.setAdapter(adapter1);
 
-                                    binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " Scored");
-                                    binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()) + " Wickets");
+                                    binding.runsWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " / "
+                                                            + String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()));
+                                    binding.overs.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamBalls()/6) + "." +
+                                                        String.valueOf(singleMatchInfo.getTeam1Score().getTeamBalls() % 6) + " overs");
 
                                     dialog.dismiss();
                                 }
@@ -181,8 +183,10 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
             binding.recyclerView.setLayoutManager(new LinearLayoutManager(UpdatePlayerScore.this));
             binding.recyclerView.setAdapter(adapter1);
 
-            binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " Scored");
-            binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()) + " Wickets");
+            binding.runsWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " / "
+                    + String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()));
+            binding.overs.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamBalls()/6) + "." +
+                    String.valueOf(singleMatchInfo.getTeam1Score().getTeamBalls() % 6) + " overs");
 
             dialog.dismiss();
         }
@@ -195,16 +199,20 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
             case R.id.team1:
                 binding.team1.setBackgroundColor(Color.parseColor("#B9CCE2"));
                 binding.team2.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " Scored");
-                binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()) + " Wickets");
+                binding.runsWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " / "
+                        + String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()));
+                binding.overs.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamBalls()/6) + "." +
+                        String.valueOf(singleMatchInfo.getTeam1Score().getTeamBalls() % 6) + " overs");
                 binding.recyclerView.setAdapter(adapter1);
                 adapter1.notifyDataSetChanged();
                 break;
             case R.id.team2:
                 binding.team2.setBackgroundColor(Color.parseColor("#B9CCE2"));
                 binding.team1.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamRuns()) + " Scored");
-                binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamWickets()) + " Wickets");
+                binding.runsWickets.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamRuns()) + " / "
+                        + String.valueOf(singleMatchInfo.getTeam2Score().getTeamWickets()));
+                binding.overs.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamBalls()/6) + "." +
+                        String.valueOf(singleMatchInfo.getTeam2Score().getTeamBalls() % 6) + " overs");
                 binding.recyclerView.setAdapter(adapter2);
                 adapter2.notifyDataSetChanged();
                 break;
@@ -228,15 +236,26 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                     public void onClick(DialogInterface dialog, int which) {
                         switch (which) {
                             case 0:
+                                if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                    singleMatchInfo.getTeam2Score().setCards(list);
+                                } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                    singleMatchInfo.getTeam1Score().setCards(list);
+                                }
                                 break;
                             case 1:
                                 if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 1);
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 1);
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam1Score().setCards(list);
                                 }
                                 break;
@@ -244,10 +263,12 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                 if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 2);
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 2);
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam1Score().setCards(list);
                                 }
                                 break;
@@ -255,10 +276,12 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                 if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 3);
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 3);
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam1Score().setCards(list);
                                 }
                                 break;
@@ -266,10 +289,12 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                 if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 4);
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 4);
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam1Score().setCards(list);
                                 }
                                 break;
@@ -277,10 +302,12 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                 if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 5);
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 5);
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam1Score().setCards(list);
                                 }
                                 break;
@@ -288,10 +315,12 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                 if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 6);
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam2Score().setCards(list);
                                 } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                     list.get(a).setRuns(list.get(a).getRuns() + 6);
+                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                     singleMatchInfo.getTeam1Score().setCards(list);
                                 }
                                 break;
@@ -359,20 +388,32 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
     public void update_total_runs(String teamName) {
         if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
             int score = 0;
+            int balls = 0;
             for (int i = 0; i < 12; i++) {
                 score = score + singleMatchInfo.getTeam1Score().getCards().get(i).getRuns();
+                balls = balls + singleMatchInfo.getTeam1Score().getCards().get(i).getBalls();
             }
             singleMatchInfo.getTeam1Score().setTeamRuns(score);
-            binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " Scored");
+            singleMatchInfo.getTeam1Score().setTeamBalls(balls);
+            binding.runsWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " / " +
+                                        String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()));
+            binding.overs.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamBalls()/6) + "." +
+                    String.valueOf(singleMatchInfo.getTeam1Score().getTeamBalls() % 6) + " overs");
         }
 
         if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
             int score = 0;
+            int balls = 0;
             for (int i = 0; i < 12; i++) {
                 score = score + singleMatchInfo.getTeam2Score().getCards().get(i).getRuns();
+                balls = balls + singleMatchInfo.getTeam2Score().getCards().get(i).getBalls();
             }
             singleMatchInfo.getTeam2Score().setTeamRuns(score);
-            binding.totalRuns.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamRuns()) + " Scored");
+            singleMatchInfo.getTeam2Score().setTeamBalls(balls);
+            binding.runsWickets.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamRuns()) + " / " +
+                                        String.valueOf(singleMatchInfo.getTeam2Score().getTeamWickets()));
+            binding.overs.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamBalls()/6) + "." +
+                    String.valueOf(singleMatchInfo.getTeam2Score().getTeamBalls() % 6) + " overs");
         }
 
     }
@@ -384,7 +425,8 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                 wickets = wickets + singleMatchInfo.getTeam2Score().getCards().get(i).getWickets();
             }
             singleMatchInfo.getTeam1Score().setTeamWickets(wickets);
-            binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamWickets()) + " Wickets");
+            binding.runsWickets.setText(String.valueOf(singleMatchInfo.getTeam2Score().getTeamRuns()) + " / " +
+                    String.valueOf(singleMatchInfo.getTeam2Score().getTeamWickets()));
         }
 
         if (!singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
@@ -393,7 +435,8 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                 wickets = wickets + singleMatchInfo.getTeam1Score().getCards().get(i).getWickets();
             }
             singleMatchInfo.getTeam2Score().setTeamWickets(wickets);
-            binding.totalWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()) + " Wickets");
+            binding.runsWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " / " +
+                    String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()));
         }
     }
 

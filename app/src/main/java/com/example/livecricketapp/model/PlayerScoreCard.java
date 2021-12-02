@@ -7,10 +7,19 @@ public class PlayerScoreCard implements Serializable {
     private String playerName;
     private int runs = 0;
     private int wickets = 0;
+    private int balls = 0;
 
     public PlayerScoreCard ()
     {
 
+    }
+
+    public int getBalls() {
+        return balls;
+    }
+
+    public void setBalls(int balls) {
+        this.balls = balls;
     }
 
     public String getPlayerName() {

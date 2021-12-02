@@ -9,15 +9,15 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
         android:layout_weight="1"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <TextView
             android:id="@+id/name"
             android:layout_width="0dp"
-            android:layout_weight="0.4"
             android:layout_height="match_parent"
+            android:layout_weight="0.4"
             android:fontFamily="@font/montserrat"
             android:text="Rohit Sharma"
             android:textColor="#112E52"
@@ -26,8 +26,8 @@
         <TextView
             android:id="@+id/runs"
             android:layout_width="0dp"
-            android:layout_weight="0.3"
             android:layout_height="match_parent"
+            android:layout_weight="0.2"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
             android:text="150"
@@ -35,10 +35,21 @@
             android:textSize="12sp" />
 
         <TextView
+            android:id="@+id/balls"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
+            android:text="120"
+            android:textColor="#112E52"
+            android:textSize="12sp" />
+
+        <TextView
             android:id="@+id/wickets"
             android:layout_width="0dp"
-            android:layout_weight="0.3"
             android:layout_height="match_parent"
+            android:layout_weight="0.2"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
             android:text="4"
@@ -46,28 +57,6 @@
             android:textSize="12sp" />
 
     </LinearLayout>
-
-    <View
-        android:id="@+id/runs_nill"
-        android:layout_width="15dp"
-        android:layout_height="2dp"
-        android:visibility="gone"
-        android:layout_marginEnd="140dp"
-        android:background="#112E52"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/wickets_nill"
-        android:layout_width="15dp"
-        android:layout_height="2dp"
-        android:visibility="gone"
-        android:layout_marginEnd="40dp"
-        android:background="#112E52"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:layout_width="match_parent"
