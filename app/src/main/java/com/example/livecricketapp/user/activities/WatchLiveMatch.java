@@ -8,6 +8,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -22,6 +23,8 @@ import com.example.livecricketapp.model.AdBanner;
 import com.example.livecricketapp.model.AllMatchInfo;
 import com.example.livecricketapp.model.Comments;
 import com.example.livecricketapp.model.SingleMatchInfo;
+import com.example.livecricketapp.model.StreamingCred;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -72,7 +75,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
     // Fill the channel name.
     private String channelName = "Match1";
     // Fill the temp token generated on Agora Console.
-    private String token = "006b7a4b110fced4c69921eb66e205a85d9IAApmrAhDDjVge3wxDOdX7U5c8MdGB9PjMIJK+/DyBXVqstFYPQAAAAAEABkg7/N0/5eYQEAAQDS/l5h";
+    private String token = "006b7a4b110fced4c69921eb66e205a85d9IADvzFuD6XlMuM27aKzcWP2OWn90MiYU0CfatL8cSG2lo8tFYPQAAAAAEAAac4ysmRWrYQEAAQCYFath";
 
     private RtcEngine mRtcEngine;
 
@@ -164,11 +167,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
 
         get_score();
 
-
-        // If all the permissions are granted, initialize the RtcEngine object and join a channel.
-        if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
-            initializeAndJoinChannel();
-        }
+        get_cred();
 
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -178,6 +177,25 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
+    }
+
+    private void get_cred ()
+    {
+        db.collection("Cred")
+                .document("Streaming")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+                        StreamingCred streamingCred = documentSnapshot.toObject(StreamingCred.class);
+                        channelName = streamingCred.getName();
+                        token = streamingCred.getId();
+                        // If all the permissions are granted, initialize the RtcEngine object and join a channel.
+                        if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
+                            initializeAndJoinChannel();
+                        }
+                    }
+                });
     }
 
     @Override
@@ -287,6 +305,10 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         binding.team2Score.setText(info.getTeam2Score().getTeamName() + "  " +
                 String.valueOf(info.getTeam2Score().getTeamRuns()) + "/" +
                 String.valueOf(info.getTeam2Score().getTeamWickets()));
+        binding.team1Overs.setText(String.valueOf(info.getTeam1Score().getTeamBalls()/6) + "." +
+                String.valueOf(info.getTeam1Score().getTeamBalls() % 6 ) + " overs" );
+        binding.team2Overs.setText(String.valueOf(info.getTeam2Score().getTeamBalls()/6) + "." +
+                String.valueOf(info.getTeam2Score().getTeamBalls() % 6 ) + " overs" );
     }
 
 

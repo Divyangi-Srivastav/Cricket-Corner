@@ -24,6 +24,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
         <activity
+            android:name=".admin.activities.SetStreamingCredential"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
             android:name=".user.activities.AboutActivity"
             android:exported="true" />
         <activity
@@ -99,15 +103,6 @@
             android:exported="true" />
         <activity
             android:name=".user.activities.Tournaments"
-            android:exported="true" />
-        <activity
-            android:name=".trial.TrialThree"
-            android:exported="true" />
-        <activity
-            android:name=".trial.TrialTwo"
-            android:exported="true" />
-        <activity
-            android:name=".trial.TrailOne"
             android:exported="true" />
         <activity
             android:name=".admin.activities.FixtuesMatchSettings"

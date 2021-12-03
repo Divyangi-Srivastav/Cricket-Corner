@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ import com.example.livecricketapp.model.AdBanner;
 import com.example.livecricketapp.model.AllMatchInfo;
 import com.example.livecricketapp.model.Comments;
 import com.example.livecricketapp.model.SingleMatchInfo;
+import com.example.livecricketapp.model.StreamingCred;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -80,7 +82,7 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
     // Fill the channel name.
     private String channelName = "Match1";
     // Fill the temp token generated on Agora Console.
-    private String token = "006b7a4b110fced4c69921eb66e205a85d9IAApmrAhDDjVge3wxDOdX7U5c8MdGB9PjMIJK+/DyBXVqstFYPQAAAAAEABkg7/N0/5eYQEAAQDS/l5h";
+    private String token = "006b7a4b110fced4c69921eb66e205a85d9IADvzFuD6XlMuM27aKzcWP2OWn90MiYU0CfatL8cSG2lo8tFYPQAAAAAEAAac4ysmRWrYQEAAQCYFath";
 
     private RtcEngine mRtcEngine;
 
@@ -156,10 +158,7 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
         singleMatchInfo = new SingleMatchInfo();
         allMatchInfo = new AllMatchInfo();
 
-        // If all the permissions are granted, initialize the RtcEngine object and join a channel.
-        if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
-            initializeAndJoinChannel();
-        }
+        get_cred();
 
         get_ad_data();
         adRequestsAdapter = new AdRequestsAdapter(this, adBanners, "admin", this::change_status);
@@ -181,6 +180,25 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
                 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
         get_single_match_info();
+    }
+
+    private void get_cred ()
+    {
+        db.collection("Cred")
+                .document("Streaming")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+                        StreamingCred streamingCred = documentSnapshot.toObject(StreamingCred.class);
+                        channelName = streamingCred.getName();
+                        token = streamingCred.getId();
+                        // If all the permissions are granted, initialize the RtcEngine object and join a channel.
+                        if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
+                            initializeAndJoinChannel();
+                        }
+                    }
+                });
     }
 
     public void switch_camera(View view) {
