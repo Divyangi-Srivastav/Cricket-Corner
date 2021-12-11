@@ -60,7 +60,7 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
     private Comments comments;
     private AllMatchInfo allMatchInfo;
     private SingleMatchInfo singleMatchInfo;
-    private int a =0;
+    private int a = 0;
 
 
     private static final String[] REQUESTED_PERMISSIONS = {
@@ -182,8 +182,7 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
         get_single_match_info();
     }
 
-    private void get_cred ()
-    {
+    private void get_cred() {
         db.collection("Cred")
                 .document("Streaming")
                 .get()

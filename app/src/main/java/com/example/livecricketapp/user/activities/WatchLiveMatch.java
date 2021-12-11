@@ -22,8 +22,10 @@ import com.example.livecricketapp.databinding.ActivityWatchLiveMatchBinding;
 import com.example.livecricketapp.model.AdBanner;
 import com.example.livecricketapp.model.AllMatchInfo;
 import com.example.livecricketapp.model.Comments;
+import com.example.livecricketapp.model.PlayerScoreCard;
 import com.example.livecricketapp.model.SingleMatchInfo;
 import com.example.livecricketapp.model.StreamingCred;
+import com.example.livecricketapp.model.TeamScoreCard;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -42,7 +44,7 @@ import io.agora.rtc2.RtcEngine;
 import io.agora.rtc2.RtcEngineConfig;
 import io.agora.rtc2.video.VideoCanvas;
 
-public class WatchLiveMatch extends AppCompatActivity implements View.OnClickListener, AdRequestsAdapter.On_Click , CommentsAdapter.On_Click {
+public class WatchLiveMatch extends AppCompatActivity implements View.OnClickListener, AdRequestsAdapter.On_Click, CommentsAdapter.On_Click {
 
     private ActivityWatchLiveMatchBinding binding;
     private SingleMatchInfo singleMatchInfo;
@@ -157,7 +159,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         binding.recyclerViewAds.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         get_comments();
-        commentsAdapter = new CommentsAdapter(WatchLiveMatch.this , commentList , WatchLiveMatch.this::delete_comment , "user");
+        commentsAdapter = new CommentsAdapter(WatchLiveMatch.this, commentList, WatchLiveMatch.this::delete_comment, "user");
         binding.recyclerViewComments.setAdapter(commentsAdapter);
         binding.recyclerViewComments.setLayoutManager(new LinearLayoutManager(WatchLiveMatch.this));
 
@@ -179,8 +181,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    private void get_cred ()
-    {
+    private void get_cred() {
         db.collection("Cred")
                 .document("Streaming")
                 .get()
@@ -225,8 +226,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
                 binding.comment.getText().clear();
                 comments.setCommentsList(commentList);
 
-                if ( !comments.getMatchNo().equalsIgnoreCase(singleMatchInfo.getMatchNo()) )
-                {
+                if (!comments.getMatchNo().equalsIgnoreCase(singleMatchInfo.getMatchNo())) {
                     comments.setTournamentId(tournamentId);
                     comments.setMatchNo(singleMatchInfo.getMatchNo());
                 }
@@ -269,14 +269,11 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
                 });
     }
 
-    private void update_comments()
-    {
+    private void update_comments() {
         db.collection("Comments")
                 .document(tournamentId)
                 .set(comments);
     }
-
-
 
 
     // Score update and fetching
@@ -299,18 +296,48 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
     }
 
     private void update_score(SingleMatchInfo info) {
+
+        set_scores(info);
+
         binding.team1Score.setText(info.getTeam1Score().getTeamName() + "  " +
                 String.valueOf(info.getTeam1Score().getTeamRuns()) + "/" +
                 String.valueOf(info.getTeam1Score().getTeamWickets()));
         binding.team2Score.setText(info.getTeam2Score().getTeamName() + "  " +
                 String.valueOf(info.getTeam2Score().getTeamRuns()) + "/" +
                 String.valueOf(info.getTeam2Score().getTeamWickets()));
-        binding.team1Overs.setText(String.valueOf(info.getTeam1Score().getTeamBalls()/6) + "." +
-                String.valueOf(info.getTeam1Score().getTeamBalls() % 6 ) + " overs" );
-        binding.team2Overs.setText(String.valueOf(info.getTeam2Score().getTeamBalls()/6) + "." +
-                String.valueOf(info.getTeam2Score().getTeamBalls() % 6 ) + " overs" );
+        binding.team1Overs.setText(String.valueOf(info.getTeam1Score().getTeamBalls() / 6) + "." +
+                String.valueOf(info.getTeam1Score().getTeamBalls() % 6) + " overs");
+        binding.team2Overs.setText(String.valueOf(info.getTeam2Score().getTeamBalls() / 6) + "." +
+                String.valueOf(info.getTeam2Score().getTeamBalls() % 6) + " overs");
     }
 
+
+    private void set_scores(SingleMatchInfo info) {
+        TeamScoreCard card = info.getTeam1Score();
+
+        PlayerScoreCard a, b;
+        a = card.getCards().get(0);
+        b = card.getCards().get(1);
+        for (int i = 0; i < card.getCards().size(); i++) {
+            if (card.getCards().get(i).getRuns() > a.getRuns()) {
+                b = a;
+                a = card.getCards().get(i);
+            }
+        }
+        binding.playerScore1.setText(a.getPlayerName() + " " + a.getRuns() + "( " + a.getBalls() + " )" + "   " + b.getPlayerName() + " " + b.getRuns() + "( " + b.getBalls() + " )");
+
+        card = info.getTeam2Score();
+        a = card.getCards().get(0);
+        b = card.getCards().get(0);
+        for (int i = 0; i < card.getCards().size(); i++) {
+            if (card.getCards().get(i).getRuns() > a.getRuns()) {
+                b = a;
+                a = card.getCards().get(i);
+            }
+        }
+        binding.playerScore2.setText(a.getPlayerName() + " " + a.getRuns() + "( " + a.getBalls() + " )" + "   " + b.getPlayerName() + " " + b.getRuns() + "( " + b.getBalls() + " )");
+
+    }
 
     // advertisement update and fetching
     private void get_ad_data() {
@@ -333,7 +360,6 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
     }
 
 
-
     protected void onDestroy() {
         super.onDestroy();
         mRtcEngine.stopPreview();
@@ -346,6 +372,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
     public void change_status(int a) {
 
     }
+
     @Override
     public void delete_comment(int a) {
 
