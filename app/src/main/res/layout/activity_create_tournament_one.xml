@@ -231,7 +231,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat"
                         android:hint="Enter Start Date of Tournament"
-                        android:inputType="date"
+                        android:inputType="text"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -259,7 +259,7 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat"
                         android:hint="Enter End Date of Tournament"
-                        android:inputType="date"
+                        android:inputType="text"
                         android:textSize="15sp" />
 
                     <ImageView
