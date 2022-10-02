@@ -299,15 +299,15 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
 
         set_scores(info);
 
-        binding.team1Score.setText(info.getTeam1Score().getTeamName() + "  " +
+        binding.batsman1Name.setText(info.getTeam1Score().getTeamName() + "  " +
                 String.valueOf(info.getTeam1Score().getTeamRuns()) + "/" +
                 String.valueOf(info.getTeam1Score().getTeamWickets()));
-        binding.team2Score.setText(info.getTeam2Score().getTeamName() + "  " +
+        binding.batsman2Name.setText(info.getTeam2Score().getTeamName() + "  " +
                 String.valueOf(info.getTeam2Score().getTeamRuns()) + "/" +
                 String.valueOf(info.getTeam2Score().getTeamWickets()));
-        binding.team1Overs.setText(String.valueOf(info.getTeam1Score().getTeamBalls() / 6) + "." +
+        binding.batsman1Name.setText(String.valueOf(info.getTeam1Score().getTeamBalls() / 6) + "." +
                 String.valueOf(info.getTeam1Score().getTeamBalls() % 6) + " overs");
-        binding.team2Overs.setText(String.valueOf(info.getTeam2Score().getTeamBalls() / 6) + "." +
+        binding.batsman2Name.setText(String.valueOf(info.getTeam2Score().getTeamBalls() / 6) + "." +
                 String.valueOf(info.getTeam2Score().getTeamBalls() % 6) + " overs");
     }
 
@@ -324,7 +324,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
                 a = card.getCards().get(i);
             }
         }
-        binding.playerScore1.setText(a.getPlayerName() + " " + a.getRuns() + "( " + a.getBalls() + " )" + "   " + b.getPlayerName() + " " + b.getRuns() + "( " + b.getBalls() + " )");
+        binding.batsman1Name.setText(a.getPlayerName() + " " + a.getRuns() + "( " + a.getBalls() + " )" + "   " + b.getPlayerName() + " " + b.getRuns() + "( " + b.getBalls() + " )");
 
         card = info.getTeam2Score();
         a = card.getCards().get(0);
@@ -335,7 +335,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
                 a = card.getCards().get(i);
             }
         }
-        binding.playerScore2.setText(a.getPlayerName() + " " + a.getRuns() + "( " + a.getBalls() + " )" + "   " + b.getPlayerName() + " " + b.getRuns() + "( " + b.getBalls() + " )");
+        binding.batsman2Name.setText(a.getPlayerName() + " " + a.getRuns() + "( " + a.getBalls() + " )" + "   " + b.getPlayerName() + " " + b.getRuns() + "( " + b.getBalls() + " )");
 
     }
 
