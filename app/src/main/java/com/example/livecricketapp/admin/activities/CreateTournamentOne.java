@@ -1,15 +1,20 @@
 package com.example.livecricketapp.admin.activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.DatePicker;
+import android.widget.EditText;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.admin.adapters.CreateTournamentOneAdapter;
@@ -19,12 +24,18 @@ import com.example.livecricketapp.model.TournamentInfo;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class CreateTournamentOne extends AppCompatActivity implements View.OnClickListener{
 
     private ActivityCreateTournamentOneBinding binding;
     private CreateTournamentOneAdapter createTournamentOneAdapter;
     private CreateTournamentTimeAdapter createTournamentTimeAdapter;
     private FirebaseFirestore db;
+    final Calendar myCalendar= Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +45,10 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
 
         db = FirebaseFirestore.getInstance();
 
+
         binding.btnSubmit.setOnClickListener(this::onClick);
+        binding.startDateAndTime.setOnClickListener(this::onClick);
+
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -141,30 +155,52 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
 
         switch (v.getId())
         {
-            case R.id.btn_submit:
+            case R.id.btn_submit:{
+                if (check_empty()) {
+                    TournamentInfo tournamentInfo = new TournamentInfo();
+                    tournamentInfo.setTournamentId(getIntent().getStringExtra("id"));
+                    tournamentInfo.setTournamentName(binding.tournamentName.getText().toString());
+                    tournamentInfo.setNumber_of_teams(Integer.parseInt(binding.numberOfTeams.getText().toString()));
+                    tournamentInfo.setFees(Float.parseFloat(binding.fees.getText().toString()));
+                    tournamentInfo.setNo_of_matches_day(Integer.parseInt(binding.numberOfMatches.getText().toString()));
+                    tournamentInfo.setStart_date(binding.startDateAndTime.getText().toString());
+                    tournamentInfo.setEnd_date(binding.endDateAndTime.getText().toString());
+                    tournamentInfo.setTeamNames(createTournamentOneAdapter.get_list());
+                    tournamentInfo.setMatchTimings(createTournamentTimeAdapter.getTimeList());
+                    upload_to_firestore(tournamentInfo);
 
-               if (check_empty()) {
-                   TournamentInfo tournamentInfo = new TournamentInfo();
-                   tournamentInfo.setTournamentId(getIntent().getStringExtra("id"));
-                   tournamentInfo.setTournamentName(binding.tournamentName.getText().toString());
-                   tournamentInfo.setNumber_of_teams(Integer.parseInt(binding.numberOfTeams.getText().toString()));
-                   tournamentInfo.setFees(Float.parseFloat(binding.fees.getText().toString()));
-                   tournamentInfo.setNo_of_matches_day(Integer.parseInt(binding.numberOfMatches.getText().toString()));
-                   tournamentInfo.setStart_date(binding.startDateAndTime.getText().toString());
-                   tournamentInfo.setEnd_date(binding.endDateAndTime.getText().toString());
-                   tournamentInfo.setTeamNames(createTournamentOneAdapter.get_list());
-                   tournamentInfo.setMatchTimings(createTournamentTimeAdapter.getTimeList());
-                   upload_to_firestore(tournamentInfo);
+                    Intent intent = new Intent( CreateTournamentOne.this , CreateTournamentTwo.class );
+                    intent.putExtra("info",tournamentInfo);
+                    startActivity(intent);
 
-                   Intent intent = new Intent( CreateTournamentOne.this , CreateTournamentTwo.class );
-                   intent.putExtra("info",tournamentInfo);
-                   startActivity(intent);
-
-               }
+                }
                 break;
+            }
+            case R.id.start_date_and_time:
+            case R.id.end_date_and_time: {
+                
+                DatePickerDialog.OnDateSetListener date = (view, year, month, day) -> {
+                    myCalendar.set(Calendar.YEAR, year);
+                    myCalendar.set(Calendar.MONTH,month);
+                    myCalendar.set(Calendar.DAY_OF_MONTH,day);
+                    updateLabel(v);
+                };
+                new DatePickerDialog(this,date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                break;
+
+            }
+
+
         }
 
     }
+    private void updateLabel(View v){
+        String myFormat="MM/dd/yy";
+        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.ENGLISH);
+        EditText et = (EditText) v;
+        et.setText(dateFormat.format(myCalendar.getTime()));
+    }
+
 
     public Boolean check_empty ()
     {

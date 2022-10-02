@@ -231,7 +231,6 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat"
                         android:hint="Enter Start Date of Tournament"
-                        android:inputType="date"
                         android:textSize="15sp" />
 
                     <ImageView
