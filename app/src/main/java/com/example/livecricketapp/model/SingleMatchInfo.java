@@ -1,6 +1,8 @@
 package com.example.livecricketapp.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SingleMatchInfo implements Serializable {
 
@@ -12,14 +14,55 @@ public class SingleMatchInfo implements Serializable {
     private String winningTeam = "";
     private String matchResult = "";
     private int matchStatus = 0 ;
+    private String batsman1 ;
+    private String batsman2 ;
+    private String bowler ;
+    private List<Integer> score = new ArrayList<>();
 
     // 0 = not occured yet
     // 1 = ongoing
     // 2 = completed
 
+    // in score 7 for out and -1 to be not included
+
     public SingleMatchInfo ()
     {
+        for ( int i=0 ; i < 6 ; i++ )
+        {
+            score.add(-1);
+        }
+    }
 
+    public String getBatsman1() {
+        return batsman1;
+    }
+
+    public void setBatsman1(String batsman1) {
+        this.batsman1 = batsman1;
+    }
+
+    public String getBatsman2() {
+        return batsman2;
+    }
+
+    public void setBatsman2(String batsman2) {
+        this.batsman2 = batsman2;
+    }
+
+    public String getBowler() {
+        return bowler;
+    }
+
+    public void setBowler(String bowler) {
+        this.bowler = bowler;
+    }
+
+    public List<Integer> getScore() {
+        return score;
+    }
+
+    public void setScore(List<Integer> score) {
+        this.score = score;
     }
 
     public int getMatchStatus() {

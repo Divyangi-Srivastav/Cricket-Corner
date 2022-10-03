@@ -42,7 +42,7 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
     private SingleMatchInfo singleMatchInfo;
     private ProgressDialog dialog;
     private ScorecardAdapter adapter1, adapter2;
-    private Boolean subscription_bool = false;
+    private Boolean subscription_bool = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,7 +194,8 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.btn_submit:
-                check_subscription();
+//                check_subscription();
+                move_to_other_activity();
                 break;
         }
 
@@ -212,32 +213,32 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
 
     // check_subscription
 
-    private void check_subscription() {
-        db.collection("Subscription")
-                .document(user.getUid())
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
-                        if (documentSnapshot.exists()) {
-                            AllSubscriptions subscriptions = documentSnapshot.toObject(AllSubscriptions.class);
-                            List<SingleSubscription> list = new ArrayList<>();
-                            list = subscriptions.getList();
-                            for (int i = 0; i < list.size(); i++) {
-                                SingleSubscription subscription = list.get(i);
-                                if (subscription.getTournamentId().equalsIgnoreCase(tournamentId)) {
-                                    if (subscription.getTourSubscription())
-                                        subscription_bool = true;
-                                    else if (subscription.getMatchSubscription())
-                                        if (subscription.getMatchId().equalsIgnoreCase(matchNo))
-                                            subscription_bool = true;
-                                }
-                            }
-                        }
-                        move_to_other_activity();
-                    }
-                });
-    }
+//    private void check_subscription() {
+//        db.collection("Subscription")
+//                .document(user.getUid())
+//                .get()
+//                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
+//                        if (documentSnapshot.exists()) {
+//                            AllSubscriptions subscriptions = documentSnapshot.toObject(AllSubscriptions.class);
+//                            List<SingleSubscription> list = new ArrayList<>();
+//                            list = subscriptions.getList();
+//                            for (int i = 0; i < list.size(); i++) {
+//                                SingleSubscription subscription = list.get(i);
+//                                if (subscription.getTournamentId().equalsIgnoreCase(tournamentId)) {
+//                                    if (subscription.getTourSubscription())
+//                                        subscription_bool = true;
+//                                    else if (subscription.getMatchSubscription())
+//                                        if (subscription.getMatchId().equalsIgnoreCase(matchNo))
+//                                            subscription_bool = true;
+//                                }
+//                            }
+//                        }
+//                        move_to_other_activity();
+//                    }
+//                });
+//    }
 
     private void move_to_other_activity() {
         if (subscription_bool) {

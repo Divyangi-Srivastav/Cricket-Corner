@@ -27,6 +27,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAdapter.Update_scorecard, View.OnClickListener {
@@ -234,6 +236,7 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
         builder.setItems(new CharSequence[]{"0 Run", "1 Run", "2 Run", "3 Run", "4 Run", "5 Run", "6 Run"},
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+                        update_score(which , "run");
                         switch (which) {
                             case 0:
                                 if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
@@ -398,6 +401,7 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                             case 0:
                                 break;
                             case 1:
+                                update_score(which , "out");
                                 if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
                                     List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
                                     list.get(a).setWickets(list.get(a).getWickets() + 1);
@@ -488,6 +492,34 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
             binding.runsWickets.setText(String.valueOf(singleMatchInfo.getTeam1Score().getTeamRuns()) + " / " +
                     String.valueOf(singleMatchInfo.getTeam1Score().getTeamWickets()));
         }
+    }
+
+    public void update_score( int score , String val )
+    {
+        Deque<Integer> deque = new LinkedList<Integer>();
+        for ( int i=0 ; i < 6 ; i++ )
+        {
+            deque.addLast(singleMatchInfo.getScore().get(i));
+        }
+
+        if ( val == "run" )
+        {
+            deque.removeFirst();
+            deque.addLast(score);
+        }
+        else
+        {
+            deque.removeFirst();
+            deque.addLast(7);
+        }
+        List<Integer> scor = new ArrayList<>();
+        for ( int i=0 ; i < 6 ; i++ )
+        {
+            scor.add(deque.getFirst());
+            deque.removeFirst();
+        }
+
+        singleMatchInfo.setScore(scor);
     }
 
     @Override
