@@ -72,6 +72,7 @@
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/layout/recycler_view_tournament.xml" value="0.4" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/menu/admin_side_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Ansh/Desktop/New folder/LiveCricketProffus/app/src/main/res/menu/bottom_nav_items.xml" value="0.20185185185185187" />
+        <entry key="..\:/Users/tarun/AndroidStudioProjects/CricketCorner/app/src/main/res/drawable/buttons.xml" value="0.2595" />
         <entry key="..\:/Users/tarun/AndroidStudioProjects/CricketCorner/app/src/main/res/layout/activity_about.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tarun/AndroidStudioProjects/CricketCorner/app/src/main/res/layout/activity_ads_request.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tarun/AndroidStudioProjects/CricketCorner/app/src/main/res/layout/activity_advertise_yourself.xml" value="0.25416666666666665" />
@@ -112,7 +113,7 @@
         <entry key="..\:/Users/tarun/AndroidStudioProjects/CricketCorner/app/src/main/res/layout/activity_update_player_score.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tarun/AndroidStudioProjects/CricketCorner/app/src/main/res/layout/activity_update_team_score.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tarun/AndroidStudioProjects/CricketCorner/app/src/main/res/layout/activity_view_subscription.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/tarun/AndroidStudioProjects/CricketCorner/app/src/main/res/layout/activity_watch_live_match.xml" value="0.264" />
+        <entry key="..\:/Users/tarun/AndroidStudioProjects/CricketCorner/app/src/main/res/layout/activity_watch_live_match.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/tarun/AndroidStudioProjects/CricketCorner/app/src/main/res/layout/recycler_comments.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tarun/AndroidStudioProjects/CricketCorner/app/src/main/res/layout/recycler_fixtures_adapter.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/tarun/AndroidStudioProjects/CricketCorner/app/src/main/res/layout/recycler_host_match_tour.xml" value="0.25416666666666665" />
