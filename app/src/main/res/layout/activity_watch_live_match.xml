@@ -216,7 +216,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/over_count"
+                                android:id="@+id/team_wickets"
                                 android:layout_width="wrap_content"
                                 android:layout_height="38dp"
                                 android:gravity="center"
@@ -242,6 +242,7 @@
 
 
                         <TextView
+                            android:id="@+id/over_count"
                             android:layout_width="wrap_content"
                             android:layout_height="38dp"
                             android:background="#454545"
@@ -344,11 +345,12 @@
 
                                 <TextView
                                     android:id="@+id/batsman1_name"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="100dp"
                                     android:layout_height="30dp"
                                     android:layout_marginStart="6dp"
                                     android:gravity="center_vertical"
                                     android:minWidth="80dp"
+                                    android:maxLength="10"
                                     android:text="Rohit Sharma"
                                     android:textColor="@color/black"
                                     android:textSize="16sp"
@@ -395,9 +397,10 @@
 
                                 <TextView
                                     android:id="@+id/batsman2_name"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="100dp"
                                     android:layout_height="30dp"
                                     android:layout_marginStart="6dp"
+                                    android:maxLength="10"
                                     android:gravity="center_vertical"
                                     android:minWidth="80dp"
                                     android:text="S Dhawan"
@@ -455,9 +458,10 @@
 
                                 <TextView
                                     android:id="@+id/bowler_name"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="100dp"
                                     android:layout_height="30dp"
                                     android:paddingHorizontal="5dp"
+                                    android:maxLength="10"
                                     android:gravity="center"
                                     android:text="Naseem Shah"
                                     android:textColor="@color/black"
@@ -480,7 +484,7 @@
                                     android:layout_width="28dp"
                                     android:layout_height="30dp"
                                     android:gravity="center"
-                                    android:text="6"
+                                    android:text=""
                                     android:textColor="@color/black"
                                     android:textSize="14sp"
                                     app:layout_constraintStart_toStartOf="parent"
@@ -491,7 +495,7 @@
                                     android:layout_width="28dp"
                                     android:layout_height="30dp"
                                     android:gravity="center"
-                                    android:text="2"
+                                    android:text=""
                                     android:textColor="@color/black"
                                     android:textSize="14sp"
                                     app:layout_constraintStart_toEndOf="@id/ball_1"
@@ -502,7 +506,7 @@
                                     android:layout_width="28dp"
                                     android:layout_height="30dp"
                                     android:gravity="center"
-                                    android:text="3"
+                                    android:text=""
                                     android:textColor="@color/black"
                                     android:textSize="14sp"
                                     app:layout_constraintStart_toEndOf="@id/ball_2"
@@ -513,7 +517,7 @@
                                     android:layout_width="28dp"
                                     android:layout_height="30dp"
                                     android:gravity="center"
-                                    android:text="6"
+                                    android:text=""
                                     android:textColor="@color/black"
                                     android:textSize="14sp"
                                     app:layout_constraintStart_toEndOf="@id/ball_3"
