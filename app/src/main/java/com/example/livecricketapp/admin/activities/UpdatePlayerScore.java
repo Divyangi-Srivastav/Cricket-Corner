@@ -526,7 +526,6 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
     public void onBackPressed() {
 
         update_data_on_firebase();
-
         super.onBackPressed();
     }
 }

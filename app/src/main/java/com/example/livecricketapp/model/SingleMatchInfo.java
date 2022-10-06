@@ -17,6 +17,7 @@ public class SingleMatchInfo implements Serializable {
     private String batsman1 ;
     private String batsman2 ;
     private String bowler ;
+    private String battingTeam ;
     private List<Integer> score = new ArrayList<>();
 
     // 0 = not occured yet
@@ -127,5 +128,13 @@ public class SingleMatchInfo implements Serializable {
 
     public void setTeam2Score(TeamScoreCard team2Score) {
         this.team2Score = team2Score;
+    }
+
+    public String getBattingTeam() {
+        return battingTeam;
+    }
+
+    public void setBattingTeam(String battingTeam) {
+        this.battingTeam = battingTeam;
     }
 }

@@ -36,6 +36,7 @@ public class HostMatchActivityTwo extends AppCompatActivity implements View.OnCl
         binding.playerScore.setOnClickListener(this::onClick);
         binding.teamScore.setOnClickListener(this::onClick);
         binding.setCred.setOnClickListener(this::onClick);
+        binding.updateBatsman.setOnClickListener(this::onClick);
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -92,8 +93,16 @@ public class HostMatchActivityTwo extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.set_cred:
-                Intent intent3 = new Intent(this , SetStreamingCredential.class );
-                startActivity(intent3);
+                    Intent intent3 = new Intent(this , SetStreamingCredential.class );
+                    startActivity(intent3);
+                break;
+
+            case R.id.update_batsman:
+                Intent intent4 = new Intent(this, UpdateBatsmanBowler.class);
+                intent4.putExtra("tour",tournamentId);
+                intent4.putExtra("match",matchNo);
+                startActivity(intent4);
+                break;
         }
 
     }
