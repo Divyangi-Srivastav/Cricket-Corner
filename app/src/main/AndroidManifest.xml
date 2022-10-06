@@ -24,120 +24,123 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
         <activity
-            android:name=".admin.activities.SetStreamingCredential"
+            android:name="com.example.livecricketapp.admin.activities.UpdateBatsmanBowler"
+            android:exported="false" />
+        <activity
+            android:name="com.example.livecricketapp.admin.activities.SetStreamingCredential"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".user.activities.AboutActivity"
+            android:name="com.example.livecricketapp.user.activities.AboutActivity"
             android:exported="true" />
         <activity
-            android:name=".user.activities.DashboardUser"
+            android:name="com.example.livecricketapp.user.activities.DashboardUser"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".admin.activities.SettingsAdmin"
+            android:name="com.example.livecricketapp.admin.activities.SettingsAdmin"
             android:exported="true" />
         <activity
-            android:name=".user.activities.HomeActivityUser"
+            android:name="com.example.livecricketapp.user.activities.HomeActivityUser"
             android:exported="true" />
         <activity
-            android:name=".user.activities.FullScreenMatchPreview"
-            android:exported="true"
-            android:screenOrientation="landscape" />
-        <activity
-            android:name=".admin.activities.DisplayReward"
-            android:exported="true" />
-        <activity
-            android:name=".user.activities.RewardTeamPlayer"
-            android:exported="true" />
-        <activity
-            android:name=".user.activities.WatchLiveMatch"
+            android:name="com.example.livecricketapp.user.activities.FullScreenMatchPreview"
             android:exported="true"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".user.activities.ViewSubscription"
+            android:name="com.example.livecricketapp.admin.activities.DisplayReward"
             android:exported="true" />
         <activity
-            android:name=".user.activities.SettingsUser"
+            android:name="com.example.livecricketapp.user.activities.RewardTeamPlayer"
             android:exported="true" />
         <activity
-            android:name=".user.activities.BuySubscription"
-            android:exported="true" />
-        <activity
-            android:name=".admin.activities.MatchEndResult"
-            android:exported="true" />
-        <activity
-            android:name=".user.activities.PaymentSuccessful"
-            android:exported="true" />
-        <activity
-            android:name=".user.activities.PaymentActivity"
-            android:exported="true" />
-        <activity
-            android:name=".user.activities.AdvertiseYourself"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".admin.activities.UpdatePlayerScore"
-            android:exported="true" />
-        <activity
-            android:name=".Unused.UpdateTeamScore"
-            android:exported="true" />
-        <activity
-            android:name=".admin.activities.StartLiveStreaming"
+            android:name="com.example.livecricketapp.user.activities.WatchLiveMatch"
             android:exported="true"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".admin.activities.HostMatchActivityTwo"
+            android:name="com.example.livecricketapp.user.activities.ViewSubscription"
             android:exported="true" />
         <activity
-            android:name=".admin.activities.HostMatchActivityOne"
+            android:name="com.example.livecricketapp.user.activities.SettingsUser"
             android:exported="true" />
         <activity
-            android:name=".user.activities.MatchActivity"
+            android:name="com.example.livecricketapp.user.activities.BuySubscription"
             android:exported="true" />
         <activity
-            android:name=".user.activities.TeamActivity"
+            android:name="com.example.livecricketapp.admin.activities.MatchEndResult"
             android:exported="true" />
         <activity
-            android:name=".user.activities.TeamsAndMatches"
+            android:name="com.example.livecricketapp.user.activities.PaymentSuccessful"
             android:exported="true" />
         <activity
-            android:name=".user.activities.Tournaments"
+            android:name="com.example.livecricketapp.user.activities.PaymentActivity"
             android:exported="true" />
         <activity
-            android:name=".admin.activities.FixtuesMatchSettings"
+            android:name="com.example.livecricketapp.user.activities.AdvertiseYourself"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".admin.activities.HomeActivity"
+            android:name="com.example.livecricketapp.admin.activities.UpdatePlayerScore"
             android:exported="true" />
-        <activity android:name=".admin.activities.ParticipationFees" />
-        <activity android:name=".Unused.AdsRequest" />
-        <activity android:name=".admin.activities.Fixtures" />
         <activity
-            android:name=".admin.activities.TeamSettings"
+            android:name="com.example.livecricketapp.Unused.UpdateTeamScore"
+            android:exported="true" />
+        <activity
+            android:name="com.example.livecricketapp.admin.activities.StartLiveStreaming"
+            android:exported="true"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name="com.example.livecricketapp.admin.activities.HostMatchActivityTwo"
+            android:exported="true" />
+        <activity
+            android:name="com.example.livecricketapp.admin.activities.HostMatchActivityOne"
+            android:exported="true" />
+        <activity
+            android:name="com.example.livecricketapp.user.activities.MatchActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.livecricketapp.user.activities.TeamActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.livecricketapp.user.activities.TeamsAndMatches"
+            android:exported="true" />
+        <activity
+            android:name="com.example.livecricketapp.user.activities.Tournaments"
+            android:exported="true" />
+        <activity
+            android:name="com.example.livecricketapp.admin.activities.FixtuesMatchSettings"
+            android:exported="true"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".admin.activities.TournamentSettings" />
         <activity
-            android:name=".admin.activities.DashboardAdmin"
+            android:name="com.example.livecricketapp.admin.activities.HomeActivity"
+            android:exported="true" />
+        <activity android:name="com.example.livecricketapp.admin.activities.ParticipationFees" />
+        <activity android:name="com.example.livecricketapp.Unused.AdsRequest" />
+        <activity android:name="com.example.livecricketapp.admin.activities.Fixtures" />
+        <activity
+            android:name="com.example.livecricketapp.admin.activities.TeamSettings"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name="com.example.livecricketapp.admin.activities.TournamentSettings" />
+        <activity
+            android:name="com.example.livecricketapp.admin.activities.DashboardAdmin"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".admin.activities.CreateTournamentThree"
+            android:name="com.example.livecricketapp.admin.activities.CreateTournamentThree"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".admin.activities.CreateTournamentTwo"
+            android:name="com.example.livecricketapp.admin.activities.CreateTournamentTwo"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".admin.activities.CreateTournamentOne"
+            android:name="com.example.livecricketapp.admin.activities.CreateTournamentOne"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".admin.activities.Host_a_tournament"
+            android:name="com.example.livecricketapp.admin.activities.Host_a_tournament"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".authentication.ForgotPasswordActivity" />
-        <activity android:name=".authentication.SignupActivity" />
-        <activity android:name=".authentication.LoginActivity" />
+        <activity android:name="com.example.livecricketapp.authentication.ForgotPasswordActivity" />
+        <activity android:name="com.example.livecricketapp.authentication.SignupActivity" />
+        <activity android:name="com.example.livecricketapp.authentication.LoginActivity" />
         <activity
-            android:name=".authentication.SplashActivity"
+            android:name="com.example.livecricketapp.authentication.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
