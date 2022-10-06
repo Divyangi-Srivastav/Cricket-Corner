@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.authentication.ForgotPasswordActivity;
 import com.example.livecricketapp.databinding.ActivitySettingsUserBinding;
+import com.example.livecricketapp.explicitIntents.ShareAppIntent;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -68,6 +69,10 @@ public class SettingsUser extends AppCompatActivity {
     public void about(View view) {
         Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
+    }
+
+    public void share(View view){
+        ShareAppIntent.shareApp(SettingsUser.this);
     }
 
 }

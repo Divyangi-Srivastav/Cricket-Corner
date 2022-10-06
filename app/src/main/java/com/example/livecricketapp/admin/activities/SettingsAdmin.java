@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.authentication.ForgotPasswordActivity;
 import com.example.livecricketapp.databinding.ActivitySettingsAdminBinding;
+import com.example.livecricketapp.explicitIntents.ShareAppIntent;
+import com.example.livecricketapp.user.activities.SettingsUser;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -60,6 +62,10 @@ public class SettingsAdmin extends AppCompatActivity {
     {
         Intent intent = new Intent(this , ForgotPasswordActivity.class);
         startActivity(intent);
+    }
+
+    public void share(View view){
+        ShareAppIntent.shareApp(SettingsAdmin.this);
     }
 
 }
