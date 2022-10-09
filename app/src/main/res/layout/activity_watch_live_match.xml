@@ -186,12 +186,11 @@
                         android:layout_marginStart="-24dp"
                         android:backgroundTint="@color/white"
                         app:cardCornerRadius="12dp"
-                        app:layout_constraintEnd_toStartOf="@+id/cardView4"
                         app:layout_constraintStart_toEndOf="@id/match_teams_card"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <LinearLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="140dp"
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
@@ -235,9 +234,11 @@
                         android:id="@+id/cardView4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="12dp"
+                        android:layout_marginStart="-10dp"
+                        app:cardCornerRadius="24dp"
+                        android:backgroundTint="#454545"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/highlight_card"
+                        app:layout_constraintStart_toEndOf="@+id/cardView3"
                         app:layout_constraintTop_toTopOf="parent">
 
 
@@ -245,6 +246,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="38dp"
                             android:background="#454545"
+                            android:layout_marginHorizontal="12dp"
                             android:gravity="center"
                             android:paddingHorizontal="12dp"
                             android:text="11.4"
@@ -265,9 +267,10 @@
 
                         <TextView
                             android:id="@+id/target"
-                            android:layout_width="160dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="38dp"
                             android:text="Target 220"
+                            android:minWidth="180dp"
                             android:textSize="20sp"
                             android:textColor="@color/black"
                             android:gravity="center"/>
@@ -282,6 +285,7 @@
                         android:backgroundTint="#3E9E00"
                         app:cardCornerRadius="12dp"
                         app:layout_constraintEnd_toStartOf="@id/target_card"
+                        app:layout_constraintStart_toEndOf="@+id/cardView4"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
@@ -289,6 +293,7 @@
                             android:layout_width="220dp"
                             android:layout_height="38dp"
                             android:gravity="center"
+                            android:layout_gravity="center"
                             android:text="SIX"
                             android:textColor="@color/white"
                             android:textSize="20sp" />
@@ -310,26 +315,27 @@
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardView"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
                         android:background="@drawable/buttons"
-                        app:cardCornerRadius="8dp"
                         android:backgroundTint="@color/white"
+                        app:cardCornerRadius="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:paddingHorizontal="12dp">
 
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:id="@+id/constraintLayout2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingHorizontal="6dp"
+                                android:paddingHorizontal="12dp"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent">
 
@@ -348,7 +354,7 @@
                                     android:layout_height="30dp"
                                     android:layout_marginStart="6dp"
                                     android:gravity="center_vertical"
-                                    android:minWidth="80dp"
+                                    android:minWidth="100dp"
                                     android:text="Rohit Sharma"
                                     android:textColor="@color/black"
                                     android:textSize="16sp"
@@ -389,7 +395,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
-                                android:paddingHorizontal="6dp"
+                                android:paddingHorizontal="12dp"
                                 app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
                                 app:layout_constraintTop_toTopOf="parent">
 
@@ -449,21 +455,22 @@
                                 android:id="@+id/bowler"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginStart="6dp"
-                                app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+                                app:layout_constraintEnd_toStartOf="@+id/ball_status_pallet"
                                 app:layout_constraintTop_toTopOf="parent">
 
                                 <TextView
                                     android:id="@+id/bowler_name"
                                     android:layout_width="wrap_content"
                                     android:layout_height="30dp"
-                                    android:paddingHorizontal="5dp"
                                     android:gravity="center"
+                                    android:paddingHorizontal="12dp"
                                     android:text="Naseem Shah"
                                     android:textColor="@color/black"
                                     android:textSize="16sp"
                                     app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent" />
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
 
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -471,8 +478,8 @@
                                 android:id="@+id/ball_status_pallet"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingHorizontal="6dp"
-                                app:layout_constraintStart_toEndOf="@id/bowler"
+                                android:paddingHorizontal="12dp"
+                                app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintTop_toTopOf="parent">
 
                                 <TextView
