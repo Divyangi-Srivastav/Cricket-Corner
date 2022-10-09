@@ -297,18 +297,98 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
 
     private void update_score(SingleMatchInfo info) {
 
-        set_scores(info);
+        binding.batsman1Name.setText(info.getBatsman1());
+        binding.batsman2Name.setText(info.getBatsman2());
+        binding.bowlerName.setText(info.getBowler());
 
-        binding.batsman1Name.setText(info.getTeam1Score().getTeamName() + "  " +
-                String.valueOf(info.getTeam1Score().getTeamRuns()) + "/" +
-                String.valueOf(info.getTeam1Score().getTeamWickets()));
-        binding.batsman2Name.setText(info.getTeam2Score().getTeamName() + "  " +
-                String.valueOf(info.getTeam2Score().getTeamRuns()) + "/" +
-                String.valueOf(info.getTeam2Score().getTeamWickets()));
-        binding.batsman1Name.setText(String.valueOf(info.getTeam1Score().getTeamBalls() / 6) + "." +
-                String.valueOf(info.getTeam1Score().getTeamBalls() % 6) + " overs");
-        binding.batsman2Name.setText(String.valueOf(info.getTeam2Score().getTeamBalls() / 6) + "." +
-                String.valueOf(info.getTeam2Score().getTeamBalls() % 6) + " overs");
+        if ( info.getScore().get(0).toString().equalsIgnoreCase("7") )
+            binding.ball1.setText("W");
+        else if ( info.getScore().get(1).toString().equalsIgnoreCase("7") )
+            binding.ball2.setText("W");
+        else if ( info.getScore().get(2).toString().equalsIgnoreCase("7") )
+            binding.ball3.setText("W");
+        else if ( info.getScore().get(3).toString().equalsIgnoreCase("7") )
+            binding.ball4.setText("W");
+        else if ( info.getScore().get(4).toString().equalsIgnoreCase("7") )
+            binding.ball5.setText("W");
+        else if ( info.getScore().get(5).toString().equalsIgnoreCase("7") )
+            binding.ball6.setText("W");
+
+
+        if ( !info.getScore().get(0).toString().equalsIgnoreCase("-1") )
+            binding.ball1.setText(String.valueOf(info.getScore().get(0)));
+        else if ( !info.getScore().get(1).toString().equalsIgnoreCase("-1") )
+            binding.ball2.setText(String.valueOf(info.getScore().get(1)));
+        else if ( !info.getScore().get(2).toString().equalsIgnoreCase("-1") )
+            binding.ball3.setText(String.valueOf(info.getScore().get(2)));
+        else if ( !info.getScore().get(3).toString().equalsIgnoreCase("-1") )
+            binding.ball4.setText(String.valueOf(info.getScore().get(3)));
+        else if ( !info.getScore().get(4).toString().equalsIgnoreCase("-1") )
+            binding.ball5.setText(String.valueOf(info.getScore().get(4)));
+        else if ( !info.getScore().get(5).toString().equalsIgnoreCase("-1") )
+            binding.ball6.setText(String.valueOf(info.getScore().get(5)));
+
+        if (info.getTeam1Score().getTeamName().equalsIgnoreCase(info.getBattingTeam()))
+        {
+            binding.matchTeams.setText(info.getTeam2Score().getTeamName() + " VS " + info.getTeam1Score().getTeamName());
+            binding.teamScore.setText(String.valueOf(info.getTeam1Score().getTeamRuns()));
+            binding.teamWickets.setText(String.valueOf(info.getTeam1Score().getTeamWickets()));
+            int balls = info.getTeam1Score().getTeamBalls();
+            int overs = balls / 6 ;
+            balls %= 6 ;
+            binding.overCount.setText(String.valueOf(overs) + "." + String.valueOf(balls));
+            for ( int i=0 ; i < info.getTeam1Score().getCards().size() ; i++ )
+            {
+                if(info.getTeam1Score().getCards().get(i).getPlayerName().equalsIgnoreCase(info.getBatsman1()))
+                {
+                    binding.batsman1Score.setText(String.valueOf(info.getTeam1Score().getCards().get(i).getRuns()));
+                    binding.batsman1Balls.setText(String.valueOf(info.getTeam1Score().getCards().get(i).getBalls()));
+                }
+
+                if(info.getTeam1Score().getCards().get(i).getPlayerName().equalsIgnoreCase(info.getBatsman2()))
+                {
+                    binding.batsman2Score.setText(String.valueOf(info.getTeam1Score().getCards().get(i).getRuns()));
+                    binding.batsman2Balls.setText(String.valueOf(info.getTeam1Score().getCards().get(i).getBalls()));
+                }
+            }
+
+            if ( !info.getTeam2Score().toString().equalsIgnoreCase("0") )
+            {
+                binding.target.setText("Target " + info.getTeam2Score().toString());
+            }
+        }
+
+
+        if (info.getTeam2Score().getTeamName().equalsIgnoreCase(info.getBattingTeam()))
+        {
+            binding.matchTeams.setText(info.getTeam1Score().getTeamName() + " VS " + info.getTeam2Score().getTeamName());
+            binding.teamScore.setText(String.valueOf(info.getTeam2Score().getTeamRuns()));
+            binding.teamWickets.setText(String.valueOf(info.getTeam2Score().getTeamWickets()));
+            int balls = info.getTeam2Score().getTeamBalls();
+            int overs = balls / 6 ;
+            balls %= 6 ;
+            binding.overCount.setText(String.valueOf(overs) + "." + String.valueOf(balls));
+            for ( int i=0 ; i < info.getTeam2Score().getCards().size() ; i++ )
+            {
+                if(info.getTeam2Score().getCards().get(i).getPlayerName().equalsIgnoreCase(info.getBatsman1()))
+                {
+                    binding.batsman1Score.setText(String.valueOf(info.getTeam1Score().getCards().get(i).getRuns()));
+                    binding.batsman1Balls.setText(String.valueOf(info.getTeam1Score().getCards().get(i).getBalls()));
+                }
+
+                if(info.getTeam2Score().getCards().get(i).getPlayerName().equalsIgnoreCase(info.getBatsman2()))
+                {
+                    binding.batsman2Score.setText(String.valueOf(info.getTeam1Score().getCards().get(i).getRuns()));
+                    binding.batsman2Balls.setText(String.valueOf(info.getTeam1Score().getCards().get(i).getBalls()));
+                }
+            }
+
+            if ( !info.getTeam1Score().toString().equalsIgnoreCase("0") )
+            {
+                binding.target.setText("Target " + info.getTeam1Score().toString());
+            }
+        }
+
     }
 
 
