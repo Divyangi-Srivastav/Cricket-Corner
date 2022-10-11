@@ -3,6 +3,8 @@ package com.example.livecricketapp.user.activities;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.SurfaceView;
 import android.view.View;
@@ -330,7 +332,8 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
 
         if (info.getTeam1Score().getTeamName().equalsIgnoreCase(info.getBattingTeam()))
         {
-            binding.matchTeams.setText(info.getTeam2Score().getTeamName() + " VS " + info.getTeam1Score().getTeamName());
+            binding.battingTeam.setText(info.getTeam1Score().getTeamName());
+            binding.bowlingTeam.setText( info.getTeam1Score().getTeamName());
             binding.teamScore.setText(String.valueOf(info.getTeam1Score().getTeamRuns()));
             binding.teamWickets.setText(String.valueOf(info.getTeam1Score().getTeamWickets()));
             int balls = info.getTeam1Score().getTeamBalls();
@@ -352,16 +355,14 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
                 }
             }
 
-            if ( !info.getTeam2Score().toString().equalsIgnoreCase("0") )
-            {
-                binding.target.setText("Target " + info.getTeam2Score().toString());
-            }
+                binding.target.setText("Target " + (info.getTeam2Score().getTeamRuns()+1));
         }
 
 
         if (info.getTeam2Score().getTeamName().equalsIgnoreCase(info.getBattingTeam()))
         {
-            binding.matchTeams.setText(info.getTeam1Score().getTeamName() + " VS " + info.getTeam2Score().getTeamName());
+            binding.battingTeam.setText(info.getTeam2Score().getTeamName());
+            binding.bowlingTeam.setText( info.getTeam2Score().getTeamName());
             binding.teamScore.setText(String.valueOf(info.getTeam2Score().getTeamRuns()));
             binding.teamWickets.setText(String.valueOf(info.getTeam2Score().getTeamWickets()));
             int balls = info.getTeam2Score().getTeamBalls();
@@ -372,25 +373,68 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
             {
                 if(info.getTeam2Score().getCards().get(i).getPlayerName().equalsIgnoreCase(info.getBatsman1()))
                 {
-                    binding.batsman1Score.setText(String.valueOf(info.getTeam1Score().getCards().get(i).getRuns()));
-                    binding.batsman1Balls.setText(String.valueOf(info.getTeam1Score().getCards().get(i).getBalls()));
+                    binding.batsman1Score.setText(String.valueOf(info.getTeam2Score().getCards().get(i).getRuns()));
+                    binding.batsman1Balls.setText(String.valueOf(info.getTeam2Score().getCards().get(i).getBalls()));
                 }
 
                 if(info.getTeam2Score().getCards().get(i).getPlayerName().equalsIgnoreCase(info.getBatsman2()))
                 {
-                    binding.batsman2Score.setText(String.valueOf(info.getTeam1Score().getCards().get(i).getRuns()));
-                    binding.batsman2Balls.setText(String.valueOf(info.getTeam1Score().getCards().get(i).getBalls()));
+                    binding.batsman2Score.setText(String.valueOf(info.getTeam2Score().getCards().get(i).getRuns()));
+                    binding.batsman2Balls.setText(String.valueOf(info.getTeam2Score().getCards().get(i).getBalls()));
                 }
             }
 
-            if ( !info.getTeam1Score().toString().equalsIgnoreCase("0") )
-            {
-                binding.target.setText("Target " + info.getTeam1Score().toString());
-            }
+                binding.target.setText("Target " +(info.getTeam1Score().toString()+1));
         }
 
+        binding.ball1.setText(setBall(info.getScore().get(0)));
+        binding.ball2.setText(setBall(info.getScore().get(1)));
+        binding.ball3.setText(setBall(info.getScore().get(2)));
+        binding.ball4.setText(setBall(info.getScore().get(3)));
+        binding.ball5.setText(setBall(info.getScore().get(4)));
+        binding.ball6.setText(setBall(info.getScore().get(5)));
+
+        for(int i=5;i>=0;i--){
+            int run = info.getScore().get(i);
+            if(run!=-1){
+//                String color = "#FFFFFF";
+                String higlight = "Dot";
+                if(run>=0 && run<=6){
+                    switch (run){
+                        case 1: higlight = "ONE";
+                        break;
+                        case 2: higlight = "TWO";
+                            break;
+                        case 3: higlight = "THREE";
+                            break;
+                        case 4: higlight = "FOUR";
+                            break;
+                        case 5: higlight = "FIVE";
+                            break;
+                        case 6: higlight = "SIX";
+                            break;
+                    }
+                    binding.highlightCard.setCardBackgroundColor(Color.GREEN);
+                }else if(run == 7){
+                    binding.highlightCard.setCardBackgroundColor(Color.RED);
+                }
+                binding.highlight.setText(higlight);
+                break;
+            }
+        }
     }
 
+    public String setBall(int run){
+        if(run>=0 && run<=6){
+            return String.valueOf(run);
+        }else if(run == -1){
+            return " ";
+        }else if(run == 7){
+            return "W";
+        }else{
+            return "-";
+        }
+    }
 
     private void set_scores(SingleMatchInfo info) {
         TeamScoreCard card = info.getTeam1Score();
