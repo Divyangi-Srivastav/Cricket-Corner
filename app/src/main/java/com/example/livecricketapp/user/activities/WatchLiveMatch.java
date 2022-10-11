@@ -333,7 +333,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         if (info.getTeam1Score().getTeamName().equalsIgnoreCase(info.getBattingTeam()))
         {
             binding.battingTeam.setText(info.getTeam1Score().getTeamName());
-            binding.bowlingTeam.setText( info.getTeam1Score().getTeamName());
+            binding.bowlingTeam.setText( info.getTeam2Score().getTeamName());
             binding.teamScore.setText(String.valueOf(info.getTeam1Score().getTeamRuns()));
             binding.teamWickets.setText(String.valueOf(info.getTeam1Score().getTeamWickets()));
             int balls = info.getTeam1Score().getTeamBalls();
@@ -362,7 +362,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         if (info.getTeam2Score().getTeamName().equalsIgnoreCase(info.getBattingTeam()))
         {
             binding.battingTeam.setText(info.getTeam2Score().getTeamName());
-            binding.bowlingTeam.setText( info.getTeam2Score().getTeamName());
+            binding.bowlingTeam.setText( info.getTeam1Score().getTeamName());
             binding.teamScore.setText(String.valueOf(info.getTeam2Score().getTeamRuns()));
             binding.teamWickets.setText(String.valueOf(info.getTeam2Score().getTeamWickets()));
             int balls = info.getTeam2Score().getTeamBalls();
