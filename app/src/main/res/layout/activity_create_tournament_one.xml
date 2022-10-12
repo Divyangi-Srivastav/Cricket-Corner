@@ -70,6 +70,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/montserrat"
+                        android:textColorHint="@color/hint_color_grey"
+                        android:textColor="@color/black"
                         android:hint="Enter Tournament Name"
                         android:textSize="15sp" />
 
@@ -108,6 +110,8 @@
                         android:fontFamily="@font/montserrat"
                         android:hint="Enter Number of teams participating"
                         android:inputType="number"
+                        android:textColorHint="@color/hint_color_grey"
+                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -159,6 +163,8 @@
                         android:fontFamily="@font/montserrat"
                         android:hint="Enter Participation Fees for each team"
                         android:inputType="numberDecimal"
+                        android:textColorHint="@color/hint_color_grey"
+                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -196,6 +202,8 @@
                         android:fontFamily="@font/montserrat"
                         android:hint="Enter Number of matches per Day"
                         android:inputType="number"
+                        android:textColorHint="@color/hint_color_grey"
+                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -233,6 +241,8 @@
                         android:fontFamily="@font/montserrat"
                         android:hint="Enter Start Date of Tournament"
                         android:inputType="date"
+                        android:textColorHint="@color/hint_color_grey"
+                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <ImageView
@@ -261,6 +271,8 @@
                         android:fontFamily="@font/montserrat"
                         android:hint="Enter End Date of Tournament"
                         android:inputType="date"
+                        android:textColorHint="@color/hint_color_grey"
+                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <ImageView
