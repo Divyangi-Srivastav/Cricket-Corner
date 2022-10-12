@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:hint="Enter Number of teams participating"
+        android:textColorHint="@color/hint_color_grey"
+        android:textColor="@color/black"
         android:textSize="15sp" />
 
     <ImageView
