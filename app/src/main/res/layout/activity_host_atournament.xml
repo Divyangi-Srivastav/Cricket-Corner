@@ -76,6 +76,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     app:cardCornerRadius="10dp"
+                    android:backgroundTint="@color/white"
                     android:layout_marginHorizontal="20dp">
 
                     <LinearLayout
@@ -102,6 +103,8 @@
                             android:fontFamily="@font/montserrat"
                             android:id="@+id/name"
                             android:layout_width="285dp"
+                            android:textColorHint="@color/hint_color_grey"
+                            android:textColor="@color/black"
                             android:layout_height="match_parent"
                             android:background="@android:color/transparent"
                             android:hint="Enter Host Name"
@@ -126,6 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     app:cardCornerRadius="10dp"
+                    android:backgroundTint="@color/white"
                     android:layout_marginHorizontal="20dp">
 
                     <LinearLayout
@@ -152,6 +156,8 @@
                             android:fontFamily="@font/montserrat"
                             android:id="@+id/phone"
                             android:layout_width="285dp"
+                            android:textColorHint="@color/hint_color_grey"
+                            android:textColor="@color/black"
                             android:layout_height="match_parent"
                             android:background="@android:color/transparent"
                             android:hint="Enter Phone Number"
@@ -175,6 +181,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     app:cardCornerRadius="10dp"
+                    android:backgroundTint="@color/white"
                     android:layout_marginHorizontal="20dp">
 
                     <LinearLayout
@@ -203,6 +210,8 @@
                             android:layout_width="265dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="top"
+                            android:textColorHint="@color/hint_color_grey"
+                            android:textColor="@color/black"
                             android:layout_marginRight="20dp"
                             android:gravity="top"
                             android:hint="Enter Address"
@@ -240,6 +249,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:cardElevation="11dp"
+                    android:backgroundTint="@color/white"
                     android:layout_marginHorizontal="5dp"
                     app:cardUseCompatPadding="true"
                     android:layout_marginTop="30dp"
