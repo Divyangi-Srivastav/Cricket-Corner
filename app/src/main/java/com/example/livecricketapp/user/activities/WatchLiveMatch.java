@@ -355,6 +355,11 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
                 }
             }
 
+            if(info.getTeam2Score().getTeamRuns() <= 0){
+                binding.targetCard.setVisibility(View.GONE);
+            }else{
+                binding.targetCard.setVisibility(View.VISIBLE);
+            }
                 binding.target.setText("Target " + (info.getTeam2Score().getTeamRuns()+1));
         }
 
@@ -383,7 +388,11 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
                     binding.batsman2Balls.setText(String.valueOf(info.getTeam2Score().getCards().get(i).getBalls()));
                 }
             }
-
+            if(info.getTeam1Score().getTeamRuns() <= 0){
+                binding.targetCard.setVisibility(View.GONE);
+            }else{
+                binding.targetCard.setVisibility(View.VISIBLE);
+            }
                 binding.target.setText("Target " +(info.getTeam1Score().toString()+1));
         }
 
