@@ -24,6 +24,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LiveCricketApp">
         <activity
+            android:name="com.example.livecricketapp.admin.activities.BroadcastLiveEvent"
+            android:exported="false"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name="com.example.livecricketapp.user.activities.WatchLiveEvent"
+            android:exported="false"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name="com.example.livecricketapp.admin.activities.UpdateBatsmanBowler"
             android:exported="false" />
         <activity

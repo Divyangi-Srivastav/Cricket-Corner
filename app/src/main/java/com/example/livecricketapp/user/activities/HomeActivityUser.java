@@ -24,7 +24,7 @@ public class HomeActivityUser extends AppCompatActivity implements View.OnClickL
 
         setSupportActionBar(binding.toolbar);
         binding.btnViewATour.setOnClickListener(this::onClick);
-        binding.btnViewAMatch.setOnClickListener(this::onClick);
+        binding.btnViewLiveEvent.setOnClickListener(this::onClick);
         binding.btnMakeAdRequest.setOnClickListener(this::onClick);
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -56,8 +56,8 @@ public class HomeActivityUser extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId())
         {
-            case R.id.btn_view_a_match:
-
+            case R.id.btn_view_live_event:
+                startActivity(new Intent(this , WatchLiveEvent.class));
                 break;
             case R.id.btn_view_a_tour:
                 Intent intent = new Intent( this ,Tournaments.class );

@@ -75,11 +75,11 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
     }
 
     // Fill the App ID of your project generated on Agora Console.
-    private String appId = "b7a4b110fced4c69921eb66e205a85d9";
+    private String appId = "96b7a16527604155aa52269e67eaf7fa";
     // Fill the channel name.
     private String channelName = "channel";
     // Fill the temp token generated on Agora Console.
-    private String token = "007eJxTYDjmsmbb7gebf+VoabZU7Tn+iF86Y9dv3puRVkasLxfK5O9UYEgyTzRJMjQ0SEtOTTFJNrO0NDJMTTIzSzUyME20ME2xVHETSV4yXTTZ9H4sCyMDBIL47AzJGYl5eak5DAwAJjIibA==";
+    private String token = "007eJxTYDjT2R/+453TyWqFY48fLlGKfT/3xHS57uBXt46UT7okNPWXAoOlWZJ5oqGZqZG5mYGJoalpYqKpkZGZZaqZeWpimnlaYsxc1+Rb79yS80oyGRihEMRnZ0jOSMzLS81hYAAADHEmuw==";
 
     private RtcEngine mRtcEngine;
 

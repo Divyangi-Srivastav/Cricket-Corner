@@ -78,7 +78,7 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
     }
 
     // Fill the App ID of your project generated on Agora Console.
-    private String appId = "b7a4b110fced4c69921eb66e205a85d9";
+    private String appId = "96b7a16527604155aa52269e67eaf7fa";
     // Fill the channel name.
     private String channelName = "channel";
     // Fill the temp token generated on Agora Console.

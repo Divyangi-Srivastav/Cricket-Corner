@@ -132,7 +132,7 @@
                     android:textStyle="bold" />
 
                 <Button
-                    android:id="@+id/btn_view_ad_request"
+                    android:id="@+id/btn_host_a_event"
                     android:layout_width="match_parent"
                     android:layout_height="44dp"
                     android:layout_marginStart="32dp"
@@ -141,10 +141,9 @@
                     android:layout_marginBottom="25dp"
                     android:background="@drawable/buttons"
                     android:fontFamily="@font/montserrat"
-                    android:text="VIEW ADD REQUESTS"
+                    android:text="HOST AN EVENT"
                     android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

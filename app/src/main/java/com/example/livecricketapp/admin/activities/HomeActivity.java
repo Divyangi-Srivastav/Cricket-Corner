@@ -29,7 +29,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         binding.btnHostATour.setOnClickListener(this::onClick);
         binding.btnUserSide.setOnClickListener(this::onClick);
         binding.btnHostAMatch.setOnClickListener(this::onClick);
-        binding.btnViewAdRequest.setOnClickListener(this::onClick);
+        binding.btnHostAEvent.setOnClickListener(this::onClick);
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -68,8 +68,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(HomeActivity.this, Host_a_tournament.class);
                 startActivity(intent);
                 break;
-            case R.id.btn_view_ad_request:
-                Intent intent2 = new Intent(this, AdsRequest.class);
+            case R.id.btn_host_a_event:
+                Intent intent2 = new Intent(this, BroadcastLiveEvent.class);
                 startActivity(intent2);
                 break;
 
