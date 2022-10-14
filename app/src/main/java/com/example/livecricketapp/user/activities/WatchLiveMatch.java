@@ -185,7 +185,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
 
     private void get_cred() {
         db.collection("Cred")
-                .document("Streaming")
+                .document("StreamingUser")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override

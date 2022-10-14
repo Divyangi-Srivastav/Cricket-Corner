@@ -84,14 +84,6 @@ public class WatchLiveEvent extends AppCompatActivity implements View.OnClickLis
         // Start local preview.
         mRtcEngine.startPreview();
 
-//        FrameLayout container = findViewById(R.id.local_video_view_container);
-//        // Call CreateRendererView to create a SurfaceView object and add it as a child to the FrameLayout.
-//        // SurfaceView surfaceView = RtcEngine.CreateRendererView(getBaseContext());
-//        SurfaceView surfaceView = new SurfaceView (getBaseContext());
-//        container.addView(surfaceView);
-//        // Pass the SurfaceView object to Agora so that it renders the local video.
-//        mRtcEngine.setupLocalVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_FIT, 0));
-
         ChannelMediaOptions options = new ChannelMediaOptions();
         // For a live streaming scenario, set the channel profile as BROADCASTING.
         options.channelProfile = Constants.CHANNEL_PROFILE_LIVE_BROADCASTING;
@@ -132,12 +124,11 @@ public class WatchLiveEvent extends AppCompatActivity implements View.OnClickLis
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
-
     }
 
     private void get_cred() {
         db.collection("Cred")
-                .document("Streaming")
+                .document("StreamingUser")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
