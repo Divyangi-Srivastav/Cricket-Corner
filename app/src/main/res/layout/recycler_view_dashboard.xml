@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/montserrat"
-                android:text="VIEW MORE"
+                android:text="DELETE"
                 android:textColor="#112E52"
                 android:textSize="14sp"
                 android:textStyle="bold" />

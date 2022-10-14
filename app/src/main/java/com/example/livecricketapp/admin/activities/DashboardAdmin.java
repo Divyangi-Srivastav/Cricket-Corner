@@ -13,10 +13,13 @@ import android.view.View;
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.admin.adapters.DashboardAdapter;
 import com.example.livecricketapp.databinding.ActivityDashboardBinding;
+import com.example.livecricketapp.model.AllMatchInfo;
 import com.example.livecricketapp.model.DashboardTournamentInfo;
 import com.example.livecricketapp.model.TournamentHostInfo;
 import com.example.livecricketapp.model.TournamentInfo;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -139,8 +142,14 @@ public class DashboardAdmin extends AppCompatActivity implements DashboardAdapte
 
     @Override
     public void move_to_other_activity(int a) {
-        Intent intent = new Intent(this,TournamentSettings.class);
-        intent.putExtra("id",info.get(a));
-        startActivity(intent);
+        db.collection("Match Info")
+                .document(info.get(a).getTournamentId())
+                .delete();
+        db.collection("Tournament Team Info")
+                .document(info.get(a).getTournamentId())
+                .delete();
+        db.collection("Tournament Info")
+                .document(info.get(a).getTournamentId())
+                .delete();
     }
 }
