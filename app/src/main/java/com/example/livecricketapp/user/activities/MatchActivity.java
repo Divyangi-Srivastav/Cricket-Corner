@@ -43,6 +43,7 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
     private ProgressDialog dialog;
     private ScorecardAdapter adapter1, adapter2;
     private Boolean subscription_bool = true;
+    private int overs ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +63,7 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
 
         tournamentId = getIntent().getStringExtra("tour");
         matchNo = getIntent().getStringExtra("match");
+        overs = getIntent().getIntExtra("over" , 0);
 
         get_realtime_data();
 
@@ -245,6 +247,7 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(this, WatchLiveMatch.class);
             intent.putExtra("match", singleMatchInfo);
             intent.putExtra("tour", tournamentId);
+            intent.putExtra("over" , overs);
             startActivity(intent);
         } else {
             Intent intent = new Intent(this, BuySubscription.class);

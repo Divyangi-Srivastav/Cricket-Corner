@@ -14,10 +14,19 @@ public class TournamentInfo implements Serializable {
     private String start_date;
     private String end_date;
     private List<String> matchTimings;
+    private int total_overs ;
 
     public TournamentInfo ()
     {
 
+    }
+
+    public int getTotal_overs() {
+        return total_overs;
+    }
+
+    public void setTotal_overs(int total_overs) {
+        this.total_overs = total_overs;
     }
 
     public String getTournamentId() {

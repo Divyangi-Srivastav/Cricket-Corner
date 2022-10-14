@@ -141,6 +141,7 @@ public class TeamsAndMatches extends AppCompatActivity implements TeamsNamesAdap
         Intent intent = new Intent(this, MatchActivity.class);
         intent.putExtra("tour",info.getTournamentId());
         intent.putExtra("match",matchInfoList.get(a).getMatchNo());
+        intent.putExtra("over" , info.getTotal_overs());
         startActivity(intent);
     }
 }

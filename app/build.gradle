@@ -41,9 +41,7 @@ android {
 
 dependencies {
 
-    // For x.y.z, fill in a specific SDK version number. For example, 3.5.0.
-    // Get the latest version number through the release notes.
-    //implementation 'io.agora.rtc:full-sdk:3.5.0'
+
     implementation 'com.github.agorabuilder:agora-full-preview:4.0.0'
 
     
