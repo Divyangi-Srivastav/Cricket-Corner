@@ -35,7 +35,6 @@ public class HostMatchActivityTwo extends AppCompatActivity implements View.OnCl
         binding.liveStream.setOnClickListener(this::onClick);
         binding.playerScore.setOnClickListener(this::onClick);
         binding.teamScore.setOnClickListener(this::onClick);
-        binding.setCred.setOnClickListener(this::onClick);
         binding.updateBatsman.setOnClickListener(this::onClick);
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
