@@ -169,6 +169,7 @@
                     android:layout_marginTop="45dp"
                     android:fontFamily="@font/montserrat"
                     android:text="Legalities"
+                    android:visibility="gone"
                     android:textColor="#112E52"
                     android:textSize="18sp" />
 
@@ -176,6 +177,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
+                    android:visibility="gone"
                     android:background="@drawable/settings_bg"
                     android:orientation="horizontal"
                     android:paddingHorizontal="15dp">
@@ -210,6 +212,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/settings_bg"
+                    android:visibility="gone"
                     android:orientation="horizontal"
                     android:paddingHorizontal="15dp">
 
@@ -243,6 +246,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/settings_bg"
+                    android:visibility="gone"
                     android:orientation="horizontal"
                     android:paddingHorizontal="15dp">
 

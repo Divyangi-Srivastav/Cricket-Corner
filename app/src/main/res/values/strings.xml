@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">LiveCricketApp</string>
+    <string name="app_name">Rann Sports</string>
     <string name="field_required">This field is required.</string>
-    <string name="about_info">A platform where you can host a tournament or be a spectator and enjoy breathtaking cricket matches directly at your home with just a small fee to support the team. You can also donate participation fees on behalf of your favourite team and watch them win as they fight their way in the tournament. Or request an ad that will get displayed Live on our app and boost your sales.</string>
+    <string name="about_info">A platform to enjoy several sports such as Cricket , Football , BasketBall , Kabaddi etc for free with no subscription charges.
+        This platform hosts the sports tournaments held at the district level of Gujarat .
+        Our aim is to promote the sports culture in our country and provide these young sportsmen a platform to show their talents.</string>
 </resources>
