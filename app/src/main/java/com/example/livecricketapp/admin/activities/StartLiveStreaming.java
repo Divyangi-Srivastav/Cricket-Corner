@@ -18,6 +18,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.admin.adapters.AdRequestsAdapter;
 import com.example.livecricketapp.admin.adapters.CommentsAdapter;
@@ -34,6 +40,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,6 +71,7 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
     private AllMatchInfo allMatchInfo;
     private SingleMatchInfo singleMatchInfo;
     private int a = 0;
+    private String URL = "https://agora-cricket.herokuapp.com/rtc/channel/1/uid/0/?expiry=90000";
 
 
     private static final String[] REQUESTED_PERMISSIONS = {
@@ -136,14 +147,6 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
         mRtcEngine.joinChannel(token, channelName, 567, options);
     }
 
-//    private void setupRemoteVideo(int uid) {
-//        FrameLayout container = findViewById(R.id.remote_video_view_container);
-//        SurfaceView surfaceView = new SurfaceView (getBaseContext());
-//        surfaceView.setZOrderMediaOverlay(true);
-//        container.addView(surfaceView);
-//        mRtcEngine.setupRemoteVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_FIT, uid));
-//    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -158,7 +161,7 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
         singleMatchInfo = new SingleMatchInfo();
         allMatchInfo = new AllMatchInfo();
 
-        get_cred();
+        get_credential();
 
         get_ad_data();
         adRequestsAdapter = new AdRequestsAdapter(this, adBanners, "admin", this::change_status);
@@ -180,24 +183,6 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
                 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
         get_single_match_info();
-    }
-
-    private void get_cred() {
-        db.collection("Cred")
-                .document("Streaming")
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
-                        StreamingCred streamingCred = documentSnapshot.toObject(StreamingCred.class);
-                        channelName = streamingCred.getName();
-                        token = streamingCred.getId();
-                        // If all the permissions are granted, initialize the RtcEngine object and join a channel.
-                        if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
-                            initializeAndJoinChannel();
-                        }
-                    }
-                });
     }
 
     public void switch_camera(View view) {
@@ -346,4 +331,40 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
     }
 
 
+    private void get_credential()
+    {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    token = obj.getString("rtcToken");
+
+                    if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
+                        initializeAndJoinChannel();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        queue.add(request);
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mRtcEngine.stopPreview();
+        mRtcEngine.leaveChannel();
+        RtcEngine.destroy();
+    }
 }
