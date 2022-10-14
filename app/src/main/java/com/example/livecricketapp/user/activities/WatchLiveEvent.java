@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.SurfaceView;
@@ -40,6 +41,7 @@ public class WatchLiveEvent extends AppCompatActivity implements View.OnClickLis
     private ActivityWatchLiveEventBinding binding ;
     private FirebaseFirestore db;
     private String URL = "https://agora-cricket.herokuapp.com/rtc/channel/2/uid/0/?expiry=90000";
+    private ProgressDialog dialog ;
 
 
     private static final int PERMISSION_REQ_ID = 22;
@@ -124,6 +126,10 @@ public class WatchLiveEvent extends AppCompatActivity implements View.OnClickLis
         setContentView(binding.getRoot());
 
         db = FirebaseFirestore.getInstance();
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Please Wait..");
+        dialog.show();
+
 
         get_credential();
 
@@ -156,6 +162,7 @@ public class WatchLiveEvent extends AppCompatActivity implements View.OnClickLis
         StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                dialog.dismiss();
                 try {
                     JSONObject obj = new JSONObject(response);
                     token = obj.getString("rtcToken");
@@ -171,7 +178,7 @@ public class WatchLiveEvent extends AppCompatActivity implements View.OnClickLis
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                dialog.dismiss();
             }
         });
 

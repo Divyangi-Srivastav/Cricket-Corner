@@ -1,6 +1,7 @@
 package com.example.livecricketapp.admin.activities;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -70,6 +71,7 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
     private Comments comments;
     private AllMatchInfo allMatchInfo;
     private SingleMatchInfo singleMatchInfo;
+    private ProgressDialog dialog ;
     private int a = 0;
     private String URL = "https://agora-cricket.herokuapp.com/rtc/channel/1/uid/0/?expiry=90000";
 
@@ -154,6 +156,9 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
         setContentView(binding.getRoot());
 
         db = FirebaseFirestore.getInstance();
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Please Wait..");
+        dialog.show();
 
         tournamentId = getIntent().getStringExtra("tour");
         matchNo = getIntent().getStringExtra("match");
@@ -337,6 +342,7 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
         StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                dialog.dismiss();
                 try {
                     JSONObject obj = new JSONObject(response);
                     token = obj.getString("rtcToken");
@@ -352,7 +358,7 @@ public class StartLiveStreaming extends AppCompatActivity implements AdRequestsA
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                dialog.dismiss();
             }
         });
 

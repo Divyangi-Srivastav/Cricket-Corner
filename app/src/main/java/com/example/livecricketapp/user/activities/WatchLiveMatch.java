@@ -1,6 +1,7 @@
 package com.example.livecricketapp.user.activities;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
@@ -67,6 +68,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
     private CommentsAdapter commentsAdapter;
     private Comments comments;
     private int OVERS ;
+    private ProgressDialog dialog ;
 
 
     private String URL = "https://agora-cricket.herokuapp.com/rtc/channel/2/uid/0/?expiry=90000";
@@ -153,6 +155,9 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         setContentView(binding.getRoot());
 
         db = FirebaseFirestore.getInstance();
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Please Wait..");
+        dialog.show();
 
         singleMatchInfo = new SingleMatchInfo();
         singleMatchInfo = (SingleMatchInfo) getIntent().getSerializableExtra("match");
@@ -349,7 +354,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
             }else{
                 binding.targetCard.setVisibility(View.VISIBLE);
             }
-                binding.target.setText("Target " + (info.getTeam2Score().getTeamRuns()+1));
+                binding.target.setText("Target " + String.valueOf(info.getTeam2Score().getTeamRuns()+1));
         }
 
 
@@ -382,7 +387,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
             }else{
                 binding.targetCard.setVisibility(View.VISIBLE);
             }
-                binding.target.setText("Target " +(info.getTeam1Score().toString()+1));
+                binding.target.setText("Target " + String.valueOf(info.getTeam1Score().getTeamRuns()+1));
         }
 
         binding.ball1.setText(setBall(info.getScore().get(0)));
@@ -505,6 +510,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                dialog.dismiss();
                 try {
                     JSONObject obj = new JSONObject(response);
                     token = obj.getString("rtcToken");
@@ -520,7 +526,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-
+                dialog.dismiss();
             }
         });
 
