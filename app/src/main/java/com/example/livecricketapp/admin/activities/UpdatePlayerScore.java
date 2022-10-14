@@ -497,9 +497,22 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
     public void update_score( int score , String val )
     {
         Deque<Integer> deque = new LinkedList<Integer>();
-        for ( int i=0 ; i < 6 ; i++ )
+        List<Integer> scor = new ArrayList<>();
+
+        if ( (singleMatchInfo.getBattingTeam().equalsIgnoreCase(singleMatchInfo.getTeam1Score().getTeamName()) && singleMatchInfo.getTeam1Score().getTeamBalls()%6 == 0)
+        || (singleMatchInfo.getBattingTeam().equalsIgnoreCase(singleMatchInfo.getTeam2Score().getTeamName()) && singleMatchInfo.getTeam2Score().getTeamBalls()%6 == 0))
         {
-            deque.addLast(singleMatchInfo.getScore().get(i));
+            for ( int i=0 ; i < 6 ; i++ )
+            {
+                deque.addLast(-1);
+            }
+        }
+        else
+        {
+            for ( int i=0 ; i < 6 ; i++ )
+            {
+                deque.addLast(singleMatchInfo.getScore().get(i));
+            }
         }
 
         if ( val == "run" )
@@ -512,13 +525,11 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
             deque.removeFirst();
             deque.addLast(7);
         }
-        List<Integer> scor = new ArrayList<>();
         for ( int i=0 ; i < 6 ; i++ )
         {
             scor.add(deque.getFirst());
             deque.removeFirst();
         }
-
         singleMatchInfo.setScore(scor);
     }
 

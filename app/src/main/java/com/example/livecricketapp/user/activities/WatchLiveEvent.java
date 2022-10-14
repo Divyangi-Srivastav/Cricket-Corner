@@ -12,12 +12,21 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.databinding.ActivityWatchLiveEventBinding;
 import com.example.livecricketapp.model.StreamingCred;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import io.agora.rtc2.ChannelMediaOptions;
 import io.agora.rtc2.Constants;
@@ -30,6 +39,8 @@ public class WatchLiveEvent extends AppCompatActivity implements View.OnClickLis
 
     private ActivityWatchLiveEventBinding binding ;
     private FirebaseFirestore db;
+    private String URL = "https://agora-cricket.herokuapp.com/rtc/channel/2/uid/0/?expiry=90000";
+
 
     private static final int PERMISSION_REQ_ID = 22;
     private static final String[] REQUESTED_PERMISSIONS = {
@@ -114,7 +125,7 @@ public class WatchLiveEvent extends AppCompatActivity implements View.OnClickLis
 
         db = FirebaseFirestore.getInstance();
 
-        get_cred();
+        get_credential();
 
         View decorView = getWindow().getDecorView();
         decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
@@ -124,24 +135,6 @@ public class WatchLiveEvent extends AppCompatActivity implements View.OnClickLis
                 | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
                 | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
 
-    }
-
-    private void get_cred() {
-        db.collection("Cred")
-                .document("StreamingUser")
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(@NonNull DocumentSnapshot documentSnapshot) {
-                        StreamingCred streamingCred = documentSnapshot.toObject(StreamingCred.class);
-                        channelName = streamingCred.getName();
-                        token = streamingCred.getId();
-                        // If all the permissions are granted, initialize the RtcEngine object and join a channel.
-                        if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
-                            initializeAndJoinChannel();
-                        }
-                    }
-                });
     }
 
 
@@ -156,4 +149,34 @@ public class WatchLiveEvent extends AppCompatActivity implements View.OnClickLis
         mRtcEngine.leaveChannel();
         RtcEngine.destroy();
     }
+
+    private void get_credential()
+    {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        StringRequest request = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject obj = new JSONObject(response);
+                    token = obj.getString("rtcToken");
+
+                    if (checkSelfPermission(REQUESTED_PERMISSIONS[0], PERMISSION_REQ_ID) && checkSelfPermission(REQUESTED_PERMISSIONS[1], PERMISSION_REQ_ID)) {
+                        initializeAndJoinChannel();
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        queue.add(request);
+
+    }
+
 }
