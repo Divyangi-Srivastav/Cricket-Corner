@@ -135,6 +135,9 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
             case R.id.number_of_teams_cross:
                 binding.numberOfTeams.getText().clear();
                 break;
+            case R.id.number_of_overs_cross:
+                binding.numberOfOvers.getText().clear();
+                break;
             case R.id.fees_cross:
                 binding.fees.getText().clear();
                 break;
@@ -160,6 +163,7 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
                     TournamentInfo tournamentInfo = new TournamentInfo();
                     tournamentInfo.setTournamentId(getIntent().getStringExtra("id"));
                     tournamentInfo.setTournamentName(binding.tournamentName.getText().toString());
+                    tournamentInfo.setTotal_overs(Integer.parseInt(binding.numberOfOvers.getText().toString()));
                     tournamentInfo.setNumber_of_teams(Integer.parseInt(binding.numberOfTeams.getText().toString()));
                     tournamentInfo.setFees(Float.parseFloat(binding.fees.getText().toString()));
                     tournamentInfo.setNo_of_matches_day(Integer.parseInt(binding.numberOfMatches.getText().toString()));
@@ -212,6 +216,11 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
         else if ( binding.numberOfTeams.getText().toString().isEmpty() )
         {
             binding.numberOfTeams.setError("Enter the Number of teams");
+            return false;
+        }
+        else if ( binding.numberOfOvers.getText().toString().isEmpty() )
+        {
+            binding.numberOfOvers.setError("Enter the Number of overs");
             return false;
         }
         else if ( binding.fees.getText().toString().isEmpty() )

@@ -57,6 +57,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
     private AdRequestsAdapter adRequestsAdapter;
     private CommentsAdapter commentsAdapter;
     private Comments comments;
+    private int overs ;
 
 
     private static final int PERMISSION_REQ_ID = 22;
@@ -112,14 +113,6 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         // Start local preview.
         mRtcEngine.startPreview();
 
-//        FrameLayout container = findViewById(R.id.local_video_view_container);
-//        // Call CreateRendererView to create a SurfaceView object and add it as a child to the FrameLayout.
-//        // SurfaceView surfaceView = RtcEngine.CreateRendererView(getBaseContext());
-//        SurfaceView surfaceView = new SurfaceView (getBaseContext());
-//        container.addView(surfaceView);
-//        // Pass the SurfaceView object to Agora so that it renders the local video.
-//        mRtcEngine.setupLocalVideo(new VideoCanvas(surfaceView, VideoCanvas.RENDER_MODE_FIT, 0));
-
         ChannelMediaOptions options = new ChannelMediaOptions();
         // For a live streaming scenario, set the channel profile as BROADCASTING.
         options.channelProfile = Constants.CHANNEL_PROFILE_LIVE_BROADCASTING;
@@ -152,6 +145,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         singleMatchInfo = new SingleMatchInfo();
         singleMatchInfo = (SingleMatchInfo) getIntent().getSerializableExtra("match");
         tournamentId = getIntent().getStringExtra("tour");
+        overs = getIntent().getIntExtra("over" , 0);
 
         comments = new Comments();
 
@@ -406,7 +400,6 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         for(int i=5;i>=0;i--){
             int run = info.getScore().get(i);
             if(run!=-1){
-//                String color = "#FFFFFF";
                 String higlight = "Dot";
                 if(run>=0 && run<=6){
                     switch (run){
