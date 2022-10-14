@@ -92,11 +92,6 @@ public class HostMatchActivityTwo extends AppCompatActivity implements View.OnCl
                 startActivity(intent2);
                 break;
 
-            case R.id.set_cred:
-                    Intent intent3 = new Intent(this , SetStreamingCredential.class );
-                    startActivity(intent3);
-                break;
-
             case R.id.update_batsman:
                 Intent intent4 = new Intent(this, UpdateBatsmanBowler.class);
                 intent4.putExtra("tour",tournamentId);

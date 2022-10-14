@@ -44,10 +44,6 @@
             android:name="com.example.livecricketapp.admin.activities.UpdateBatsmanBowler"
             android:exported="false" />
         <activity
-            android:name="com.example.livecricketapp.admin.activities.SetStreamingCredential"
-            android:exported="true"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name="com.example.livecricketapp.user.activities.AboutActivity"
             android:exported="true" />
         <activity
