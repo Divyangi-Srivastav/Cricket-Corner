@@ -233,159 +233,289 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Add Runs");
-        builder.setItems(new CharSequence[]{"0 Run", "1 Run", "2 Run", "3 Run", "4 Run", "5 Run", "6 Run"},
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        update_score(which , "run");
-                        switch (which) {
-                            case 0:
-                                if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam2Score().setCards(list);
 
-                                } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam1Score().setCards(list);
-                                }
-                                break;
-                            case 1:
-                                if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
-                                    list.get(a).setRuns(list.get(a).getRuns() + 1);
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam2Score().setCards(list);
-                                    if ( a == 11 )
-                                    {
-                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
-                                    }
+        if ( a == 11 )
+        {
+            builder.setItems(new CharSequence[]{"0 Run", "1 Run", "2 Run", "3 Run", "4 Run", "5 Run", "6 Run",
+                            "0 Run Ball", "1 Run Ball", "2 Run Ball", "3 Run Ball", "4 Run Ball", "5 Run Ball", "6 Run Ball"},
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            update_score(which , "run");
+                            switch (which) {
+                                case 0:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        singleMatchInfo.getTeam2Score().setCards(list);
 
-                                } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
-                                    list.get(a).setRuns(list.get(a).getRuns() + 1);
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam1Score().setCards(list);
-                                    if ( a == 11 )
-                                    {
-                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        singleMatchInfo.getTeam1Score().setCards(list);
                                     }
-                                }
-                                break;
-                            case 2:
-                                if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
-                                    list.get(a).setRuns(list.get(a).getRuns() + 2);
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam2Score().setCards(list);
-                                    if ( a == 11 )
-                                    {
-                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    break;
+                                case 1:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 1);
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 1);
+                                        singleMatchInfo.getTeam1Score().setCards(list);
                                     }
-                                } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
-                                    list.get(a).setRuns(list.get(a).getRuns() + 2);
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam1Score().setCards(list);
-                                    if ( a == 11 )
-                                    {
-                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    break;
+                                case 2:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 2);
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 2);
+                                        singleMatchInfo.getTeam1Score().setCards(list);
                                     }
-                                }
-                                break;
-                            case 3:
-                                if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
-                                    list.get(a).setRuns(list.get(a).getRuns() + 3);
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam2Score().setCards(list);
-                                    if ( a == 11 )
-                                    {
-                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    break;
+                                case 3:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 3);
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 3);
+                                        singleMatchInfo.getTeam1Score().setCards(list);
                                     }
-                                } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
-                                    list.get(a).setRuns(list.get(a).getRuns() + 3);
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam1Score().setCards(list);
-                                    if ( a == 11 )
-                                    {
-                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    break;
+                                case 4:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 4);
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 4);
+                                        singleMatchInfo.getTeam1Score().setCards(list);
                                     }
-                                }
-                                break;
-                            case 4:
-                                if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
-                                    list.get(a).setRuns(list.get(a).getRuns() + 4);
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam2Score().setCards(list);
-                                    if ( a == 11 )
-                                    {
-                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    break;
+                                case 5:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 5);
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 5);
+                                        singleMatchInfo.getTeam1Score().setCards(list);
                                     }
-                                } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
-                                    list.get(a).setRuns(list.get(a).getRuns() + 4);
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam1Score().setCards(list);
-                                    if ( a == 11 )
-                                    {
-                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    break;
+                                case 6:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 6);
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 6);
+                                        singleMatchInfo.getTeam1Score().setCards(list);
                                     }
-                                }
-                                break;
-                            case 5:
-                                if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
-                                    list.get(a).setRuns(list.get(a).getRuns() + 5);
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam2Score().setCards(list);
-                                    if ( a == 12 )
-                                    {
-                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    break;
+
+                                case 7:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
                                     }
-                                } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
-                                    list.get(a).setRuns(list.get(a).getRuns() + 5);
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam1Score().setCards(list);
-                                    if ( a == 12 )
-                                    {
-                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    break;
+                                case 8:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 1);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 1);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
                                     }
-                                }
-                                break;
-                            case 6:
-                                if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
-                                    list.get(a).setRuns(list.get(a).getRuns() + 6);
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam2Score().setCards(list);
-                                    if ( a == 12 )
-                                    {
-                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    break;
+                                case 9:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 2);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 2);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
                                     }
-                                } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
-                                    List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
-                                    list.get(a).setRuns(list.get(a).getRuns() + 6);
-                                    list.get(a).setBalls(list.get(a).getBalls() + 1 );
-                                    singleMatchInfo.getTeam1Score().setCards(list);
-                                    if ( a == 12 )
-                                    {
-                                        list.get(a).setBalls(list.get(a).getBalls() - 1 );
+                                    break;
+                                case 10:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 3);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 3);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
                                     }
-                                }
-                                break;
+                                    break;
+                                case 11:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 4);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 4);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
+                                    }
+                                    break;
+                                case 12:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 5);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 5);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
+                                    }
+                                    break;
+                            }
+                            adapter1.notifyDataSetChanged();
+                            adapter2.notifyDataSetChanged();
+
+                            update_total_runs(teamName);
+                            update_total_wickets(teamName);
                         }
-                        adapter1.notifyDataSetChanged();
-                        adapter2.notifyDataSetChanged();
+                    });
+            builder.create().show();
+        }
+        else
+        {
+            builder.setItems(new CharSequence[]{"0 Run", "1 Run", "2 Run", "3 Run", "4 Run", "5 Run", "6 Run"},
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            update_score(which , "run");
+                            switch (which) {
+                                case 0:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
 
-                        update_total_runs(teamName);
-                        update_total_wickets(teamName);
-                    }
-                });
-        builder.create().show();
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
+                                    }
+                                    break;
+                                case 1:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 1);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 1);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
+                                    }
+                                    break;
+                                case 2:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 2);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 2);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
+                                    }
+                                    break;
+                                case 3:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 3);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 3);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
+                                    }
+                                    break;
+                                case 4:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 4);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 4);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
+                                    }
+                                    break;
+                                case 5:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 5);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 5);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
+                                    }
+                                    break;
+                                case 6:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 6);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
+                                        list.get(a).setRuns(list.get(a).getRuns() + 6);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
+                                    }
+                                    break;
+                            }
+                            adapter1.notifyDataSetChanged();
+                            adapter2.notifyDataSetChanged();
+
+                            update_total_runs(teamName);
+                            update_total_wickets(teamName);
+                        }
+                    });
+            builder.create().show();
+        }
 
     }
 
