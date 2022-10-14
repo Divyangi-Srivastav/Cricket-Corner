@@ -66,7 +66,9 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
     private AdRequestsAdapter adRequestsAdapter;
     private CommentsAdapter commentsAdapter;
     private Comments comments;
-    private int overs ;
+    private int OVERS ;
+
+
     private String URL = "https://agora-cricket.herokuapp.com/rtc/channel/2/uid/0/?expiry=90000";
 
 
@@ -155,7 +157,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
         singleMatchInfo = new SingleMatchInfo();
         singleMatchInfo = (SingleMatchInfo) getIntent().getSerializableExtra("match");
         tournamentId = getIntent().getStringExtra("tour");
-        overs = getIntent().getIntExtra("over" , 0);
+        OVERS = getIntent().getIntExtra("over" , 0);
 
         comments = new Comments();
 
@@ -326,6 +328,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
             int overs = balls / 6 ;
             balls %= 6 ;
             binding.overCount.setText(String.valueOf(overs) + "." + String.valueOf(balls));
+            binding.totalOverCount.setText(String.valueOf(OVERS));
             for ( int i=0 ; i < info.getTeam1Score().getCards().size() ; i++ )
             {
                 if(info.getTeam1Score().getCards().get(i).getPlayerName().equalsIgnoreCase(info.getBatsman1()))
