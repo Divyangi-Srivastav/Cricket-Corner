@@ -221,7 +221,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@id/team_score"
+                    android:id="@+id/team_score"
                     android:layout_width="wrap_content"
                     android:layout_height="38dp"
                     android:gravity="center"
@@ -518,6 +518,7 @@
                     android:id="@+id/bowler"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="#D7ECF6"
                     app:layout_constraintEnd_toStartOf="@+id/ball_status_pallet"
                     app:layout_constraintTop_toTopOf="parent">
 
@@ -528,6 +529,7 @@
                         android:gravity="center"
                         android:text="Naseem Shah"
                         android:textColor="@color/black"
+                        android:paddingStart="30dp"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -540,6 +542,7 @@
                     android:id="@+id/ball_status_pallet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="#D7ECF6"
                     android:paddingStart="6dp"
                     android:paddingEnd="12dp"
                     app:layout_constraintEnd_toEndOf="parent"

@@ -196,7 +196,6 @@ public class MatchActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.btn_submit:
-//                check_subscription();
                 move_to_other_activity();
                 break;
         }

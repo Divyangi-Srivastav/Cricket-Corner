@@ -130,7 +130,7 @@ public class CreateTournamentThree extends AppCompatActivity  {
         matchInfo.setMatchInfos(singleMatchInfos);
         db.collection("Match Info").document(tournamentInfo.getTournamentId()).set(matchInfo);
         singleMatchInfos.clear();
-        Intent intent = new Intent( this , DashboardAdmin.class);
+        Intent intent = new Intent( this , HomeActivity.class);
         startActivity(intent);
     }
 }

@@ -48,6 +48,7 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
 
         binding.btnSubmit.setOnClickListener(this::onClick);
         binding.startDateAndTime.setOnClickListener(this::onClick);
+        binding.endDateAndTime.setOnClickListener(this::onClick);
 
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -181,7 +182,18 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
                 break;
             }
             case R.id.start_date_and_time:
-            case R.id.end_date_and_time: {
+
+                DatePickerDialog.OnDateSetListener date2 = (view, year, month, day) -> {
+                    myCalendar.set(Calendar.YEAR, year);
+                    myCalendar.set(Calendar.MONTH,month);
+                    myCalendar.set(Calendar.DAY_OF_MONTH,day);
+                    updateLabel(v);
+                };
+                new DatePickerDialog(this,date2,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+                break;
+
+            case R.id.end_date_and_time:
                 
                 DatePickerDialog.OnDateSetListener date = (view, year, month, day) -> {
                     myCalendar.set(Calendar.YEAR, year);
@@ -191,15 +203,11 @@ public class CreateTournamentOne extends AppCompatActivity implements View.OnCli
                 };
                 new DatePickerDialog(this,date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
                 break;
-
-            }
-
-
         }
 
     }
     private void updateLabel(View v){
-        String myFormat="MM/dd/yy";
+        String myFormat="dd/MM/yyyy";
         SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.ENGLISH);
         EditText et = (EditText) v;
         et.setText(dateFormat.format(myCalendar.getTime()));

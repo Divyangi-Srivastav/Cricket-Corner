@@ -326,6 +326,7 @@ public class WatchLiveMatch extends AppCompatActivity implements View.OnClickLis
             int overs = balls / 6;
             balls %= 6;
             binding.overCount.setText(String.valueOf(overs) + "." + String.valueOf(balls));
+            binding.totalOverCount.setText(String.valueOf(OVERS));
             for (int i = 0; i < info.getTeam2Score().getCards().size(); i++) {
                 if (info.getTeam2Score().getCards().get(i).getPlayerName().equalsIgnoreCase(info.getBatsman1())) {
                     binding.batsman1Score.setText(String.valueOf(info.getTeam2Score().getCards().get(i).getRuns()));

@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.livecricketapp.R;
-import com.example.livecricketapp.Unused.UpdateTeamScore;
 import com.example.livecricketapp.databinding.ActivityHostMatchTwoBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -34,7 +33,7 @@ public class HostMatchActivityTwo extends AppCompatActivity implements View.OnCl
         binding.matchNo.setText(matchNo);
         binding.liveStream.setOnClickListener(this::onClick);
         binding.playerScore.setOnClickListener(this::onClick);
-        binding.teamScore.setOnClickListener(this::onClick);
+        binding.matchResult.setOnClickListener(this::onClick);
         binding.updateBatsman.setOnClickListener(this::onClick);
 
         binding.navigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -78,8 +77,8 @@ public class HostMatchActivityTwo extends AppCompatActivity implements View.OnCl
                 intent.putExtra("match",matchNo);
                 startActivity(intent);
                 break;
-            case R.id.team_score:
-                Intent intent1 = new Intent(this, UpdateTeamScore.class);
+            case R.id.match_result:
+                Intent intent1 = new Intent(this, MatchEndResult.class);
                 intent1.putExtra("tour",tournamentId);
                 intent1.putExtra("match",matchNo);
                 startActivity(intent1);
