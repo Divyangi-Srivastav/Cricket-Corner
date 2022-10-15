@@ -410,9 +410,11 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
         }
         else
         {
-            builder.setItems(new CharSequence[]{"0 Run", "1 Run", "2 Run", "3 Run", "4 Run", "5 Run", "6 Run"},
+            builder.setItems(new CharSequence[]{"0 Run", "1 Run", "2 Run", "3 Run", "4 Run", "5 Run", "6 Run", "Out"},
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
+
+                            if ( which != 7 )
                             update_score(which , "run");
                             switch (which) {
                                 case 0:
@@ -502,6 +504,18 @@ public class UpdatePlayerScore extends AppCompatActivity implements ScorecardAda
                                     } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
                                         List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                         list.get(a).setRuns(list.get(a).getRuns() + 6);
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam1Score().setCards(list);
+                                    }
+                                    break;
+
+                                case 7:
+                                    if (singleMatchInfo.getTeam2Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam2Score().getCards();
+                                        list.get(a).setBalls(list.get(a).getBalls() + 1 );
+                                        singleMatchInfo.getTeam2Score().setCards(list);
+                                    } else if (singleMatchInfo.getTeam1Score().getTeamName().equalsIgnoreCase(teamName)) {
+                                        List<PlayerScoreCard> list = singleMatchInfo.getTeam1Score().getCards();
                                         list.get(a).setBalls(list.get(a).getBalls() + 1 );
                                         singleMatchInfo.getTeam1Score().setCards(list);
                                     }

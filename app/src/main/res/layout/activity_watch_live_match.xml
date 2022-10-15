@@ -347,7 +347,7 @@
             android:id="@+id/highlight_card"
             android:layout_width="0dp"
             android:layout_height="38dp"
-            android:backgroundTint="#3E9E00"
+            app:cardBackgroundColor="#3E9E00"
             app:cardCornerRadius="4dp"
             app:layout_constraintEnd_toStartOf="@id/target_card"
             app:layout_constraintStart_toEndOf="@+id/cardView4"

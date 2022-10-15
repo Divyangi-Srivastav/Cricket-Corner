@@ -69,7 +69,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat"
-                        android:text="Ansh Tandon"
+                        android:text="Hafiz Mutva"
                         android:textColor="#112E52"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -86,6 +86,7 @@
                     android:textSize="14sp" />
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
@@ -96,6 +97,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp">
 
@@ -141,7 +143,7 @@
                         android:id="@+id/phone"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="+91 9876543210"
+                        android:text="+91 9429124945"
                         android:paddingRight="30dp"
                         android:focusable="false"
                         android:fontFamily="@font/montserrat"
@@ -183,7 +185,7 @@
                         android:paddingRight="30dp"
                         android:focusable="false"
                         android:fontFamily="@font/montserrat"
-                        android:text="Shop No.3/36A, Maharaja Agrasen Marg, UV Block, Shalimar Bagh, Delhi, 110088"
+                        android:text="Dhordo Greater Rann Of Kutch Bhuj Gujarat 370510"
                         android:textSize="14sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

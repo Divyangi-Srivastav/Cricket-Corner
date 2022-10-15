@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.livecricketapp.R;
 import com.example.livecricketapp.admin.adapters.DashboardAdapter;
@@ -151,5 +152,7 @@ public class DashboardAdmin extends AppCompatActivity implements DashboardAdapte
         db.collection("Tournament Info")
                 .document(info.get(a).getTournamentId())
                 .delete();
+        Toast.makeText(this, "Deleted Successfully", Toast.LENGTH_SHORT).show();
+
     }
 }
